@@ -71,9 +71,7 @@ supported by NSF Grant RI-Medium: \#IIS-1162095 to }}
 % make the title area
 \maketitle
 \begin{abstract}
-abstract
 
-abstract
 \\
 \end{abstract}
 
@@ -85,22 +83,22 @@ AX=YB, Sensor Calibration, Probabilistic Modeling
 \section{Introduction}
 % no \PARstart
 
-Image-guided system has been widely used in robotics such as robot assisted surgery. A sensor such as camera, laser scanner or ultrasound probe is usually mounted on the hand of a robotic manipulator. To use the "hand-eye" system, the problem of determining the coordination relationship between the sensor frame with respect to the end-effector frame must be solved, which is widely known $\textbf{AX=XB}$ problem for the hand-eye calibration. With an extension of this problem, $\textbf{AX=YB}$ problem without knowing the relationship between the world frame and the robot base frame is proposed to achieve the robot-world calibration as well as hand-eye calibration. In a dynamic setup environment, the relationship among the sensor frame, robot frame and world frame is variant and the uncertainties exist. Therefore, simultaneous coordinate calibrations have to be determined frequently in order to enable the robots to respond to changing environments.
+Image-guided system has been widely used in robotics such as robot assisted surgery. Sensors such as a camera, a laser scanner and an ultrasound probe are usually mounted as the end-effector of a robotic manipulator. For a typical ``hand-eye" system as described above, the relative transformation of the sensor with respect to the end-effector should be accurately calibrated, and it is often characterized as the well known $\textbf{AX=XB}$ problem. A variation of this problem is characterized as the $\textbf{AX=YB}$ problem, where both the hand-eye transformation and the pose of the robot base with respect to the world frame need to be calibrated. In a typical environment setup, the relationship among the sensor frame, robot frame and world frame either is subject to change or can be disturbed by uncertainties. Therefore, simultaneous coordinate calibrations have to be performed frequently in order to enable the robot to respond to dynamic environments.
 
-In the $\textbf{AX=YB}$ problem, $As$ and $Bs$ can be respectively calculated using different sensors. The data streams are in an asynchronous fashion due to different timing sequences. The asynchrony causes a shift between the two streams of data that results in missing the correspondences between $As$ and $Bs$. In this paper, we present a method to solve for an $X$ and $Y$ without needing know a priori knowledge of correspondence between $As$ and $Bs$.
+In the $\textbf{AX=YB}$ problem, $A$s and $B$s can be respectively obtained via different sensors. The data streams can be in an asynchronous fashion due to different working frequencies of the sensors. The asynchrony causes a shift between the two streams of data which damages the correspondence between $A$s and $B$s. In this paper, we present a method to solve for $X$ and $Y$ without the need to know a priori knowledge of the correspondence between $A$s and $B$s.
 
 \begin{center}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=2in]{fig1.eps}
 \caption{
-(1) The hand-eye calibration problem which is formulated in a matrix as AX=XB. (2) The hand-eye and robot-robot calibration problem which is formulated as AX=YB.
+(1) The hand-eye calibration problem formulated in a matrix as AX=XB. (2) The hand-eye and robot-robot calibration problem formulated as AX=YB.
 }
 \label{fig1}
 \end{figure}
 \end{center}
 
-The hand-eye calibration problem can be generalized as the $\textbf{AX = XB}$ formulation. $A$ and $B$ are respectively the homogeneous transformation matrices of end-effector and sensor movement using $A = A^{i}(A^{i+1})^{-1}; B = B^{i}(B^{i+1})^{-1}$ as shown in Fig.~\ref{fig1}. The homogeneous transformation matrix can be described with the form.
+The hand-eye calibration problem can be modeled as the $\textbf{AX = XB}$, where $A$s and $B$s are the homogeneous transformation matrices describing the relative motion of the end-effector and the sensor respectively. As shown in Fig.~\ref{fig1}, $A = A^{i}(A^{i+1})^{-1}$ and $B = B^{i}(B^{i+1})^{-1}$. The homogeneous transformation matrix can be described as:
 \begin{equation}\label{equ0}
     g(R,t)=\left(
              \begin{array}{cc}
@@ -112,7 +110,7 @@ The hand-eye calibration problem can be generalized as the $\textbf{AX = XB}$ fo
 
 where $R \in SO(3)$ is a rotation matrix and $t \in R^{3}$ is a translation vector.
 
-According to multiple pairs $(A,B) \in SE(3) \times SE(3)$ which are known a prior, many methods for the only $X$ have been proposed including decoupling of rotation and translation, least squares fitting, singular value decomposition (\emph{SVD}), screw theory, nonlinear
+Given multiple pairs of $(A_{i},B_{i}) \in SE(3) \times SE(3)$ with correspondence, many methods have been proposed to solve for $X$ including decoupling of rotation and translation, least squares fitting, singular value decomposition (\emph{SVD}), screw theory, nonlinear
 optimization, quaternion, gradient descent and interactive approaches \cite{Shiu1989,Tsai1989,Wang1992,Park1994,Horaud1995,Daniilidis1999,Fassi2005,Zhao2011,Ackerman2014a}. Theses methods assume that there is exact knowledge of the $As$ and $Bs$ correspondence. Considering data streams containing the $A$ and $B$ will be asynchronous that are discussed in many instances
 in the literature, several methods regardless of the correspondence or recovering the correspondence between two data sets are presented \cite{Ackerman2013a,Ackerman2013,Ackerman2014}.
 
