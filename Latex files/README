@@ -1,0 +1,101 @@
+
+December 10, 2002
+
+This IEEEtran.cls is the official LaTeX class for authors of the
+Institute of Electrical and Electronics Engineers (IEEE) transactions
+journals and conferences. In addition to being carried on IEEE's site,
+IEEEtran.cls may be found at:
+
+http://www.ctan.org/tex-archive/macros/latex/contrib/supported/IEEEtran/
+
+The CTAN site may have additional files related to non-IEEE uses of this
+tool.
+
+As of version 1.6, IEEEtran.cls now provides support for conferences and
+A4 paper. Users of previous versions should no longer manually alter margins,
+paper sizes, page styles, etc. Also, please note that \author is used
+slightly differently from that of V1.5, especially for conferences.
+\pubid (if used) must now be placed before \maketitle. \cite is now robust
+and can be used within captions without a proceeding \protect.
+
+As with previous versions, The itemize, enumerate, and description lists as
+well as \appendix(ces) have enhanced controls and work slightly differently
+than is done in traditional LaTeX.
+
+Extensive formal documentation is now available. Enjoy! ;) The appendices
+of the user manual contain important information on avoiding commonly
+made mistakes, compatibility issues and installation instructions.
+
+
+Best wishes for all your publication endeavors,
+
+Michael Shell
+mshell@ece.gatech.edu
+
+
+*******
+Version 1.6b (2002/11/18) changes:
+
+ 1) New peerreview and peerreviewca modes with \IEEEpeerreviewmaketitle
+    command allows for a "cover" titlepage for anonymous peer review.
+
+ 2) New draftclsnofoot mode is like draftcls, but does not display the
+    date and the word "DRAFT" at the foot of the page. 
+
+ 3) The draft modes now no longer force a pagebreak after the title.
+
+ 4) \table* now defaults to \footnotesize text like \table.
+
+ 5) In addition to the IEEE IED lists, the original IED style lists (as is
+    done in article.cls) are now provided as LaTeXitemize, LaTeXenumerate,
+    and LaTeXdescription. Also, users can now redefine \makelabel within
+    IEEE IED list controls.
+
+ 6) Added \special to feed papersize to dvips.
+
+ 7) Revised font selection method so as not to have problems when used
+    with setspace.sty. 
+
+ 8) Extra code to prevent hyperref.sty from interfering with the operation
+    of cite.sty.
+
+ 9) Fixed problem with figure captions when using hyperref.sty.
+
+
+
+********************* Files **********************
+
+README             - This file.
+
+IEEEtran.cls       - The LaTeX class file.
+
+IEEEtran_HOWTO.pdf - The user manual.
+
+bare_conf.tex      - A "bare bones" starter file for conference papers.
+
+bare_jrnl.tex      - A "bare bones" starter file for journal papers.
+
+
+
+
+**********************************************************************
+ Legal Notice:
+ This code and advice is offered as-is without any warranty either
+ expressed or implied; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE!
+ User assumes all risk.
+ In no event shall IEEE or any contributor to this code
+ be liable for any damages or losses, including, but not limited to,
+ incidental, consequential, or any other damages, resulting from the
+ use or misuse of any information contained here.
+ 
+ All statements made here are the opinions of their respective
+ authors and are not necessarily endorsed by the IEEE.
+
+ This code/text is distributed under the Perl Artistic License 
+ ( http://language.perl.com/misc/Artistic.html ) 
+ and may be freely used, distributed and modified.
+ Retain all contribution notices and credits.
+**********************************************************************
+
+
