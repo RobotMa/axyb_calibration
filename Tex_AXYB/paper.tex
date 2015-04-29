@@ -45,6 +45,7 @@
                         % equations. Use:
 \usepackage{multirow}
 \usepackage[left=0.71in,top=0.94in,right=0.71in,bottom=1.18in]{geometry}
+\usepackage{amsmath}
 \setlength{\columnsep}{0.24in}
 % correct bad hyphenation here
 %\hyphenation{op-tical net-works semi-conduc-tor IEEEtran}
@@ -201,32 +202,31 @@ Then the corresponding discrete version of $f_{A}(H)$ will be:
 \Sigma_{A} = \sum_{i=1}^{n}log^{\vee}(M_{A}^{-1}H)[log^{\vee}(M_{A}^{-1)}H)]^{T} \IEEEyessubnumber
 \end{IEEEeqnarray}
 
-While the cloud of frames ${A_{i}}$ is clustered around $M_{A}$, an iterative formula can be used for computing $M_{A}$ \cite{Wang2008}.
+For the case where $\{A_{i}\}$ is clustered around $M_{A}$, an iterative formula can be used for computing $M_{A}$ \cite{Wang2008} as:
 
 \begin{equation}\label{equ13}
-    ^{k+1}M_{A} = ^{k}M_{A} \circ exp[\frac{1}{n}\sum_{i=1}^{n}log(^{k}M_{A}^{-1}\circ A_{i})]
+    ^{k+1}M_{A} = ^{k}M_{A} \circ exp[\frac{1}{n}\sum_{i=1}^{n}log(^{k}M_{A}^{-1}\circ A_{i})].
 \end{equation}
 
-An initial estimate of the iterative procedure can be $^{0}M_{A}=\frac{1}{n}\sum_{i=1}^{n}log(A_{i})$,then the process iterates until the cost function, $\parallel \sum_{i=1}^{n}log(M_{A}^{-1}A_{i}) \parallel^{2}$ falls below a predefined threshold, where the cost function is minimized and the minimum defines $M_{A}$. A similar procedure is used for computing $M_B$.
+An initial estimate of $M_{A}$ can be calculated as $^{0}M_{A}=\frac{1}{n}\sum_{i=1}^{n}log(A_{i})$, then iterations will be performed according to Eq.(\ref{equ13}) until the cost function $\parallel \sum_{i=1}^{n}log(M_{A}^{-1}A_{i}) \parallel^{2}$ falls below a predefined threshold. A similar procedure is used for computing $M_B$.
 
-The mean and covariance for the convolution $(f_{1} \ast f_{2})(g)$ of two highly focused functions, $f_{1}$ and $f_{2}$ can be computed as
+The mean and covariance for the convolution of two highly focused pdf $(f_{1} \ast f_{2})(H)$ can be computed as:
 
 \begin{IEEEeqnarray}{l}\label{equ14}
 M_{1 \ast 2} = M_{1}M_{2} \IEEEyessubnumber
 \\*
 \Sigma_{1 \ast 2} = Ad(M_{2}^{-1})\Sigma_{1}Ad^{T}(M_{2}^{-1}) + \Sigma_{2} \IEEEyessubnumber
 \end{IEEEeqnarray}
-
 where
 
-$$Ad(g)=\left(
+$$Ad(H)=\left(
                \begin{array}{cc}
                  R & O \\
                  \hat{t}R & R \\
                \end{array}
-             \right)$$
+             \right).$$
 
-Due to $X$ and $Y$ is fixed, as for $\delta_{X}(g)$ and $\delta_{Y}(g)$, mean and covariance are $M_{X}=X$,$\Sigma_{X}=0$ and $M_{Y}=Y$,$\Sigma_{Y}=0$, respectively, therefore we can obtain
+Because $X$ and $Y$ is fixed, the means and covariances for $\delta_{X}(H)$ and $\delta_{Y}(H)$ are $M_{X}=X$, $\Sigma_{X}=0$ and $M_{Y}=Y$, $\Sigma_{Y}=0$ respectively. Therefore, we can obtain
 
 \begin{IEEEeqnarray}{l}
 M_{A} X = Y M_{B} \IEEEyessubnumber\label{equ15a}
@@ -276,32 +276,51 @@ The first blocks(\ref{equ17a}) is eigendecomposed with the same diagonal matrix 
 
 In $P=Q_{M_{A}}^{T}R_{X}Q_{M_{B}}$, $Q_{M_{A}}$ and $Q_{M_{B}}$ are constrained to be a rotation matrix and therefore $P \in \Omega$,
 
+%\begin{equation}\label{equ19}
+%\Omega= \left(
+%\begin{array}{ccc}
+%\left( \begin{array}{ccc}
+%       1 & 0 & 0 \\
+%       0 & 1 & 0 \\
+%       0 & 0 & 1 \\
+%\end{array} \right),&
+%\left( \begin{array}{ccc}
+%       -1 & 0 & 0 \\
+%       0 & -1 & 0 \\
+%       0 & 0 & 1 \\
+%\end{array} \right)
+%\\
+%\left( \begin{array}{ccc}
+%       -1 & 0 & 0 \\
+%       0 & 1 & 0 \\
+%       0 & 0 & -1 \\
+%\end{array} \right),&
+%\left( \begin{array}{ccc}
+%       1 & 0 & 0 \\
+%       0 & -1 & 0 \\
+%       0 & 0 & -1 \\
+%\end{array} \right)
+%\end{array}
+%\right)
+%\end{equation}
+
 \begin{equation}\label{equ19}
-\Omega= \left(
-\begin{array}{ccc}
-\left( \begin{array}{ccc}
-       1 & 0 & 0 \\
-       0 & 1 & 0 \\
-       0 & 0 & 1 \\
-\end{array} \right),&
-\left( \begin{array}{ccc}
-       -1 & 0 & 0 \\
-       0 & -1 & 0 \\
-       0 & 0 & 1 \\
-\end{array} \right)
-\\
-\left( \begin{array}{ccc}
-       -1 & 0 & 0 \\
-       0 & 1 & 0 \\
-       0 & 0 & -1 \\
-\end{array} \right),&
-\left( \begin{array}{ccc}
-       1 & 0 & 0 \\
-       0 & -1 & 0 \\
-       0 & 0 & -1 \\
-\end{array} \right)
-\end{array}
-\right)
+\begin{split}
+{\cal Q} = \left\{ \left(\begin{array}{ccc}
+1\,\, & 0 \,\, & 0 \,\, \\
+0 & 1 & 0\\
+0 & 0 & 1 \end{array}\right) , \left(\begin{array}{ccc}
+-1 & 0 & 0 \\
+0 & -1 & 0\\
+0 & 0 & 1 \end{array}\right), \right.\\
+\left. \left(\begin{array}{ccc}
+-1 & 0 & 0 \\
+0 & 1 & 0\\
+0 & 0 & -1 \end{array}\right), \left(\begin{array}{ccc}
+1 & 0 & 0 \\
+0 & -1 & 0\\
+0 & 0 & -1 \end{array}\right)\right\}
+\end{split} 
 \end{equation}
 
 Therefore, there are four possibilities of $R_{X}, R_{X}=Q_{M_{A}}PQ_{M_{B}}^T$. Then, from \ref{equ17b},four $t_{X}$ corresponding to $R_{X}$ can be directly found. Furthermore,four candidate $R_{Y} and t_{Y}$ can be found. At last, there are four possibilities of solution $(X_{i},Y_{i}), i = 1,2,3,4$.
