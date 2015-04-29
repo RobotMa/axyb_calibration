@@ -4,6 +4,8 @@ The style file: IEEEtran.bst
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Database file #1: IEEEabrv.bib
 Database file #2: bibIEEEfull.bib
+Warning--I didn't find a database entry for "Tsai"
+Warning--I didn't find a database entry for "Shiu"
 -- IEEEtran.bst version 1.11 (2003/04/02) by Michael Shell.
 -- http://www.ctan.org/tex-archive/macros/latex/contrib/supported/IEEEtran/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
@@ -11,7 +13,7 @@ Database file #2: bibIEEEfull.bib
 Done.
 You've used 22 entries,
             3975 wiz_defined-function locations,
-            1505 strings with 26719 characters,
+            1509 strings with 26735 characters,
 and the built_in function-call counts, 20160 in all, are:
 = -- 1668
 > -- 422
@@ -50,3 +52,4 @@ warning$ -- 0
 while$ -- 103
 width$ -- 24
 write$ -- 243
+(There were 2 warnings)

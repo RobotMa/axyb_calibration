@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2014.11.19)  28 APR 2015 16:09
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.11.19)  29 APR 2015 00:11
 entering extended mode
  %&-line parsing enabled.
 **paper.tex
@@ -107,6 +107,11 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <24> not available
 )
 ** ATTENTION: Overriding command lockouts (line 7).
 ** ATTENTION: Overriding IEEE standard margins (line 8).
+(/usr/share/texmf-texlive/tex/latex/cite/cite.sty
+LaTeX Info: Redefining \cite on input line 285.
+LaTeX Info: Redefining \nocite on input line 356.
+Package: cite 2009/08/29  v 5.2
+)
 (/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
@@ -139,7 +144,7 @@ Package: geometry 2008/12/21 v4.2 Page Geometry
 
 (/usr/share/texmf-texlive/tex/generic/oberdiek/ifpdf.sty
 Package: ifpdf 2009/04/10 v2.0 Provides the ifpdf switch (HO)
-Package ifpdf Info: pdfTeX in pdf mode not detected.
+Package ifpdf Info: pdfTeX in pdf mode detected.
 )
 (/usr/share/texmf-texlive/tex/generic/oberdiek/ifvtex.sty
 Package: ifvtex 2008/11/04 v1.4 Switches for detecting VTeX and its modes (HO)
@@ -181,7 +186,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 53.
 LaTeX Font Info:    ... okay on input line 53.
 
 *geometry auto-detecting driver*
-*geometry detected driver: dvips*
+*geometry detected driver: pdftex*
 -------------------- Geometry parameters
 paper: letterpaper
 landscape: --
@@ -199,7 +204,7 @@ truedimen: --
 includehead: --
 includefoot: --
 includemp: --
-driver: dvips
+driver: pdftex
 -------------------- Page layout dimensions and switches
 \paperwidth  614.295pt
 \paperheight 794.96999pt
@@ -235,11 +240,17 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 86.
 File: fig1.eps Graphic file (type eps)
-<fig1.eps> [1
+<fig1.eps> [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
-] [2]
-Underfull \hbox (badness 1424) in paragraph at lines 256--274
+
+Non-PDF special ignored!]
+Overfull \hbox (2.54901pt too wide) in alignment at lines 182--184
+ [][][] []
+ []
+
+[2]
+Underfull \hbox (badness 1424) in paragraph at lines 245--263
 []$\OT1/cmr/m/n/10 ^^F[]$ \OT1/ptm/m/n/10 and $\OT1/cmr/m/n/10 ^^F[]$ \OT1/ptm/
 m/n/10 can be de-com-posed into blocks as
  []
@@ -254,12 +265,18 @@ File: fig4.eps Graphic file (type eps)
 File: fig5.eps Graphic file (type eps)
  <fig5.eps>
 File: fig6.eps Graphic file (type eps)
- <fig6.eps> [4]
+ <fig6.eps> [4
+Non-PDF special ignored!]
 File: fig7.eps Graphic file (type eps)
  <fig7.eps>
 File: fig8.eps Graphic file (type eps)
-
-<fig8.eps> (./paper.bbl [5])
+ <fig8.eps> (./paper.bbl [5
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!])
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -279,12 +296,34 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 1629 strings out of 493849
- 24510 string characters out of 1152845
- 91447 words of memory out of 3000000
- 4923 multiletter control sequences out of 15000+50000
- 31061 words of font info for 73 fonts, out of 3000000 for 9000
+ 1728 strings out of 493848
+ 25676 string characters out of 1152822
+ 92448 words of memory out of 3000000
+ 5009 multiletter control sequences out of 15000+50000
+ 40955 words of font info for 82 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 26i,13n,21p,1070b,289s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 26i,13n,21p,1249b,289s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texli
+ve/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-texlive/fonts/ty
+pe1/public/amsfonts/cm/cmbx7.pfb></usr/share/texmf-texlive/fonts/type1/public/a
+msfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/
+cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi5.pfb><
+/usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/t
+exmf-texlive/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-texlive
+/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1
+/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsf
+onts/cm/cmr5.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.
+pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/sha
+re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-te
+xlive/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-texlive/fonts/
+type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-texlive/fonts/type1/public
+/amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.p
+fb></usr/share/texmf-texlive/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texm
+f-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type
+1/urw/times/utmri8a.pfb>
+Output written on paper.pdf (6 pages, 246632 bytes).
+PDF statistics:
+ 102 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
-Output written on paper.dvi (6 pages, 37580 bytes).
