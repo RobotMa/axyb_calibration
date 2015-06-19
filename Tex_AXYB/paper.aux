@@ -1,14 +1,29 @@
 \relax 
 \citation{Shiu1989}
 \citation{Tsai1989}
-\citation{Wang1992,Park1994,Horaud1995,Daniilidis1999,Fassi2005,Zhao2011,Ackerman2014a}
-\citation{Ackerman2013a,Ackerman2013,Ackerman2014}
-\citation{Zhuang1994,dornaika1998simultaneous,Hirsh2001,ernst2012non,strobl2006optimal,Li2010,Shah2013,Heller2014}
-\citation{Wang2014}
+\citation{Wang1992}
+\citation{Park1994}
+\citation{Horaud1995}
+\citation{Daniilidis1999}
+\citation{Fassi2005}
+\citation{Zhao2011}
+\citation{Ackerman2014a}
+\citation{Ackerman2013a}
+\citation{Ackerman2013}
+\citation{Ackerman2014}
 \@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces  (1) The hand-eye calibration problem formulated in a matrix as AX=XB. (2) The hand-eye and robot-robot calibration problem formulated as AX=YB. }}{1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces  (1) The hand-eye and robot-robot calibration problem which is formulated as AX=YB. (2) The hand-eye calibration problem which is formulated in a matrix as AX=XB. }}{1}}
 \newlabel{fig1}{{1}{1}}
 \newlabel{equ0}{{1}{1}}
+\citation{Zhuang1994}
+\citation{dornaika1998simultaneous}
+\citation{Hirsh2001}
+\citation{ernst2012non}
+\citation{strobl2006optimal}
+\citation{Li2010}
+\citation{Shah2013}
+\citation{Heller2014}
+\citation{Wang2014}
 \citation{Wang2008}
 \@writefile{toc}{\contentsline {section}{\numberline {II}Solving AX=YB using a probabilistic theory on motion groups}{2}}
 \newlabel{sect2}{{II}{2}}
@@ -47,39 +62,43 @@
 \newlabel{equ25}{{29}{4}}
 \newlabel{equ26}{{30}{4}}
 \newlabel{equ27}{{31}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces  $Bs$ are randomly generated using $B_i=B_{init}exp(\mathaccent "0362\relax {\mathbf  {x}})$,$\mathbf  {x}=(x_1,\dots  ,x_6)^T $ \ $x_i \sim \mathcal  {N}(0,0.1)$. }}{4}}
+\newlabel{fig2}{{2}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces  $As$ are calculated using $AX=YB$. $X$ and $Y$ are assumed. }}{4}}
+\newlabel{fig3}{{3}{4}}
 \@writefile{toc}{\contentsline {section}{\numberline {IV}Simulation Studies}{4}}
 \newlabel{sect4}{{IV}{4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {IV-A}Results of solution with known correspondence}{4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces  Calculated four pairs of rotational angles $(\theta _{A_{i}},\theta _{B_{i}^{k}}) (k=1,2,3,4)$ respectively from 100 measurements }}{4}}
-\newlabel{fig2}{{2}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces  The cross correlation of data streams of $(A_{i},B_{i}^{k})$ respectively. }}{5}}
+\newlabel{fig4}{{4}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces  Calculated rotational and translational deviation of $X$ and $Y$ solved using the data in Fig.\nobreakspace  {}2\hbox {} and Fig.\nobreakspace  {}3\hbox {}. }}{5}}
+\newlabel{fig5}{{5}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces  $Error(R_X)$ distribution as the $As$ and $Bs$ spread ($\sigma (x_i) = 0.1, 0.2, 0.4, 0.6, 0.8, 1, 2$ as shown in Fig.\nobreakspace  {}2\hbox {}) }}{5}}
+\newlabel{fig6}{{6}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces  $Error(R_Y)$ distribution as the $As$ and $Bs$ spread ($\sigma (x_i) = 0.1, 0.2, 0.4, 0.6, 0.8, 1, 2$ as shown in Fig.\nobreakspace  {}2\hbox {}) }}{5}}
+\newlabel{fig7}{{7}{5}}
 \bibstyle{IEEEtran}
 \bibdata{IEEEabrv,bibIEEEfull}
 \bibcite{Shiu1989}{1}
 \bibcite{Tsai1989}{2}
 \bibcite{Wang1992}{3}
 \bibcite{Park1994}{4}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces  Calculated four pairs of translational displacement $(d_{A_{i}},d_{B_{i}^{k}}) (k=1,2,3,4)$ respectively from 100 measurements }}{5}}
-\newlabel{fig3}{{3}{5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces  Calculated rotational angle deviation $\theta _{A_{i}} - \theta _{B_{i}^{k}} (k=1,2,3,4)$ from Fig.\nobreakspace  {}2\hbox {} }}{5}}
-\newlabel{fig4}{{4}{5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces  Calculated translational deviation $d_{A_{i}} - d_{B_{i}^{k}} (k=1,2,3,4)$ from Fig.\nobreakspace  {}3\hbox {} }}{5}}
-\newlabel{fig5}{{5}{5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces  Solution error with increasing pairs $(A_{i},B_{i}^{k})$ from 1 measurements to 500 measurements }}{5}}
-\newlabel{fig6}{{6}{5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {IV-B}Results of solution without known correspondence}{5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces  Shifted Data Streams of $A$ and calculated $B_{i}^{k}$. }}{5}}
-\newlabel{fig7}{{7}{5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces  The cross correlation of data streams of $(A_{i},B_{i}^{k})$ respectively. }}{5}}
-\newlabel{fig8}{{8}{5}}
-\@writefile{toc}{\contentsline {section}{\numberline {V}Conclusions}{5}}
-\newlabel{sect5}{{V}{5}}
-\@writefile{toc}{\contentsline {section}{References}{5}}
 \bibcite{Horaud1995}{5}
 \bibcite{Daniilidis1999}{6}
 \bibcite{Fassi2005}{7}
 \bibcite{Zhao2011}{8}
 \bibcite{Ackerman2014a}{9}
 \bibcite{Ackerman2013a}{10}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces  $Error(t_X)$ distribution as the $As$ and $Bs$ spread ($\sigma (x_i) = 0.1, 0.2, 0.4, 0.6, 0.8, 1, 2$ as shown in Fig.\nobreakspace  {}2\hbox {}) }}{6}}
+\newlabel{fig8}{{8}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces  $Error(t_Y)$ distribution as the $As$ and $Bs$ spread ($\sigma (x_i) = 0.1, 0.2, 0.4, 0.6, 0.8, 1, 2$ as shown in Fig.\nobreakspace  {}2\hbox {}) }}{6}}
+\newlabel{fig9}{{9}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces  The distribution of solved $X$. }}{6}}
+\newlabel{fig10}{{10}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces  The distribution of solved $Y$. }}{6}}
+\newlabel{fig11}{{11}{6}}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Conclusions}{6}}
+\newlabel{sect5}{{V}{6}}
+\@writefile{toc}{\contentsline {section}{References}{6}}
 \bibcite{Ackerman2013}{11}
 \bibcite{Ackerman2014}{12}
 \bibcite{Zhuang1994}{13}

@@ -1,55 +1,9 @@
-This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
-The top-level auxiliary file: paper.aux
+This is BibTeX, Version 0.99dThe top-level auxiliary file: paper.aux
 The style file: IEEEtran.bst
-Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Database file #1: IEEEabrv.bib
 Database file #2: bibIEEEfull.bib
-Warning--I didn't find a database entry for "Tsai"
-Warning--I didn't find a database entry for "Shiu"
--- IEEEtran.bst version 1.11 (2003/04/02) by Michael Shell.
--- http://www.ctan.org/tex-archive/macros/latex/contrib/supported/IEEEtran/
+-- IEEEtran.bst version 1.13 (2008/09/30) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
 
 Done.
-You've used 22 entries,
-            3975 wiz_defined-function locations,
-            1509 strings with 26735 characters,
-and the built_in function-call counts, 20160 in all, are:
-= -- 1668
-> -- 422
-< -- 224
-+ -- 250
-- -- 57
-* -- 974
-:= -- 2895
-add.period$ -- 53
-call.type$ -- 22
-change.case$ -- 22
-chr.to.int$ -- 528
-cite$ -- 22
-duplicate$ -- 1388
-empty$ -- 1564
-format.name$ -- 75
-if$ -- 4701
-int.to.chr$ -- 0
-int.to.str$ -- 22
-missing$ -- 210
-newline$ -- 86
-num.names$ -- 22
-pop$ -- 437
-preamble$ -- 1
-purify$ -- 0
-quote$ -- 2
-skip$ -- 1588
-stack$ -- 0
-substring$ -- 1266
-swap$ -- 1238
-text.length$ -- 48
-text.prefix$ -- 0
-top$ -- 5
-type$ -- 0
-warning$ -- 0
-while$ -- 103
-width$ -- 24
-write$ -- 243
-(There were 2 warnings)
