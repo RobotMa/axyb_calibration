@@ -21,7 +21,23 @@
 %\usepackage{times} % assumes new font selection scheme installed
 %\usepackage{amsmath} % assumes amsmath package installed
 %\usepackage{amssymb}  % assumes amsmath package installed
-
+\usepackage{cite}      % Written by Donald Arseneau
+                        % V1.6 and later of IEEEtran pre-defines the format
+                        % of the cite.sty package \cite{} output to follow
+                        % that of IEEE. Loading the cite package will
+                        % result in citation numbers being automatically
+                        % sorted and properly "ranged". i.e.,
+                        % [1], [9], [2], [7], [5], [6]
+                        % (without using cite.sty)
+                        % will become:
+                        % [1], [2], [5]--[7], [9] (using cite.sty)
+                        % cite.sty's \cite will automatically add leading
+                        % space, if needed. Use cite.sty's noadjust option
+                        % (cite.sty V3.8 and later) if you want to turn this
+                        % off. cite.sty is already installed on most LaTeX
+                        % systems. The latest version can be obtained at:
+                        % http://www.ctan.org/tex-archive/macros/latex/contrib/supported/cite/
+                        
 \usepackage[dvips]{graphicx}  % Written by David Carlisle and Sebastian Rahtz
                         % Required if you want graphics, photos, etc.
                         % graphicx.sty is already installed on most LaTeX
@@ -44,6 +60,9 @@
 %\setlength{\columnsep}{0.24in}
 % correct bad hyphenation here
 %\hyphenation{op-tical net-works semi-conduc-tor IEEEtran}
+\usepackage{mathtools}   % loads »amsmath«
+\usepackage{amssymb,amsmath}
+\usepackage{amsfonts}
 
 \title{\LARGE \bf
 Simultaneous Coordinate Calibrations by Solving the AX=YB Problem without Correspondence*
@@ -86,53 +105,48 @@ method.
 \section{Introduction}
 % no \PARstart
 
-Image-guided system has been widely used in robotics such as robot assisted surgery. A sensor such as camera, laser scanner or ultrasound probe is usually mounted on the hand of a robotic manipulator. To use the "hand-eye" system, the problem of determining the coordination relationship between the sensor frame with respect to the end-effector frame must be solved, which is widely known $\textbf{AX=XB}$ problem for the hand-eye calibration. With an extension of this problem, $\textbf{AX=YB}$ problem without knowing the relationship between the world frame and the robot base frame is proposed to achieve the robot-world calibration as well as hand-eye calibration. In a dynamic setup environment, the relationship among the sensor frame, robot frame and world frame is variant and the uncertainties exist. Therefore, simultaneous coordinate calibrations have to be determined frequently in order to enable the robots to respond to changing environments.
+Image-guided system has been widely used in robotics such as robot assisted surgery, (more examples). Sensors such as a camera, a laser scanner or an ultrasound probe are usually mounted on the distal end of a robotic manipulator. For a typical ``hand-eye'' system as described above, the relative transformation of the sensor with respect to the end-effector should be accurately calibrated, and it is often characterized as the well known $\textbf{AX=XB}$ problem. A variation of this problem is characterized as the $\textbf{AX=YB}$ problem, where both the hand-eye transformation and the pose of the robot base with respect to the world frame need to be calibrated. In a typical environment setup, the relationship among the sensor frame, robot frame and world frame is variant and the uncertainties exist. Therefore, simultaneous coordinate calibrations have to be determined frequently in order to enable the robots to respond to dynamic environments.
 
-In the $\textbf{AX=YB}$ problem, $As$ and $Bs$ can be respectively calculated using different sensors. The data streams are in an asynchronous fashion due to different timing sequences. The asynchrony causes a shift between the two streams of data that results in missing the correspondences between $As$ and $Bs$. In this paper, we present a method to solve for an $X$ and $Y$ without needing know a priori knowledge of correspondence between $As$ and $Bs$.
+In the $\textbf{AX=YB}$ problem, $As$ and $Bs$ can be respectively obtained via different sensors. The data streams can be in an asynchronous fashion due to the different working frequencies of the sensors. The asynchrony causes a shift between the two streams of data which damages the correspondence between $As$ and $Bs$. In this paper, a novel method is presented to solve for an $X$ and $Y$ without the need to know a priori knowledge of the correspondence between $As$ and $Bs$.
 
 \begin{center}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=3.2in]{fig1.eps}
 \caption{
-(1) The hand-eye and robot-robot calibration problem which is formulated as AX=YB. (2) The hand-eye calibration problem which is formulated in a matrix as AX=XB.
+(1) The hand-eye and robot-world calibration problem which is formulated as AX=YB (The universal robot as shown in the picture is owned by professor Emad Boctor in). (2) The hand-eye calibration problem which is formulated as AX=XB.
 }
 \label{fig1}
 \end{figure}
 \end{center}
+The hand-eye calibration problem can be modeled as the $\textbf{AX = XB}$, where $A$ and $B$ are the homogeneous transformation matrices describing  the relative motions of end-effector and the  sensor respectively. As shown in Fig.~\ref{fig1}, $A = A^{i}(A^{i+1})^{-1}$ and  $B = B^{i}(B^{i+1})^{-1}$. Given multiple pairs of $\{A,B \}$ with correspondence, many methods have been proposed to solve for $X$. To the best of the authors' knowledge, Shiu \cite{Shiu1989} and Tsai \cite{Tsai1989} are the first to solve the $AX = XB$ sensor calibration problem. The other methods include but are not limited to the quaternion, dual quaternion, screw theory, Lie group theory convex optimization and gradient descent methods \cite{Wang1992,Park1994,Horaud1995,Daniilidis1999,Fassi2005,Zhao2011,Ackerman2014a}. All of the methods above assume a prior knowledge of exact correspondence between $A_i$ and $B_i$. For data streams $\{A_i\}$ and $\{B_i\}$ that are asynchronous, several methods have been proposed in the literature to solve for $X$ using data without correspondence.  Theses methods assume that there is exact knowledge of the $As$ and $Bs$ correspondence \cite{Ackerman2013a,Ackerman2013,Ackerman2014}.
 
-The hand-eye calibration problem can be generalized as the $\textbf{AX = XB}$ formulation. $A$ and $B$ are respectively the homogeneous transformation matrices of end-effector and sensor movement using $A = A^{i}(A^{i+1})^{-1}; B = B^{i}(B^{i+1})^{-1}$ as shown in Fig.~\ref{fig1}. The homogeneous transformation matrix can be described with the form.
+Simultaneous estimation of the hand-eye and robot-world transformations has been viewed as the $\textbf{AX=YB}$ problem. As shown in Fig.~\ref{fig1}, $Y$ is the transformation from the robot base to the world frame, $A$ denotes the pose of the sensor in the world frame and $B$ is the transformation from the the end-effector to its fixed base. The $A$ and $B$ in $\textbf{AX=YB}$ are different from those in $\textbf{AX=XB}$ where the former uses absolute transformations and the latter uses relative transformations. This problem has been solved by many different methods such as kronecker product, quaternion, dual quaternion, and nonlinear optimization methods \cite{Zhuang1994,dornaika1998simultaneous,Hirsh2001, ernst2012non,strobl2006optimal,Li2010,Shah2013,Heller2014}. Simulatneous calibration of $X$ and $Y$ can be problematic in that all the methods above assume exact correspondence between $\{A_i\}$ and $\{B_j\}$, which is not the case in the real world. Another similar problem involves the calibration of multiple robots in terms of hand-eye, tool-flange and robot-robot system, and it is formulated as the $\textbf{AXB=YCZ}$ problem \cite{Wang2014}. Simultaneous solution for $X$ and $Y$ in $\textbf{AX=YB}$ problem is an challenging issue. In the above methods, the correspondence between $A$ and $B$ is known a prior. In this paper, we focus on the $\textbf{AX=YB}$ problem which does not require a priori knowledge of the correspondence of the data streams.
+
+The rest of the paper is organized as follows. In Section
+\ref{sect2}, a novel probabilistic method is presented to solve for $X$ and $Y$. In Section \ref{sect3}, an algorithm involving both correlation theorem and Euclidean group invariants is proposed to recover the correspondence between $\{A_i\}$ and $\{B_j\}$. The simulation results which deal with noisy data without correspondence are illustrated in Section \ref{sect4}. Finally, conclusions are drawn based on the numerical results and possible future works are pointed out.
+
+\section{Solving AX=YB using a probabilistic method on motion groups}
+\label{sect2}
+In this section, a brief introduction to the concepts of probability density function on the special Eucledian group $SE(3)$ is presented and the probabilistic representation of $AX=YB$ are derived.  
+
+Any rigid transformation matrix can be viewed as a group element of $SE(3)$ :
 \begin{equation}\label{equ0}
-    g(R,t)=\left(
+    H(R,t)=\left(
              \begin{array}{cc}
                R & t \\
                0^{T} & 1 \\
              \end{array}
-           \right)
+           \right) \in SE(3)
 \end{equation}
+where $SO(3)$ denotes the special orthogonal group, $t \in \mathbb{R}^3 $ is translational vector and $H$ is symbol for group element. 
 
-where $R \in SO(3)$ is a rotation matrix and $t \in R^{3}$ is a translation vector.
-
-According to multiple pairs $(A,B) \in SE(3) \times SE(3)$ which are known a prior, many methods for the only $X$ have been proposed including decoupling of rotation and translation, least squares fitting, singular value decomposition (\emph{SVD}), screw theory, nonlinear
-optimization, quaternion, gradient descent and interactive approaches \cite{Shiu1989,Tsai1989,Wang1992,Park1994,Horaud1995,Daniilidis1999,Fassi2005,Zhao2011,Ackerman2014a}. Theses methods assume that there is exact knowledge of the $As$ and $Bs$ correspondence. Considering data streams containing the $A$ and $B$ will be asynchronous that are discussed in many instances
-in the literature, several methods regardless of the correspondence or recovering the correspondence between two data sets are presented \cite{Ackerman2013a,Ackerman2013,Ackerman2014}.
-
-Simultaneous estimation of the hand-eye transformation and robot-world one
-has been viewed as $\textbf{AX=YB}$ problem. As shown in Fig.~\ref{fig1} (1), $Y$ is the transformation of the robot base relative to the world, $A$ is the sensor to the world transformation, and $B$ is the hand/end-effector to the robot base rigid transformation. The $A$ and $B$ in $\textbf{AX=YB}$ calibration is different from ones in $\textbf{AX=XB}$ from a physical view. This problem has been studied in different methods such as SVD, closed-form, quaternion and nonlinear optimization \cite{Zhuang1994,dornaika1998simultaneous,Hirsh2001, ernst2012non,strobl2006optimal,Li2010,Shah2013,Heller2014}. Another approach integrate multiple robots to calibrate hand-eye, tool-flange and robot-robot transformation in $\textbf{AXB=YCZ}$ problem \cite{Wang2014}. Simultaneous solution for $X$ and $Y$ in $\textbf{AX=YB}$ problem is an challenging issue. In the above methods, the correspondence between $A$ and $B$ is known a prior. In this paper, our solution for $\textbf{AX=YB}$ doesn't require a priori knowledge of correspondences.
-
-The rest of the paper is organized as follows. In Section
-\ref{sect2} we present the probabilistic theory to solve for $X$ and $Y$. In Section \ref{sect3} a algorithmic solution involving correlation theorem and Euclidean group invariants is posed to recover the correspondence. The simulation results, including unknown correspondence and noisy data stream, are illustrated in Section \ref{sect4}. Finally, we draw some conclusions.
-
-\section{Solving AX=YB using a probabilistic theory on motion groups}
-\label{sect2}
-
-Given a large set of pairs $(A_{i},B_{i})\in SE(3)\times SE(3)$ for $i=1,\cdots,n$ that are acquired by measurements and satisfy the following equations
+Given a large set of pairs $(A_{i},B_{i})\in SE(3)\times SE(3)$ where $i=1,\cdots,n$, the following equation is true if the correspondence is known as a priori:
 
 \begin{equation}\label{equ1}
-A_{i}X=YB_{i}
+A_{i}X=YB_{i}.
 \end{equation}
-
-In the case of $SE(3)$, a Dirac delta function, or $\delta$ function, is thought of as a function which is zero everywhere except at the identity where it is infinite.
+For a matrix $H \in SE(3)$, a Dirac delta function $\delta(H)$ is defined to be finite only at the identity and zero elsewhere:
 
 \begin{equation}\label{equ2}
 \delta{(H)}=
@@ -143,76 +157,66 @@ In the case of $SE(3)$, a Dirac delta function, or $\delta$ function, is thought
 \end{array}
 \right.
 \end{equation}
-
-Dirac delta function is also constrained to satisfy the identity.
+It also satisfies the identity constraint as:
 
 \begin{equation}\label{equ3}
-\int_{SE(3)}\delta{(H)}dH=1
+\int_{SE(3)}\delta{(H)}dH=1.
 \end{equation}
 
-A shifted Dirac delta function can be defined as $\delta_{A}(H)=\delta{(A^{-1}H)}$. Given two functions $f_{1}(g)$ and $f_{2}(g)$, their convolution in Lie group is defined as follows,
+A shifted Dirac delta function can be defined as $\delta_{A}(H)=\delta{(A^{-1}H)}$. Given $K,H \in SE(3)$ and two well-defined functions $f_{1}, f_{2} \in \left(L^1 \cap L^2 \right)(SE(3))$, their convolution on $SE(3)$ is defined as:
 
 \begin{equation}\label{equ4}
-(f_{1}\ast f_{2})(g)=\int_{SE(3)}f_{1}(h)f_{2}(h^{-1}\circ g)dh
+(f_{1}\ast f_{2})(H)=\int_{SE(3)}f_{1}(K)f_{2}(K^{-1}\circ H)dK.
 \end{equation}
-
-Considering the properties of $\delta$ function, the following equation is built.
+Employing the properties of $\delta$ function, it is straightforward to see that:
 
 \begin{equation}\label{equ5}
-(f\ast \delta)(g)=\int_{SE(3)}f(h)\delta(h^{-1}\circ g)dh=f(g)
+(f\ast \delta)(H)=\int_{SE(3)}f(K)\delta(K^{-1}\circ H)dK=f(H).
 \end{equation}
-
-Therefore, for each $A_{i}$ and $B_{i}$, we can get
+Therefore, for each $A_{i}$ and $B_{i}$, the following equations can be obtained: 
 
 \begin{IEEEeqnarray}{l}\label{equ6}
-(\delta_{A_{i}}\ast \delta_{X})(g)=\delta(A_{i}^{-1} g X^{-1}) \IEEEyessubnumber
+(\delta_{A_{i}}\ast \delta_{X})(H)=\delta(A_{i}^{-1} H X^{-1}) \IEEEyessubnumber
 \\*
-(\delta_{Y}\ast \delta_{B_{i}})(g)=\delta(Y^{-1} g B_{i}^{-1}) \IEEEyessubnumber
+(\delta_{Y}\ast \delta_{B_{i}})(H)=\delta(Y^{-1} H B_{i}^{-1}). \IEEEyessubnumber
 \end{IEEEeqnarray}
-
-Together with $g=A_{i}X=YB_{i}$, we can obtain the convolution equation
+Using Eq.($\ref{equ1}$), the above two equations can be combined into a single equation as:
 
 \begin{equation}\label{equ7}
-(\delta_{A_{i}}\ast \delta_{X})(g)=(\delta_{Y}\ast \delta_{B_{i}})(g)
+(\delta_{A_{i}}\ast \delta_{X})(H)=(\delta_{Y}\ast \delta_{B_{i}})(H)
 \end{equation}
 
-Convolution provides a linear operation on functions with additional properties. We can add up $n$ instances into a single function.
-
+Define the probability density function of $\{A_i\}$ and $\{B_i\}$ as:
 \begin{IEEEeqnarray}{l}\label{equ8}
-f_{A}(g)=\frac{1}{n}\sum_{i=1}^{n} \delta(A_{i}^{-1}g) \IEEEyessubnumber
+f_{A}(H)=\frac{1}{n}\sum_{i=1}^{n} \delta(A_{i}^{-1}H) \IEEEyessubnumber
 \\*
-f_{B}(g)=\frac{1}{n}\sum_{i=1}^{n} \delta(B_{i}^{-1}g) \IEEEyessubnumber
+f_{B}(H)=\frac{1}{n}\sum_{i=1}^{n} \delta(B_{i}^{-1}H) \IEEEyessubnumber
 \end{IEEEeqnarray}
-
-Therefore,
-
+Using the distributivity of convolution, Eq.(\ref{equ8}) can be substituted into Eq.(\ref{equ7}) to get:
 \begin{equation}\label{equ9}
 (f_{A_{i}}\ast \delta_{X})(g)=(\delta_{Y}\ast f_{B_{i}})(g)
 \end{equation}
 
-In each transformation set $A_i$s and $B_i$s, we are using small relative motions between consecutive reference frames. Given a measure of distance between reference frames, e.g.
+For each of the data stream $\{A_i\}$ and $\{B_i\}$, small relative motions are calculated between consecutive reference frames. Take $\{A_i\}$ for example, one metric of the distance between $A_i$ and $A_{i+1}$ can be defined as:
 
 \begin{eqnarray}\label{equ10}
-d^{2}(A_{i},A_{j})=\parallel \Delta A \parallel_{W}^{2} = trace[(\Delta A)W(\Delta A)^{T}] = \epsilon,\nonumber \\
+d^{2}(A_{i},A_{i+1})=\parallel \Delta A \parallel_{W}^{2} = trace[(\Delta A)W(\Delta A)^{T}] = \epsilon,\nonumber \\
 \end{eqnarray}
+where $\Delta A = A_{i}-A_{i+1}$ and $0 < \epsilon \ll 1 $
 
-we have that  $\Delta A = A_{i}-A_{j}$ and $0 < \epsilon \ll 1 $
-
-The convolution of "highly focused" distributions corresponding to closely clumped sets of reference frames have some interesting properties that we can exploit to solve for $X$. In particular, let the mean and covariance of a probability density, $f(g)$(e.g. $f_{A}(g),f_{B}(g)$), be defined by the conditions.
-
+The convolution of two ``highly focused" probability density functions have some interesting properties that can be used to solve for $X$. In particular, define the mean $M$ and covariance $\Sigma$ of a probability density function on $SE(3)$ as:
 
 \begin{IEEEeqnarray}{l}\label{equ11}
-\int_{SE(3)}log(M^{-1}g))f(g)dg=0 \IEEEyessubnumber
+\int_{SE(3)}log(M^{-1}H))f(H)dH=0 \IEEEyessubnumber
 \\*
-\Sigma = \int_{SE(3)}log^{\vee}(M^{-1}g)[log^{\vee}(M^{-1)}g)]^{T}f(g)dg \IEEEyessubnumber
+\Sigma = \int_{SE(3)}log^{\vee}(M^{-1}H)[log^{\vee}(M^{-1)}H)]^{T}f(H)dH. \IEEEyessubnumber
 \end{IEEEeqnarray}
-
-A discrete version as for $f_{A}(g)$ is
+Then the corresponding discrete version is:
 
 \begin{IEEEeqnarray}{l}\label{equ12}
-\sum_{i=1}^{n}log(M^{-1}g))=0 \IEEEyessubnumber
+\sum_{i=1}^{n}log(M^{-1}H))=0 \IEEEyessubnumber
 \\*
-\Sigma_{A} = \sum_{i=1}^{n}log^{\vee}(M^{-1}g)[log^{\vee}(M^{-1)}g)]^{T} \IEEEyessubnumber
+\Sigma = \sum_{i=1}^{n}log^{\vee}(M^{-1}H)[log^{\vee}(M^{-1)}H)]^{T} \IEEEyessubnumber
 \end{IEEEeqnarray}
 
 While the cloud of frames ${A_{i}}$ is clustered around $M_{A}$, an iterative formula can be used for computing $M_{A}$ \cite{Wang2008}.
