@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.11.19)  23 JUN 2015 12:30
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.11.19)  23 JUN 2015 16:36
 entering extended mode
  %&-line parsing enabled.
 **paper.tex
@@ -319,11 +319,11 @@ File: fig3.eps Graphic file (type eps)
  <fig3.eps>
 
 Package pdftex.def Warning: Option `bb' does not make sense,
-(pdftex.def)                using `viewport' instead on input line 420.
+(pdftex.def)                using `viewport' instead on input line 422.
 
 File: fig2.eps Graphic file (type eps)
 <fig2.eps>
-Underfull \hbox (badness 3635) in paragraph at lines 428--429
+Underfull \hbox (badness 3635) in paragraph at lines 430--431
 \OT1/ptm/m/n/10 sured as $\OML/cmm/m/it/10 Error\OT1/cmr/m/n/10 (\OML/cmm/m/it/
 10 R[]\OT1/cmr/m/n/10 ) =\OMS/cmsy/m/n/10 k \OML/cmm/m/it/10 log[]\OT1/cmr/m/n/
 10 (\OML/cmm/m/it/10 R[]R[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 k$\OT1/ptm/m/n/10
@@ -384,7 +384,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  3149 strings out of 493848
  43319 string characters out of 1152822
- 111680 words of memory out of 3000000
+ 112680 words of memory out of 3000000
  6374 multiletter control sequences out of 15000+50000
  46108 words of font info for 110 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
@@ -410,7 +410,7 @@ usr/share/texmf-texlive/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texmf-te
 xlive/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/ur
 w/times/utmbi8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb>
 </usr/share/texmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper.pdf (8 pages, 289850 bytes).
+Output written on paper.pdf (8 pages, 289847 bytes).
 PDF statistics:
  126 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

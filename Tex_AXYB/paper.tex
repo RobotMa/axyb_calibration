@@ -311,21 +311,23 @@ where $P=Q_{M_{A}}^{T}R_{X}Q_{M_{B}}$. If $Q_{M_{A}}$ and $Q_{M_{B}}$ are furthe
 \end{split} 
 \end{equation}
 
-Therefore, there are eight candidates of $R_{X}$ which can be calculated via $R_{X}=Q_{M_{A}}PQ_{M_{B}}^T$. Then the corresponding $t_{X}$ can be obtained  from Eq.(\ref{equ17b}). Given known $X$, $Y$ can be solved for by $Y = M_A^{-1}XM_B^{-1}$. At last, eight candidate pairs of  $\{X_{i},Y_{i}\}$ can be obtained as: 
+Therefore, there are eight candidates of $R_{X}$ which can be calculated via $R_{X}=Q_{M_{A}}PQ_{M_{B}}^T$. Then the corresponding $t_{X}$ can be obtained  from Eq.(\ref{equ17b}). Given known $X$, $Y$ can be solved for by $Y = M_A^{-1}XM_B^{-1}$. At last, eight candidate pairs of  $\{X_{k},Y_{k}\}$ can be obtained as: 
 
 \begin{equation}\label{equ20}
 \begin{array}{cc}
-X_{i}= \left( \begin{array}{cc}
-       R_{X_i} & t_{X_i} \\
+X_{k}= \left( \begin{array}{cc}
+       R_{X_k} & t_{X_k} \\
        \mathbf{0}^{T} & \mathbf{1}\\
 \end{array} \right),&
-Y_{i}= \left( \begin{array}{cc}
-       R_{Y_i} & t_{Y_i} \\
+Y_{k}= \left( \begin{array}{cc}
+       R_{Y_k} & t_{Y_k} \\
        \mathbf{0}^{T} & \mathbf{1}\\
 \end{array} \right)
 \end{array}
 \end{equation}
-The problem then becomes selecting the best pair of $\{X_i, Y_i\}$ from the eight candidates. 
+where $k = 1,2,...,8$.
+
+The problem then becomes selecting the best pair of $\{X_k, Y_k\}$ from the eight candidates. 
 Based on the screw theory (references?), it is known that a homogeneous transformation $H$ can be expressed by the four screw parameters $(\theta,d,\mathbf{n},\mathbf{p})$ as:
 
 \begin{equation}\label{equ21}
@@ -336,19 +338,19 @@ H = \left( \begin{array}{cc}
 \end{equation}
 where $\theta$, $d$, $\mathbf{n}$ and $\mathbf{p}$ are ?.
 
-Moreover, $AX=YB$ can be written as $AX=X(X^{-1}YB)$. If define $B' = X^{-1}YB$, then we will have $AX=XB'$. there exit two Euclidean-Group invariant relationships for one of eight groups of $(A_{i},B_{i}^k)( i = 1,\cdots,n; k=1,\dots,8), B_i^{k} = X^{-1}YB_i$ as follows,
+Moreover, $AX_k = Y_k B$ can be written as $AX_k=X_k(X_k^{-1}Y_kB)$. If define $B^k = X_k^{-1}Y_kB$, then we will have $AX_k=X_kB^k$. There exist two Euclidean-Group invariant relationships for each pair of $(A_{i},B_{i}^k)( i = 1,\cdots,n; k=1,\dots,8)$ as follows:
 
 \begin{equation}\label{equ22}
     \theta_{A_{i}}=\theta_{B_{i}^{k}}, d_{A_{i}}=d_{B_{i}^{k}}
 \end{equation}
 
-From among the four pairs $(X_{i},Y_{i})$, we can find a correct solution to minimize the absolute deviations,
+Among the four pairs $(X_{k},Y_{k})$, one can find an optimal solution which  minimizes the cost function defined as:
 
 \begin{equation}\label{equ23}
-    (X,Y) = \mathop{\mathbf{arg}min}_{(X_{i},Y_{i})}\frac{1}{n} \sum_{i=1}^{n} (\parallel \theta_{A_{i}}-\theta_{B_{i}^{k}} \parallel + \parallel d_{A_{i}}-d_{B_{i}^{k}} \parallel)
+    (X,Y) = \mathop{\mathbf{arg}min}_{(X_{k},Y_{k})}\frac{1}{n} \sum_{i=1}^{n} (\parallel \theta_{A_{i}}-\theta_{B_{i}^{k}} \parallel + \parallel d_{A_{i}}-d_{B_{i}^{k}} \parallel)
 \end{equation}
 
-\section{Solution with unknown correspondence of $A_{i}$ and $B_{i}^{k}$}
+\section{Solution with unknown correspondence between $A_{i}$ and $B_{i}^{k}$}
 \label{sect3}
 
 In most cases, the homogeneous transformations with $As$ and $Bs$ are given based on the data from different sensors. Due to asynchronous timing of the measurement transmissions, the correspondences between $A_{i}$ and $B_{i}^{k}$ is unknown. The advantage of the above probabilistic solution lies on that $X$ and $Y$ can be calculated even if without any a priori knowledge of the correspondence. However, there are still eight possible candidate results $(X_{i},Y_{i})$. Using Euclidean-Group invariants, it is straightforward to determine which pair is the correct one if the correspondence between $A_{i}$ and $B_{i}^{k}$ can be known.
