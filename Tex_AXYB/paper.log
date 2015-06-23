@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.11.19)  23 JUN 2015 01:09
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.11.19)  23 JUN 2015 12:30
 entering extended mode
  %&-line parsing enabled.
 **paper.tex
@@ -230,6 +230,18 @@ Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
+))
+(/usr/share/texmf-texlive/tex/latex/graphics/color.sty
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+
+(/etc/texmf/tex/latex/config/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 130.
+
+(/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2010/03/12 v0.04p Graphics/color for pdfTeX
+\Gread@gobject=\count107
 )) (./paper.aux
 
 LaTeX Warning: Label `equ21' multiply defined.
@@ -243,29 +255,42 @@ LaTeX Warning: Label `equ23' multiply defined.
 )
 \openout1 = `paper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Calculating math sizes for size <11> on input line 87.
-LaTeX Font Info:    Try loading font information for U+msa on input line 87.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+ (/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count108
+\scratchdimen=\dimen128
+\scratchbox=\box29
+\nofMPsegments=\count109
+\nofMParguments=\count110
+\everyMPshowfont=\toks21
+\MPscratchCnt=\count111
+\MPscratchDim=\dimen129
+\MPnumerator=\count112
+\everyMPtoPDFconversion=\toks22
+)
+LaTeX Font Info:    Calculating math sizes for size <11> on input line 89.
+LaTeX Font Info:    Try loading font information for U+msa on input line 89.
  (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 87.
+LaTeX Font Info:    Try loading font information for U+msb on input line 89.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 87.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 89.
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
@@ -279,16 +304,26 @@ Underfull \vbox (badness 1264) has occurred while \output is active []
 
 
 Non-PDF special ignored!]
-Overfull \hbox (3.99362pt too wide) in alignment at lines 202--204
+Overfull \hbox (3.99362pt too wide) in alignment at lines 204--206
  [][][] []
  []
 
-[2] [3]
+[2]
+Underfull \hbox (badness 8189) in paragraph at lines 262--281
+$\OT1/cmr/m/n/10 ^^F[]$ \OT1/ptm/m/n/10 and $\OT1/cmr/m/n/10 ^^F[]$ \OT1/ptm/m/
+n/10 can be de-com-posed into blocks as
+ []
+
+[3]
 File: fig3.eps Graphic file (type eps)
  <fig3.eps>
+
+Package pdftex.def Warning: Option `bb' does not make sense,
+(pdftex.def)                using `viewport' instead on input line 420.
+
 File: fig2.eps Graphic file (type eps)
- <fig2.eps>
-Underfull \hbox (badness 3635) in paragraph at lines 439--440
+<fig2.eps>
+Underfull \hbox (badness 3635) in paragraph at lines 428--429
 \OT1/ptm/m/n/10 sured as $\OML/cmm/m/it/10 Error\OT1/cmr/m/n/10 (\OML/cmm/m/it/
 10 R[]\OT1/cmr/m/n/10 ) =\OMS/cmsy/m/n/10 k \OML/cmm/m/it/10 log[]\OT1/cmr/m/n/
 10 (\OML/cmm/m/it/10 R[]R[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 k$\OT1/ptm/m/n/10
@@ -296,11 +331,10 @@ Underfull \hbox (badness 3635) in paragraph at lines 439--440
  []
 
 File: fig4.eps Graphic file (type eps)
-<fig4.eps>
-File: fig5.eps Graphic file (type eps)
- <fig5.eps> [4
-Non-PDF special ignored!
+<fig4.eps> [4
 Non-PDF special ignored!]
+File: fig5.eps Graphic file (type eps)
+ <fig5.eps>
 File: fig6.eps Graphic file (type eps)
  <fig6.eps>
 File: fig7.eps Graphic file (type eps)
@@ -308,7 +342,8 @@ File: fig7.eps Graphic file (type eps)
 File: fig8.eps Graphic file (type eps)
  <fig8.eps>
 File: fig9.eps Graphic file (type eps)
- <fig9.eps> [5
+
+<fig9.eps> [5
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
@@ -320,13 +355,14 @@ File: fig11.eps Graphic file (type eps)
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
+Non-PDF special ignored!
 Non-PDF special ignored!]
 Underfull \hbox (badness 1838) in paragraph at lines 60--63
 []\OT1/ptm/m/n/8 Z. Zhao, ``Hand-eye cal-i-bra-tion us-ing con-vex op-ti-miza-t
 ion,'' in
  []
 
-)
+[7])
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -338,19 +374,21 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the US letter (8.5in X 11in) paper size.
 
-[7] (./paper.aux)
+[8
+
+] (./paper.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 2703 strings out of 493848
- 37238 string characters out of 1152822
- 102931 words of memory out of 3000000
- 5942 multiletter control sequences out of 15000+50000
+ 3149 strings out of 493848
+ 43319 string characters out of 1152822
+ 111680 words of memory out of 3000000
+ 6374 multiletter control sequences out of 15000+50000
  46108 words of font info for 110 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 33i,13n,24p,1516b,295s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 33i,22n,24p,1516b,303s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texli
 ve/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-texlive/fonts/ty
 pe1/public/amsfonts/cm/cmbx7.pfb></usr/share/texmf-texlive/fonts/type1/public/a
@@ -372,9 +410,9 @@ usr/share/texmf-texlive/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texmf-te
 xlive/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/ur
 w/times/utmbi8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb>
 </usr/share/texmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper.pdf (7 pages, 286322 bytes).
+Output written on paper.pdf (8 pages, 289850 bytes).
 PDF statistics:
- 123 PDF objects out of 1000 (max. 8388607)
+ 126 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

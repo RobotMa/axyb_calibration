@@ -63,6 +63,8 @@
 \usepackage{mathtools}   % loads »amsmath«
 \usepackage{amssymb,amsmath}
 \usepackage{amsfonts}
+\usepackage{color}
+
 
 \title{\LARGE \bf
 Simultaneous Coordinate Calibrations by Solving the AX=YB Problem without Correspondence*
@@ -202,9 +204,9 @@ For each of the data stream $\{A_i\}$ and $\{B_i\}$, small relative motions are 
 \begin{eqnarray}\label{equ10}
 d^{2}(A_{i},A_{i+1})=\parallel \Delta A \parallel_{W}^{2} = trace[(\Delta A)W(\Delta A)^{T}] = \epsilon,\nonumber \\
 \end{eqnarray}
-where $\Delta A = A_{i}-A_{i+1}$ and $0 < \epsilon \ll 1 $
+where $\Delta A = A_{i}-A_{i+1}$ and $0 < \epsilon \ll 1 $.
 
-The convolution of two ``highly focused" probability density functions have some interesting properties that can be used to solve for $X$. In particular, define the mean $M$ and covariance $\Sigma$ of a probability density function on $SE(3)$ as:
+The convolution of two ``highly focused" probability density functions (PDF) have some interesting properties that can be used to solve for $X$. In particular, define the mean $M$ and covariance $\Sigma$ of a probability density function on $SE(3)$ as:
 
 \begin{IEEEeqnarray}{l}\label{equ11}
 \int_{SE(3)}log(M^{-1}H))f(H)dH=0 \IEEEyessubnumber
@@ -216,129 +218,115 @@ Then the corresponding discrete version is:
 \begin{IEEEeqnarray}{l}\label{equ12}
 \sum_{i=1}^{n}log(M^{-1}H))=0 \IEEEyessubnumber
 \\*
-\Sigma = \sum_{i=1}^{n}log^{\vee}(M^{-1}H)[log^{\vee}(M^{-1)}H)]^{T} \IEEEyessubnumber
+\Sigma = \sum_{i=1}^{n}log^{\vee}(M^{-1}H)[log^{\vee}(M^{-1)}H)]^{T}. \IEEEyessubnumber
 \end{IEEEeqnarray}
 
-While the cloud of frames ${A_{i}}$ is clustered around $M_{A}$, an iterative formula can be used for computing $M_{A}$ \cite{Wang2008}.
+Given $\{A_i\}$ where the cloud of frames ${A_{i}}$ clustering around $M_{A}$, an iterative formula can be used for computing $M_{A}$ \cite{Wang2008} as:
 
 \begin{equation}\label{equ13}
     ^{k+1}M_{A} = ^{k}M_{A} \circ exp[\frac{1}{n}\sum_{i=1}^{n}log(^{k}M_{A}^{-1}\circ A_{i})]
 \end{equation}
 
-An initial estimate of the iterative procedure can be $^{0}M_{A}=\frac{1}{n}\sum_{i=1}^{n}log(A_{i})$, then the process iterates until the cost function, $\parallel \sum_{i=1}^{n}log(M_{A}^{-1}A_{i}) \parallel^{2}$ falls below a predefined threshold, where the cost function is minimized and the minimum defines $M_{A}$. A similar procedure is used for computing $M_B$.
+An initial estimate of the iterative procedure can be chosen as $^{0}M_{A}=\frac{1}{n}\sum_{i=1}^{n}log(A_{i})$, then a local minimum of $M_A$ is obtained by solving a nonlinear optimization problem with the cost function being $|| \sum_{i=1}^{n}log(M_{A}^{-1}A_{i}) ||^{2}$. A similar procedure can be used to compute $M_B$. $\Sigma_A$ and $\Sigma_B$ are then straight forward to compute given known $M_A$ and $M_B$.
 
-The mean and covariance for the convolution $(f_{1} \ast f_{2})(g)$ of two highly focused functions, $f_{1}$ and $f_{2}$ can be computed as
+The mean and covariance for the convolution $(f_{1} \ast f_{2})(g)$ of two highly focused functions $f_{1}$ and $f_{2}$ are calculated as in \cite{Wang2008}: 
 
 \begin{IEEEeqnarray}{l}\label{equ14}
 M_{1 \ast 2} = M_{1}M_{2} \IEEEyessubnumber
 \\*
-\Sigma_{1 \ast 2} = Ad(M_{2}^{-1})\Sigma_{1}Ad^{T}(M_{2}^{-1}) + \Sigma_{2} \IEEEyessubnumber
+\Sigma_{1 \ast 2} = Ad(M_{2}^{-1})\Sigma_{1}Ad^{T}(M_{2}^{-1}) + \Sigma_{2}. \IEEEyessubnumber
 \end{IEEEeqnarray}
-
 where
 
-$$Ad(g)=\left(
+$$Ad(H)=\left(
                \begin{array}{cc}
                  R & O \\
                  \hat{t}R & R \\
                \end{array}
-             \right)$$
+             \right).$$
 
-Because $X$ and $Y$ is fixed, as for $\delta_{X}(g)$ and $\delta_{Y}(g)$, mean and covariance are $M_{X}=X$, $\Sigma_{X}=0$ and $M_{Y}=Y$, $\Sigma_{Y}=0$, respectively, therefore we can obtain
+Because $X$ and $Y$ are constant, their corresponding PDF will be $\delta_{X}(g)$ and $\delta_{Y}(g)$, of which the mean and covariance are $M_{X} = X$, $\Sigma_{X} = \mathbb{O}_{6 \times 6}$ and $M_{Y} = Y$, $\Sigma_{Y} = \mathbb{O}_{6 \times 6}$, respectively. Therefore, the following equations can be obtained using Eq.(\ref{equ14}): 
 
 \begin{IEEEeqnarray}{l}
 M_{A} X = Y M_{B} \IEEEyessubnumber\label{equ15a}
 \\*
-Ad(X^{-1})\Sigma_{A}Ad^{T}(X^{-1}) = \Sigma_{B} \IEEEyessubnumber\label{equ15b}
+Ad(X^{-1})\Sigma_{A}Ad^{T}(X^{-1}) = \Sigma_{B}. \IEEEyessubnumber\label{equ15b}
 \end{IEEEeqnarray}
 
-From (\ref{equ15a}), we can obtain
+To solve the above equations, Eq.(\ref{equ15a}) is decomposed into a rotational equation and a translational equation as below:
 
 \begin{IEEEeqnarray}{l}
 R_{M_{A}} R_{X} = R_{Y} R_{M_{B}} \IEEEyessubnumber\label{equ16a}
 \\*
-R_{M_{A}} t_{X} + t_{M_{A}}= R_{Y} t_{M_{B}} + t_{Y} \IEEEyessubnumber\label{equ16b}
+R_{M_{A}} t_{X} + t_{M_{A}}= R_{Y} t_{M_{B}} + t_{Y}. \IEEEyessubnumber\label{equ16b}
 \end{IEEEeqnarray}
-
-$\Sigma_{M_{A}}$ and $\Sigma_{M_{B}}$ can be decomposed into blocks as
+$\Sigma_{A}$ and $\Sigma_{B}$ can be decomposed into blocks as
 $\left(\begin{array}{cc}
-       \Sigma_{M_{A}}^{1} & \Sigma_{M_{A}}^{2} \\
-       \Sigma_{M_{A}}^{3} & \Sigma_{M_{A}}^{4} \\
+       \Sigma_{A}^{1} & \Sigma_{A}^{2} \\
+       \Sigma_{A}^{3} & \Sigma_{A}^{4} \\
        \end{array}
        \right)$
 and
 $\left(\begin{array}{cc}
-       \Sigma_{M_{B}}^{1} & \Sigma_{M_{B}}^{2} \\
-       \Sigma_{M_{B}}^{3} & \Sigma_{M_{B}}^{4} \\
+       \Sigma_{B}^{1} & \Sigma_{B}^{2} \\
+       \Sigma_{B}^{3} & \Sigma_{B}^{4} \\
        \end{array}
-       \right)$, respectively. Using
-$ X^{-1}=X^{T}=\left(\begin{array}{cc}
+       \right)$, respectively. Knowing that
+$ X^{-1} = \left(\begin{array}{cc}
        R_{X}^{T} & -R_{X}^{T}t_{X}  \\
        0 & 1 \\
        \end{array}
        \right)$,
-then we can write the first two blocks of (\ref{equ15b}) as follows,
+then the first two blocks of Eq.(\ref{equ15b}) can be written as follows:
 
 \begin{IEEEeqnarray}{l}
 \Sigma_{M_{B}}^{1} = R_{X}^{T}\Sigma_{M_{A}}^{1} R_{X} \IEEEyessubnumber\label{equ17a}
 \\*
-\Sigma_{M_{B}}^{2} = R_{X}^{T}\Sigma_{M_{A}}^{1} R_{X} (\widehat{R_{X}^{T}t_{X}}) + R_{X}^{T}\Sigma_{M_{A}}^{2}R_{X}
+\Sigma_{M_{B}}^{2} = R_{X}^{T}\Sigma_{M_{A}}^{1} R_{X} (\widehat{R_{X}^{T}t_{X}}) + R_{X}^{T}\Sigma_{M_{A}}^{2}R_{X}.
  \IEEEyessubnumber\label{equ17b}
 \end{IEEEeqnarray}
-
-The first blocks (\ref{equ17a}) is eigendecomposed with the same diagonal matrix due to matrix similarity $\Sigma_{M_{A}}^{1}=Q_{M_{A}}\wedge Q_{M_{A}}^{T}$, $\Sigma_{M_{B}}^{1}=Q_{M_{B}}\wedge Q_{M_{B}}^{T}$. Then,
+Because Eq.(\ref{equ17a}) is a similarity transformation between $\Sigma_{M_{B}}^{1}$ and $\Sigma_{M_{A}}^{1}$, they share the same eigenvalues and can be eigendecomposed into   $\Sigma_{M_{A}}^{1}=Q_{M_{A}}\Lambda Q_{M_{A}}^{T}$ and $\Sigma_{M_{B}}^{1}=Q_{M_{B}}\Lambda Q_{M_{B}}^{T}$ where $\Lambda$ is a diagonal matrix whose diagonal elements are the eigenvalues of $\Sigma_{M_{A}}^{1}$ ($\Sigma_{M_{B}}^{1}$), and $Q_{M_{A}}$ ($Q_{M_{B}}$) is a square matrix whose columns are the corresponding eigenvectors. Following equation is obtained after substitution into Eq.(\ref{equ17a}):
 
 \begin{equation}\label{equ18}
-    \wedge = (Q_{M_{A}}^{T}R_{X}Q_{M_{B}}) \wedge (Q_{M_{B}}^{T}R_{X}^{T}Q_{M_{A}})= P \wedge P^{T}
+    \Lambda = (Q_{M_{A}}^{T}R_{X}^{T}Q_{M_{B}}) \Lambda (Q_{M_{B}}^{T}R_{X}Q_{M_{A}})= P \Lambda P^{T}
 \end{equation}
-
-In $P=Q_{M_{A}}^{T}R_{X}Q_{M_{B}}$, $Q_{M_{A}}$ and $Q_{M_{B}}$ are constrained to be a rotation matrix and therefore $P \in \Omega \bigcup (-\Omega)$,
+where $P=Q_{M_{A}}^{T}R_{X}Q_{M_{B}}$. If $Q_{M_{A}}$ and $Q_{M_{B}}$ are further constrained to be rotation matrices, then a rotation matrix $P$ that satisfies Eq.(\ref{equ18}) can be:
 
 \begin{equation}\label{equ19}
-\Omega= \left(
-\begin{array}{ccc}
-\left( \begin{array}{ccc}
-       1 & 0 & 0 \\
-       0 & 1 & 0 \\
-       0 & 0 & 1 \\
-\end{array} \right),&
-\left( \begin{array}{ccc}
-       -1 & 0 & 0 \\
-       0 & -1 & 0 \\
-       0 & 0 & 1 \\
-\end{array} \right)
-\\
-\left( \begin{array}{ccc}
-       -1 & 0 & 0 \\
-       0 & 1 & 0 \\
-       0 & 0 & -1 \\
-\end{array} \right),&
-\left( \begin{array}{ccc}
-       1 & 0 & 0 \\
-       0 & -1 & 0 \\
-       0 & 0 & -1 \\
-\end{array} \right)
-\end{array}
-\right)
+\begin{split}
+{\cal P} = \left\{ \left(\begin{array}{ccc}
+1\,\, & 0 \,\, & 0 \,\, \\
+0 & 1 & 0\\
+0 & 0 & 1 \end{array}\right) , \left(\begin{array}{ccc}
+-1 & 0 & 0 \\
+0 & -1 & 0\\
+0 & 0 & 1 \end{array}\right), \right.\\
+\left. \left(\begin{array}{ccc}
+-1 & 0 & 0 \\
+0 & 1 & 0\\
+0 & 0 & -1 \end{array}\right), \left(\begin{array}{ccc}
+1 & 0 & 0 \\
+0 & -1 & 0\\
+0 & 0 & -1 \end{array}\right)\right\}.
+\end{split} 
 \end{equation}
 
-Therefore, there are eight possibilities of $R_{X}, R_{X}=Q_{M_{A}}PQ_{M_{B}}^T$. Then, from \ref{equ17b}, eight $t_{X}$ corresponding to $R_{X}$ can be directly found. Furthermore, eight candidate $R_{Y} and t_{Y}$ can be found. At last, there are eight possibilities of solution $(X_{i},Y_{i}), i = 1,\dots,8$.
-where,
+Therefore, there are eight candidates of $R_{X}$ which can be calculated via $R_{X}=Q_{M_{A}}PQ_{M_{B}}^T$. Then the corresponding $t_{X}$ can be obtained  from Eq.(\ref{equ17b}). Given known $X$, $Y$ can be solved for by $Y = M_A^{-1}XM_B^{-1}$. At last, eight candidate pairs of  $\{X_{i},Y_{i}\}$ can be obtained as: 
 
 \begin{equation}\label{equ20}
 \begin{array}{cc}
 X_{i}= \left( \begin{array}{cc}
-       R_{X} & t_{X} \\
+       R_{X_i} & t_{X_i} \\
        \mathbf{0}^{T} & \mathbf{1}\\
 \end{array} \right),&
 Y_{i}= \left( \begin{array}{cc}
-       R_{Y} & t_{Y} \\
+       R_{Y_i} & t_{Y_i} \\
        \mathbf{0}^{T} & \mathbf{1}\\
 \end{array} \right)
 \end{array}
 \end{equation}
-
-Based on the screw theory, it is known that a homogeneous transformation $H$ can be written in the form with four parameters $(\theta,d,\mathbf{n},\mathbf{p})$.
+The problem then becomes selecting the best pair of $\{X_i, Y_i\}$ from the eight candidates. 
+Based on the screw theory (references?), it is known that a homogeneous transformation $H$ can be expressed by the four screw parameters $(\theta,d,\mathbf{n},\mathbf{p})$ as:
 
 \begin{equation}\label{equ21}
 H = \left( \begin{array}{cc}
@@ -346,8 +334,9 @@ H = \left( \begin{array}{cc}
        \mathbf{0}^{T} & \mathbf{1}
 \end{array} \right)
 \end{equation}
+where $\theta$, $d$, $\mathbf{n}$ and $\mathbf{p}$ are ?.
 
-$AX=YB$ can be written as $AX=X(X^{-1}YB)$ and let $B' = X^{-1}YB$ . In the form $AX=XB'$, there exit two Euclidean-Group invariant relationships for one of eight groups of $(A_{i},B_{i}^k)( i = 1,\cdots,n; k=1,\dots,8), B_i^{k} = X^{-1}YB_i$ as follows,
+Moreover, $AX=YB$ can be written as $AX=X(X^{-1}YB)$. If define $B' = X^{-1}YB$, then we will have $AX=XB'$. there exit two Euclidean-Group invariant relationships for one of eight groups of $(A_{i},B_{i}^k)( i = 1,\cdots,n; k=1,\dots,8), B_i^{k} = X^{-1}YB_i$ as follows,
 
 \begin{equation}\label{equ22}
     \theta_{A_{i}}=\theta_{B_{i}^{k}}, d_{A_{i}}=d_{B_{i}^{k}}
