@@ -353,54 +353,54 @@ Among the four pairs $(X_{k},Y_{k})$, one can find an optimal solution which  mi
 \section{Solution with unknown correspondence between $A_{i}$ and $B_{i}^{k}$}
 \label{sect3}
 
-In most cases, the homogeneous transformations with $As$ and $Bs$ are given based on the data from different sensors. Due to asynchronous timing of the measurement transmissions, the correspondences between $A_{i}$ and $B_{i}^{k}$ is unknown. The advantage of the above probabilistic solution lies on that $X$ and $Y$ can be calculated even if without any a priori knowledge of the correspondence. However, there are still eight possible candidate results $(X_{i},Y_{i})$. Using Euclidean-Group invariants, it is straightforward to determine which pair is the correct one if the correspondence between $A_{i}$ and $B_{i}^{k}$ can be known.
+In most cases, the homogeneous transformations  $\{A_i\}$ and $\{B_j\}$ are calculated based on the data obtained from different sensors. Due to the asynchronous timing of the sensor readings, the correspondences between $\{A_{i}\}$ and $\{B_{j}^{k}\}$ is usually unknown. This section deals with the case where there is a shift between $\{A_i\}$ and $\{B_j\}$, and Euclidean-Group invariants are used to recover the correspondence between the data streams. {\color{red}The advantage of the above probabilistic solution lies in that $X$ and $Y$ can be calculated even if there is not a priori knowledge of the correspondence.} However, there are still eight possible candidates of $(X_{k},Y_{k})$ to choose from and by using Euclidean-Group invariants, it is straightforward to determine which pair is the optimal one if the correspondence between $A_{i}$ and $B_{i}^{k}$ can be known.
 
-The Discrete Fourier Transform (DFT) decomposes a time-domain signal into its constituent frequencies. The input is a finite list of equally spaced samples of a function. Given a discrete signal consisting of a sequence of $N$ complex numbers $x_{0},x_{1},\cdots,x_{N-1}$, the DFT is denoted by $X_{\kappa} = \mathcal{F}{x_{n}}$
+The Discrete Fourier Transform (DFT) decomposes a time-domain signal into its constituent frequencies. The input is a finite list of equally spaced samples of a function. Given a discrete signal consisting of a sequence of $N$ complex numbers $x_{0},x_{1},\cdots,x_{N-1}$, the DFT is denoted by $X_{\kappa} = \mathcal{F}({x_{n}})$ as:
 
 \begin{equation}\label{equ21}
-    X_{\kappa} = \sum_{n=0}^{N-1}x_{n}\cdot exp(-i\frac{2\pi}{N}n\kappa)
+    X_{\kappa} = \sum_{n=0}^{N-1}x_{n}\cdot exp(-i\frac{2\pi}{N}n\kappa).
 \end{equation}
-The Inverse Discrete Fourier transform (IDFT) denoted by
+The Inverse Discrete Fourier transform (IDFT) is denoted as:
 
 \begin{equation}\label{equ22}
-    x_{n} = \frac{1}{N}\sum_{n=0}^{N-1}X_{\kappa}\cdot exp(i\frac{2\pi}{N}n\kappa)
+    x_{n} = \frac{1}{N}\sum_{n=0}^{N-1}X_{\kappa}\cdot exp(i\frac{2\pi}{N}n\kappa).
 \end{equation}
 
 The discrete convolution of two sequences $f_{n}$ and $g_{n}$  are defined
 
 \begin{equation}\label{equ23}
-    (f \ast g)(\tau)=\sum_{i=0}^{N}f(t_{i})g(t_{i}-\tau)
+    (f \ast g)(\tau)=\sum_{i=0}^{N}f(t_{i})g(t_{i}-\tau).
 \end{equation}
 
-In convolution theorem, the Fourier transform of a convolution is the product of the Fourier transforms, namely,
+In the convolution theorem, the Fourier transform of a convolution is the product of the Fourier transforms, namely:
 
 \begin{equation}\label{equ24}
-    f \ast g = \mathcal{F}^{-1} [\mathcal{F}(f) \cdot \mathcal{F}(g)]
+    f \ast g = \mathcal{F}^{-1} [\mathcal{F}(f) \cdot \mathcal{F}(g)].
 \end{equation}
-
-The correlation theorem indicates that the correlation function, $Corr(f,g)$, will have a large value at a shift vector if the two sequences $f$ and $g$ contain similar features. The correlation can be obtained based on the convolution theorem. The DFT of the correlation $Corr(f,g)$ is equal to the product of the DFT of a sequence $f_{n}$ and the complex conjugate $\mathcal{F}^{*}$ of the DFT of the other sequence $g_n$.
+ 
+The correlation theorem indicates that the correlation function, $Corr(f,g)$, will possess a larger value for a shift vector where the two sequences $f_n$ and $g_n$ can share more similar features. The correlation can be obtained based on the convolution theorem. The DFT of $Corr(f,g)$ is equal to the product of the DFT of $f_{n}$ and the complex conjugate $\mathcal{F}^{*}$ of the DFT of $g_n$:
 
 \begin{equation}\label{equ25}
-    Corr(f,g)=f \star g = \mathcal{F}^{-1}[\mathcal{F}(f) \cdot (\mathcal{F}(g))^{*}]
+    Corr(f,g)=f \star g = \mathcal{F}^{-1}[\mathcal{F}(f) \cdot (\mathcal{F}(g))^{*}].
 \end{equation}
 
-Compared with the standard time-domain convolution algorithm, the complexity of the convolution by multiplication in the frequency domain is significantly reduced with the help of the convolution theorem and the fast Fourier transform (FFT).
+Compared to the standard time-domain convolution algorithm, the complexity of the convolution by multiplication in the frequency domain is significantly reduced with the help of the convolution theorem and the fast Fourier transform (FFT).
 
-There are two sequences $\theta_{A_{i}}$ and $\theta_{B_{i}^{k}}$ from each pair $(A_{i},B_{i}^{k})$. For homogeneous transformations from which the range of $\theta$ can vary, two sequences $\theta_{Ai}$ and $\theta_{B_{i}^{k}}$ can be first normalized.
+Given two sequences $\{\theta_{A_{i}}\}$ and $\{\theta_{B_{i}^{k}}\}$ corresponding to  $\{A_{i}\}$ and $\{B_{i}^{k}\}$, the shift that is needed to recover the data correspondence is obtained as below. 
+Firstly, $\theta_{Ai}$ and $\theta_{B_{i}^{k}}$ are normalized as:
 
 \begin{equation}\label{equ26}
     \theta_{1}=\frac{(\theta_{A_{i}}-\mu_{A_{i}})}{\sigma_{A_{i}}}, \theta_{2}=\frac{(\theta_{B_{i}^{k}}-\mu_{B_{i}^{k}})}{\sigma_{B_{i}^{k}}}
 \end{equation}
+where $\mu_{A_{i}}(\mu_{B_{i}^{k}})$ is the mean of $\theta_{A_{i}}(\theta_{B_{i}^{k}})$ and $\sigma_{A_{i}}(\sigma_{B_{i}^{k}})$ is the standard deviation.
 
-where $\mu_{A_{i}}(\mu_{B_{i}^{k}})$ is the average of $\theta_{A_{i}}(\theta_{B_{i}^{k}})$ and $\sigma_{A_{i}}(\sigma_{B_{i}^{k}})$ is the standard deviation.
-
-Here, the correlation function $Corr(\theta_{1},\theta_{2})$  is the function of the time sequence index $(n)$ which describes the probability that these two sequences are separated by this particular unit. The location of the function maximum indicates the amount of shift, $\tau_{shift}$, between the two sequence $\theta_{A_{i}}$ and $\theta_{B_{i}^{k}}$.
+Here, the correlation function $Corr(\theta_{1},\theta_{2})$  is the function of the time sequence index $(n)$ which describes the probability that these two sequences are separated by this particular unit. The index corresponding to the maximum of $Corr(\theta_{1},\theta_{2})$  indicates the amount of shift $\tau_{shift}$ between the $\{\theta_{A_{i}}\}$ and $\{\theta_{B_{i}^{k}}\}$.
 
 \begin{equation}\label{equ27}
     \tau_{shift} = \mathop{\mathbf{arg}max}_{index}(Corr(\theta_{1},\theta_{2}))
 \end{equation}
 
-Therefore, the correspondence between the two sequences can be found. The data of $\theta_{A_{i}}$ or $d_{A_{i}}$ are shifted by $-\tau_{shift}$ to obtain a sequence of new pairs $(\theta_{A_{i}}(i+\tau_{shift}),\theta_{B_{i}^{k}})$ and $(d_{A_{i}}(i+\tau_{shift}),d_{B_{i}^{k}})$, $max(i,i+\tau_{shift})\leq i \leq min(i,i+\tau_{shift})$. The data stream can be shifted to reach correspondence once the shift is found and the correct solution can also be found by minimizing the absolute deviations based on Euclidean-Group invariants relations using the method in Section \ref{sect2}.
+Therefore, the correspondence between the two sequences can be found. {\color{red}The data of $\theta_{A_{i}}$ or $d_{A_{i}}$ are shifted by $-\tau_{shift}$ to obtain a sequence of new pairs $(\theta_{A_{i}}(i+\tau_{shift}),\theta_{B_{i}^{k}})$ and $(d_{A_{i}}(i+\tau_{shift}),d_{B_{i}^{k}})$, $max(i,i+\tau_{shift})\leq i \leq min(i,i+\tau_{shift})$ TO BE REPHRASED}. The data stream can be shifted back to regain correspondence once the shift is computed and the correct solution of $X$ and $Y$ can also be recovered by minimizing the cost function Eq.(\ref{equ23}) using Euclidean-Group invariants as shown in Section \ref{sect2}.
 
 
 \section{Simulation Studies}
@@ -411,7 +411,7 @@ Therefore, the correspondence between the two sequences can be found. The data o
 \centering
 \includegraphics[width=2.6in]{fig3.eps}
 \caption{
-$Bs$ are randomly generated using  $B_i=B_{init}exp(\widehat{\mathbf{x}})$,$\mathbf{x}=(x_1,\dots,x_6)^T $ \ $x_i \sim \mathcal{N}(0,0.1)$.
+$Bs$ are randomly generated using  $B_i=B_{init}exp(\widehat{\mathbf{x}})$,$\mathbf{x}=(x_1,\dots,x_6)^T $ where $x_i \sim \mathcal{N}(0,0.1)$.
 }
 \label{fig2}
 \end{figure}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.11.19)  23 JUN 2015 16:36
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.11.19)  23 JUN 2015 18:34
 entering extended mode
  %&-line parsing enabled.
 **paper.tex
@@ -330,9 +330,10 @@ Underfull \hbox (badness 3635) in paragraph at lines 430--431
  ,
  []
 
-File: fig4.eps Graphic file (type eps)
-<fig4.eps> [4
+[4
 Non-PDF special ignored!]
+File: fig4.eps Graphic file (type eps)
+ <fig4.eps>
 File: fig5.eps Graphic file (type eps)
  <fig5.eps>
 File: fig6.eps Graphic file (type eps)
@@ -340,10 +341,10 @@ File: fig6.eps Graphic file (type eps)
 File: fig7.eps Graphic file (type eps)
  <fig7.eps>
 File: fig8.eps Graphic file (type eps)
- <fig8.eps>
-File: fig9.eps Graphic file (type eps)
 
-<fig9.eps> [5
+<fig8.eps>
+File: fig9.eps Graphic file (type eps)
+ <fig9.eps> [5
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
@@ -351,12 +352,12 @@ Non-PDF special ignored!]
 File: fig10.eps Graphic file (type eps)
  <fig10.eps>
 File: fig11.eps Graphic file (type eps)
- <fig11.eps> (./paper.bbl [6
+ <fig11.eps> [6
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
-Non-PDF special ignored!]
+Non-PDF special ignored!] (./paper.bbl
 Underfull \hbox (badness 1838) in paragraph at lines 60--63
 []\OT1/ptm/m/n/8 Z. Zhao, ``Hand-eye cal-i-bra-tion us-ing con-vex op-ti-miza-t
 ion,'' in
@@ -410,7 +411,7 @@ usr/share/texmf-texlive/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texmf-te
 xlive/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/ur
 w/times/utmbi8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb>
 </usr/share/texmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper.pdf (8 pages, 289847 bytes).
+Output written on paper.pdf (8 pages, 290457 bytes).
 PDF statistics:
  126 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
