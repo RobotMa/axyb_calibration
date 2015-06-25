@@ -1,18 +1,10 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.11.19)  23 JUN 2015 01:09
+This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=latex 2015.3.12)  23 JUN 2015 09:12
 entering extended mode
- %&-line parsing enabled.
 **paper.tex
-(./paper.tex
+(C:\Users\HAIYUAN\Documents\GitHub\axyb\Tex_AXYB\paper.tex
 LaTeX2e <2009/09/24>
-Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
-yphenation, farsi, arabic, croatian, bulgarian, ukrainian, russian, czech, slov
-ak, danish, dutch, finnish, french, basque, ngerman, german, german-x-2009-06-1
-9, ngerman-x-2009-06-19, ibycus, monogreek, greek, ancientgreek, hungarian, san
-skrit, italian, latin, latvian, lithuanian, mongolian2a, mongolian, bokmal, nyn
-orsk, romanian, irish, coptic, serbian, turkish, welsh, esperanto, uppersorbian
-, estonian, indonesian, interlingua, icelandic, kurmanji, slovenian, polish, po
-rtuguese, spanish, galician, catalan, swedish, ukenglish, pinyin, loaded.
-(./ieeeconf.cls
+Babel <v3.8l> and hyphenation patterns for loaded.
+(C:\Users\HAIYUAN\Documents\GitHub\axyb\Tex_AXYB\ieeeconf.cls
 
 LaTeX Warning: You have requested document class `ieeeconf',
                but the document class provides `cssconf'.
@@ -25,7 +17,7 @@ Document Class: cssconf 2004/1/15 revision V1.6b by Pradeep Misra
 \@IEEEtrantmptoksA=\toks14
 LaTeX Font Info:    Try loading font information for OT1+ptm on input line 794.
 
-(/usr/share/texmf-texlive/tex/latex/psnfss/ot1ptm.fd
+(E:\CTEX\MiKTeX\tex\latex\psnfss\ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 \@IEEEnormalsizefontbaselineskip=\skip41
@@ -109,42 +101,42 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <24> not available
 )
 ** ATTENTION: Overriding command lockouts (line 9).
 ** ATTENTION: Overriding IEEE standard margins (line 12).
-(/usr/share/texmf-texlive/tex/latex/cite/cite.sty
-LaTeX Info: Redefining \cite on input line 285.
-LaTeX Info: Redefining \nocite on input line 356.
-Package: cite 2009/08/29  v 5.2
+(E:\CTEX\MiKTeX\tex\latex\cite\cite.sty
+LaTeX Info: Redefining \cite on input line 302.
+LaTeX Info: Redefining \nocite on input line 373.
+Package: cite 2010/09/10  v 5.3
 )
-(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
+(E:\CTEX\MiKTeX\tex\latex\graphics\graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
+(E:\CTEX\MiKTeX\tex\latex\graphics\keyval.sty
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks15
 )
-(/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
+(E:\CTEX\MiKTeX\tex\latex\graphics\graphics.sty
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty
+(E:\CTEX\MiKTeX\tex\latex\graphics\trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-(/etc/texmf/tex/latex/config/graphics.cfg
-File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
+(E:\CTEX\MiKTeX\tex\latex\00miktex\graphics.cfg
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
 )
 Package graphics Info: Driver file: dvips.def on input line 91.
 
-(/usr/share/texmf-texlive/tex/latex/graphics/dvips.def
+(E:\CTEX\MiKTeX\tex\latex\graphics\dvips.def
 File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
 ))
 \Gin@req@height=\dimen113
 \Gin@req@width=\dimen114
 )
-(/usr/share/texmf-texlive/tex/latex/multirow/multirow.sty
+(E:\CTEX\MiKTeX\tex\latex\multirow\multirow.sty
 \bigstrutjot=\dimen115
 )
-(/usr/share/texmf-texlive/tex/latex/mh/mathtools.sty
-Package: mathtools 2008/08/01 v1.06 mathematical typesetting tools (MH)
+(E:\CTEX\MiKTeX\tex\latex\mh\mathtools.sty
+Package: mathtools 2010/07/21 v1.08b mathematical typesetting tools (MH)
 
-(/usr/share/texmf-texlive/tex/latex/tools/calc.sty
+(E:\CTEX\MiKTeX\tex\latex\tools\calc.sty
 Package: calc 2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
 \calc@Acount=\count91
 \calc@Bcount=\count92
@@ -157,27 +149,27 @@ LaTeX Info: Redefining \addtolength on input line 77.
 \calc@Ccount=\count93
 \calc@Cskip=\skip49
 )
-(/usr/share/texmf-texlive/tex/latex/mh/mhsetup.sty
-Package: mhsetup 2007/12/03 v1.2 programming setup (MH)
+(E:\CTEX\MiKTeX\tex\latex\mh\mhsetup.sty
+Package: mhsetup 2010/01/21 v1.2a programming setup (MH)
 )
-(/usr/share/texmf-texlive/tex/latex/amsmath/amsmath.sty
+(E:\CTEX\MiKTeX\tex\latex\ams\math\amsmath.sty
 Package: amsmath 2000/07/18 v2.13 AMS math features
 \@mathmargin=\skip50
 
 For additional information on amsmath, use the `?' option.
-(/usr/share/texmf-texlive/tex/latex/amsmath/amstext.sty
+(E:\CTEX\MiKTeX\tex\latex\ams\math\amstext.sty
 Package: amstext 2000/06/29 v2.01
 
-(/usr/share/texmf-texlive/tex/latex/amsmath/amsgen.sty
+(E:\CTEX\MiKTeX\tex\latex\ams\math\amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks16
 \ex@=\dimen118
 ))
-(/usr/share/texmf-texlive/tex/latex/amsmath/amsbsy.sty
+(E:\CTEX\MiKTeX\tex\latex\ams\math\amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen119
 )
-(/usr/share/texmf-texlive/tex/latex/amsmath/amsopn.sty
+(E:\CTEX\MiKTeX\tex\latex\ams\math\amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count94
@@ -221,16 +213,17 @@ LaTeX Info: Redefining \] on input line 2667.
 \g_MT_multlinerow_int=\count106
 \l_MT_multwidth_dim=\dimen127
 )
-(/usr/share/texmf-texlive/tex/latex/amsfonts/amssymb.sty
+(E:\CTEX\MiKTeX\tex\latex\amsfonts\amssymb.sty
 Package: amssymb 2009/06/22 v3.00
 
-(/usr/share/texmf-texlive/tex/latex/amsfonts/amsfonts.sty
+(E:\CTEX\MiKTeX\tex\latex\amsfonts\amsfonts.sty
 Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
-)) (./paper.aux
+))
+(C:\Users\HAIYUAN\Documents\GitHub\axyb\Tex_AXYB\paper.aux
 
 LaTeX Warning: Label `equ21' multiply defined.
 
@@ -241,8 +234,6 @@ LaTeX Warning: Label `equ22' multiply defined.
 LaTeX Warning: Label `equ23' multiply defined.
 
 )
-\openout1 = `paper.aux'.
-
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 83.
 LaTeX Font Info:    ... okay on input line 83.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 83.
@@ -257,28 +248,27 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 83.
 LaTeX Font Info:    ... okay on input line 83.
 LaTeX Font Info:    Calculating math sizes for size <11> on input line 87.
 LaTeX Font Info:    Try loading font information for U+msa on input line 87.
- (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
+ (E:\CTEX\MiKTeX\tex\latex\amsfonts\umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 87.
 
-(/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
+(E:\CTEX\MiKTeX\tex\latex\amsfonts\umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
 LaTeX Font Info:    Try loading font information for OT1+pcr on input line 87.
 
-(/usr/share/texmf-texlive/tex/latex/psnfss/ot1pcr.fd
+(E:\CTEX\MiKTeX\tex\latex\psnfss\ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 File: fig1.eps Graphic file (type eps)
  <fig1.eps>
 Underfull \vbox (badness 1264) has occurred while \output is active []
 
- [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+ [1
 
 
-
-Non-PDF special ignored!]
+]
 Overfull \hbox (3.99362pt too wide) in alignment at lines 202--204
  [][][] []
  []
@@ -298,9 +288,7 @@ Underfull \hbox (badness 3635) in paragraph at lines 439--440
 File: fig4.eps Graphic file (type eps)
 <fig4.eps>
 File: fig5.eps Graphic file (type eps)
- <fig5.eps> [4
-Non-PDF special ignored!
-Non-PDF special ignored!]
+ <fig5.eps> [4]
 File: fig6.eps Graphic file (type eps)
  <fig6.eps>
 File: fig7.eps Graphic file (type eps)
@@ -308,22 +296,16 @@ File: fig7.eps Graphic file (type eps)
 File: fig8.eps Graphic file (type eps)
  <fig8.eps>
 File: fig9.eps Graphic file (type eps)
- <fig9.eps> [5
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!]
+ <fig9.eps> [5]
 File: fig10.eps Graphic file (type eps)
- <fig10.eps>
+
+<fig10.eps>
 File: fig11.eps Graphic file (type eps)
- <fig11.eps> (./paper.bbl [6
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!]
+ <fig11.eps>
+(C:\Users\HAIYUAN\Documents\GitHub\axyb\Tex_AXYB\paper.bbl [6]
 Underfull \hbox (badness 1838) in paragraph at lines 60--63
-[]\OT1/ptm/m/n/8 Z. Zhao, ``Hand-eye cal-i-bra-tion us-ing con-vex op-ti-miza-t
-ion,'' in
+[][]\OT1/ptm/m/n/8 Z. Zhao, ``Hand-eye cal-i-bra-tion us-ing con-vex op-ti-miza
+-tion,'' in
  []
 
 )
@@ -338,43 +320,18 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the US letter (8.5in X 11in) paper size.
 
-[7] (./paper.aux)
+[7] (C:\Users\HAIYUAN\Documents\GitHub\axyb\Tex_AXYB\paper.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 2703 strings out of 493848
- 37238 string characters out of 1152822
- 102931 words of memory out of 3000000
- 5942 multiletter control sequences out of 15000+50000
- 46108 words of font info for 110 fonts, out of 3000000 for 9000
- 714 hyphenation exceptions out of 8191
+ 2722 strings out of 495363
+ 37456 string characters out of 3184046
+ 103656 words of memory out of 3000000
+ 5861 multiletter control sequences out of 15000+200000
+ 37022 words of font info for 101 fonts, out of 3000000 for 9000
+ 14 hyphenation exceptions out of 8191
  33i,13n,24p,1516b,295s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texli
-ve/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-texlive/fonts/ty
-pe1/public/amsfonts/cm/cmbx7.pfb></usr/share/texmf-texlive/fonts/type1/public/a
-msfonts/cm/cmbx8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/c
-mex10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cmextra/cmex8.p
-fb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/sh
-are/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texmf-te
-xlive/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-texlive/fonts/
-type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-texlive/fonts/type1/public
-/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm
-/cmmi9.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb><
-/usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/te
-xmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-texlive/f
-onts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-texlive/fonts/type1/pu
-blic/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfon
-ts/cm/cmsy7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy8.
-pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/symbols/msbm10.pfb></
-usr/share/texmf-texlive/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texmf-te
-xlive/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/ur
-w/times/utmbi8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb>
-</usr/share/texmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper.pdf (7 pages, 286322 bytes).
-PDF statistics:
- 123 PDF objects out of 1000 (max. 8388607)
- 0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
+Output written on paper.dvi (7 pages, 51988 bytes).
