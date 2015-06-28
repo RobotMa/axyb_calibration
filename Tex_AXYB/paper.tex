@@ -37,7 +37,7 @@
                         % off. cite.sty is already installed on most LaTeX
                         % systems. The latest version can be obtained at:
                         % http://www.ctan.org/tex-archive/macros/latex/contrib/supported/cite/
-                        
+
 \usepackage[dvips]{graphicx}  % Written by David Carlisle and Sebastian Rahtz
                         % Required if you want graphics, photos, etc.
                         % graphicx.sty is already installed on most LaTeX
@@ -130,7 +130,7 @@ The rest of the paper is organized as follows. In Section
 
 \section{Solving AX=YB using a probabilistic method on motion groups}
 \label{sect2}
-In this section, a brief introduction to the concepts of probability density function on the special Eucledian group $SE(3)$ is presented and the probabilistic representation of $AX=YB$ are derived.  
+In this section, a brief introduction to the concepts of probability density function on the special Eucledian group $SE(3)$ is presented and the probabilistic representation of $AX=YB$ are derived.
 
 Any rigid transformation matrix can be viewed as a group element of $SE(3)$ :
 \begin{equation}\label{equ0}
@@ -141,7 +141,7 @@ Any rigid transformation matrix can be viewed as a group element of $SE(3)$ :
              \end{array}
            \right) \in SE(3)
 \end{equation}
-where $SO(3)$ denotes the special orthogonal group, $t \in \mathbb{R}^3 $ is translational vector and $H$ is symbol for group element. 
+where $SO(3)$ denotes the special orthogonal group, $t \in \mathbb{R}^3 $ is translational vector and $H$ is symbol for group element.
 
 Given a large set of pairs $(A_{i},B_{i})\in SE(3)\times SE(3)$ where $i=1,\cdots,n$, the following equation is true if the correspondence is known as a priori:
 
@@ -175,7 +175,7 @@ Employing the properties of $\delta$ function, it is straightforward to see that
 \begin{equation}\label{equ5}
 (f\ast \delta)(H)=\int_{SE(3)}f(K)\delta(K^{-1}\circ H)dK=f(H).
 \end{equation}
-Therefore, for each $A_{i}$ and $B_{i}$, the following equations can be obtained: 
+Therefore, for each $A_{i}$ and $B_{i}$, the following equations can be obtained:
 
 \begin{IEEEeqnarray}{l}\label{equ6}
 (\delta_{A_{i}}\ast \delta_{X})(H)=\delta(A_{i}^{-1} H X^{-1}) \IEEEyessubnumber
@@ -229,7 +229,7 @@ Given $\{A_i\}$ where the cloud of frames ${A_{i}}$ clustering around $M_{A}$, a
 
 An initial estimate of the iterative procedure can be chosen as $^{0}M_{A}=\frac{1}{n}\sum_{i=1}^{n}log(A_{i})$, then a local minimum of $M_A$ is obtained by solving a nonlinear optimization problem with the cost function being $|| \sum_{i=1}^{n}log(M_{A}^{-1}A_{i}) ||^{2}$. A similar procedure can be used to compute $M_B$. $\Sigma_A$ and $\Sigma_B$ are then straight forward to compute given known $M_A$ and $M_B$.
 
-The mean and covariance for the convolution $(f_{1} \ast f_{2})(g)$ of two highly focused functions $f_{1}$ and $f_{2}$ are calculated as in \cite{Wang2008}: 
+The mean and covariance for the convolution $(f_{1} \ast f_{2})(g)$ of two highly focused functions $f_{1}$ and $f_{2}$ are calculated as in \cite{Wang2008}:
 
 \begin{IEEEeqnarray}{l}\label{equ14}
 M_{1 \ast 2} = M_{1}M_{2} \IEEEyessubnumber
@@ -245,7 +245,7 @@ $$Ad(H)=\left(
                \end{array}
              \right).$$
 
-Because $X$ and $Y$ are constant, their corresponding PDF will be $\delta_{X}(g)$ and $\delta_{Y}(g)$, of which the mean and covariance are $M_{X} = X$, $\Sigma_{X} = \mathbb{O}_{6 \times 6}$ and $M_{Y} = Y$, $\Sigma_{Y} = \mathbb{O}_{6 \times 6}$, respectively. Therefore, the following equations can be obtained using Eq.(\ref{equ14}): 
+Because $X$ and $Y$ are constant, their corresponding PDF will be $\delta_{X}(g)$ and $\delta_{Y}(g)$, of which the mean and covariance are $M_{X} = X$, $\Sigma_{X} = \mathbb{O}_{6 \times 6}$ and $M_{Y} = Y$, $\Sigma_{Y} = \mathbb{O}_{6 \times 6}$, respectively. Therefore, the following equations can be obtained using Eq.(\ref{equ14}):
 
 \begin{IEEEeqnarray}{l}
 M_{A} X = Y M_{B} \IEEEyessubnumber\label{equ15a}
@@ -308,10 +308,10 @@ where $P=Q_{M_{A}}^{T}R_{X}Q_{M_{B}}$. If $Q_{M_{A}}$ and $Q_{M_{B}}$ are furthe
 1 & 0 & 0 \\
 0 & -1 & 0\\
 0 & 0 & -1 \end{array}\right)\right\}.
-\end{split} 
+\end{split}
 \end{equation}
 
-Therefore, there are eight candidates of $R_{X}$ which can be calculated via $R_{X}=Q_{M_{A}}PQ_{M_{B}}^T$. Then the corresponding $t_{X}$ can be obtained  from Eq.(\ref{equ17b}). Given known $X$, $Y$ can be solved for by $Y = M_A^{-1}XM_B^{-1}$. At last, eight candidate pairs of  $\{X_{k},Y_{k}\}$ can be obtained as: 
+Therefore, there are eight candidates of $R_{X}$ which can be calculated via $R_{X}=Q_{M_{A}}PQ_{M_{B}}^T$. Then the corresponding $t_{X}$ can be obtained  from Eq.(\ref{equ17b}). Given known $X$, $Y$ can be solved for by $Y = M_A^{-1}XM_B^{-1}$. At last, eight candidate pairs of  $\{X_{k},Y_{k}\}$ can be obtained as:
 
 \begin{equation}\label{equ20}
 \begin{array}{cc}
@@ -327,7 +327,7 @@ Y_{k}= \left( \begin{array}{cc}
 \end{equation}
 where $k = 1,2,...,8$.
 
-The problem then becomes selecting the best pair of $\{X_k, Y_k\}$ from the eight candidates. 
+The problem then becomes selecting the best pair of $\{X_k, Y_k\}$ from the eight candidates.
 Based on the screw theory (references?), it is known that a homogeneous transformation $H$ can be expressed by the four screw parameters $(\theta,d,\mathbf{n},\mathbf{p})$ as:
 
 \begin{equation}\label{equ21}
@@ -377,7 +377,7 @@ In the convolution theorem, the Fourier transform of a convolution is the produc
 \begin{equation}\label{equ24}
     f \ast g = \mathcal{F}^{-1} [\mathcal{F}(f) \cdot \mathcal{F}(g)].
 \end{equation}
- 
+
 The correlation theorem indicates that the correlation function, $Corr(f,g)$, will possess a larger value for a shift vector where the two sequences $f_n$ and $g_n$ can share more similar features. The correlation can be obtained based on the convolution theorem. The DFT of $Corr(f,g)$ is equal to the product of the DFT of $f_{n}$ and the complex conjugate $\mathcal{F}^{*}$ of the DFT of $g_n$:
 
 \begin{equation}\label{equ25}
@@ -386,7 +386,7 @@ The correlation theorem indicates that the correlation function, $Corr(f,g)$, wi
 
 Compared to the standard time-domain convolution algorithm, the complexity of the convolution by multiplication in the frequency domain is significantly reduced with the help of the convolution theorem and the fast Fourier transform (FFT).
 
-Given two sequences $\{\theta_{A_{i}}\}$ and $\{\theta_{B_{i}^{k}}\}$ corresponding to  $\{A_{i}\}$ and $\{B_{i}^{k}\}$, the shift that is needed to recover the data correspondence is obtained as below. 
+Given two sequences $\{\theta_{A_{i}}\}$ and $\{\theta_{B_{i}^{k}}\}$ corresponding to  $\{A_{i}\}$ and $\{B_{i}^{k}\}$, the shift that is needed to recover the data correspondence is obtained as below.
 Firstly, $\theta_{Ai}$ and $\theta_{B_{i}^{k}}$ are normalized as:
 
 \begin{equation}\label{equ26}
@@ -409,9 +409,9 @@ Therefore, the correspondence between the two sequences can be found. {\color{re
 \begin{center}
 \begin{figure}
 \centering
-\includegraphics[width=2.6in]{fig3.eps}
+\includegraphics[width=3.2in]{fig2.eps}
 \caption{
-$Bs$ are randomly generated using  $B_i=B_{init}exp(\widehat{\mathbf{x}})$,$\mathbf{x}=(x_1,\dots,x_6)^T $ where $x_i \sim \mathcal{N}(0,0.1)$.
+The errors of translation and rotations versus the data stream shift between $A$ and $B$,
 }
 \label{fig2}
 \end{figure}
@@ -419,9 +419,9 @@ $Bs$ are randomly generated using  $B_i=B_{init}exp(\widehat{\mathbf{x}})$,$\mat
 
 \begin{figure}
 \centering
-\includegraphics[width=2.6in,bb=84 202 501 581]{fig2.eps}
+\includegraphics[width=3.2in]{fig3.eps}
 \caption{
-$As$ are calculated using $AX=YB$. $X$ and $Y$ are assumed.
+The errors of translation and rotations versus noise covariance exerted to the data $B$".
 }
 \label{fig3}
 \end{figure}
@@ -434,7 +434,7 @@ In the numerical experiments in this section, the rotational and translational e
 \centering
 \includegraphics[width=3.2in]{fig4.eps}
 \caption{
-The cross correlation of data streams of $(A_{i},B_{i}^{k})$ respectively.
+The solved $X$ (in red) and the actual $X$ (in blue) in 5 trial simulation with noise covariance 0.01 and shift 2.
 }
 \label{fig4}
 \end{figure}
@@ -445,90 +445,31 @@ The cross correlation of data streams of $(A_{i},B_{i}^{k})$ respectively.
 \centering
 \includegraphics[width=3.2in]{fig5.eps}
 \caption{
-Calculated rotational and translational deviation of $X$ and $Y$ solved using the data in Fig.~\ref{fig2} and Fig.~\ref{fig3}.
+The solved $Y$ (in red) and the actual $Y$ (in blue) in 5 trial simulation with noise covariance 0.01 and shift 2.
 }
 \label{fig5}
 \end{figure}
 \end{center}
 
 
-$B_{i}$ are generated randomly closely around $B_{init}$ using $B_i = B_{init} exp(\mathbf{\widehat{x}})$ and $i$ pose measurements were employed for generating $i$ $A_{i}$ by $A_{i} = YB_{i}X^{-1}$ as shown in Fig.~\ref{fig2} in which a example shows $A$ and $B$ distribution. As a result by applying the above probabilistic method, 8 sequences $(\theta_{A_{i}},\theta_{B_{i}^{k}})$ and $(d_{A_{i}},d_{B_{i}^{k}})$ $ (i=5,\cdots, 100, k=1,\dots,8)$ can be obtained respectively.
+$B_{i}$ are generated randomly closely around $\mu$. We get a group of samples $B_i$ from Gaussian distribution over Lie group with a mean $\mu=0 \in G$ and a covariance matrix $\Sigma \in \mathbb{R}^{k \times k}$ as follows.
 
-If the data streams of $As$ were shifted by $m$ units compared to the data stream $Bs$. The maximum of cross correlation can be used to find the corresponding shift, which is $-m$ shown in Fig.~\ref{fig4}, representing the data stream of $B_{i}^{k}$ has been shifted by -m units with respect to ${A_{i}}$. Therefore, we shift the data stream inversely to recover the correspondence for finding a correct solution satisfying Euclidean-Group invariants.
+\begin{IEEEeqnarray}{l}
+\delta \in \mathcal{N}(0;\Sigma) \IEEEyessubnumber\label{equ28a}
+\\*
+x = exp(\delta)\cdot \mu \IEEEyessubnumber\label{equ28b}
+\end{IEEEeqnarray}
 
+$i$ pose measurements were employed for generating $i$ $A_{i}$ by $A_{i} = YB_{i}X^{-1}$. As a result by applying the above probabilistic method, 8 sequences $(\theta_{A_{i}},\theta_{B_{i}^{k}})$ and $(d_{A_{i}},d_{B_{i}^{k}})$ $ (i=5,\cdots, 100, k=1,\dots,8)$ can be obtained respectively.
 
-Using the minimum sum of $||\theta_{A_{i}} - \theta_{B_{i}^{k}}||$ and $||d_{A_{i}} - d_{B_{i}^{k}}||$, we can find the ${B_{i}^{k}}(k=3)$ corresponding to the least sum of errors and then, only a $(X_k,Y_k)$ is the desired solution. In Fig.~\ref{fig5}, as the number of $(A,B)$ pairs increase, the errors of translation and rotations are reduced but when the number comes to a certain value, the errors cannot be reduced furthermore.
+If the data streams of $As$ were shifted by $m$ units compared to the data stream $Bs$. The maximum of cross correlation can be used to find the corresponding shift, which is $-m$, representing the data stream of $B_{i}^{k}$ has been shifted by -m units with respect to ${A_{i}}$. Therefore, we shift the data stream inversely to recover the correspondence for finding a correct solution satisfying Euclidean-Group invariants.
 
-\begin{center}
-\begin{figure}
-\centering
-\includegraphics[width=3.2in]{fig6.eps}
-\caption{
-$Error(R_X)$ distribution as the $As$ and $Bs$ spread ($\sigma(x_i) = 0.1, 0.2, 0.4, 0.6, 0.8, 1, 2$ as shown in Fig.~\ref{fig2})
-}
-\label{fig6}
-\end{figure}
-\end{center}
-
-\begin{center}
-\begin{figure}
-\centering
-\includegraphics[width=3.2in]{fig7.eps}
-\caption{
-$Error(R_Y)$ distribution as the $As$ and $Bs$ spread ($\sigma(x_i) = 0.1, 0.2, 0.4, 0.6, 0.8, 1, 2$ as shown in Fig.~\ref{fig2})
-}
-\label{fig7}
-\end{figure}
-\end{center}
-
-\begin{center}
-\begin{figure}
-\centering
-\includegraphics[width=3.2in]{fig8.eps}
-\caption{
-$Error(t_X)$ distribution as the $As$ and $Bs$ spread ($\sigma(x_i) = 0.1, 0.2, 0.4, 0.6, 0.8, 1, 2$ as shown in Fig.~\ref{fig2})
-}
-\label{fig8}
-\end{figure}
-\end{center}
-
-\begin{center}
-\begin{figure}
-\centering
-\includegraphics[width=3.2in]{fig9.eps}
-\caption{
-$Error(t_Y)$ distribution as the $As$ and $Bs$ spread ($\sigma(x_i) = 0.1, 0.2, 0.4, 0.6, 0.8, 1, 2$ as shown in Fig.~\ref{fig2})
-}
-\label{fig9}
-\end{figure}
-\end{center}
+Using the minimum sum of $||\theta_{A_{i}} - \theta_{B_{i}^{k}}||$ and $||d_{A_{i}} - d_{B_{i}^{k}}||$, we can find a ${B_{i}^{k}}$ corresponding to the least sum of errors and then, only a $(X_k,Y_k)$ is the desired solution. In Fig.~\ref{fig2}, as the data stream between $A$ and $B$ shifts increase, the errors of translation and rotations are increased in general.
 
 
-In the generation of $B_i = B_{init} exp(\mathbf{\widehat{x}})$, each element $x_j$ of $\mathbf{x} = (x_1,x_2,x_3,x_4,x_5,x_6)^T $ is Gaussian with $N \sim (\mu,\sigma)$. Small disturbances are exerted to the $B_i$ to make the noisy $B_i^{noise} = B_i exp(\mathbf{\widehat{x}}_{noise})$, where each of Lie Algebra element of $\mathbf{x}$ is Gaussian distribution $N \sim (\mu_{noise},\sigma_{noise})$. In Fig.~\ref{fig8},~\ref{fig9},~\ref{fig10} and~\ref{fig11}, $\sigma_{noise}$ is 0.005. As $\sigma$ varies from $0.1$ to $2$, the errors of $R_X$, $R_Y$, $t_X$, and $t_Y$ are reduced as shown in the box-and-whisker plot. There are several outliers not included between the whiskers. The median data can be used as the final solved $X$ and $Y$.
+Small disturbances are exerted to the $B_i$ to make the noisy $B_i^{noise} = B_i exp(\mathbf{\widehat{x}}_{noise})$, where each of Lie Algebra element of $\mathbf{x}){noise}$ is Gaussian distribution $N \sim (\mu_{noise},\sigma_{noise})$. In Fig.~\ref{fig3}, As $\sigma_{noise}$ varies from $0.01$ to $0.08$, the errors of $R_X$, $R_Y$, $t_X$, and $t_Y$ are increased as shown in the box-and-whisker plot. There are several outliers not included between the whiskers. The median data can be used as the final solved $X$ and $Y$. Fig.~\ref{fig4} and Fig.~\ref{fig5} show the solved ($X$,$Y$) in blue and actual ($X$,$Y$) in red in coordinate frame.
 
 
-
-\begin{center}
-\begin{figure}
-\centering
-\includegraphics[width=2.6in]{fig10.eps}
-\caption{
-The distribution of solved $X$.
-}
-\label{fig10}
-\end{figure}
-\end{center}
-
-\begin{center}
-\begin{figure}
-\centering
-\includegraphics[width=2.6in]{fig11.eps}
-\caption{
-The distribution of solved $Y$.
-}
-\label{fig11}
-\end{figure}
-\end{center}
 
 \section{Conclusions}
 \label{sect5}
