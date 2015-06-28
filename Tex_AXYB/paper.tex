@@ -63,6 +63,8 @@
 \usepackage{mathtools}   % loads »amsmath«
 \usepackage{amssymb,amsmath}
 \usepackage{amsfonts}
+\usepackage{color}
+
 
 \title{\LARGE \bf
 Simultaneous Coordinate Calibrations by Solving the AX=YB Problem without Correspondence*
@@ -202,9 +204,9 @@ For each of the data stream $\{A_i\}$ and $\{B_i\}$, small relative motions are 
 \begin{eqnarray}\label{equ10}
 d^{2}(A_{i},A_{i+1})=\parallel \Delta A \parallel_{W}^{2} = trace[(\Delta A)W(\Delta A)^{T}] = \epsilon,\nonumber \\
 \end{eqnarray}
-where $\Delta A = A_{i}-A_{i+1}$ and $0 < \epsilon \ll 1 $
+where $\Delta A = A_{i}-A_{i+1}$ and $0 < \epsilon \ll 1 $.
 
-The convolution of two ``highly focused" probability density functions have some interesting properties that can be used to solve for $X$. In particular, define the mean $M$ and covariance $\Sigma$ of a probability density function on $SE(3)$ as:
+The convolution of two ``highly focused" probability density functions (PDF) have some interesting properties that can be used to solve for $X$. In particular, define the mean $M$ and covariance $\Sigma$ of a probability density function on $SE(3)$ as:
 
 \begin{IEEEeqnarray}{l}\label{equ11}
 \int_{SE(3)}log(M^{-1}H))f(H)dH=0 \IEEEyessubnumber
@@ -216,129 +218,117 @@ Then the corresponding discrete version is:
 \begin{IEEEeqnarray}{l}\label{equ12}
 \sum_{i=1}^{n}log(M^{-1}H))=0 \IEEEyessubnumber
 \\*
-\Sigma = \sum_{i=1}^{n}log^{\vee}(M^{-1}H)[log^{\vee}(M^{-1)}H)]^{T} \IEEEyessubnumber
+\Sigma = \sum_{i=1}^{n}log^{\vee}(M^{-1}H)[log^{\vee}(M^{-1)}H)]^{T}. \IEEEyessubnumber
 \end{IEEEeqnarray}
 
-While the cloud of frames ${A_{i}}$ is clustered around $M_{A}$, an iterative formula can be used for computing $M_{A}$ \cite{Wang2008}.
+Given $\{A_i\}$ where the cloud of frames ${A_{i}}$ clustering around $M_{A}$, an iterative formula can be used for computing $M_{A}$ \cite{Wang2008} as:
 
 \begin{equation}\label{equ13}
     ^{k+1}M_{A} = ^{k}M_{A} \circ exp[\frac{1}{n}\sum_{i=1}^{n}log(^{k}M_{A}^{-1}\circ A_{i})]
 \end{equation}
 
-An initial estimate of the iterative procedure can be $^{0}M_{A}=\frac{1}{n}\sum_{i=1}^{n}log(A_{i})$, then the process iterates until the cost function, $\parallel \sum_{i=1}^{n}log(M_{A}^{-1}A_{i}) \parallel^{2}$ falls below a predefined threshold, where the cost function is minimized and the minimum defines $M_{A}$. A similar procedure is used for computing $M_B$.
+An initial estimate of the iterative procedure can be chosen as $^{0}M_{A}=\frac{1}{n}\sum_{i=1}^{n}log(A_{i})$, then a local minimum of $M_A$ is obtained by solving a nonlinear optimization problem with the cost function being $|| \sum_{i=1}^{n}log(M_{A}^{-1}A_{i}) ||^{2}$. A similar procedure can be used to compute $M_B$. $\Sigma_A$ and $\Sigma_B$ are then straight forward to compute given known $M_A$ and $M_B$.
 
-The mean and covariance for the convolution $(f_{1} \ast f_{2})(g)$ of two highly focused functions, $f_{1}$ and $f_{2}$ can be computed as
+The mean and covariance for the convolution $(f_{1} \ast f_{2})(g)$ of two highly focused functions $f_{1}$ and $f_{2}$ are calculated as in \cite{Wang2008}: 
 
 \begin{IEEEeqnarray}{l}\label{equ14}
 M_{1 \ast 2} = M_{1}M_{2} \IEEEyessubnumber
 \\*
-\Sigma_{1 \ast 2} = Ad(M_{2}^{-1})\Sigma_{1}Ad^{T}(M_{2}^{-1}) + \Sigma_{2} \IEEEyessubnumber
+\Sigma_{1 \ast 2} = Ad(M_{2}^{-1})\Sigma_{1}Ad^{T}(M_{2}^{-1}) + \Sigma_{2}. \IEEEyessubnumber
 \end{IEEEeqnarray}
-
 where
 
-$$Ad(g)=\left(
+$$Ad(H)=\left(
                \begin{array}{cc}
                  R & O \\
                  \hat{t}R & R \\
                \end{array}
-             \right)$$
+             \right).$$
 
-Because $X$ and $Y$ is fixed, as for $\delta_{X}(g)$ and $\delta_{Y}(g)$, mean and covariance are $M_{X}=X$, $\Sigma_{X}=0$ and $M_{Y}=Y$, $\Sigma_{Y}=0$, respectively, therefore we can obtain
+Because $X$ and $Y$ are constant, their corresponding PDF will be $\delta_{X}(g)$ and $\delta_{Y}(g)$, of which the mean and covariance are $M_{X} = X$, $\Sigma_{X} = \mathbb{O}_{6 \times 6}$ and $M_{Y} = Y$, $\Sigma_{Y} = \mathbb{O}_{6 \times 6}$, respectively. Therefore, the following equations can be obtained using Eq.(\ref{equ14}): 
 
 \begin{IEEEeqnarray}{l}
 M_{A} X = Y M_{B} \IEEEyessubnumber\label{equ15a}
 \\*
-Ad(X^{-1})\Sigma_{A}Ad^{T}(X^{-1}) = \Sigma_{B} \IEEEyessubnumber\label{equ15b}
+Ad(X^{-1})\Sigma_{A}Ad^{T}(X^{-1}) = \Sigma_{B}. \IEEEyessubnumber\label{equ15b}
 \end{IEEEeqnarray}
 
-From (\ref{equ15a}), we can obtain
+To solve the above equations, Eq.(\ref{equ15a}) is decomposed into a rotational equation and a translational equation as below:
 
 \begin{IEEEeqnarray}{l}
 R_{M_{A}} R_{X} = R_{Y} R_{M_{B}} \IEEEyessubnumber\label{equ16a}
 \\*
-R_{M_{A}} t_{X} + t_{M_{A}}= R_{Y} t_{M_{B}} + t_{Y} \IEEEyessubnumber\label{equ16b}
+R_{M_{A}} t_{X} + t_{M_{A}}= R_{Y} t_{M_{B}} + t_{Y}. \IEEEyessubnumber\label{equ16b}
 \end{IEEEeqnarray}
-
-$\Sigma_{M_{A}}$ and $\Sigma_{M_{B}}$ can be decomposed into blocks as
+$\Sigma_{A}$ and $\Sigma_{B}$ can be decomposed into blocks as
 $\left(\begin{array}{cc}
-       \Sigma_{M_{A}}^{1} & \Sigma_{M_{A}}^{2} \\
-       \Sigma_{M_{A}}^{3} & \Sigma_{M_{A}}^{4} \\
+       \Sigma_{A}^{1} & \Sigma_{A}^{2} \\
+       \Sigma_{A}^{3} & \Sigma_{A}^{4} \\
        \end{array}
        \right)$
 and
 $\left(\begin{array}{cc}
-       \Sigma_{M_{B}}^{1} & \Sigma_{M_{B}}^{2} \\
-       \Sigma_{M_{B}}^{3} & \Sigma_{M_{B}}^{4} \\
+       \Sigma_{B}^{1} & \Sigma_{B}^{2} \\
+       \Sigma_{B}^{3} & \Sigma_{B}^{4} \\
        \end{array}
-       \right)$, respectively. Using
-$ X^{-1}=X^{T}=\left(\begin{array}{cc}
+       \right)$, respectively. Knowing that
+$ X^{-1} = \left(\begin{array}{cc}
        R_{X}^{T} & -R_{X}^{T}t_{X}  \\
        0 & 1 \\
        \end{array}
        \right)$,
-then we can write the first two blocks of (\ref{equ15b}) as follows,
+then the first two blocks of Eq.(\ref{equ15b}) can be written as follows:
 
 \begin{IEEEeqnarray}{l}
 \Sigma_{M_{B}}^{1} = R_{X}^{T}\Sigma_{M_{A}}^{1} R_{X} \IEEEyessubnumber\label{equ17a}
 \\*
-\Sigma_{M_{B}}^{2} = R_{X}^{T}\Sigma_{M_{A}}^{1} R_{X} (\widehat{R_{X}^{T}t_{X}}) + R_{X}^{T}\Sigma_{M_{A}}^{2}R_{X}
+\Sigma_{M_{B}}^{2} = R_{X}^{T}\Sigma_{M_{A}}^{1} R_{X} (\widehat{R_{X}^{T}t_{X}}) + R_{X}^{T}\Sigma_{M_{A}}^{2}R_{X}.
  \IEEEyessubnumber\label{equ17b}
 \end{IEEEeqnarray}
-
-The first blocks (\ref{equ17a}) is eigendecomposed with the same diagonal matrix due to matrix similarity $\Sigma_{M_{A}}^{1}=Q_{M_{A}}\wedge Q_{M_{A}}^{T}$, $\Sigma_{M_{B}}^{1}=Q_{M_{B}}\wedge Q_{M_{B}}^{T}$. Then,
+Because Eq.(\ref{equ17a}) is a similarity transformation between $\Sigma_{M_{B}}^{1}$ and $\Sigma_{M_{A}}^{1}$, they share the same eigenvalues and can be eigendecomposed into   $\Sigma_{M_{A}}^{1}=Q_{M_{A}}\Lambda Q_{M_{A}}^{T}$ and $\Sigma_{M_{B}}^{1}=Q_{M_{B}}\Lambda Q_{M_{B}}^{T}$ where $\Lambda$ is a diagonal matrix whose diagonal elements are the eigenvalues of $\Sigma_{M_{A}}^{1}$ ($\Sigma_{M_{B}}^{1}$), and $Q_{M_{A}}$ ($Q_{M_{B}}$) is a square matrix whose columns are the corresponding eigenvectors. Following equation is obtained after substitution into Eq.(\ref{equ17a}):
 
 \begin{equation}\label{equ18}
-    \wedge = (Q_{M_{A}}^{T}R_{X}Q_{M_{B}}) \wedge (Q_{M_{B}}^{T}R_{X}^{T}Q_{M_{A}})= P \wedge P^{T}
+    \Lambda = (Q_{M_{A}}^{T}R_{X}^{T}Q_{M_{B}}) \Lambda (Q_{M_{B}}^{T}R_{X}Q_{M_{A}})= P \Lambda P^{T}
 \end{equation}
-
-In $P=Q_{M_{A}}^{T}R_{X}Q_{M_{B}}$, $Q_{M_{A}}$ and $Q_{M_{B}}$ are constrained to be a rotation matrix and therefore $P \in \Omega \bigcup (-\Omega)$,
+where $P=Q_{M_{A}}^{T}R_{X}Q_{M_{B}}$. If $Q_{M_{A}}$ and $Q_{M_{B}}$ are further constrained to be rotation matrices, then a rotation matrix $P$ that satisfies Eq.(\ref{equ18}) can be:
 
 \begin{equation}\label{equ19}
-\Omega= \left(
-\begin{array}{ccc}
-\left( \begin{array}{ccc}
-       1 & 0 & 0 \\
-       0 & 1 & 0 \\
-       0 & 0 & 1 \\
-\end{array} \right),&
-\left( \begin{array}{ccc}
-       -1 & 0 & 0 \\
-       0 & -1 & 0 \\
-       0 & 0 & 1 \\
-\end{array} \right)
-\\
-\left( \begin{array}{ccc}
-       -1 & 0 & 0 \\
-       0 & 1 & 0 \\
-       0 & 0 & -1 \\
-\end{array} \right),&
-\left( \begin{array}{ccc}
-       1 & 0 & 0 \\
-       0 & -1 & 0 \\
-       0 & 0 & -1 \\
-\end{array} \right)
-\end{array}
-\right)
+\begin{split}
+{\cal P} = \left\{ \left(\begin{array}{ccc}
+1\,\, & 0 \,\, & 0 \,\, \\
+0 & 1 & 0\\
+0 & 0 & 1 \end{array}\right) , \left(\begin{array}{ccc}
+-1 & 0 & 0 \\
+0 & -1 & 0\\
+0 & 0 & 1 \end{array}\right), \right.\\
+\left. \left(\begin{array}{ccc}
+-1 & 0 & 0 \\
+0 & 1 & 0\\
+0 & 0 & -1 \end{array}\right), \left(\begin{array}{ccc}
+1 & 0 & 0 \\
+0 & -1 & 0\\
+0 & 0 & -1 \end{array}\right)\right\}.
+\end{split} 
 \end{equation}
 
-Therefore, there are eight possibilities of $R_{X}, R_{X}=Q_{M_{A}}PQ_{M_{B}}^T$. Then, from \ref{equ17b}, eight $t_{X}$ corresponding to $R_{X}$ can be directly found. Furthermore, eight candidate $R_{Y} and t_{Y}$ can be found. At last, there are eight possibilities of solution $(X_{i},Y_{i}), i = 1,\dots,8$.
-where,
+Therefore, there are eight candidates of $R_{X}$ which can be calculated via $R_{X}=Q_{M_{A}}PQ_{M_{B}}^T$. Then the corresponding $t_{X}$ can be obtained  from Eq.(\ref{equ17b}). Given known $X$, $Y$ can be solved for by $Y = M_A^{-1}XM_B^{-1}$. At last, eight candidate pairs of  $\{X_{k},Y_{k}\}$ can be obtained as: 
 
 \begin{equation}\label{equ20}
 \begin{array}{cc}
-X_{i}= \left( \begin{array}{cc}
-       R_{X} & t_{X} \\
+X_{k}= \left( \begin{array}{cc}
+       R_{X_k} & t_{X_k} \\
        \mathbf{0}^{T} & \mathbf{1}\\
 \end{array} \right),&
-Y_{i}= \left( \begin{array}{cc}
-       R_{Y} & t_{Y} \\
+Y_{k}= \left( \begin{array}{cc}
+       R_{Y_k} & t_{Y_k} \\
        \mathbf{0}^{T} & \mathbf{1}\\
 \end{array} \right)
 \end{array}
 \end{equation}
+where $k = 1,2,...,8$.
 
-Based on the screw theory, it is known that a homogeneous transformation $H$ can be written in the form with four parameters $(\theta,d,\mathbf{n},\mathbf{p})$.
+The problem then becomes selecting the best pair of $\{X_k, Y_k\}$ from the eight candidates. 
+Based on the screw theory (references?), it is known that a homogeneous transformation $H$ can be expressed by the four screw parameters $(\theta,d,\mathbf{n},\mathbf{p})$ as:
 
 \begin{equation}\label{equ21}
 H = \left( \begin{array}{cc}
@@ -346,70 +336,71 @@ H = \left( \begin{array}{cc}
        \mathbf{0}^{T} & \mathbf{1}
 \end{array} \right)
 \end{equation}
+where $\theta$, $d$, $\mathbf{n}$ and $\mathbf{p}$ are ?.
 
-$AX=YB$ can be written as $AX=X(X^{-1}YB)$ and let $B' = X^{-1}YB$ . In the form $AX=XB'$, there exit two Euclidean-Group invariant relationships for one of eight groups of $(A_{i},B_{i}^k)( i = 1,\cdots,n; k=1,\dots,8), B_i^{k} = X^{-1}YB_i$ as follows,
+Moreover, $AX_k = Y_k B$ can be written as $AX_k=X_k(X_k^{-1}Y_kB)$. If define $B^k = X_k^{-1}Y_kB$, then we will have $AX_k=X_kB^k$. There exist two Euclidean-Group invariant relationships for each pair of $(A_{i},B_{i}^k)( i = 1,\cdots,n; k=1,\dots,8)$ as follows:
 
 \begin{equation}\label{equ22}
     \theta_{A_{i}}=\theta_{B_{i}^{k}}, d_{A_{i}}=d_{B_{i}^{k}}
 \end{equation}
 
-From among the four pairs $(X_{i},Y_{i})$, we can find a correct solution to minimize the absolute deviations,
+Among the four pairs $(X_{k},Y_{k})$, one can find an optimal solution which  minimizes the cost function defined as:
 
 \begin{equation}\label{equ23}
-    (X,Y) = \mathop{\mathbf{arg}min}_{(X_{i},Y_{i})}\frac{1}{n} \sum_{i=1}^{n} (\parallel \theta_{A_{i}}-\theta_{B_{i}^{k}} \parallel + \parallel d_{A_{i}}-d_{B_{i}^{k}} \parallel)
+    (X,Y) = \mathop{\mathbf{arg}min}_{(X_{k},Y_{k})}\frac{1}{n} \sum_{i=1}^{n} (\parallel \theta_{A_{i}}-\theta_{B_{i}^{k}} \parallel + \parallel d_{A_{i}}-d_{B_{i}^{k}} \parallel)
 \end{equation}
 
-\section{Solution with unknown correspondence of $A_{i}$ and $B_{i}^{k}$}
+\section{Solution with unknown correspondence between $A_{i}$ and $B_{i}^{k}$}
 \label{sect3}
 
-In most cases, the homogeneous transformations with $As$ and $Bs$ are given based on the data from different sensors. Due to asynchronous timing of the measurement transmissions, the correspondences between $A_{i}$ and $B_{i}^{k}$ is unknown. The advantage of the above probabilistic solution lies on that $X$ and $Y$ can be calculated even if without any a priori knowledge of the correspondence. However, there are still eight possible candidate results $(X_{i},Y_{i})$. Using Euclidean-Group invariants, it is straightforward to determine which pair is the correct one if the correspondence between $A_{i}$ and $B_{i}^{k}$ can be known.
+In most cases, the homogeneous transformations  $\{A_i\}$ and $\{B_j\}$ are calculated based on the data obtained from different sensors. Due to the asynchronous timing of the sensor readings, the correspondences between $\{A_{i}\}$ and $\{B_{j}^{k}\}$ is usually unknown. This section deals with the case where there is a shift between $\{A_i\}$ and $\{B_j\}$, and Euclidean-Group invariants are used to recover the correspondence between the data streams. {\color{red}The advantage of the above probabilistic solution lies in that $X$ and $Y$ can be calculated even if there is not a priori knowledge of the correspondence.} However, there are still eight possible candidates of $(X_{k},Y_{k})$ to choose from and by using Euclidean-Group invariants, it is straightforward to determine which pair is the optimal one if the correspondence between $A_{i}$ and $B_{i}^{k}$ can be known.
 
-The Discrete Fourier Transform (DFT) decomposes a time-domain signal into its constituent frequencies. The input is a finite list of equally spaced samples of a function. Given a discrete signal consisting of a sequence of $N$ complex numbers $x_{0},x_{1},\cdots,x_{N-1}$, the DFT is denoted by $X_{\kappa} = \mathcal{F}{x_{n}}$
+The Discrete Fourier Transform (DFT) decomposes a time-domain signal into its constituent frequencies. The input is a finite list of equally spaced samples of a function. Given a discrete signal consisting of a sequence of $N$ complex numbers $x_{0},x_{1},\cdots,x_{N-1}$, the DFT is denoted by $X_{\kappa} = \mathcal{F}({x_{n}})$ as:
 
 \begin{equation}\label{equ21}
-    X_{\kappa} = \sum_{n=0}^{N-1}x_{n}\cdot exp(-i\frac{2\pi}{N}n\kappa)
+    X_{\kappa} = \sum_{n=0}^{N-1}x_{n}\cdot exp(-i\frac{2\pi}{N}n\kappa).
 \end{equation}
-The Inverse Discrete Fourier transform (IDFT) denoted by
+The Inverse Discrete Fourier transform (IDFT) is denoted as:
 
 \begin{equation}\label{equ22}
-    x_{n} = \frac{1}{N}\sum_{n=0}^{N-1}X_{\kappa}\cdot exp(i\frac{2\pi}{N}n\kappa)
+    x_{n} = \frac{1}{N}\sum_{n=0}^{N-1}X_{\kappa}\cdot exp(i\frac{2\pi}{N}n\kappa).
 \end{equation}
 
 The discrete convolution of two sequences $f_{n}$ and $g_{n}$  are defined
 
 \begin{equation}\label{equ23}
-    (f \ast g)(\tau)=\sum_{i=0}^{N}f(t_{i})g(t_{i}-\tau)
+    (f \ast g)(\tau)=\sum_{i=0}^{N}f(t_{i})g(t_{i}-\tau).
 \end{equation}
 
-In convolution theorem, the Fourier transform of a convolution is the product of the Fourier transforms, namely,
+In the convolution theorem, the Fourier transform of a convolution is the product of the Fourier transforms, namely:
 
 \begin{equation}\label{equ24}
-    f \ast g = \mathcal{F}^{-1} [\mathcal{F}(f) \cdot \mathcal{F}(g)]
+    f \ast g = \mathcal{F}^{-1} [\mathcal{F}(f) \cdot \mathcal{F}(g)].
 \end{equation}
-
-The correlation theorem indicates that the correlation function, $Corr(f,g)$, will have a large value at a shift vector if the two sequences $f$ and $g$ contain similar features. The correlation can be obtained based on the convolution theorem. The DFT of the correlation $Corr(f,g)$ is equal to the product of the DFT of a sequence $f_{n}$ and the complex conjugate $\mathcal{F}^{*}$ of the DFT of the other sequence $g_n$.
+ 
+The correlation theorem indicates that the correlation function, $Corr(f,g)$, will possess a larger value for a shift vector where the two sequences $f_n$ and $g_n$ can share more similar features. The correlation can be obtained based on the convolution theorem. The DFT of $Corr(f,g)$ is equal to the product of the DFT of $f_{n}$ and the complex conjugate $\mathcal{F}^{*}$ of the DFT of $g_n$:
 
 \begin{equation}\label{equ25}
-    Corr(f,g)=f \star g = \mathcal{F}^{-1}[\mathcal{F}(f) \cdot (\mathcal{F}(g))^{*}]
+    Corr(f,g)=f \star g = \mathcal{F}^{-1}[\mathcal{F}(f) \cdot (\mathcal{F}(g))^{*}].
 \end{equation}
 
-Compared with the standard time-domain convolution algorithm, the complexity of the convolution by multiplication in the frequency domain is significantly reduced with the help of the convolution theorem and the fast Fourier transform (FFT).
+Compared to the standard time-domain convolution algorithm, the complexity of the convolution by multiplication in the frequency domain is significantly reduced with the help of the convolution theorem and the fast Fourier transform (FFT).
 
-There are two sequences $\theta_{A_{i}}$ and $\theta_{B_{i}^{k}}$ from each pair $(A_{i},B_{i}^{k})$. For homogeneous transformations from which the range of $\theta$ can vary, two sequences $\theta_{Ai}$ and $\theta_{B_{i}^{k}}$ can be first normalized.
+Given two sequences $\{\theta_{A_{i}}\}$ and $\{\theta_{B_{i}^{k}}\}$ corresponding to  $\{A_{i}\}$ and $\{B_{i}^{k}\}$, the shift that is needed to recover the data correspondence is obtained as below. 
+Firstly, $\theta_{Ai}$ and $\theta_{B_{i}^{k}}$ are normalized as:
 
 \begin{equation}\label{equ26}
     \theta_{1}=\frac{(\theta_{A_{i}}-\mu_{A_{i}})}{\sigma_{A_{i}}}, \theta_{2}=\frac{(\theta_{B_{i}^{k}}-\mu_{B_{i}^{k}})}{\sigma_{B_{i}^{k}}}
 \end{equation}
+where $\mu_{A_{i}}(\mu_{B_{i}^{k}})$ is the mean of $\theta_{A_{i}}(\theta_{B_{i}^{k}})$ and $\sigma_{A_{i}}(\sigma_{B_{i}^{k}})$ is the standard deviation.
 
-where $\mu_{A_{i}}(\mu_{B_{i}^{k}})$ is the average of $\theta_{A_{i}}(\theta_{B_{i}^{k}})$ and $\sigma_{A_{i}}(\sigma_{B_{i}^{k}})$ is the standard deviation.
-
-Here, the correlation function $Corr(\theta_{1},\theta_{2})$  is the function of the time sequence index $(n)$ which describes the probability that these two sequences are separated by this particular unit. The location of the function maximum indicates the amount of shift, $\tau_{shift}$, between the two sequence $\theta_{A_{i}}$ and $\theta_{B_{i}^{k}}$.
+Here, the correlation function $Corr(\theta_{1},\theta_{2})$  is the function of the time sequence index $(n)$ which describes the probability that these two sequences are separated by this particular unit. The index corresponding to the maximum of $Corr(\theta_{1},\theta_{2})$  indicates the amount of shift $\tau_{shift}$ between the $\{\theta_{A_{i}}\}$ and $\{\theta_{B_{i}^{k}}\}$.
 
 \begin{equation}\label{equ27}
     \tau_{shift} = \mathop{\mathbf{arg}max}_{index}(Corr(\theta_{1},\theta_{2}))
 \end{equation}
 
-Therefore, the correspondence between the two sequences can be found. The data of $\theta_{A_{i}}$ or $d_{A_{i}}$ are shifted by $-\tau_{shift}$ to obtain a sequence of new pairs $(\theta_{A_{i}}(i+\tau_{shift}),\theta_{B_{i}^{k}})$ and $(d_{A_{i}}(i+\tau_{shift}),d_{B_{i}^{k}})$, $max(i,i+\tau_{shift})\leq i \leq min(i,i+\tau_{shift})$. The data stream can be shifted to reach correspondence once the shift is found and the correct solution can also be found by minimizing the absolute deviations based on Euclidean-Group invariants relations using the method in Section \ref{sect2}.
+Therefore, the correspondence between the two sequences can be found. {\color{red}The data of $\theta_{A_{i}}$ or $d_{A_{i}}$ are shifted by $-\tau_{shift}$ to obtain a sequence of new pairs $(\theta_{A_{i}}(i+\tau_{shift}),\theta_{B_{i}^{k}})$ and $(d_{A_{i}}(i+\tau_{shift}),d_{B_{i}^{k}})$, $max(i,i+\tau_{shift})\leq i \leq min(i,i+\tau_{shift})$ TO BE REPHRASED}. The data stream can be shifted back to regain correspondence once the shift is computed and the correct solution of $X$ and $Y$ can also be recovered by minimizing the cost function Eq.(\ref{equ23}) using Euclidean-Group invariants as shown in Section \ref{sect2}.
 
 
 \section{Simulation Studies}
@@ -420,7 +411,7 @@ Therefore, the correspondence between the two sequences can be found. The data o
 \centering
 \includegraphics[width=2.6in]{fig3.eps}
 \caption{
-$Bs$ are randomly generated using  $B_i=B_{init}exp(\widehat{\mathbf{x}})$,$\mathbf{x}=(x_1,\dots,x_6)^T $ \ $x_i \sim \mathcal{N}(0,0.1)$.
+$Bs$ are randomly generated using  $B_i=B_{init}exp(\widehat{\mathbf{x}})$,$\mathbf{x}=(x_1,\dots,x_6)^T $ where $x_i \sim \mathcal{N}(0,0.1)$.
 }
 \label{fig2}
 \end{figure}
