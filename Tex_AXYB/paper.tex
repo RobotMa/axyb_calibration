@@ -421,20 +421,20 @@ The errors of translation and rotations versus the shift between data streams $A
 \centering
 \includegraphics[width=3.2in]{fig2.eps}
 \caption{
-The errors of translation and rotations versus noise covariance exerted to the data $B$".
+The errors of translation and rotations versus noise covariance exerted to the data $B$.
 }
 \label{fig3}
 \end{figure}
 
 
-For the numerical experiments in this section, the rotational and translational errors for $X$ and $Y$ are measured as  $Error(R_X) = \parallel log^{\vee} (R_{X_{Solved}}^{T}R_{X_{true}})\parallel$, $Error(t_X) = \parallel (t_{X_{Solved}}-t_{X_{true}})\parallel$, $Error(R_Y) = \parallel log^{\vee} (R_{Y_{Solved}}^{T}R_{Y_{true}})\parallel$ and $Error(t_Y) = \parallel (t_{Y_{Solved}}-t_{Y_{true}})\parallel$ respectively.
+For the numerical experiments in this section, the rotational and translational errors for $X$ and $Y$ are measured as  $Error(R_X) = \parallel log^{\vee} (R_{X_{Solved}}^{T}R_{X_{true}})\parallel$, $Error(t_X) = \parallel t_{X_{Solved}}-t_{X_{true}} \parallel$, $Error(R_Y) = \parallel log^{\vee} (R_{Y_{Solved}}^{T}R_{Y_{true}})\parallel$ and $Error(t_Y) = \parallel t_{Y_{Solved}}-t_{Y_{true}} \parallel$ respectively.
 
 \begin{center}
 \begin{figure}
 \centering
 \includegraphics[width=3.2in]{fig4.eps}
 \caption{
-The solved $X$ (in blue) and the actual $X$ (in red) in 5 trial simulation with noise covariance 0.01 and shift 2.
+The solved $X$ (in blue) and the actual $X$ (in red) for 5 trials of simulation with noise covariance 0.01 and shift 2.
 }
 \label{fig4}
 \end{figure}
@@ -445,7 +445,7 @@ The solved $X$ (in blue) and the actual $X$ (in red) in 5 trial simulation with 
 \centering
 \includegraphics[width=3.2in]{fig5.eps}
 \caption{
-The solved $Y$ (in blue) and the actual $Y$ (in red) in 5 trial simulation with noise covariance 0.01 and shift 2.
+The solved $Y$ (in blue) and the actual $Y$ (in red) for 5 trials of simulation with noise covariance 0.01 and shift 2.
 }
 \label{fig5}
 \end{figure}
@@ -464,14 +464,14 @@ The data stream $\{A_i\}$ can be easily obtained as described above. After emplo
 If the data streams $\{A_i\}$ were shifted by $m$ units compared to the data stream $\{B_i\}$, then the maximum of cross correlation can be used to recover the shift. Once done, we shift the data stream $\{A_i\}$ back to recover the correspondence, which can help find a correct solution satisfying the Euclidean-Group invariants using Eq.(\ref{equ24}). Therefore, only one pair of $(X_k, Y_k)$ can be picked to minimize the cost function. In Fig.~\ref{fig2}, as the shift between $\{A_i\}$ and $\{B_i\}$ increases, the errors of translations and rotations increment in general.
 
 
-To test the robustness of the proposed method, noises are exerted to $\{B_i\}$ by $B_i^{noise} = B_i \text{exp}(\mathbf{\widehat{x}}_{noise})$, where each of Lie Algebra element of $\mathbf{x}){noise}$ is Gaussian distribution $N \sim (\mu_{noise},\sigma_{noise})$. In Fig.~\ref{fig3}, As $\sigma_{noise}$ varies from $0.01$ to $0.08$, the errors of $R_X$, $R_Y$, $t_X$, and $t_Y$ are increased as shown in the box-and-whisker plot. There are several outliers not included between the whiskers. The median data can be used as the final solved $X$ and $Y$. Fig.~\ref{fig4} and Fig.~\ref{fig5} show the solved ($X$,$Y$) in blue and actual ($X$,$Y$) in red in coordinate frame.
+To test the robustness of the proposed method, noises are exerted to $\{B_i\}$ by the data stream $B_i^{noise} = B_i \text{exp}(\mathbf{\widehat{x}}_{noise})$, where each element of the Lie Algebra $\mathbf{x}_{noise}$ is a Gaussian distribution as $N \sim (\mu_{noise},\sigma_{noise})$. In Fig.~\ref{fig3}, as $\sigma_{noise}$ increments from $0.01$ to $0.08$, the errors of $R_X$, $R_Y$, $t_X$, and $t_Y$ increase as shown in the box-and-whisker plot. There are several outliers outside the whiskers. The median value can be used as the final solved $X$ and $Y$. Fig.~\ref{fig4} and Fig.~\ref{fig5} show the solved ($X$,$Y$)s in blue and the actual ($X$,$Y$) in red in the coordinate frame.
 
 
 
 \section{Conclusions}
 \label{sect5}
 
-In this paper, we developed a probabilistic approach to simultaneously obtain  $X$ and $Y$ in $AX=YB$ sensor calibration problem. Without a prior knowledge of the correspondence between $A$ and $B$, in the algorithm the probability theory in Lie group is used to constrain the solution of $X$ and $Y$ to eight candidates. As for the shifted data stream of $A$ and $B$, using the correlation theorem with Euclidean group invariants,the correspondence is recovered to determine the correct solution from eight candidates. In numeric simulation, the method perform well with different data samples.
+In this paper, we developed a probabilistic approach to simultaneously obtain  $X$ and $Y$ in $AX=YB$ sensor calibration problem. Without a prior knowledge of the correspondence between $\{A_i\}$ and $\{B_j\}$, the proposed probabilistic method on Lie group is used to constrain the possible solutions of $X$ and $Y$ to eight pairs of candidates. Given shifted data streams of $\{A_{i+s}\}$ and $\{B_i\}$, using the correlation theorem with Euclidean group invariants,the correspondence is recovered to determine the correct solution among the eight candidates. In the numerical simulation, the method performs well with different sets of data samples.
 %\section{Conclusion}
 % conference papers do not normally have an appendix
 
