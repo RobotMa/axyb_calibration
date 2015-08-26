@@ -147,36 +147,34 @@ An often used formulation of sensor calibration in robotics and computer vision 
 \entry{\textcolor{blue}{Note}}{\textcolor{blue}{For SE(3) and se(3) maybe make the inline matrices into actual matrices, it looks a little strange to me the way they are currently. Also, possibly consider changing $\Xi$ to $\mathfrak{h}$. Also, can you align the beginning of all of the second entries?}}
 \entry{$SO(3)$}{$SO(3) \doteq \{R \, | \, RR^{T} = R^{T}R = \mathbb{I}$\textbf{\textcolor{blue}{,}} %and
  $\det(R) = 1$\textbf{\textcolor{blue}{,}} where $R \in \mathbb{R}^{3 \times 3}\}$}
-\entry{$SE(3)$}{$SE(3) \doteq \{H \, | \, H=\left( R \;   \ttt ; {\bf 0}^{T} 1 \right) \in \mathbb{R}^{4 \time 4},$ where $R \in SO(3)$ and $\ttt \in \mathbb{R}^{3}\}$ }
+\entry{$SE(3)$}{$SE(3) \doteq \{H \, | \, H=\left( R \;   \ttt ; {\bf 0}^{T} 1 \right) \in \mathbb{R}^{4 \times 4},$ where $R \in SO(3)$ and $\ttt \in \mathbb{R}^{3}\}$ }
 \entry{$so(3)$}{$so(3) \doteq \{\Omega \,| \, R = exp(\Omega)$, where $\Omega \in \mathbb{R}^{3 \times 3}$ and $R \in SO(3)$ $\}$}
 \entry{$se(3)$}{$se(3) \doteq \{\Xi \, | \, H = exp(\Xi)$, where $\Xi =\left(\Omega \; \xi; \; {\bf 0}^{T} 0 \right)$ and $\Omega \in \textcolor{blue}{so}%SO
 (3), \, \xi \in \mathbb{R}^{3}, \, H \in SE(3) \}$}
-\entry{$exp()$}{The matrix exponential of a square matrix. }
-\entry{$log()$}{The matrix logarithm of a square matrix}
+\entry{$\exp()$}{The matrix exponential of a square matrix. }
+\entry{$\log()$}{The matrix logarithm of a square matrix}
 \entry{$H$}{A general rigid body transformation ($H \in SE(3)$) }
 \entry{$\mathfrak{H}$}{ If $H$ is an element of a Lie Group, $\mathfrak{H}$ is the corresponding element in the Lie algebra}
 \entry{$\mathbb{O}_n$}{$n \times n$ zero matrix}
 \entry{$\mathbb{I}_n$}{$n \times n$ identity matrix}
 \entry{$\{E_i\}$}{the set of ``natural" basis elements for Lie algebra}
 \entry{$^\vee$}{For Lie algebra, the ``vee" operator is defined such that $\left(\displaystyle\sum\limits_{i=1}^n x_iE_i\right)^{\vee}\doteq(x_1,x_2,...,x_n)^T$ where $n = 3$ for $so(3)$ and $n = 6$ for $se(3)$}
-\entry{$\hat{}$}{For Lie algebra, the ``hat" operator is the inverse of the ``vee" operator. $\widehat{(x_1,x_2,...,x_n)^T} \doteq \left( \displaystyle\sum\limits_{i=1}^n x_iE_i \right)$}
+\entry{$\widehat{}$}{For Lie algebra, the ``hat" operator is the inverse of the ``vee" operator. $\widehat{(x_1,x_2,...,x_n)^T} \doteq \left( \displaystyle\sum\limits_{i=1}^n x_iE_i \right)$; For a vector ${\bf n} \in \mathbb{R}^{3 \times 1}$. $\widehat{\bf n}$ represents the corresponding skew symmetric matrix }
 \entry{$\circ$}{The operator defined for the group product}
 \entry{$\odot$}{The operator defined for the quaternion product}
 \entry{$\hat{\odot}$}{The operator defined for the dual quaternion product}
 \entry{$\otimes$}{The operator defined for the Kronecker product}
 \entry{$vec$}{The ``vec'' operator is defined such that $vec(A) = [a_{11},...,a_{1m},a_{21},...,a_{2m},...,a_{n1},...,a_{nm}]^{T}$ for $A = [a_{ij}] \in \mathbb{R}^{m \times n}$}
-\entry{\textcolor{blue}{Remark:}}{\textcolor{blue}{I would remove the next entry, it will lead to confusion and generally isn't necessary.}}
-\entry{${\bf p}$}{For $P\in G$ (where $G$ is a Lie group, e.g. $SE(3)$ or $SO(3)$), ${\bf p}=(p_1,p_2,...,p_n)^T=\log^{\vee}(P)$}
 \entry{$A_i$}{A rigid body transformation ($A_i \in SE(3)$), associated with one sensor measurement source}
 \entry{$B_i$}{A rigid body transformation ($B_i \in SE(3)$), usually associated with a different sensor measurement source}
-\entry{$X$}{The rigid body transformation ($\textcolor{blue}{X} %X_i 
+\entry{$X$}{The rigid body transformation ($X %X_i 
 \in SE(3)$) that relates $A_i$ to $B_i$}
 \entry{$R_{H}$}{The rotation matrix of any general transformation matrix $H \in SE(3)$}
 \entry{$\ttt_{H}$}{The translation vector of any general transformation matrix $H \in SE(3)$}
 \entry{$\nn_{H}$}{The axis of rotation for $R_{H}$}
-\entry{$\tilde{\nn}$}{The skew-symmetric representation of the axis of rotation ($\nn_{H}$) \textcolor{blue}{If you use $\Omega$ earlier you should try to keep some continuity}}
+\entry{$\widetilde{\nn}$}{The skew-symmetric representation of the axis of rotation ($\nn_{H}$) \textcolor{blue}{If you use $\Omega$ earlier you should try to keep some continuity}}
 \entry{$\theta_{H}$}{The angle of rotation for $R_{H}$ about $\nn_{H}$}
-\entry{$\rho$}{A probability distribution of $H\in G$ on SE(3)\textcolor{blue}{G not well-defined here}}
+\entry{$\rho$}{A probability distribution of $H\in G$, where G $\subset$ SE(3)}
 \entry{$M$}{For $\rho$, $M$ is the mean of the distribution}
 \entry{$\Sigma$}{For $\rho$, $\Sigma$ is the covariance of the distribution about the mean, $M$}
 \entry{$Ad$}{For the Lie group $G$ and the Lie algebra $\mathfrak{G}$, the adjoint operator is the transformation\\ Ad: $G \rightarrow$ GL($\mathfrak{G}$), defined as\\ Ad($H_1$)$\mathfrak{H}_2 \doteq \frac{d}{dt}(H_1 \circ e^{t \mathfrak{H}_2} \circ H_1^{-1})$}
@@ -189,18 +187,18 @@ An often used formulation of sensor calibration in robotics and computer vision 
 \label{Intro}
 \textcolor{blue}{General Note: Shouldn't alway equations be numbered in an ASME document? It may be IEEE, but I'm just checking}\\
 
-In the fields of robotics and computer vision, sensor calibration problems are often codified using the ``AX=XB'' formulation, (\textcolor{blue}{Figs.~\ref{AXXBfig1}--\ref{AXXBfig3}}%Fig.\ref{AXXBfig1}, Fig.\ref{AXXBfig2}, Fig.\ref{AXXBfig3}
-). Example applications include camera calibration, Cartesian robot hand calibration, robot eye-to-hand calibration \cite{tsai1989new}, aerial vehicle sensor calibration \cite{darius1}, image-guided therapy (IGT) sensor calibration and endoscopic surgery \cite{schmidt2003robust}. An alternative name that describes this system is ``hand-eye'' calibration. Several methods \textcolor{blue}{exist} %have existed 
+In the fields of robotics and computer vision, sensor calibration problems are often codified using the ``AX=XB'' formulation, (Figs.~\ref{AXXBfig1}--\ref{AXXBfig3}%Fig.\ref{AXXBfig1}, Fig.\ref{AXXBfig2}, Fig.\ref{AXXBfig3}
+). Example applications include camera calibration, Cartesian robot hand calibration, robot eye-to-hand calibration \cite{tsai1989new}, aerial vehicle sensor calibration \cite{darius1}, image-guided therapy (IGT) sensor calibration and endoscopic surgery \cite{schmidt2003robust}. An alternative name that describes this system is ``hand-eye'' calibration. Several methods exist %have existed 
 in the literature that can perform hand-eye calibration without directly dealing with the $AX=XB$ formulation such as \cite{malm2000new,heller2012branch,ruland2012globally,wu2014hand,kim,liu2015calibration}. %Camera calibration is also integrated into hand-eye calibration  in some works \cite{,,,}. 
-Another problem, called the robot-world and hand-eye calibration, deals with the case where an additional calibration of the robot pose with respect to the world \textcolor{blue}{frame} is needed. This calibration technique is formulated as the ``AX=YB'' problem and multiple methods have been \textcolor{blue}{developed} %brought up 
+Another problem, called the robot-world and hand-eye calibration, deals with the case where an additional calibration of the robot pose with respect to the world frame is needed. This calibration technique is formulated as the ``AX=YB'' problem and multiple methods have been developed %brought up 
 such as \cite{zhuang1994simultaneous,dornaika1998simultaneous,hirsh2001iterative,li2010simultaneous,ernst2012non,heller2014hand}.
 Furthermore, a hand-eye, tool-flange, and robot-robot calibration problem is formulated as the ``AXB = YCZ'' problem in \cite{wang2014towards}.
 
-In the ``AX=XB'' formulation $A$, $X$, and $B$ are each homogeneous transformations (i.e., elements of the special Euclidean group, $SE(3)$) with each pair of measurements $(A,B)$ coming from sensors such as cameras, ultrasound probes, optical, or electromagnetic pose tracking systems, among others. $X$ is the unknown rigid-body \textcolor{blue}{transformation} %motion 
+In the ``AX=XB'' formulation $A$, $X$, and $B$ are each homogeneous transformations (i.e., elements of the special Euclidean group, $SE(3)$) with each pair of measurements $(A,B)$ coming from sensors such as cameras, ultrasound probes, optical, or electromagnetic pose tracking systems, among others. $X$ is the unknown rigid-body transformation %motion 
 that is found as a result of solving $AX=XB$. It is well known that it is not possible to solve for
 a unique $X$ from a single pair of exact $(A,B)$, but if there are two instances of independent exact measurements, $(A_1,B_1)$ and $(A_2,B_2)$ satisfying certain constraints,
-then the problem can be solved \textcolor{blue}{for a unique, fixed $X$}. However, in practice, sensor noise is always present, and an exact solution is not possible. The goal, therefore, becomes one of finding
-an $X$ with the least error given corresponding noisy pairs \textcolor{blue}{of data} $(A_i, B_i)$ for i = 1,2, \ldots,n.
+then the problem can be solved for a unique, fixed $X$. However, in practice, sensor noise is always present, and an exact solution is not possible. The goal, therefore, becomes one of finding
+an $X$ with the least error given corresponding noisy pairs of data $(A_i, B_i)$ for i = 1,2, \ldots,n.
 
 
 \section{THE $AX=XB$ FORMULATION}
@@ -224,7 +222,7 @@ Given:
 A X = X B
 \label{mainaxxb}
 \end{equation}
-where $A,  B, X \in SE(3)$, it is well known that, in non-degenerate cases, there are two unspecified degrees of freedom to the problem for a single pair of sensor measurements, $(A,B)$. This situation is rectified by considering two pairs of exact measurements of the form in Eq.~(\ref{mainaxxb}), i.e., $ {A_1}X=X{B_1} {\rm \,\, and \,\,} {A_2}X = X{B_2} $, provided that some mild conditions are observed for the selection of the pairs $(A_1,B_1)$ and $(A_2,B_2)$ \cite{chen91,park1994robot,shiu1989calibration}. Note that $(A_i, B_i)$ here are relative transformation data pairs, so in real experiments at least 3 absolute transformation data pairs \textcolor{blue}{have to} %should 
+where $A,  B, X \in SE(3)$, it is well known that, in non-degenerate cases, there are two unspecified degrees of freedom to the problem for a single pair of sensor measurements, $(A,B)$. This situation is rectified by considering two pairs of exact measurements of the form in Eq.~(\ref{mainaxxb}), i.e., $ {A_1}X=X{B_1} {\rm \,\, and \,\,} {A_2}X = X{B_2} $, provided that some mild conditions are observed for the selection of the pairs $(A_1,B_1)$ and $(A_2,B_2)$ \cite{chen91,park1994robot,shiu1989calibration}. Note that $(A_i, B_i)$ here are relative transformation data pairs, so in real experiments at least 3 absolute transformation data pairs have to 
 be measured. Additionally, if there is sensor measurement error, then it may not be possible to find compatible pairs that reproduce the exact value of $X$. For this reason, minimization and least squares approaches are often taken over large sets of $A$s and $B$s.
 
 \begin{figure}[t]
@@ -238,7 +236,7 @@ be measured. Additionally, if there is sensor measurement error, then it may not
 \begin{figure}[t]
 \centering
 \includegraphics[width=3.3in]{Photos/UR5_Frame_Final.jpg}
-\caption{\textcolor{blue}{Capitalization style changed midway through, I would use all lower case besides beginning of sentences} Application of AX=XB in Ultrasound Sensor Calibration: An Ultrasound Probe Is Attached to the End-effector and the Calibration Phantom Is Used for Ultrasound Probe Calibration. (The UR5 robot pictured above is owned by Professor Emad Boctor of Johns Hopkins University)}
+\caption{Application of AX=XB in ultrasound sensor calibration: an ultrasound probe is attached to the end-effector and the calibration phantom is used for ultrasound probe calibration. (The UR5 robot pictured above is owned by Professor Emad Boctor of Johns Hopkins University)}
 \label{AXXBfig2}
 \end{figure}
 
@@ -246,7 +244,7 @@ be measured. Additionally, if there is sensor measurement error, then it may not
 \centering
 \includegraphics[width=3.3in]{Photos/Robot_Patern.jpg}
 \caption{\textcolor{blue}{Labels are hard to see in the picture. Also, you change the capitalization style midway through} Application of AX=XB in Humanoid Camera Sensor Calibration: The Humanoid Robot Named Atlas Designed by %the Company
- \textit{Boston Dynamics} Requires Head-Body Calibration before Turning the Knob. Different pairs of $(A_i, B_i)$ are measured by changing the head pose of the humanoid robot. (This picture was generated using the open-source robot simulation software Gazebo)}
+ \textit{Boston Dynamics} Requires head-body calibration before turning the knob. Different pairs of $(A_i, B_i)$ are measured by changing the head pose of the humanoid robot. (This picture was generated using the open-source robot simulation software Gazebo)}
 \label{AXXBfig3}
 \end{figure}
 
@@ -283,7 +281,7 @@ is computed for some distance metric $d(\cdot,\cdot)$ on $SE(3)$ and $\{w_i\}$ i
 %that the set $\{A_i\}$ is spread out over a variety of positions and orientations, and likewise for $\{B_i\}$, so that the
 %resulting $X$ is robust to measurement errors. 
 This chapter is organized as follows. 
-In Section~\ref{sec:sol_methods}, a detailed review is given for the existing methods that solve the $AX=XB$ problem using pairs of $\{A_{i}, B_{i}\}$ with correspondence. The notation used throughout the literature is not consistent and the authors \textcolor{blue}{strove} %tried their best 
+In Section~\ref{sec:sol_methods}, a detailed review is given for the existing methods that solve the $AX=XB$ problem using pairs of $\{A_{i}, B_{i}\}$ with correspondence. The notation used throughout the literature is not consistent and the authors strove %tried their best 
 to standardize the notation used across the reviewed methods
 \textcolor{blue}{to provide the readers with a straightforward and consistent representation of the methods and their relationships.} %so that readers can have a straightforward and consistent understanding of the methods and their relationships. 
 Some approaches are preferable under certain circumstances and their advantages and disadvantages are also highlighted. 
@@ -323,16 +321,16 @@ The rotation matrix $R_{X}$ is solved for first and the translation is obtained 
 The closed form expression for $R_{X}$ is:
 \textcolor{blue}{Note: It is hard to \~n in the below equation and also the 2nd subscript on R$_X$}
 \begin{equation}
-R_{X} = e^{\tilde{\nn}_{A}\beta}R_{X_{P}}
+R_{X} = \exp{(\widetilde{\nn}_{A}\beta)}R_{X_{P}}
 \label{RotationCheng}
 \end{equation}
 where 
 \begin{center}
-$R_{X_{p}} =  e^{\tilde{\nn}_{X}\theta_{X}}$\\
+$R_{X_{p}} =  \exp{(\widetilde{\nn}_{X}\theta_{X})}$\\
 $\nn_{X} = \nn_{B} \times \nn_{A}$\\
 $\theta_{X} = \rm atan2(|\nn_{B} \times \nn_{A}|,\nn_{B} \cdot \nn_{A})$\\
 \end{center}
-and $\beta$ is an arbitrary angle. Given a vector $\nn = \left( n_{1}, n_{2}, n_{3} \right)^{T} \in \mathbb{R}^{3}$, $\tilde{\nn}$ is a skew-symmetric matrix defined as below:\\
+and $\beta$ is an arbitrary angle. Given a vector $\nn = \left( n_{1}, n_{2}, n_{3} \right)^{T} \in \mathbb{R}^{3}$, $\widetilde{\nn}$ is a skew-symmetric matrix defined as below:\\
 \begin{equation}
 \tilde{\nn}
 =
@@ -540,7 +538,7 @@ Differentiating the error function with respect to $\qq_{X}$, the 1st order nece
 It can be shown that the unit quaternion $\qq_{X}$ that minimizes $f$ is the eigenvector of $\tilde{K}$ associated with its smallest positive eigenvalue. After recovering $\qq_{X}$ (or equivalently $R_{X}$), $\ttt_{X}$ can be recovered using the least square techniques introduced in previous methods.
 
 \subsection{Dual Quaternion Method }
-The dual quaternion method proposed by Daniilidis and Bayro-Corrochano \cite{daniilidis1996dual} (Daniilidis \cite{daniilidis1999hand}) treats the rotation and translation parts of the matrix X in a unified way and facilitates a new simultaneous solution of X using SVD. To begin, Eq.~(\ref{mainaxxb}) is transformed into an equation \textcolor{blue}{of dual quaternions:} %in dual quaternion form as follows:
+The dual quaternion method proposed by Daniilidis and Bayro-Corrochano \cite{daniilidis1996dual} (Daniilidis \cite{daniilidis1999hand}) treats the rotation and translation parts of the matrix X in a unified way and facilitates a new simultaneous solution of X using SVD. To begin, Eq.~(\ref{mainaxxb}) is transformed into an equation of dual quaternions: %in dual quaternion form as follows:
 \begin{equation}
 AX = XB 
 \; \;
@@ -551,7 +549,7 @@ AX = XB
 \end{equation}
 where $\check{a}$, $\check{b}$ and $\check{q}$ are the dual quaternions that represent matrices $A$, $B$ and $X$, and $\bar{\check{q}}$ is the conjugate of $\check{q}$.
 
-The dual quaternion that corresponds to a \textcolor{blue}{Be consistent throughout the paper: 4x4} %4 by 4 
+The dual quaternion that corresponds to a 4x4 %4 by 4 
 rigid transformation matrix is defined as follows:
 \begin{equation}
 \check{q}_{X} =
@@ -571,9 +569,9 @@ $\theta$, $d$, ${\bf l}$ and ${\bf m}$ are screw parameters and ${\epsilon}^{2} 
 Both $q$ and $q^{\prime}$ are quaternions satisfying the following constraints:
 \begin{equation}
 {\bf q}^{T}_{X}{\bf q}_{X} = 1 \; \; \text{and} \;
-\; {\bf q}^{T}_{X}{\bf q}^{\prime}_{X} = 0.
+\; {\bf q}^{T}_{X}{\bf q}^{\prime}_{X} = 0
 \end{equation}
-Similar to Section \textcolor{blue}{\ref{sec:quats}?}, ${\bf q}_{X}$ and ${\bf q}^{\prime}_{X}$ are the vector representations of $q_{X}$ and $q^{\prime}_{X}$.
+where ${\bf q}_{X}$ and ${\bf q}^{\prime}_{X}$ are the vector representations of $q_{X}$ and $q^{\prime}_{X}$.
 Then equation $A_{i}X = XB_{i}$ can be converted into the form below:
 
 \begin{equation}
@@ -713,12 +711,11 @@ When trying to solve for $R_{X}$ and $\ttt_{X}$ simultaneously, it is impossible
 \begin{equation}
 \begin{split}
 f(q_X,\ttt_{X}) = \lambda_{1} \sum_{i = 1}^{n}||vec(q_{X} \odot t_{B_{i}} \odot \bar{q}_{X}) -(R_{A_i} - \mathbb{I})\ttt_{X} - \ttt_{A_i}||^{2}\\
-\lambda_{2} \sum_{i = 1}^{n}||{n_{A_{i}} - q_{X} \odot n_{B_{i}} \odot \bar{q}_{X}}||^{2} + \lambda_{3}(1 - \qq_{X}^{T}\qq_{X})^2\\
-\textcolor{blue}{I believe you are missing an operator between the two lines} 
++ \lambda_{2} \sum_{i = 1}^{n}||{n_{A_{i}} - q_{X} \odot n_{B_{i}} \odot \bar{q}_{X}}||^{2} + \lambda_{3}(1 - \qq_{X}^{T}\qq_{X})^2
 \end{split}
 \label{simlqua}
 \end{equation}
-where $\lambda_1, \lambda_2, \lambda_3 \in \mathbb{R}$. Note that $vec()$ here represents the vector part of a quaternion such that $vec(q) \in \mathbb{R}^{3}$. The third term is a penalty function where the \textcolor{blue}{modulus,modulo?} %module 
+where $\lambda_1, \lambda_2, \lambda_3 \in \mathbb{R}$. Note that $vec()$ here represents the vector part of a quaternion such that $vec(q) \in \mathbb{R}^{3}$. The third term is a penalty function where the modulus %module 
 of $q$ will approach 1 when $\lambda_{3}$ becomes large. This is a non-convex optimization problem which requires a good initial guess due to the existence of multiple local minima. However, the result can be more accurate than the rest of the solvers for certain motion pairs when the initial guess is ``good".
 
 \subsubsection{Polynomial Global Optimization}
@@ -761,7 +758,7 @@ If $A$, $B$ and $X$ are parametrized using dual the quaternion representation, t
 \end{split}
 \label{dqLMI}
 \end{equation} 
-As pointed out in \cite{heller2014hand}, the polynomial global optimization method as described in Eq.~(\ref{dqLMI}) can give better solutions than Park \cite{park1994robot}, Eq.~(\ref{simlqua}), Eq.~(\ref{orLMI}) and Eq.~(\ref{qLMI}). Several solvers for \textcolor{blue}{$AX=XB$? Introducing AX=YB seems arbitrary} %$AX=YB$ 
+As pointed out in \cite{heller2014hand}, the polynomial global optimization method as described in Eq.~(\ref{dqLMI}) can give better solutions than Park \cite{park1994robot}, Eq.~(\ref{simlqua}), Eq.~(\ref{orLMI}) and Eq.~(\ref{qLMI}). For those who are also interested in robot-world and hand-eye calibration, several solvers for $AX=YB$ 
 using the LMI technique are also given; however, they fail to give better results than the traditional methods.
 \subsubsection{Convex Optimization}
 Based on different ways of formulating the rotation part of the rigid body transformation, Zhao \cite{zhao2011hand} gives two formulations that use a $L_\infty$ optimization technique. $L_\infty$ optimization is the minimax problem:
@@ -791,7 +788,7 @@ When the $AX=XB$ problem is formulated as a dual quaternion representation as in
 \end{split}
 \end{equation}
 The matrix $S_i$ and vector $\bf x$ correspond to those in Eq.~(\ref{dqua}). 
-The inequality constraint $\bf{Dx \geq f}$ is added manually in order to prevent $\xx$ from reaching zero, which is a meaningless solution for the program. \textcolor{blue}{$\bf x$ must also satisfy two additional constraints: $\|\qq_X\|=1$ and $\|\qq_{X}^{\prime}\|=1$.}%Another constraint $\bf x$ has to satisfy is that $||\qq_X||=1$ and $||\qq_{X}^{\prime}||=1$.
+The inequality constraint $\bf{Dx \geq f}$ is added manually in order to prevent $\xx$ from reaching zero, which is a meaningless solution for the program. $\bf x$ must also satisfy two additional constraints: $\|\qq_X\|=1$ and $\|\qq_{X}^{\prime}\|=1$. %Another constraint $\bf x$ has to satisfy is that $||\qq_X||=1$ and $||\qq_{X}^{\prime}||=1$.
 
 The proposed methods need no initial guess and are less time consuming compared to the simultaneous optimization method given in Eq.~($\ref{simlqua}$). However, the errors for both of the convex optimization methods are larger than the latter. 
 \subsection{Gradient Descent Method}
@@ -943,7 +940,7 @@ R({\bf n}_A, {\bf n}_B)  \,=\,
 \,+\, \frac{(1- {\bf n}_B \cdot {\bf n}_A)}{\|{\bf n}_B \times {\bf n}_A\|^2} \, \left(\widehat{{\bf n}_B \times {\bf n}_A}\right)^2.
 \label{transab}
 \end{equation}
-The rotation $R({\bf n}_B, \phi)$ is given by \textcolor{blue}{Rodrigues' Formula?} Euler's formula:
+The rotation $R({\bf n}_B, \phi)$ is given by Rodrigues' rotation formula:
 $$ R({\bf n}_B, \phi) = \II \,+\, \sin \phi \, \widehat{\,{\bf n}_B} \,+\, (1-\cos \phi)\, \left(\widehat{\,{\bf n}_B}\right)^2. $$
 
 Substituting $R_X = R({\bf n}_A, {\bf n}_B) R({\bf n}_B, \phi)$ into Eq.~(\ref{vavb}) and rearranging terms, we obtain:
@@ -980,14 +977,15 @@ $$ \Sigma_{i}= \left(\begin{array}{ccc}
 \Sigma_{i}^3 && \Sigma_{i}^4  \end{array}\right)
 $$
 where $\Sigma_{i}^3 = (\Sigma_{i}^2)^T$, then take the first two blocks of Eq.~(\ref{mainmain12}) and write:
-\begin{equation}
-\begin{split}
-&\Sigma_{M_B}^1 =  R^T_X \Sigma_{M_A}^1 R_X {\rm \,\,\, and \,\,\,} \\
-&\Sigma_{M_B}^2 =  R^T_X \Sigma_{M_A}^1 R_X(\widehat{R^T_X t_x}) + R^T_X \Sigma_{M_A}^2 R_X \label{set1}.
-\end{split}
-\end{equation}
 
-Calculate the eigendecomposition as $ \Sigma_{i}=Q_i \Lambda Q_i^T$, where $Q_i$ is the square matrix whose $i$th column is the eigenvector of $\Sigma_i$ and $\Lambda$ is the diagonal matrix with corresponding eigenvalues as diagonal entries \textcolor{blue}{Note: For this specific decomposition, you have to require that $\Sigma$ is real symmetric, you may have qualified this earlier, but double check}. Write the first block of Eq.~(\ref{set1}) as \cite{ackermanGSI, ackermanIROS2013}:
+\begin{subequations} 
+\begin{align}
+\Sigma_{M_B}^1 &=  R^T_X \Sigma_{M_A}^1 R_X \label{set11} \\
+\Sigma_{M_B}^2 &=  R^T_X \Sigma_{M_A}^1 R_X(\widehat{R^T_X t_x}) + R^T_X \Sigma_{M_A}^2 R_X  \label{set12}
+\end{align}
+\end{subequations}
+
+Calculate the eigendecomposition as $ \Sigma_{i}=Q_i \Lambda Q_i^T$, where $Q_i$ is the square matrix whose $i$th column is the eigenvector of $\Sigma_i$ and $\Lambda$ is the diagonal matrix with corresponding eigenvalues as diagonal entries. Write the first block of Eq.~(\ref{set1}) as \cite{ackermanGSI, ackermanIROS2013}:
 \begin{align}
 \Lambda &= Q_{M_B}^T R_X^T Q_{M_A} \Lambda Q_{M_A}^T R_X Q_{M_B} = {\cal Q} \Lambda {\cal Q}^T.
 \label{QAQ}
@@ -1029,9 +1027,9 @@ R_x=Q_{M_A}\,{\cal Q}\,Q_{M_B}^T.
 When $\Lambda$ has repeated entries, a continuum of symmetries result. For example, in the extreme case when $\Lambda = \lambda \mathbb{I}_3$, the
 finite set ${\cal Q}$ would be replaced by $SO(3)$, which is the same as saying that the first equation in Eq.~(\ref{set1}) imposes no constraint. In general, it is possible to construct trajectories that define the sets $\{A_i\}$ and $\{B_j\}$ such that this does not happen, and so the Batch method limits the discussion to the case where Eq.~(\ref{qset}) holds.
 
-Once the four possibilities of $R_X$ are found in this manner, the corresponding possible ${\bf t}_X$ can be found easily from blocks 2 and 4 of in Eq.~(\ref{set1})(b). \textcolor{blue}{Fix Eq. 63 to actually have (a) and (b) labels}
+Once the four possibilities of $R_X$ are found in this manner, the corresponding possible ${\bf t}_X$ can be found easily from blocks 2 and 4 of in Eq.~(\ref{set12}).
 
-The correct solution, from the set of 4 possibilities (given Eq.~(\ref{RQ})), can be found by applying the cylindrical constraints as in Eq.~(\ref{nanb}) and Eq.~(\ref{vavb}). This is achieved by choosing the \textcolor{blue}{Q?} %possibility 
+The correct solution, from the set of 4 possibilities (given Eq.~(\ref{RQ})), can be found by applying the cylindrical constraints as in Eq.~(\ref{nanb}) and Eq.~(\ref{vavb}). This is achieved by choosing the Q %possibility 
 that minimizes a cost function, such as $\| {\bf n}_{M_A}-R_X {\bf n}_{M_B} \|+w \| {\bf v}_{M_A} - \theta_{M_B} \widehat{\,{\bf t}_X} R_X {\bf n}_{M_B} + R_X {\bf v}_{M_B} \|$
 where $w$ is an appropriately chosen weighting factor, and in this case, it is chosen to be unity.
 
@@ -1046,9 +1044,7 @@ Selection of well defined $(A_i,B_i)$ is very important for the $AX=XB$ solvers.
 
 To determine the hand-eye transformation, at least 2 non-parallel rotation axes from the data pairs are needed (which is also referred at the non-parallelism criterion), and further data selection algorithms are all built on top of this. 
 
-In the error analysis of \cite{tsai1989new}, four observations are given to show the relationships between the errors in rotation and translation and the features of the robot motions. In addition, seven steps are suggested to improve the calibration accuracy. Shi {\it{et al.}} \cite{shi2005approach} developed a motion selection algorithm based on three out of the four observations in \cite{tsai1989new}. However, the thresholds in \cite{shi2005approach} are chosen in a heuristic manner. To fix this problem,  Zhang {\it{et al.}} \cite{zhang2005adaptive} proposed an adaptive selection method which can update the thresholds online. All of the above approaches share some common standards such that small relative rotations between $(A_i, B_i)$ and $(A_{i+1}, B_{i+1})$ should be avoided, and the rotation angles for both $\{A_i\}$ and $\{B_i\}$ should be large enough to avoid the singularity of the representation. The Kronecker product method, however, has a tolerance on small robot motions as pointed out in Section~\ref{sec:Kronecker}. It also offers an algebraic analysis to show what information of $X$ can be obtained using certain types and numbers of motions. Interesting results are: (1) three independent pure translations can fully define $R_X$ but not $\ttt_{X}$; (2) with two or more independent pure rotations, both $R_{X}$ and $\ttt_{X}$ can be recovered. A more detailed summary can be seen in Table 1 of \cite{andreff1999line}. Schmidt {\it{et al.}} \cite{schmidt2003robust} discussed data selection for the dual quaternion hand-eye calibration algorithm based on a RANSAC approach, which shows that the dual quaternion method can give a better $X$ after data selection, while the algorithm can even fail otherwise. \textcolor{blue}{Note: Explanation the previous sentence better} However, the computation of all possible relative movements from the data set results in a long computational time. 
-
-\textcolor{blue}{I added a paragraph separation , seemed like a long wall of text}
+In the error analysis of \cite{tsai1989new}, four observations are given to show the relationships between the errors in rotation and translation and the features of the robot motions. In addition, seven steps are suggested to improve the calibration accuracy. Shi {\it{et al.}} \cite{shi2005approach} developed a motion selection algorithm based on three out of the four observations in \cite{tsai1989new}. However, the thresholds in \cite{shi2005approach} are chosen in a heuristic manner. To fix this problem,  Zhang {\it{et al.}} \cite{zhang2005adaptive} proposed an adaptive selection method which can update the thresholds online. All of the above approaches share some common standards such that small relative rotations between $(A_i, B_i)$ and $(A_{i+1}, B_{i+1})$ should be avoided, and the rotation angles for both $\{A_i\}$ and $\{B_i\}$ should be large enough to avoid the singularity of the representation. The Kronecker product method, however, has a tolerance on small robot motions as pointed out in Section~\ref{sec:Kronecker}. It also offers an algebraic analysis to show what information of $X$ can be obtained using certain types and numbers of motions. Interesting results are: (1) three independent pure translations can fully define $R_X$ but not $\ttt_{X}$; (2) with two or more independent pure rotations, both $R_{X}$ and $\ttt_{X}$ can be recovered. A more detailed summary can be seen in Table 1 of \cite{andreff1999line}. \textcolor{red}{Schmidt {\it{et al.}} \cite{schmidt2003robust} discussed data selection for the dual quaternion hand-eye calibration algorithm based on a RANSAC approach, which shows that the dual quaternion method can give a better $X$ after data selection, while the dual quaternion method can even fail without data filtering.} \textcolor{blue}{Note: Explanation the previous sentence better} However, the computation of all possible relative movements from the data set results in a long computational time. 
 
 For a set of continuous robot motions, a sequence of images or sensor recorded information will be obtained. But due to the small differences between consecutive images or sensor recordings, it is often undesirable to process the data in the temporal order because this can yield high errors. Schmidt {\it{et al.}} \cite{vogt2004vector} then proposed a vector quantization based data selection technique which selects a globally consistent set of motions that optimizes the non-parallelism criterion. The main idea is to select a subset of the given rotation axes of $(A_i, B_i)$ using clustering algorithms. It is shown that compared to the above two approaches, the algorithm presented is both fast and accurate. Ackerman {\it{et al.}} \cite{ackermanIROS2013} also proposed a method which uses the Euclidean group invariants in the structure of $\{A_i\}$ and $\{B_i\}$ to realign asynchronous data streams.
 
@@ -1067,7 +1063,7 @@ In \cite{daniilidis1999hand} and \cite{andreff1999line}, the quaternion error me
 E_{rot} \doteq \|{\bf q}_{X_{true}} - {\bf q}_{X_{calc}}\|.
 \end{equation}
 As noted in \cite{daniilidis1996dual}, $\| R_{X_{true}} - R_{X_{calc}}\|_F$ is $2\sqrt{2}$ times larger than $\|{\bf q}_{X_{true}} - {\bf q}_{X_{calc}} \|$ so it is important to maintain a consistent error metric especially for result comparisons. 
-Another \textcolor{blue}{rotational error metric} %way
+Another rotational error metric %way
  is to calculate the norm of the relative rotation between $X_{true}$ and $X_{calc}$ as:
 \begin{equation}
 E_{rot} \doteq \|R^{T}_{X_{true}}R_{X_{calc}}\|.
@@ -1455,14 +1451,11 @@ check on the accuracy of $M$ and $\Sigma$ by computing the norm of the differenc
 
 \section{CONCLUSION AND FUTURE DIRECTIONS}
 \label{sec:conclusion}
-In this paper, the ``AX=XB'' formulation of the sensor calibration problem is examined, which is widely used in camera calibration, humanoid head-eye calibration, robot eye-to-hand calibration, aerial vehicle sensor calibration, and IGT sensor calibration. A review of some of the most influential and effective methods was presented and their positive and negative traits were discussed. For the various $AX=XB$ solvers, the focus is put on the case where there is noise on the incoming sensor data, and therefore multiple sensor readings are needed. It was clear that each algorithm has strengths and weaknesses in different contexts, and it is important to use the appropriate method for \textcolor{blue}{different circumstances.} %the circumstance.
+In this paper, the ``AX=XB'' formulation of the sensor calibration problem is examined, which is widely used in camera calibration, humanoid head-eye calibration, robot eye-to-hand calibration, aerial vehicle sensor calibration, and IGT sensor calibration. A review of some of the most influential and effective methods was presented and their positive and negative traits were discussed. For the various $AX=XB$ solvers, the focus is put on the case where there is noise on the incoming sensor data, and therefore multiple sensor readings are needed. It was clear that each algorithm has strengths and weaknesses in different contexts, and it is important to use the appropriate method for different circumstances. %the circumstance.
 
 In addition to measurement error contributing to noise, it was emphasized that the sensor data streams containing the $A$s and $B$s may be present at different sampling rates, may be asynchronous, and/or each stream may contain gaps in information. Therefore, a probabilistic method is reviewed in detail which is used for calculating the calibration transformation that works for data without any a priori knowledge of the correspondence between the $A$s and $B$s. Data selection is of critical importance to $AX=XB$ solvers. Depending on the quality of the data pairs, the usage of data selection techniques can either greatly improve the final result or prevent the solver from failing. 
 
 Though many algorithms are available for hand-eye calibration, which algorithm is preferable for the given type and number of motions is still unclear. It will be helpful to categorize the type of motions and their corresponding preferable solvers.  
-
-\textcolor{blue}{Re add the acknowledgment section}
-
 
 
 \begin{comment}
