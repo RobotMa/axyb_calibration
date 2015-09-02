@@ -6,15 +6,19 @@
 \citation{zhuang1994simultaneous,dornaika1998simultaneous,hirsh2001iterative,li2010simultaneous,ernst2012non,heller2014hand}
 \citation{wang2014towards}
 \citation{chen91,park1994robot,shiu1989calibration}
-\@writefile{toc}{\contentsline {section}{\numberline {1}INTRODUCTION}{2}}
-\@writefile{toc}{\contentsline {section}{\numberline {2}THE $AX=XB$ FORMULATION}{2}}
-\newlabel{homotrans}{{1}{2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The AX=XB Sensor Calibration Formulation}}{2}}
-\newlabel{AXXBfig1}{{1}{2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Application of AX=XB in Ultrasound Sensor Calibration:An Ultrasound Probe Is Attached at the End-effector and the Calibration Phantom Is Used for Ultrasound Probe Calibration. (The UR5 robot in the picture is owned by professor Emad Boctor of Johns Hopkins University)}}{2}}
-\newlabel{AXXBfig2}{{2}{2}}
-\newlabel{mainaxxb}{{2}{2}}
 \citation{park1994robot,shiu1989calibration}
+\@writefile{toc}{\contentsline {section}{\numberline {1}INTRODUCTION}{2}}
+\newlabel{Intro}{{1}{2}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}THE $AX=XB$ FORMULATION}{2}}
+\newlabel{Formulation}{{2}{2}}
+\newlabel{homotrans}{{1}{2}}
+\newlabel{mainaxxb}{{2}{2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The $AX=XB$ Sensor Calibration Formulation}}{2}}
+\newlabel{AXXBfig1}{{1}{2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Application of AX=XB in ultrasound sensor calibration: an ultrasound probe is attached to the end-effector and the calibration phantom is used for ultrasound probe calibration. (The UR5 robot pictured above is owned by Professor Emad Boctor of Johns Hopkins University)}}{2}}
+\newlabel{AXXBfig2}{{2}{2}}
+\newlabel{subequ1}{{3a}{2}}
+\newlabel{subequ2}{{3b}{2}}
 \citation{chou1991finding,park1994robot,shiu1989calibration}
 \citation{shiu1987finding,shiu1989calibration}
 \citation{tsai1989new}
@@ -33,13 +37,12 @@
 \citation{andreff1999line,angeles2000online,ackerman2014online}
 \citation{ackermanGSI,ackerman2014information}
 \citation{shiu1987finding,shiu1989calibration}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Application of AX=XB in Humanoid Camera Sensor Calibration: The Humanoid Robot Named Atalas Designed by the Company \textit  {Boston Dynamics} Requires Head Body Calibration before Turning the Knob. Different pairs of $(A_i, B_i)$ are measured by changing the head pose of the humanoid robot. (The picture is generated using Gazebo which is an open source robot simulation software)}}{3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Application of AX=XB in Humanoid Camera Sensor Calibration: The Humanoid Robot Named Atlas Designed by \textit  {Boston Dynamics} Requires head-body calibration before turning the knob. Different pairs of $(A_i, B_i)$ are measured by changing the head pose of the humanoid robot. (This picture was generated using the open-source robot simulation software Gazebo)}}{3}}
 \newlabel{AXXBfig3}{{3}{3}}
-\newlabel{subequ1}{{3a}{3}}
-\newlabel{subequ2}{{3b}{3}}
 \newlabel{axxb}{{3}{3}}
 \newlabel{mainaxxb2}{{4}{3}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}EXISTING SOLUTION METHODS}{3}}
+\newlabel{sec:sol_methods}{{3}{3}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Shiu and Ahmad }{3}}
 \newlabel{RotationCheng}{{5}{3}}
 \citation{shiu1989calibration}
@@ -51,15 +54,17 @@
 \newlabel{CYD}{{8}{4}}
 \newlabel{trans}{{9}{4}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Lie Group Method }{4}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Closed Form Solution with Two Exact Pairs}{4}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Closed-Form Solution with Two Exact Pairs}{4}}
 \newlabel{Lie_Rotation}{{10}{4}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Estimation of X Using Multiple Pairs with Noise}{4}}
 \newlabel{t_least}{{12}{4}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Quaternion Method }{4}}
+\newlabel{sec:quats}{{3.3}{4}}
 \citation{horaud1995hand}
 \citation{daniilidis1996dual}
 \citation{daniilidis1999hand}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1}Closed Form Solution with Two Exact Pairs}{5}}
+\newlabel{sec:quat_method}{{3.3.1}{5}}
 \newlabel{Quaternion}{{13}{5}}
 \newlabel{QuaternionUnit}{{16}{5}}
 \newlabel{QuaternionTranslation}{{17}{5}}
@@ -77,6 +82,7 @@
 \newlabel{dqua}{{25}{6}}
 \newlabel{dq_closed}{{28}{6}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Kronecker Product Method }{6}}
+\newlabel{sec:Kronecker}{{3.5}{6}}
 \newlabel{KroneckerMethod}{{29}{6}}
 \newlabel{KroneckerRotation}{{30}{6}}
 \newlabel{KroneckerTrans}{{31}{6}}
@@ -108,9 +114,9 @@
 \newlabel{gs}{{45}{8}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.8}Batch Method}{8}}
 \newlabel{batchnoisefree}{{3.8}{8}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.8.1}The Batch Method Formulation}{8}}
-\newlabel{main}{{47}{8}}
 \citation{Wang08}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.8.1}The Batch Method Formulation}{9}}
+\newlabel{main}{{47}{9}}
 \newlabel{mainconv}{{48}{9}}
 \newlabel{mainconvall}{{49}{9}}
 \newlabel{meancovdef}{{50}{9}}
@@ -120,6 +126,7 @@
 \newlabel{mainmain11}{{54}{9}}
 \newlabel{mainmain12}{{55}{9}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.8.2}A Batch Method Solution}{9}}
+\newlabel{sec:batch_meth_sol}{{3.8.2}{9}}
 \newlabel{mainmain1rewrite}{{56}{9}}
 \citation{ackermanGSI,ackermanIROS2013}
 \newlabel{nanb}{{57}{10}}
@@ -128,7 +135,8 @@
 \newlabel{transcon}{{60}{10}}
 \newlabel{transparam}{{61}{10}}
 \newlabel{cylinder}{{62}{10}}
-\newlabel{set1}{{63}{10}}
+\newlabel{set11}{{63a}{10}}
+\newlabel{set12}{{63b}{10}}
 \newlabel{QAQ}{{64}{10}}
 \newlabel{qset}{{65}{10}}
 \newlabel{RQ}{{66}{10}}
@@ -151,20 +159,20 @@
 \citation{daniilidis1999hand}
 \citation{andreff1999line}
 \citation{daniilidis1996dual}
-\citation{ackermanGSI}
 \@writefile{toc}{\contentsline {section}{\numberline {4}DATA SELECTION AND ERROR METRICS}{11}}
+\newlabel{sec:data_selection}{{4}{11}}
 \newlabel{qianli-numerical}{{4}{11}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Data Selection}{11}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Error Metrics}{11}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.1} Metrics for Rotation and Translation Errors}{11}}
+\citation{ackermanGSI}
 \citation{horaud1995hand}
 \citation{myoldbook,vol2}
 \citation{myoldbook}
 \newlabel{RotError}{{70}{12}}
 \newlabel{TranError}{{71}{12}}
 \@writefile{toc}{\contentsline {section}{\numberline {5}CONCLUSION AND FUTURE DIRECTIONS}{12}}
-\newlabel{defuni}{{74}{12}}
-\newlabel{invdsdcf}{{75}{12}}
+\newlabel{sec:conclusion}{{5}{12}}
 \bibstyle{asmems4}
 \bibdata{asme2e}
 \bibcite{tsai1989new}{1}
@@ -175,13 +183,17 @@
 \bibcite{ruland2012globally}{6}
 \bibcite{wu2014hand}{7}
 \bibcite{kim}{8}
+\newlabel{defuni}{{74}{13}}
+\newlabel{invdsdcf}{{75}{13}}
+\newlabel{convsec}{{5}{13}}
+\newlabel{convdef}{{76}{13}}
+\newlabel{equ2}{{78}{13}}
+\newlabel{equ3}{{79}{13}}
 \bibcite{liu2015calibration}{9}
 \bibcite{zhuang1994simultaneous}{10}
 \bibcite{dornaika1998simultaneous}{11}
 \bibcite{hirsh2001iterative}{12}
 \bibcite{li2010simultaneous}{13}
-\newlabel{convsec}{{5}{13}}
-\newlabel{convdef}{{76}{13}}
 \bibcite{ernst2012non}{14}
 \bibcite{heller2014hand}{15}
 \bibcite{wang2014towards}{16}

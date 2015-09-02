@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.11.19)  22 AUG 2015 00:50
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.11.19)  2 SEP 2015 00:31
 entering extended mode
  %&-line parsing enabled.
 **"AXXB Review.tex"
@@ -215,19 +215,19 @@ Excluding comment 'comment')
  (./AXXB Review.aux)
 \openout1 = `"AXXB Review.aux"'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 131.
-LaTeX Font Info:    ... okay on input line 131.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 131.
-LaTeX Font Info:    ... okay on input line 131.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 131.
-LaTeX Font Info:    ... okay on input line 131.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 131.
-LaTeX Font Info:    ... okay on input line 131.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 131.
-LaTeX Font Info:    ... okay on input line 131.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 131.
-LaTeX Font Info:    ... okay on input line 131.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 131.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 132.
+LaTeX Font Info:    ... okay on input line 132.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 132.
+LaTeX Font Info:    ... okay on input line 132.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 132.
+LaTeX Font Info:    ... okay on input line 132.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 132.
+LaTeX Font Info:    ... okay on input line 132.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 132.
+LaTeX Font Info:    ... okay on input line 132.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 132.
+LaTeX Font Info:    ... okay on input line 132.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 132.
 
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/ot1ptm.fd
@@ -247,76 +247,69 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 \everyMPtoPDFconversion=\toks22
 )
 LaTeX Font Info:    Try loading font information for OT1+ptmcm on input line 13
-3.
+4.
  (/usr/share/texmf-texlive/tex/latex/psnfss/ot1ptmcm.fd
 File: ot1ptmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ptmcm.
 )
 LaTeX Font Info:    Try loading font information for OML+ptmcm on input line 13
-3.
+4.
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/omlptmcm.fd
 File: omlptmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ptmcm.
 )
 LaTeX Font Info:    Try loading font information for OMS+pzccm on input line 13
-3.
+4.
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/omspzccm.fd
 File: omspzccm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/pzccm.
 )
 LaTeX Font Info:    Try loading font information for OMX+psycm on input line 13
-3.
+4.
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/omxpsycm.fd
 File: omxpsycm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/psycm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 133.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 134.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 133.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 134.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 133.
-LaTeX Font Info:    Try loading font information for U+msa on input line 133.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 134.
+LaTeX Font Info:    Try loading font information for U+msa on input line 134.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 133.
+LaTeX Font Info:    Try loading font information for U+msb on input line 134.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-Underfull \hbox (badness 10000) detected at line 133
+Underfull \hbox (badness 10000) detected at line 134
 []
  []
 
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <10> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 133.
-LaTeX Font Info:    Try loading font information for OMS+phv on input line 133.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 134.
+LaTeX Font Info:    Try loading font information for OMS+phv on input line 134.
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/omsphv.fd
 File: omsphv.fd 
 )
 LaTeX Font Info:    Font shape `OMS/phv/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 133.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 134.
 
-Overfull \hbox (39.74762pt too wide) in paragraph at lines 133--133
+Overfull \hbox (39.74762pt too wide) in paragraph at lines 134--134
  [] 
  []
 
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 133.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 133.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 142.
-LaTeX Font Info:    Try loading font information for U+euf on input line 153.
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 143.
+LaTeX Font Info:    Try loading font information for U+euf on input line 156.
 (/usr/share/texmf-texlive/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2009/06/22 v3.00 Euler Fraktur
 )
-Overfull \vbox (10.05377pt too high) has occurred while \output is active []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 163--163
+Underfull \hbox (badness 10000) in paragraph at lines 166--166
 $\OML/ptmcm/m/it/10 vec$ \OT1/ptm/m/n/10 The ``vec'' op-er-a-tor is de-fined su
 ch that
  []
@@ -325,7 +318,7 @@ ch that
 
 
 ]
-Underfull \hbox (badness 1052) in paragraph at lines 211--213
+Underfull \hbox (badness 1052) in paragraph at lines 219--222
 \OT1/ptm/m/n/10 where $\OML/ptmcm/m/it/10 A; B; X \OMS/pzccm/m/n/10 2 \OML/ptmc
 m/m/it/10 SE\OT1/ptmcm/m/n/10 (3)$\OT1/ptm/m/n/10 , it is well known that, in n
 on-
@@ -339,99 +332,102 @@ File: figure/AX=XB(ASME)_v1.png Graphic file (type png)
 File: Photos/UR5_Frame_Final.jpg Graphic file (type jpg)
 
 <use Photos/UR5_Frame_Final.jpg>
-<Photos/Robot_Patern.jpg, id=21, 1375.38844pt x 930.47626pt>
-File: Photos/Robot_Patern.jpg Graphic file (type jpg)
+<Photos/Robot_Patern_2.jpg, id=21, 1375.38844pt x 930.47626pt>
+File: Photos/Robot_Patern_2.jpg Graphic file (type jpg)
 
-<use Photos/Robot_Patern.jpg> [2 <./figure/AX=XB(ASME)_v1.png> <./Photos/UR5_Fr
-ame_Final.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 292--294
-
- []
-
-[3 <./Photos/Robot_Patern.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 306--307
+<use Photos/Robot_Patern_2.jpg> [2 <./figure/AX=XB(ASME)_v1.png> <./Photos/UR5_
+Frame_Final.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 326--327
 \OT1/ptm/m/n/10 and $\OML/ptmcm/m/it/10 ^^L$ \OT1/ptm/m/n/10 is an ar-bi-trary 
 an-gle. Given a vec-tor
  []
 
 
-Underfull \hbox (badness 1708) in paragraph at lines 306--307
+Underfull \hbox (badness 1708) in paragraph at lines 326--327
 \OT1/ptm/b/n/10 n \OT1/ptmcm/m/n/10 = [][] \OMS/pzccm/m/n/10 2 \U/msb/m/n/10 R[
 ]$\OT1/ptm/m/n/10 , $[]$ is a skew-symmetric ma-trix
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 306--307
+Underfull \hbox (badness 10000) in paragraph at lines 326--327
+
+ []
+
+[3 <./Photos/Robot_Patern_2.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 374--376
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 354--356
+Underfull \hbox (badness 10000) in paragraph at lines 385--400
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 363--378
+Underfull \hbox (badness 10000) in paragraph at lines 405--407
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 383--385
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 393--395
+Underfull \hbox (badness 10000) in paragraph at lines 416--418
 
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 446--448
+Underfull \hbox (badness 10000) in paragraph at lines 459--460
+[]\OT1/ptm/m/n/10 Given two quater-nions $\OML/ptmcm/m/it/10 q[] \OT1/ptmcm/m/n
+/10 = [][] =
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 473--475
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 453--455
+Underfull \hbox (badness 10000) in paragraph at lines 480--482
 
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 490--493
-\OT1/ptm/m/n/10 quater-nion, the La-grangian mul-ti-plier is in-tro-duced in
  []
 
 [5] [6] [7] [8]
-Underfull \hbox (badness 1048) in paragraph at lines 810--811
+Underfull \hbox (badness 1048) in paragraph at lines 848--849
 []\OT1/ptm/m/n/10 Using for-mu-la-tions of prob-a-bil-ity the-ory on SE(3),
  []
 
 
-Overfull \hbox (1.90002pt too wide) detected at line 832
+Overfull \hbox (1.90002pt too wide) detected at line 869
  []
  []
 
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 907.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 907.
 [9]
-Underfull \hbox (badness 2310) in paragraph at lines 940--941
+Overfull \vbox (6.61299pt too high) has occurred while \output is active []
+
+
+Underfull \hbox (badness 2310) in paragraph at lines 978--979
 []\OT1/ptm/m/n/10 Calculate the eigen-de-com-po-si-tion as $\OT1/ptmcm/m/n/10 ^
 ^F[] = \OML/ptmcm/m/it/10 Q[]\OT1/ptmcm/m/n/10 ^^C\OML/ptmcm/m/it/10 Q[]$\OT1/p
 tm/m/n/10 ,
  []
 
-[10] [11] [12]
-Overfull \vbox (9.17255pt too high) has occurred while \output is active []
+[10] [11]
+Underfull \vbox (badness 7740) has occurred while \output is active []
 
-
+ [12]
 (./AXXB Review.bbl
 Underfull \hbox (badness 2376) in paragraph at lines 28--33
 \OT1/ptm/m/n/10 eye cal-i-bra-tion''.  In Com-puter Vi-sion and Pat-
  []
 
-
+[13]
 Underfull \hbox (badness 1102) in paragraph at lines 74--79
 \OT1/ptm/m/n/10 2001. Pro-ceed-ings 2001 ICRA. IEEE In-ter-na-tional
  []
 
-[13]
+
 Underfull \hbox (badness 2351) in paragraph at lines 115--119
 \OT1/ptm/m/it/10 Robotics and Au-toma-tion, IEEE Trans-ac-tions on,
  []
@@ -466,6 +462,9 @@ i-tion\OT1/ptm/m/n/10 .
  []
 
 
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [14]
 Underfull \hbox (badness 2828) in paragraph at lines 235--240
 []\OT1/ptm/m/n/10 Ackerman, M. K., Cheng, A., Boc-tor, E., and
  []
@@ -475,44 +474,38 @@ Underfull \hbox (badness 1325) in paragraph at lines 249--254
 \OT1/ptm/m/n/10 2014.  ``An information-theoretic ap-proach to the
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [14]
 Missing character: There is no â in font ptmr7t!
 Missing character: There is no € in font ptmr7t!
 Missing character: There is no “ in font ptmr7t!
-)
-[15
 
-] (./AXXB Review.aux)
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+) [15]
+(./AXXB Review.aux) ) 
 Here is how much of TeX's memory you used:
- 2551 strings out of 493848
- 30970 string characters out of 1152822
- 94306 words of memory out of 3000000
- 5741 multiletter control sequences out of 15000+50000
+ 2564 strings out of 493848
+ 31152 string characters out of 1152822
+ 94391 words of memory out of 3000000
+ 5754 multiletter control sequences out of 15000+50000
  54763 words of font info for 110 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 32i,27n,24p,2790b,318s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texli
-ve/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/ty
-pe1/public/amsfonts/cmextra/cmex9.pfb></usr/share/texmf-texlive/fonts/type1/pub
-lic/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfont
-s/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.
-pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/euler/eufm10.pfb></us
-r/share/texmf-texlive/fonts/type1/public/amsfonts/euler/eufm7.pfb></usr/share/t
-exmf-texlive/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-t
-exlive/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texmf-texlive/fonts/type
-1/urw/helvetic/uhvr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/symbol/usyr
-.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb></usr/share/tex
-mf-texlive/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texmf-texlive/fonts/ty
-pe1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmri8
-a.pfb></usr/share/texmf-texlive/fonts/type1/urw/zapfchan/uzcmi8a.pfb>
-Output written on "AXXB Review.pdf" (15 pages, 559702 bytes).
+ 32i,27n,24p,1928b,318s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</us
+r/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/tex
+mf-texlive/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/share/texmf-texl
+ive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/t
+ype1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/
+amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/eu
+ler/eufm10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/euler/eufm
+7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+</usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texmf
+-texlive/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texmf-texlive/fonts/ty
+pe1/urw/symbol/usyr.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.
+pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmbi8a.pfb></usr/share/tex
+mf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/typ
+e1/urw/times/utmri8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/zapfchan/uzc
+mi8a.pfb>
+Output written on "AXXB Review.pdf" (15 pages, 561515 bytes).
 PDF statistics:
  121 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
