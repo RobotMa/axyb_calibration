@@ -128,7 +128,7 @@ Shiu, Y., and Ahmad, S., 1989.
 Chou, J., and Kamel, M., 1991.
 \newblock ``Finding the position and orientation of a sensor on a robot
   manipulator using quaternions''.
-\newblock {\em The international journal of robotics research, {\bf 10}}(3),
+\newblock {\em The International Journal of Robotics Research, {\bf 10}}(3),
   pp.~240--254.
 
 \bibitem{shiu1987finding}
@@ -179,7 +179,7 @@ Chou, J.~C., and Kamel, M., 1988.
 \bibitem{horaud1995hand}
 Horaud, R., and Dornaika, F., 1995.
 \newblock ``Hand-eye calibration''.
-\newblock {\em The international journal of robotics research, {\bf 14}}(3),
+\newblock {\em The International Journal of Robotics Research, {\bf 14}}(3),
   pp.~195--210.
 
 \bibitem{daniilidis1996dual}
@@ -242,13 +242,13 @@ Ackerman, M.~K., Cheng, A., Boctor, E., and Chirikjian, G., 2014.
 Ackerman, M., and Chirikjian, G.~S., 2013.
 \newblock ``A probabilistic solution to the ${AX=XB}$ problem sensor
   calibration without correspondence''.
-\newblock {\em Proceedings of the conference on the Geometric Science of
+\newblock {\em Proceedings of the Conference on the Geometric Science of
   Information}.
 
 \bibitem{ackerman2014information}
 Ackerman, M.~K., Cheng, A., and Chirikjian, G., 2014.
-\newblock ``An information-theoretic approach to the correspondence-free ax= xb
-  sensor calibration problem''.
+\newblock ``An information-theoretic approach to the correspondence-free $ax=
+  xb$ sensor calibration problem''.
 \newblock In Robotics and Automation (ICRA), 2014 IEEE International Conference
   on, IEEE, pp.~4893--4899.
 
@@ -260,7 +260,7 @@ Horn, B., and Klaus, P., 1986.
 \bibitem{lepetit2009epnp}
 Lepetit, V., Moreno-Noguer, F., and Fua, P., 2009.
 \newblock ``Epnp: An accurate o (n) solution to the pnp problem''.
-\newblock {\em International journal of computer vision, {\bf 81}}(2),
+\newblock {\em International Journal of Computer Vision, {\bf 81}}(2),
   pp.~155--166.
 
 \bibitem{myoldbook}

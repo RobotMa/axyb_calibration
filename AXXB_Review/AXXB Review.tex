@@ -94,7 +94,7 @@
 
 \title{Chapter X : Review of Methods for Solving the AX\raisebox{.2ex}{=}XB Sensor Calibration Problem}
 
-\author{Qianli Ma\thanks{Address all correspondence to this author.}\\ 
+\author{Qianli Ma\\ 
 		\textbf{Gregory S. Chirikjian}
     \affiliation{
 	Robot and Protein Kinematics Laboratory\\
@@ -140,16 +140,21 @@ An often used formulation of sensor calibration in robotics and computer vision 
 }
 \end{abstract}
 
-\keywords{Sensor Calibration, Hand-Eye Calibration, Humanoid Robot, Review}
+\keywords{ {\color{green}Sensor Calibration, Hand-Eye Calibration, Humanoid Robot, Review}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{nomenclature}
+<<<<<<< HEAD
 \entry{\textcolor{blue}{Note}}{\textcolor{blue}{For SE(3) and se(3) maybe make the inline matrices into actual matrices, it looks a little strange to me the way they are currently. Also, possibly consider changing $\Xi$ to $\mathfrak{h}$. Also, can you align the beginning of all of the second entries?}}
 \entry{$SO(3)$}{$SO(3) \doteq \{R \, | \, RR^{T} = R^{T}R = \mathbb{I}$\textbf{\textcolor{blue}{,}} %and
  $\det(R) = 1$\textbf{\textcolor{blue}{,}} where $R \in \mathbb{R}^{3 \times 3}\}$}
+=======
+\entry{$SO(3)$}{$SO(3) \doteq \{R \, | \, RR^{T} = R^{T}R = \mathbb{I}$ %and
+ $\det(R) = 1$ where $R \in \mathbb{R}^{3 \times 3}\}$}
+>>>>>>> 18ed3da22e6ab61879122423782415f5a01ad2b5
 \entry{$SE(3)$}{$SE(3) \doteq \{H \, | \, H=\left( R \;   \ttt ; {\bf 0}^{T} 1 \right) \in \mathbb{R}^{4 \times 4},$ where $R \in SO(3)$ and $\ttt \in \mathbb{R}^{3}\}$ }
 \entry{$so(3)$}{$so(3) \doteq \{\Omega \,| \, R = exp(\Omega)$, where $\Omega \in \mathbb{R}^{3 \times 3}$ and $R \in SO(3)$ $\}$}
-\entry{$se(3)$}{$se(3) \doteq \{\Xi \, | \, H = exp(\Xi)$, where $\Xi =\left(\Omega \; \xi; \; {\bf 0}^{T} 0 \right)$ and $\Omega \in \textcolor{blue}{so}%SO
+\entry{$se(3)$}{$se(3) \doteq \{\Xi \, | \, H = exp(\Xi)$, where $\Xi =\left(\Omega \; \xi; \; {\bf 0}^{T} 0 \right)$ and $\Omega \in so
 (3), \, \xi \in \mathbb{R}^{3}, \, H \in SE(3) \}$}
 \entry{$\exp()$}{The matrix exponential of a square matrix. }
 \entry{$\log()$}{The matrix logarithm of a square matrix}
@@ -172,7 +177,10 @@ An often used formulation of sensor calibration in robotics and computer vision 
 \entry{$R_{H}$}{The rotation matrix of any general transformation matrix $H \in SE(3)$}
 \entry{$\ttt_{H}$}{The translation vector of any general transformation matrix $H \in SE(3)$}
 \entry{$\nn_{H}$}{The axis of rotation for $R_{H}$}
+<<<<<<< HEAD
 \entry{$\widetilde{\nn}$}{The skew-symmetric representation of the axis of rotation ($\nn_{H}$) \textcolor{blue}{If you use $\Omega$ earlier you should try to keep some continuity}}
+=======
+>>>>>>> 18ed3da22e6ab61879122423782415f5a01ad2b5
 \entry{$\theta_{H}$}{The angle of rotation for $R_{H}$ about $\nn_{H}$}
 \entry{$\rho$}{A probability distribution of $H\in G$, where G $\subset$ SE(3)}
 \entry{$M$}{For $\rho$, $M$ is the mean of the distribution}
@@ -181,11 +189,9 @@ An often used formulation of sensor calibration in robotics and computer vision 
 \entry{$Ad(H) $}{The adjoint matrix with columns $(H E_i H^{-1})^{\vee}$}
 \end{nomenclature}
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{INTRODUCTION}
 \label{Intro}
-\textcolor{blue}{General Note: Shouldn't alway equations be numbered in an ASME document? It may be IEEE, but I'm just checking}\\
 
 In the fields of robotics and computer vision, sensor calibration problems are often codified using the ``AX=XB'' formulation, (Figs.~\ref{AXXBfig1}--\ref{AXXBfig3}%Fig.\ref{AXXBfig1}, Fig.\ref{AXXBfig2}, Fig.\ref{AXXBfig3}
 ). Example applications include camera calibration, Cartesian robot hand calibration, robot eye-to-hand calibration \cite{tsai1989new}, aerial vehicle sensor calibration \cite{darius1}, image-guided therapy (IGT) sensor calibration and endoscopic surgery \cite{schmidt2003robust}. An alternative name that describes this system is ``hand-eye'' calibration. Several methods exist %have existed 
@@ -215,7 +221,6 @@ R && {\bf t} \\
 \end{equation}
 where $R \in SO(3)$ is a $3\times 3$ (proper) rotation matrix, and ${\bf t} \in \mathbb{R}^3$ is a translation vector. The set of all such matrices can be identified with $SE(3)$, the group of rigid-body motions, where the group law is matrix multiplication.
 
-\textcolor{blue}{This seems like an awkward transition. Can you add a sentence connecting the two paragraphs?}
 
 Given:
 \begin{equation}
@@ -225,25 +230,30 @@ A X = X B
 where $A,  B, X \in SE(3)$, it is well known that, in non-degenerate cases, there are two unspecified degrees of freedom to the problem for a single pair of sensor measurements, $(A,B)$. This situation is rectified by considering two pairs of exact measurements of the form in Eq.~(\ref{mainaxxb}), i.e., $ {A_1}X=X{B_1} {\rm \,\, and \,\,} {A_2}X = X{B_2} $, provided that some mild conditions are observed for the selection of the pairs $(A_1,B_1)$ and $(A_2,B_2)$ \cite{chen91,park1994robot,shiu1989calibration}. Note that $(A_i, B_i)$ here are relative transformation data pairs, so in real experiments at least 3 absolute transformation data pairs have to 
 be measured. Additionally, if there is sensor measurement error, then it may not be possible to find compatible pairs that reproduce the exact value of $X$. For this reason, minimization and least squares approaches are often taken over large sets of $A$s and $B$s.
 
-\begin{figure}[t]
+\begin{figure}[t!]
 \includegraphics[width=3.3in]{figure/AX=XB(ASME)_v1.png}
 \centering
-\caption{\textcolor{blue}{Increase the size of text in the image} The AX=XB Sensor Calibration Formulation}
+\caption{The $AX=XB$  Sensor Calibration Formulation}
 \label{AXXBfig1}
 \end{figure}
 
 
-\begin{figure}[t]
+\begin{figure}[t!]
 \centering
 \includegraphics[width=3.3in]{Photos/UR5_Frame_Final.jpg}
 \caption{Application of AX=XB in ultrasound sensor calibration: an ultrasound probe is attached to the end-effector and the calibration phantom is used for ultrasound probe calibration. (The UR5 robot pictured above is owned by Professor Emad Boctor of Johns Hopkins University)}
 \label{AXXBfig2}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}[t!]
 \centering
+<<<<<<< HEAD
 \includegraphics[width=3.3in]{Photos/Robot_Patern.jpg}
 \caption{\textcolor{blue}{Labels are hard to see in the picture. Also, you change the capitalization style midway through} Application of AX=XB in Humanoid Camera Sensor Calibration: The Humanoid Robot Named Atlas Designed by %the Company
+=======
+\includegraphics[width=3.3in]{Photos/Robot_Patern_2.jpg}
+\caption{Application of AX=XB in Humanoid Camera Sensor Calibration: The Humanoid Robot Named Atlas Designed by %the Company
+>>>>>>> 18ed3da22e6ab61879122423782415f5a01ad2b5
  \textit{Boston Dynamics} Requires head-body calibration before turning the knob. Different pairs of $(A_i, B_i)$ are measured by changing the head pose of the humanoid robot. (This picture was generated using the open-source robot simulation software Gazebo)}
 \label{AXXBfig3}
 \end{figure}
@@ -257,10 +267,10 @@ R_A {\bf t}_X + {\bf t}_A = R_X {\bf t}_B + {\bf t}_X \label{subequ2}.
 \end{gather}
 \label{axxb}
 \end{subequations}
-\textcolor{blue}{One strategy for solving Eq.~(\ref{mainaxxb}) reduces to first solving Eq.~(\ref{subequ1}) for only rotation and then rearranging Eq.~(\ref{subequ2}) to find acceptable values of ${\bf t}_X$ satisfying $ (R_A - \mathbb{I}_{3}) {\bf t}_X = R_X {\bf t}_B - {\bf t}_A$.}
+One strategy for solving Eq.~(\ref{mainaxxb}) reduces to first solving Eq.~(\ref{subequ1}) for only rotation and then rearranging Eq.~(\ref{subequ2}) to find acceptable values of ${\bf t}_X$ satisfying $ (R_A - \mathbb{I}_{3}) {\bf t}_X = R_X {\bf t}_B - {\bf t}_A$.
 %One strategy to solve Eq.~(\ref{mainaxxb}) \textcolor{blue}{of data}would appear to reduce to first solving Eq.~(\ref{subequ1}) for only rotation and then rearranging Eq.~(\ref{subequ2}) so as to find acceptable values of ${\bf t}_X$ satisfying $ (R_A - \mathbb{I}_{3}) {\bf t}_X = R_X {\bf t}_B - {\bf t}_A. $  
-The other strategy is to solve for $R_{X}$ and $\ttt_{X}$ simultaneously based on some cost function $f(R_{X}, \ttt_{X})$ or reformulating the matrix equation into \textcolor{blue}{a dual quaternion representation}. %dual quaternion. 
-However, when there are only two exact sensor measurements, there are some problems with the first  approach. As pointed out in \cite{park1994robot,shiu1989calibration}, in nondegenerate cases, there is a one-parameter set of solutions to \textcolor{blue}{Eq.~\ref{subequ1}}%the first part in Eq.(\ref{subequ1})
+The other strategy is to solve for $R_{X}$ and $\ttt_{X}$ simultaneously based on some cost function $f(R_{X}, \ttt_{X})$ or reformulating the matrix equation into a dual quaternion representation. %dual quaternion. 
+However, when there are only two exact sensor measurements, there are some problems with the first  approach. As pointed out in \cite{park1994robot,shiu1989calibration}, in nondegenerate cases, there is a one-parameter set of solutions to Eq.~\ref{subequ1}%the first part in Eq.(\ref{subequ1})
 , and the matrix $R_A - \mathbb{I}_{3}$ in general has a rank of $2$. Hence, there are two unspecified degrees of freedom to the
 problem, and it cannot be solved uniquely unless additional measurements are taken. 
 
@@ -283,7 +293,7 @@ is computed for some distance metric $d(\cdot,\cdot)$ on $SE(3)$ and $\{w_i\}$ i
 This chapter is organized as follows. 
 In Section~\ref{sec:sol_methods}, a detailed review is given for the existing methods that solve the $AX=XB$ problem using pairs of $\{A_{i}, B_{i}\}$ with correspondence. The notation used throughout the literature is not consistent and the authors strove %tried their best 
 to standardize the notation used across the reviewed methods
-\textcolor{blue}{to provide the readers with a straightforward and consistent representation of the methods and their relationships.} %so that readers can have a straightforward and consistent understanding of the methods and their relationships. 
+to provide the readers with a straightforward and consistent representation of the methods and their relationships. %so that readers can have a straightforward and consistent understanding of the methods and their relationships. 
 Some approaches are preferable under certain circumstances and their advantages and disadvantages are also highlighted. 
 In Section~\ref{sec:data_selection}, some important criterion for data selection and different errors metrics used in the literature are presented. 
 %In section 5, numerical simulations are performed on the selected methods and further conclusions are given based on the results of the simulation. 
@@ -293,8 +303,7 @@ Finally, in Section~\ref{sec:conclusion} a complete summary of the $AX=XB$ solve
 \label{sec:sol_methods}
  
 The problem of solving Eq.~(\ref{mainaxxb}) for $X$ when multiple corresponding pairs of $A$s and $B$s are present has a history that stretches back more than a quarter of a century
-\cite{chou1991finding, park1994robot,shiu1989calibration}, with the earliest proposed method introduced by Shiu \cite{shiu1987finding, shiu1989calibration} and Tsai \cite{tsai1989new}. \textcolor{blue}{Surprisingly,} applications involving this problem still remain active today \cite{kim,dai}. Shah \cite{shah2012overview} overviewed several different AX = XB methods qualitatively. Fassi and Legnani \cite{fassi2005hand} gave a geometric view of $AX=XB$ and discussed the over-constrained and singular conditions. A more complete list of the traditional $AX=XB$ solvers includes: the Shiu method \cite{shiu1989calibration}, the screw motion method \cite{chen91,zhao2006hand}, the Euclidean \textcolor{blue}{g}%G
-roup method \cite{park1994robot,gwak2003numerical}, the quaternion method\cite{chou1988quaternions, chou1991finding, horaud1995hand}, the dual quaternion method \cite{daniilidis1996dual, daniilidis1999hand}, and the Kronecker method \cite{andreff1999line,andreff2001robot}. Several new optimization methods emerged recently such as the convex optimization method \cite{zhao2011hand}, some global optimization methods  \cite{seo2009branch,andreff2001robot,heller2014hand} and a structure from motion (SfM) approach \cite{schmidt2005calibration}. The SfM method deals with the case where a calibration target is not applicable and a scaling factor needs to be calibrated in addition to rotation and translation. The methods mentioned previously are all off-line methods where $X$ can be calculated given a complete list of data pairs. However, several online methods \textcolor{blue}{have been} %are 
+\cite{chou1991finding, park1994robot,shiu1989calibration}, with the earliest proposed method introduced by Shiu \cite{shiu1987finding, shiu1989calibration} and Tsai \cite{tsai1989new}. Applications involving this problem still remain active today \cite{kim,dai}. Shah \cite{shah2012overview} overviewed several different AX = XB methods qualitatively. Fassi and Legnani \cite{fassi2005hand} gave a geometric view of $AX=XB$ and discussed the over-constrained and singular conditions. A more complete list of the traditional $AX=XB$ solvers includes: the Shiu method \cite{shiu1989calibration}, the screw motion method \cite{chen91,zhao2006hand}, the Euclidean group method \cite{park1994robot,gwak2003numerical}, the quaternion method\cite{chou1988quaternions, chou1991finding, horaud1995hand}, the dual quaternion method \cite{daniilidis1996dual, daniilidis1999hand}, and the Kronecker method \cite{andreff1999line,andreff2001robot}. Several new optimization methods emerged recently such as the convex optimization method \cite{zhao2011hand}, some global optimization methods  \cite{seo2009branch,andreff2001robot,heller2014hand} and a structure from motion (SfM) approach \cite{schmidt2005calibration}. The SfM method deals with the case where a calibration target is not applicable and a scaling factor needs to be calibrated in addition to rotation and translation. The methods mentioned previously are all off-line methods where $X$ can be calculated given a complete list of data pairs. However, several online methods have been 
 proposed that are more preferable to real-time applications \cite{andreff1999line,angeles2000online,ackerman2014online}. All the methods above assume $\{A_i, B_i\}$ data pairs with correspondence. Probabilistic methods that deal with data pairs without correspondence are introduced in \cite{ackermanGSI, ackerman2014information}. In the follow sections, representatives of the above $AX=XB$ solvers will be reviewed in detail.
 
 \begin{comment}
@@ -319,20 +328,31 @@ Shiu and Ahmad \cite{shiu1987finding,shiu1989calibration} use two data pairs $(A
 The rotation matrix $R_{X}$ is solved for first and the translation is obtained using a least squares technique given a known $R_{X}$.
 
 The closed form expression for $R_{X}$ is:
-\textcolor{blue}{Note: It is hard to \~n in the below equation and also the 2nd subscript on R$_X$}
 \begin{equation}
+<<<<<<< HEAD
 R_{X} = \exp{(\widetilde{\nn}_{A}\beta)}R_{X_{P}}
+=======
+R_{X} = \exp{(\hat{\nn}_{A}\beta)}R_{X_{P}}
+>>>>>>> 18ed3da22e6ab61879122423782415f5a01ad2b5
 \label{RotationCheng}
 \end{equation}
 where 
 \begin{center}
+<<<<<<< HEAD
 $R_{X_{p}} =  \exp{(\widetilde{\nn}_{X}\theta_{X})}$\\
 $\nn_{X} = \nn_{B} \times \nn_{A}$\\
 $\theta_{X} = \rm atan2(|\nn_{B} \times \nn_{A}|,\nn_{B} \cdot \nn_{A})$\\
 \end{center}
 and $\beta$ is an arbitrary angle. Given a vector $\nn = \left( n_{1}, n_{2}, n_{3} \right)^{T} \in \mathbb{R}^{3}$, $\widetilde{\nn}$ is a skew-symmetric matrix defined as below:\\
+=======
+$R_{X_{p}} =  \exp{(\widehat{\nn}_{X}\theta_{X})}$\\
+$\nn_{X} = \nn_{B} \times \nn_{A}$\\
+$\theta_{X} = \rm atan2(|\nn_{B} \times \nn_{A}|,\nn_{B} \cdot \nn_{A})$\\
+\end{center}
+and $\beta$ is an arbitrary angle. Given a vector $\nn = \left( n_{1}, n_{2}, n_{3} \right)^{T} \in \mathbb{R}^{3}$, $\widehat{\nn}$ is a skew-symmetric matrix defined as below:\\
+>>>>>>> 18ed3da22e6ab61879122423782415f5a01ad2b5
 \begin{equation}
-\tilde{\nn}
+\widehat{\nn}
 =
 \begin{pmatrix}
 0 & -n_{3} & n_{2} \\
@@ -348,7 +368,7 @@ A_{1}X = XB_{1} \label{7a}\\
 A_{2}X = XB_{2}.\label{7b}
 \end{gather}
 \end{subequations}
-Instead of giving a closed-form solution, $R_{X}$ is calculated by solving for $\beta$ in Eq.~(\ref{CYD}), which is formulated \textcolor{blue}{as a system of linear equations obtained} by equating two \textcolor{blue}{instances of} Eq.~(\ref{RotationCheng}) that are obtained from data pairs $(A_{1}, B_{1})$ and $(A_{2}, B_{2})$:
+Instead of giving a closed-form solution, $R_{X}$ is calculated by solving for $\beta$ in Eq.~(\ref{CYD}), which is formulated as a system of linear equations obtained by equating two instances of Eq.~(\ref{RotationCheng}) that are obtained from data pairs $(A_{1}, B_{1})$ and $(A_{2}, B_{2})$:
 \begin{equation}
 CY = D.
 \label{CYD}
@@ -384,10 +404,9 @@ where\\
 \begin{center}
 $\mathcal{A} = (\nn_{A_{1}}, \nn_{A_{2}}, \nn_{A_{1}} \times \nn_{A_{2}}) \in \mathbb{R}^{3 \times 3}$\\
  $\mathcal{B} = (\nn_{B_{1}}, \nn_{B_{2}}, \nn_{B_{1}} \times \nn_{B_{2}}) \in \mathbb{R}^{3 \times 3} $\\
-\textcolor{blue}{I corrected the format of the two below equations, please make sure they are still correct\\}
 $\tilde{\nn}_{A_{1}} = \log(R_{A_{i}})/\|\log^\vee(R_{A_i})\|$\\
 %(\log R_{A_{i}})^{\vee}||$\\
-$\tilde{\nn}_{B_{1}} = \log(R_{B_{i}})/\|\log^\vee(R_{B_i})\|$
+$\tilde{\nn}_{B_{1}} = \log(R_{B_{i}})/\|\log^\vee(R_{B_i})\|$.
 %(\log R_{B_{i}})^{\vee}||$.
 \end{center}
 The solution for $R_X$ is uniquely determined given two pairs of $(A_i, B_i)$, and the solution for $\ttt_{X}$ can be obtained using Eq.~(\ref{trans}) once $R_{X}$ is obtained.\\
@@ -415,8 +434,8 @@ where \\
 \begin{center}
 $M = \sum_{i=1}^{n}{\nn_{B_{i}} \nn_{A_{i}}^{T}}$.
 \end{center}
-Note that $i \geq 3$ is a necessary condition for $M$ to be a non-singular matrix, but it does not guarantee $M$ to be nonsingular. Theoretically, the Lie group method is more likely to fail when the number of data pairs is small \textcolor{blue}{give an approximation here i.e. (<10 pairs)} while in real application, \textcolor{blue}{failure is rarely} %this is barely 
-seen as long as the data pairs are not specially chosen \textcolor{blue}{maybe add: specially chosen as ...}. Given known $R_{X}$, $\ttt_{X}$ can be calculated using the least squares method shown in Eq.~(\ref{t_least}):
+Note that $i \geq 3$ is a necessary condition for $M$ to be a non-singular matrix, but it does not guarantee $M$ to be nonsingular. Theoretically, the Lie group method is more likely to fail when the number of data pairs is small, i.e., close to 3 pairs,  while in real application, failure is rarely %this is barely 
+seen as long as the data pairs are not specially chosen such that $M$ is degenerate. Given known $R_{X}$, $\ttt_{X}$ can be calculated using the least squares method shown in Eq.~(\ref{t_least}):
 
 \begin{equation}
 \ttt_{x} = (C^{T}C)^{-1}C^{T}d
@@ -448,7 +467,7 @@ d = \begin{pmatrix}
 
 \subsection{Quaternion Method }
 \label{sec:quats}
-The Quaternion method proposed by Chou and Kamel \cite{chou1988quaternions,chou1991finding} uses \textcolor{blue}{unit quaternions?} normalized quaternions to transform the rotation parts of $A_{i}X = XB_{i}$ (i = 1,2) into two linear systems. Then a singular value decomposition (SVD) is performed to obtain a closed-form solution for $R_{X}$. In order to estimate $X$ given multiple pairs of $(A_{i}, B_{i})$ with noise, Horaud and Dornaika \cite{horaud1995hand} cast the problem into a nonlinear optimization one. Two different approaches are discussed: (1) estimate the rotation matrix $R_{X}$ by minimizing an objective function, and solve for the translation $\ttt_{X}$ using a least squares method separately and (2) estimate $R_{X}$ and $\ttt_{X}$ simultaneously by minimizing an objective function that incorporates both the rotational and translational information. Method (1) turns out to have a closed-form solution for \textcolor{blue}{the unit quaternion $q_{X}$ representing the rotation $R_{X}$}%$q_{X}$
+The Quaternion method proposed by Chou and Kamel \cite{chou1988quaternions,chou1991finding} uses unit quaternions normalized quaternions to transform the rotation parts of $A_{i}X = XB_{i}$ (i = 1,2) into two linear systems. Then a singular value decomposition (SVD) is performed to obtain a closed-form solution for $R_{X}$. In order to estimate $X$ given multiple pairs of $(A_{i}, B_{i})$ with noise, Horaud and Dornaika \cite{horaud1995hand} cast the problem into a nonlinear optimization one. Two different approaches are discussed: (1) estimate the rotation matrix $R_{X}$ by minimizing an objective function, and solve for the translation $\ttt_{X}$ using a least squares method separately and (2) estimate $R_{X}$ and $\ttt_{X}$ simultaneously by minimizing an objective function that incorporates both the rotational and translational information. Method (1) turns out to have a closed-form solution for the unit quaternion $q_{X}$ representing the rotation $R_{X}$%$q_{X}$
 , while method (2) is a nonlinear optimization problem which requires an initial guess and will be discussed in Section~\ref{sec:optimization}. 
 \subsubsection{Closed Form Solution with Two Exact Pairs}
 \label{sec:quat_method}
@@ -503,7 +522,7 @@ The translation vector $\ttt_{x}$ satisfies the following equation:
 %\ttt_{x} = {\bf \nn_{A}} z - \frac{1}{2}\bigg( \cot(\frac{\theta_{A}}{2})\hat{\nn}_{A} + I %\bigg){\bf c}
 %\end{equation}
 \begin{equation}
-\left(\cot(\dfrac{\theta_{A}}{2})\hat{\nn}_{A}(R_{A}-\mathbb{I}_{3})+ R_{A} + \mathbb{I}_{3}\right)\ttt_{x} = \nn_{A}z
+\left(\cot(\dfrac{\theta_{A}}{2})\widehat{\nn}_{A}(R_{A}-\mathbb{I}_{3})+ R_{A} + \mathbb{I}_{3}\right)\ttt_{x} = \nn_{A}z
 \label{QuaternionTranslation} 
 \end{equation}
 %\begin{equation}
@@ -598,7 +617,7 @@ S_{i} =
 \end{array}
 \bigg) \in \mathbb{R}^{6 \times 8}.
 \end{equation}
-The notation for $\bf x$ here will be referred to as in Section \textcolor{blue}{\ref{sec:optimization}.? You should not be referring to a future section, but introduce it here an reference later}%3.6. 
+The notation for $\bf x$ here will be also used in Section %3.6. 
 To maintain the consistency of notation throughout the chapter as well as preserve the original notation in \cite{daniilidis1996dual}, for a vector ${\bf v} \in \mathbb{R}^{3 \times 1}$, ${\bf v}^{\wedge}$ is the same as $\tilde{\bf v}$ which maps a vector into the corresponding skew-symmetric matrix. ${\aaa}^{\prime} = \dfrac{1}{2}{\ttt}_{X} \times {\aaa}$ and $\aaa$ is the vector part of $q_{X}$. Similarly,  $\bbb$ is the vector part of $q^{\prime}$.
 After concatenating $S_{i}$, the following matrix $T$ can be obtained and used to solve for $X$:
 \begin{equation}
@@ -617,7 +636,7 @@ By calculating the SVD of $T = U\Sigma V^{T}$, the dual quaternion for matrix X 
 \label{dq_closed}
 \end{equation} 
 
-Different from the quaternion method Section~\textcolor{blue}{\ref{sec:quat_method}?}, the dual quaternion method solves the rotational part and translational part in a united way, and it contains all the information to reconstruct matrix $X$. However, it does not use all of the available information, only the imaginary parts of $\check{a}$ and $\check{b}$. Despite the advantages of the dual quaternion method, its major drawback is the need to filter the data pairs to ensure appropriate solutions when there is noise on $A_{i}$ and $B_{i}$.
+Different from the quaternion method Section~\ref{sec:quat_method}, the dual quaternion method solves the rotational part and translational part in a united way, and it contains all the information to reconstruct matrix $X$. However, it does not use all of the available information, only the imaginary parts of $\check{a}$ and $\check{b}$. Despite the advantages of the dual quaternion method, its major drawback is the need to filter the data pairs to ensure appropriate solutions when there is noise on $A_{i}$ and $B_{i}$.
 
 \subsection{Kronecker Product Method }
 \label{sec:Kronecker}
@@ -647,9 +666,9 @@ vec(R_{X})\\
 \end{split}
 \label{KroneckerMethod}
 \end{equation}
-where $C, d, \bf x$ will be referred to in Section~\ref{sec:optimization} \textcolor{blue}{Again I would not refer to a future section. Check with Dr. C}. 
+where $C, d, \bf x$ will be referred to in Section~\ref{sec:optimization}
 %where the symbol $\otimes$ denotes the Kronecker product. The $vec$ operator was introduced in \cite{neudecker1969note} and it's used to reorder the $m \times n$ components of a matrix $M_{m \times n}$ into a $mn$ vector $vec(M_{m \times n})$.\\
-Given multiple pairs of $A$s and $B$s with noise, the Kronecker product is reformulated as:% Eq.(\ref{KroneckerRotation}) and Eq.(\ref{KroneckerTrans}):
+Given multiple pairs of $A$s and $B$s with noise, the Kronecker product is reformulated as:% Eq.~(\ref{KroneckerRotation}) and Eq.~(\ref{KroneckerTrans}):
 \begin{equation}
 \left(
 \begin{array}{c}
@@ -663,7 +682,7 @@ vec(R_{X})
  = {\bf{0}}_{9 n \times 1},
 \label{KroneckerRotation}
 \end{equation}
-\textcolor{blue}{and}
+and
 \begin{equation}
 \left(
 \begin{array}{c}
@@ -694,14 +713,14 @@ R_{X_{e}} = R_{X}(R_{X}^{T}R_{X})^{-1/2}
 \cite{horn1986robot}
 where $R_{X_{e}}$ denotes the orthogonalized $R_{X}$.
 
-The orthogonalized matrix $R_{X_{e}}$ is further normalized as: % in Eq.(\ref{kron_normal}): 
+The orthogonalized matrix $R_{X_{e}}$ is further normalized as: % in Eq.~(\ref{kron_normal}): 
 \begin{equation}
 R_{X_{n}} = \dfrac{sign(\textrm{det}(R_{X_{e}}))}{{|\textrm{det}(R_{X_{e}})|}^{\tfrac{1}{3}}}R_{X_{e}}
 \label{kron_normal}
 \end{equation}
 where $R_{X_{n}}$ is the normalized matrix of $R_{X_{e}}$.
 After getting the estimation of $R_{X}$, a least squares method is implemented on Eq.~(\ref{KroneckerTrans}) to recover $\ttt_{X}$. One advantage of the Kronecker product method is its capability of dealing with small motions, because the associated orthogonal matrix $R_{X_{n}}$ is always defined, while the rotation can be ill-defined when using the axis-angle representation. Moreover, the linear system can also be used to analyze %This is the American version of analyse
- the  recoverable information in $X$ based on the available type and number of motions. Details are included in Section \textcolor{blue}{\ref{sec:data_selection}}. In addition, an on-line hand-eye calibration method is developed for an unknown scene based on the above algorithm, where the camera translations are estimated up to a scaling factor. 
+ the  recoverable information in $X$ based on the available type and number of motions. Details are included in Section \ref{sec:data_selection}. In addition, an on-line hand-eye calibration method is developed for an unknown scene based on the above algorithm, where the camera translations are estimated up to a scaling factor. 
 
 \subsection{Optimization Methods}
 \label{sec:optimization}
@@ -816,15 +835,15 @@ In order to update $g$, the rigid body velocity is introduced where $V^{r}_{g} =
 \begin{equation}
 g_{s+1} = g_{s}\text{exp}(\Delta t V^{r}_{g})
 \end{equation}
-where $t_{s+1} = t_{s} + \Delta t$ \textcolor{blue}{$t_{s+1}$ is not used in the equation} is the discrete time step. To \textcolor{blue}{prevent steps from becoming too small, the update law of $g_s$ is modified as:}%complete the update law of $g_s$, the rigid body velocity is defined as: 
+where $t_{s+1} = t_{s} + \Delta t$ is the discrete time step corresponding to $g_{s+1}$. To prevent steps from becoming too small, the update law of $g_s$ is modified as:%complete the update law of $g_s$, the rigid body velocity is defined as: 
 \begin{equation}
 V^{r}_{g} = g^{-1}\dot{g} = -\alpha \widehat{\nabla f(g)}.
 \label{gs}
 \end{equation} 
-\textcolor{blue}{where $\alpha..$}
+where $\alpha..$
 After choosing the cost function as:
 \begin{equation}
-C(X) = \sum_{i=1}^{n}||A_{i}X - XB_{i}||
+C(X) = \sum_{i=1}^{n}||A_{i}X - XB_{i}||.
 \end{equation}
 $X$ can be optimized using Eq.~(\ref{gs}).
 The gradient descent method updates the calibrations parameters online based on new incoming data. The initial guess of $X$ will converge to the true $X$; however, the rate of convergence depends on how ``good'' the initial guesses are.
@@ -832,7 +851,7 @@ The gradient descent method updates the calibrations parameters online based on 
 
 \subsection{Batch Method}
 \label{batchnoisefree}
-This section presents a probabilistic method \cite{ackermanGSI} by Ackerman and Chirikjian to solve for $X$ \textcolor{blue}{in the absence of} %when there does not need to be any 
+This section presents a probabilistic method \cite{ackermanGSI} by Ackerman and Chirikjian to solve for $X$ in the absence of %when there does not need to be any 
 a priori knowledge of the correspondence between the exact sets of measurements
 $A = \{A_i\}$ and $B = \{B_j\}$. In other words, the sets $A$ and $B$ each can be given as unordered ``batches'' without knowing how each $A_i$ matches to a specific $B_j$.
 
@@ -856,7 +875,6 @@ becomes negligible before they ``wrap around'' due to the topology of $SE(3)$.
 Using formulations of probability theory on SE(3), Eq.~(\ref{main}) can be thought as:
 \begin{equation} (\delta_{A_i} * \delta_X)(H) = (\delta_X * \delta_{B_i})(H) \label{mainconv} \end{equation}
 where $*$ denotes the convolution of functions on $SE(3)$, as defined in the Appendix.
-\textcolor{blue}{Maybe include the definition of $ \delta_{A_i}$}
 \begin{comment}
 Whereas the addition (as opposed to multiplication) of homogeneous transformation matrices is nonsensical, the addition of real-valued functions $f_1(H) + f_2(H)$ is a perfectly reasonable operation and
 \end{comment}
@@ -869,7 +887,7 @@ to be probability densities:
 $$ \int_{SE(3)} f_A(H) dH = \int_{SE(3)} f_B(H) dH = 1. $$
 See the Appendix for a review of the properties of integration on $SE(3)$.
 
-Let the mean and covariance of a probability density \textcolor{blue}{function} $f(H)$ be defined by the following conditions:
+Let the mean and covariance of a probability density function $f(H)$ be defined by the following conditions:
 \begin{equation} \begin{split} &\int_{SE(3)} \log(M^{-1} H) f(H) dH = \mathbb{O} \,\,\, {\rm and} \,\,\,\\ &\Sigma = \int_{SE(3)} \log^{\vee}(M^{-1} H) [\log^{\vee}(M^{-1} H)]^T  f(H) dH . \end{split}\label{meancovdef} \end{equation}
 If $f(H)$ is of the form of $f_A(H)$ given above, then
 \begin{equation} \
@@ -882,7 +900,7 @@ the convolution of these functions can be closely approximated as \cite{Wang08}:
 \begin{equation}
 M_{1*2} = M_1 \, M_2 \,\,\, {\rm and} \,\,\, \Sigma_{1*2} = Ad(M_2^{-1}) \,\Sigma_{1}\, Ad^T(M_2^{-1}) + \Sigma_{2}
 \label{meancovconvdef} \end{equation}
-where \textcolor{blue}{Why not use a \~x to be consistent with your other notation?}
+where
 \begin{equation} 
 Ad(H) = \left(\begin{array}{ccc}
 R && \mathbb{O} \\
@@ -923,7 +941,6 @@ $$ \log^{\vee}(M) = \left(\begin{array}{c}
 \theta \, {\bf n} \\
 {\bf v} \end{array} \right), $$
 where ${\bf \omega} \in \mathbb{R}^3$ and ${\bf v} \in \mathbb{R}^3$ are the elements of the Lie algebra, and writing the rotation and translation parts of Eq.~(\ref{mainmain1rewrite}) separately,
-\textcolor{blue}{Again, throughout this section I would think about using consistent notation. Don't use hat some places and tilde in other places.}
 \begin{equation}
 {\bf n}_A = R_X {\bf n}_B \hspace{5mm}\mbox{and}
 \label{nanb} \end{equation}
@@ -985,7 +1002,11 @@ where $\Sigma_{i}^3 = (\Sigma_{i}^2)^T$, then take the first two blocks of Eq.~(
 \end{align}
 \end{subequations}
 
+<<<<<<< HEAD
 Calculate the eigendecomposition as $ \Sigma_{i}=Q_i \Lambda Q_i^T$, where $Q_i$ is the square matrix whose $i$th column is the eigenvector of $\Sigma_i$ and $\Lambda$ is the diagonal matrix with corresponding eigenvalues as diagonal entries. Write the first block of Eq.~(\ref{set1}) as \cite{ackermanGSI, ackermanIROS2013}:
+=======
+Calculate the eigendecomposition as $ \Sigma_{i}=Q_i \Lambda Q_i^T$, where $Q_i$ is the square matrix whose $i$th column is the eigenvector of $\Sigma_i$ and $\Lambda$ is the diagonal matrix with corresponding eigenvalues as diagonal entries. Write the first block of Eq.~(\ref{set12}) as \cite{ackermanGSI, ackermanIROS2013}:
+>>>>>>> 18ed3da22e6ab61879122423782415f5a01ad2b5
 \begin{align}
 \Lambda &= Q_{M_B}^T R_X^T Q_{M_A} \Lambda Q_{M_A}^T R_X Q_{M_B} = {\cal Q} \Lambda {\cal Q}^T.
 \label{QAQ}
@@ -993,7 +1014,7 @@ Calculate the eigendecomposition as $ \Sigma_{i}=Q_i \Lambda Q_i^T$, where $Q_i$
 
 \begin{comment}
 {\color{red} {\color{blue}This is something new that can be served as a complement in the review of batch method.}
-When $Q$ is constrained to be a rotation matrix. Eq.(\ref{QAQ}) can be further be written as:
+When $Q$ is constrained to be a rotation matrix. Eq.~(\ref{QAQ}) can be further be written as:
 \begin{equation}
 \Lambda Q = Q \Lambda.
 \end{equation}
@@ -1025,7 +1046,7 @@ This means that the rotation component of $X$ is given by:
 R_x=Q_{M_A}\,{\cal Q}\,Q_{M_B}^T.
 \label{RQ}\end{equation}
 When $\Lambda$ has repeated entries, a continuum of symmetries result. For example, in the extreme case when $\Lambda = \lambda \mathbb{I}_3$, the
-finite set ${\cal Q}$ would be replaced by $SO(3)$, which is the same as saying that the first equation in Eq.~(\ref{set1}) imposes no constraint. In general, it is possible to construct trajectories that define the sets $\{A_i\}$ and $\{B_j\}$ such that this does not happen, and so the Batch method limits the discussion to the case where Eq.~(\ref{qset}) holds.
+finite set ${\cal Q}$ would be replaced by $SO(3)$, which is the same as saying that Eq.~(\ref{set11}) imposes no constraint. In general, it is possible to construct trajectories that define the sets $\{A_i\}$ and $\{B_j\}$ such that this does not happen, and so the Batch method limits the discussion to the case where Eq.~(\ref{qset}) holds.
 
 Once the four possibilities of $R_X$ are found in this manner, the corresponding possible ${\bf t}_X$ can be found easily from blocks 2 and 4 of in Eq.~(\ref{set12}).
 
@@ -1044,7 +1065,11 @@ Selection of well defined $(A_i,B_i)$ is very important for the $AX=XB$ solvers.
 
 To determine the hand-eye transformation, at least 2 non-parallel rotation axes from the data pairs are needed (which is also referred at the non-parallelism criterion), and further data selection algorithms are all built on top of this. 
 
+<<<<<<< HEAD
 In the error analysis of \cite{tsai1989new}, four observations are given to show the relationships between the errors in rotation and translation and the features of the robot motions. In addition, seven steps are suggested to improve the calibration accuracy. Shi {\it{et al.}} \cite{shi2005approach} developed a motion selection algorithm based on three out of the four observations in \cite{tsai1989new}. However, the thresholds in \cite{shi2005approach} are chosen in a heuristic manner. To fix this problem,  Zhang {\it{et al.}} \cite{zhang2005adaptive} proposed an adaptive selection method which can update the thresholds online. All of the above approaches share some common standards such that small relative rotations between $(A_i, B_i)$ and $(A_{i+1}, B_{i+1})$ should be avoided, and the rotation angles for both $\{A_i\}$ and $\{B_i\}$ should be large enough to avoid the singularity of the representation. The Kronecker product method, however, has a tolerance on small robot motions as pointed out in Section~\ref{sec:Kronecker}. It also offers an algebraic analysis to show what information of $X$ can be obtained using certain types and numbers of motions. Interesting results are: (1) three independent pure translations can fully define $R_X$ but not $\ttt_{X}$; (2) with two or more independent pure rotations, both $R_{X}$ and $\ttt_{X}$ can be recovered. A more detailed summary can be seen in Table 1 of \cite{andreff1999line}. \textcolor{red}{Schmidt {\it{et al.}} \cite{schmidt2003robust} discussed data selection for the dual quaternion hand-eye calibration algorithm based on a RANSAC approach, which shows that the dual quaternion method can give a better $X$ after data selection, while the dual quaternion method can even fail without data filtering.} \textcolor{blue}{Note: Explanation the previous sentence better} However, the computation of all possible relative movements from the data set results in a long computational time. 
+=======
+In the error analysis of \cite{tsai1989new}, four observations are given to show the relationships between the errors in rotation and translation and the features of the robot motions. In addition, seven steps are suggested to improve the calibration accuracy. Shi {\it{et al.}} \cite{shi2005approach} developed a motion selection algorithm based on three out of the four observations in \cite{tsai1989new}. However, the thresholds in \cite{shi2005approach} are chosen in a heuristic manner. To fix this problem,  Zhang {\it{et al.}} \cite{zhang2005adaptive} proposed an adaptive selection method which can update the thresholds online. All of the above approaches share some common standards such that small relative rotations between $(A_i, B_i)$ and $(A_{i+1}, B_{i+1})$ should be avoided, and the rotation angles for both $\{A_i\}$ and $\{B_i\}$ should be large enough to avoid the singularity of the representation. The Kronecker product method, however, has a tolerance on small robot motions as pointed out in Section~\ref{sec:Kronecker}. It also offers an algebraic analysis to show what information of $X$ can be obtained using certain types and numbers of motions. Interesting results are: (1) three independent pure translations can fully define $R_X$ but not $\ttt_{X}$; (2) with two or more independent pure rotations, both $R_{X}$ and $\ttt_{X}$ can be recovered. A more detailed summary can be seen in Table 1 of \cite{andreff1999line}. Schmidt {\it{et al.}} \cite{schmidt2003robust} discussed data selection for the dual quaternion hand-eye calibration algorithm based on a RANSAC approach for filtering, which shows that the dual quaternion method can yield a better $X$ after data selection; without filtering the method can either fail or perform worse. However, the computation of all possible relative movements from the data set results in a long computational time. 
+>>>>>>> 18ed3da22e6ab61879122423782415f5a01ad2b5
 
 For a set of continuous robot motions, a sequence of images or sensor recorded information will be obtained. But due to the small differences between consecutive images or sensor recordings, it is often undesirable to process the data in the temporal order because this can yield high errors. Schmidt {\it{et al.}} \cite{vogt2004vector} then proposed a vector quantization based data selection technique which selects a globally consistent set of motions that optimizes the non-parallelism criterion. The main idea is to select a subset of the given rotation axes of $(A_i, B_i)$ using clustering algorithms. It is shown that compared to the above two approaches, the algorithm presented is both fast and accurate. Ackerman {\it{et al.}} \cite{ackermanIROS2013} also proposed a method which uses the Euclidean group invariants in the structure of $\{A_i\}$ and $\{B_i\}$ to realign asynchronous data streams.
 
@@ -1193,12 +1218,12 @@ Let $f'(H) = f(H^{-1})$, and then $M'$ and $\Sigma'$ are the mean and covariance
 \end{split}
 \label{fprime}
 \end{equation}
-The first of Eq.(\ref{fprime})  can be rewritten as:
+The first of Eq.~(\ref{fprime})  can be rewritten as:
 \begin{equation}
 \int_{SE(3)} \log({M'}^{-1} H) f(H^{-1}) dH = \mathbb{O}
 \label{f_prime_mean}
 \end{equation}
-By changing the variable $K = H^{-1}$ and using the invariance of integration under inversion (as described in the Appendix), Eq.(\ref{f_prime_mean}) can be written as:
+By changing the variable $K = H^{-1}$ and using the invariance of integration under inversion (as described in the Appendix), Eq.~(\ref{f_prime_mean}) can be written as:
 $$ \int_{SE(3)} \log({M'}^{-1} K^{-1}) f(K) dK = \mathbb{O}. $$
 Multiplying this equation on the left by $M'$ and on the right by ${M'}^{-1}$, and using the general property that
 $$ H_1 (\log H_2) H_1^{-1} = \log (H_1 H_2 H_1^{-1}), $$
@@ -1308,12 +1333,12 @@ It is observed that symmetrized data provides, to a degree, a better solution of
 \section{THE EXPANDED BATCH METHOD (THE CASE OF NOISY A's)} \label{batchnoise}
 
 When the sensor that generates $B=\{B_j\}$ is accurate and there is significant
-measurement noise in the set $A = \{A_i\}$, a single $X$ will not solve every instance of Eq.(\ref{main}) and hence the delta function in Eq.(\ref{mainconvall}) 
+measurement noise in the set $A = \{A_i\}$, a single $X$ will not solve every instance of Eq.~(\ref{main}) and hence the delta function in Eq.~(\ref{mainconvall}) 
 will not solve the problem. Instead, we seek a distribution $f_X(H)$ with (a priori unknown) mean $M_X$ and covariance $\Sigma_X$.
 
-We can re-write Eq.(\ref{main}) as
+We can re-write Eq.~(\ref{main}) as
 \begin{equation} A_i = X B_i X^{-1} \label{main2} \end{equation}
-and in a similar fashion as in Eq.(\ref{mainconvall}),we can write the probabilistic form of Eq.(\ref{mainconvall}) as
+and in a similar fashion as in Eq.~(\ref{mainconvall}),we can write the probabilistic form of Eq.~(\ref{mainconvall}) as
 \begin{equation} f_A(H) = (f_X * f_B* f_{X^{-1}})(H). \label{mainconvallwnoise2} \end{equation}
 
 In the subsections that follow, we derive the conditions on the mean and covariance of $f_X$ and
@@ -1321,7 +1346,7 @@ develop numerical methods for solving for these quantities.
 
 \subsection{Conditions on $M_X$ and $\Sigma_X$}
 Using the associativity of convolution, $f_X * f_B* f_{X^{-1}} = f_X * (f_B* f_{X^{-1}})$, 
-and applying Eq.(\ref{meancovconvdef}) to Eq.(\ref{mainconvallwnoise2}) twice, we get
+and applying Eq.~(\ref{meancovconvdef}) to Eq.~(\ref{mainconvallwnoise2}) twice, we get
 \begin{equation}
 \boxed{\,
 M_A = M_X \, M_B \, M_{X^{-1}}
@@ -1335,15 +1360,15 @@ and
 \end{split}
 \label{covprop22}
 \end{equation}
-Note that Eq.(\ref{covprop2}) and Eq.(\ref{covprop22}) are built on the use of (\ref{meancovconvdef}) twice so that they are approximations, unlike
-Eq.(\ref{mainmain11}) and Eq.(\ref{mainmain12}) which are exact (by Theorem \ref{exactthm}). 
-We can simplify this relationship in Eq.(\ref{covprop22}) by proving two identities related to the mean and 
+Note that Eq.~(\ref{covprop2}) and Eq.~(\ref{covprop22}) are built on the use of (\ref{meancovconvdef}) twice so that they are approximations, unlike
+Eq.~(\ref{mainmain11}) and Eq.~(\ref{mainmain12}) which are exact (by Theorem \ref{exactthm}). 
+We can simplify this relationship in Eq.~(\ref{covprop22}) by proving two identities related to the mean and 
 covariance of probability distributions on $SE(3)$ given below.
 
 As in the noise-free case, $(M_A,\Sigma_A)$ and $(M_B,\Sigma_B)$ are known from the data and are computed from
-Eq.(\ref{datameancovconvdef}). The only difference is that now we seek $(M_X, \Sigma_X)$ instead of just $X$.
+Eq.~(\ref{datameancovconvdef}). The only difference is that now we seek $(M_X, \Sigma_X)$ instead of just $X$.
 
-With these two properties, as well as the fact that $[Ad(H)]^{-1}=Ad(H^{-1})$, we can write Eq.(\ref{covprop22}) as:
+With these two properties, as well as the fact that $[Ad(H)]^{-1}=Ad(H^{-1})$, we can write Eq.~(\ref{covprop22}) as:
 \begin{flalign*}
 \Sigma_A = &Ad(M_X) \, Ad(M_B^{-1}) \, \Sigma_{X} \, Ad^T(M_B^{-1}) \, Ad^T(M_X)\\
 &+ Ad(M_X) \, \Sigma_{B} \, Ad^T(M_X) + Ad(M_X) \, \Sigma_{X}\, Ad^T(M_X), 
@@ -1363,10 +1388,10 @@ which leads to our final result
 \,}
 \label{covprop1112} \end{equation}
 As in the noise-free case, $(A,\Sigma_A)$ and $(B,\Sigma_B)$ are known from the data and are computed from
-Eq.(\ref{datameancovconvdef}). The only difference is that now we seek $(M_X, \Sigma_X)$ instead of just $X$.
+Eq.~(\ref{datameancovconvdef}). The only difference is that now we seek $(M_X, \Sigma_X)$ instead of just $X$.
 
 \subsection{Computing $M_X$ and $\Sigma_X$}
-From Eq.(\ref{covprop1112}), we can solve for $\Sigma_X$, given an $M_X$. This is done by taking the Kronecker product of both sides and writing
+From Eq.~(\ref{covprop1112}), we can solve for $\Sigma_X$, given an $M_X$. This is done by taking the Kronecker product of both sides and writing
 \begin{equation}
 \begin{split}
 [&Ad(M_B^{-1}) \otimes Ad(M_B^{-1}) + \mathbb{I}_{36}] {\rm vec}(\Sigma_X)\\
@@ -1406,7 +1431,7 @@ $$ ^k\Delta_i \doteq
 where $\Omega = - \Omega^T$ and ${\bf v}$ are random angular and translational velocities with components drawn independently from
 a Gaussian distribution with variance $\sigma^2$, and $\delta t$ is a small finite time.
 
-After calculating $\Sigma_X$ from Eq.($\ref{covprop1112}$), we can compare the calculated sample mean and covariance of $\{X_{ij}\}=\{^1X_{ij}\} \cup \{^2X_{ij}\}$ with the solved for values.
+After calculating $\Sigma_X$ from Eq.~($\ref{covprop1112}$), we can compare the calculated sample mean and covariance of $\{X_{ij}\}=\{^1X_{ij}\} \cup \{^2X_{ij}\}$ with the solved for values.
 
 
 \begin{figure}[h]
@@ -1444,7 +1469,7 @@ This was done in \cite{wang06}, and the result (modulo different notation) is:
 \tilde{\Sigma} = \Sigma + (\log^{\vee} M)(\log^{\vee} M)^T + \half \left(\Sigma \, ad^T(\log M) + ad(\log M) \, \Sigma\right)
 \label{sigtildesig}
 \end{equation}
-If $(M,{\Sigma})$ is known a priori, then $\tilde{\Sigma}$ can be computed from them. Due to the simple computation of $\tilde{\Sigma}$, Eq.(\ref{sigtildesig}) can be used as a consistency
+If $(M,{\Sigma})$ is known a priori, then $\tilde{\Sigma}$ can be computed from them. Due to the simple computation of $\tilde{\Sigma}$, Eq.~(\ref{sigtildesig}) can be used as a consistency
 check on the accuracy of $M$ and $\Sigma$ by computing the norm of the difference of both sides.
 \end{comment}
 
@@ -1484,12 +1509,11 @@ $SE(3)$ is a six-dimensional matrix Lie group. If $H = H({\bf q})$ where ${\bf q
 functions $f:SE(3) \rightarrow \mathbb{R}$ can be integrated as
 $$ \int_{SE(3)} f(H) dH \doteq \int_{{\bf q} \in D} f(H({\bf q})) |J({\bf q})| d{\bf q} $$
 where $D$ is the domain of integration in the parameter space and $d{\bf q} = dq_1 dq_2 \cdots dq_6$. 
-The Jacobian determinant $|J({\bf q})|$ is computed from the Jacobian matrix \textcolor{blue}{Note: You should probably add a quick discussion of right and left Jacobians and clarify that they are different?}
+The Jacobian determinant $|J({\bf q})|$ is computed from the Jacobian matrix:
 $$ J({\bf q}) = \left[\left(H^{-1} \frac{\partial H}{\partial q_1}\right)^{\vee}; \left(H^{-1} \frac{\partial H}{\partial q_2}\right)^{\vee};\,\cdots\,
 \left(H^{-1} \frac{\partial H}{\partial q_6}\right)^{\vee}\right]. $$
 For example, if Cartesian coordinates are used for the translation vector and $ZXZ$ Euler angles are used
-for rotations, then ${\bf q} = [x,y,z,\alpha,\beta,\gamma]^T$, $D=\mathbb{R}\times\mathbb{R}\times\mathbb{R}\times[0,2\pi]\times[0,\pi]\times[0,2\pi]$ and $|J({\bf q})| = \sin \beta$. And while $D$ and $J({\bf q})$ will change depending on which parametrization is used, the value of the integral itself does not as it is a property of the Lie group and the function themselves and not a matter of how the function is expressed or the coordinates of the integral.
-\textcolor{blue}{I fixed the last sentence slightly; it still needs some work}
+for rotations, then ${\bf q} = [x,y,z,\alpha,\beta,\gamma]^T$, $D=\mathbb{R}\times\mathbb{R}\times\mathbb{R}\times[0,2\pi]\times[0,\pi]\times[0,2\pi]$ and $|J({\bf q})| = \sin \beta$. While $D$ and $J({\bf q})$ will change depending on which parametrization is used, the value of the integral itself does not as it is a property of the Lie group. The integral depends on the function themselves but not a matter of how the function is expressed or the coordinates of the integral.
 
 $SE(3)$ is unimodular, which means that the integation measure, $dH = |J({\bf q})| d{\bf q}$, has the property that for any
 fixed $H_0 \in SE(3)$ and ``well-behaved fuction\footnote{Here a well-behaved function means a function for which the integral exists, and hence
@@ -1519,21 +1543,38 @@ Given two functions, $f_1, f_2 \in (L^1 \cap L^2)(SE(3))$, the convolution is de
 \label{convdef}
 \end{equation}
 This integral can be rewitten in a number of equivalent forms using Eq.~(\ref{defuni}) and Eq.~(\ref{invdsdcf}).
-Convolution inherits the associative property from the underlying group, which is written as 
-$$ (f_1 * f_2) * f_3 = f_1 * (f_2 * f_3) $$
-(where the dependence of these functions on $H$ has been temporarily suppressed). Analogous with the way convolution inherits associativity, it 
+Convolution inherits the associative property from the underlying group, which is written as:
+\begin{equation}
+(f_1 * f_2) * f_3 = f_1 * (f_2 * f_3)
+\end{equation} 
+where the dependence of these functions on $H$ has been temporarily suppressed. Analogous with the way convolution inherits associativity, it 
 also inherits noncommutativity for general functions, with the exception of special functions called ``class functions''.
 
-If the class of functions is expanded to consider beyond $(L^1 \cap L^2)(SE(3))$
-to include Dirac delta functions\footnote{As in $\mathbb{R}^n$, these can be thought of as spikes
-of infinite height and infinitesimal width centered on the identity}, which are the unique functions such that for every $f \in (L^1 \cap L^2)(SE(3))$
-$$ (f * \delta)(H) = (\delta * f)(H) = f(H), $$
-then the result is the ``group algebra'' consisting of functions as elements, and the two operations of convolution and addition of
-functions: $f_1*f_2$ and $f_1 + f_2$. \textcolor{blue}{Note: The previous sentence does not make sense} A slightly further expansion of allowable functions to include shifted delta functions of the form:
-$$ \delta_X(H) \doteq \delta(X^{-1} H) = \delta( H X^{-1}). $$
-\textcolor{blue}{The previous sentence is not complete}
+The Dirac delta function on $SE(3)$ is defined as follows:
+\begin{equation}\label{equ2}
+\delta{(H)}=
+\left\{
+\begin{array}{ll}
++\infty, & H=I \\
+0, & H \neq I
+\end{array}
+\right.
+\end{equation}
+which satisfies the constraint that: 
+\begin{equation}\label{equ3}
+\int_{SE(3)}\delta{(H)}dH=1.
+\end{equation}
+A slightly further expansion of allowable functions to include shifted delta functions of the form:
+\begin{equation}
+\delta_X(H) \doteq \delta(X^{-1} H) = \delta( H X^{-1}).
+\end{equation}
 The unshifted delta function is an example of a symmetric function, in that $\delta(H) = \delta(H^{-1})$.
 
+If the class of functions is expanded to consider beyond $(L^1 \cap L^2)(SE(3))$
+to include Dirac delta functions, then the following is true for every $f \in (L^1 \cap L^2)(SE(3))$:
+\begin{equation}
+(f * \delta)(H) = (\delta * f)(H) = f(H).
+\end{equation}
 Using the properties of the invariant integral on $SE(3)$, convolving a shifted delta function with an arbitrary
 function transfers the shift:
 \begin{equation}
@@ -1627,159 +1668,3 @@ convolution was already explained in (\ref{convsec}).
 % to you.
 \bibliography{asme2e}
 \end{document}
-
-
-
-
-
-
-
-
-
-%%-------------------------------------------------------------------------------------
-%\subsection{Solving for $X$ and $\Sigma_X$}
-%
-%
-%
-%
-%\subsubsection{Gradient descent using the $L^2$ Norm}
-%
-%One possible method to search for an appropriate $X$ and $\Sigma_X$ could be by minimizing the cost function
-%\begin{equation}
-%C_2(X) = \left(\int_{SE(3)} \|f_1(H) - f_2(H)\|^2 \, dH \right)^{\half}.
-%\label{cost2} \end{equation}
-%where
-%$$ f_1(H) = \rho(H; A, \Sigma_A) $$
-%and
-%\begin{equation}
-%f_2(H) = \rho(H; X B X^{-1}, \,\, \Sigma_2).
-%\end{equation}
-%where
-%$$ \Sigma_2 = Ad(X) [Ad(B^{-1})\Sigma_X Ad^T(B^{-1}) + \Sigma_{B} + \Sigma_X]Ad^T(X)$$
-%In general, the integral in this cost function cannot be solved in closed form because the $\log$ function is nonlinear, and in terms of exponential coordinates
-%$dH = |J({\bf z})| d{\bf z}$ where $|J({\bf 0})| =1$, but this Jacobian is a nonlinear function of ${\bf z}$.
-%
-%However, if we a priori limit the search for $X$ to the cylinder
-%defined in (\ref{cylinder}), automatically, $X B X^{-1} = A$.
-%Then, we can define a new variable $K = M_A^{-1} H$ and using the property of
-%invariance of integration under shifts, can write
-%$$ C_2(X(\phi,s), \Sigma_X) = \left(\int_{SE(3)} \left| f'_A(K) - f'_B(K) \right|^2 \, dK \right)^{\half} $$
-%where
-%$$ f'_1(K) = \rho(K; \mathbb{I}_4, \Sigma_A) $$
-%and
-%$$  f'_2(K) = \rho(K;\mathbb{I}_4 \,,\, \Sigma_2).$$
-%where
-%\begin{equation}
-%\begin{split}
-%\Sigma_2= &Ad(X(\phi,s)) [Ad(B^{-1})\Sigma_{X(\phi,s)} Ad^T(B^{-1})\\
-%&+ \Sigma_{B} + \Sigma_X(\phi,s)]Ad^T(X(\phi,s))
-%\end{split}
-%\end{equation}
-%And if covariances are scaled to be small, the benefit of this is that it reduces to the integral of the norm of the difference of two Gaussians.
-%This has a closed-form solution
-%\begin{equation}
-%\begin{split}
-%C_2(X(\phi,s), \Sigma_X) = (2\pi)^{-3}&\left[ -2 \frac{\sqrt{\| \Sigma_2^{-1} + \Sigma_A^{-1} \|^{-1}}}{\sqrt{\| \Sigma_A \|}\sqrt{\| \Sigma_2 \|}}\right.\\
-%&\left. + \frac{\sqrt{\| \Sigma_2 \|}}{\sqrt{2}\| \Sigma_2 \|} + \frac{\sqrt{\| \Sigma_A \|}}{\sqrt{2}\| \Sigma_A\|} \right]
-%\end{split}
-%\end{equation}
-%which can be minimized by a search over the 2 remaining DOF of $X$ and the 21 unique entries of $\Sigma_X$.
-%
-%In a similar manner, we can write another cost function, derived from the Kullback–Leibler divergence, and find the global minimum of the cost function
-%\begin{equation}
-%C_2(X) = D_{KL}(f_A \,\|\, \delta_X * f_B  * \delta_{X^{-1}})
-%\label{cost3} \end{equation}
-%where $f_A(H) = \rho(H; M_A, \Sigma_A)$ and
-%$$ (\delta_X * f_B  * \delta_{X^{-1}})(H) = \rho(H;\, X M_B X^{-1} \,,\, Ad(X) \,\Sigma_{B}\, Ad^T(X)). $$
-%
-%As before, if we limit the search for $X$ to the cylinder, the KL divergence of
-%two distributions on $\mathbb{R}^n$ with means ${\bf m}_i$ and covariances $\Sigma_i$ is
-%$$ D_{KL}(f_1 \,\|\, f_2) = $$
-%$$ \half\left[{\rm tr}(\Sigma_2^{-1} \Sigma_1) + ({\bf m}_2 - {\bf m}_1)^T \Sigma_2^{-1} ({\bf m}_2 - {\bf m}_1)
-%-n - {\rm ln}\left(\frac{|\Sigma_1|}{|\Sigma_2|}\right)\right]. $$
-%%% The above is from Wikipedia http://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence
-%In our problem, ${\bf m}_2 - {\bf m}_1 = {\bf 0}$, and since $SE(3)$ is
-%unimodular, $|Ad(X)| = 1$. 
-%Our cost function then becomes
-%$$ C_2(X(\phi,s), \Sigma_X) = D_{KL}(f'_A \,\|\, f'_B) $$
-%where
-%$$ C'_2(X(\phi,s), \Sigma_X) = {\rm tr}(\Sigma_A^{-1} \Sigma_2) - {\rm ln} \left( \frac{| \Sigma_A |}{|\Sigma_2|} \right), $$
-%and we minimize over the 23 parameters.
-%
-%
-%
-%
-%\subsubsection{Block decomposition}
-%
-%As in the no noise case, we can obtain the rotational component, $R_X$, of $X$. From (\ref{covprop2}) we have that,
-%\begin{equation}
-%{\bf n}_{A}=R_X{\bf n}_{B}
-%\label{ns}\end{equation}.\\
-%
-%If we decompose $\Sigma_{A}$ and $\Sigma_{B}$ into blocks as
-%$ \Sigma_{i}= \left(\begin{array}{cc}
-%\Sigma_{i}^1 & \Sigma_{i}^2 \\
-%\Sigma_{i}^3 & \Sigma_{i}^4  \end{array}\right) $\\
-%\\
-%where $\Sigma_{i}^3 = (\Sigma_{i}^2)^T$, then we can take (\ref{covprop1112})
-%$$\Sigma_{X} + Ad(B^{-1}) \Sigma_{X} Ad^T(B^{-1}) = Ad(X^{-1}) \Sigma_A Ad^T(X^{-1}) - \Sigma_{B}$$
-%and write
-%\begin{equation}
-%\begin{split}
-%&\left[\begin{array}{cc}
-%\Sigma_{X}^1 &\Sigma_{X}^2 \\
-%\Sigma_{X}^3 & \Sigma_{X}^4  \end{array}\right]+
-%\left[\begin{array}{cc}
-%R_{B}^T &  0 \\
-%(\widehat{-R_{B}^Tt_B})R_{B}^T &R_{B}^T \end{array}\right]
-%\left[\begin{array}{cc}
-%\Sigma_{X}^1 &\Sigma_{X}^2 \\
-%\Sigma_{X}^3 & \Sigma_{X}^4  \end{array}\right]
-%\left[\begin{array}{cc}
-%R_{B} &  R_{B}(\widehat{R_{B}^Tt_B}) \\
-%0 &R_{B} \end{array}\right]=\\
-%&\left[\begin{array}{cc}
-%R_{X}^T &  0 \\
-%(\widehat{-R_{X}^Tt_X})R_{X}^T &R_{X}^T \end{array}\right]
-%\left[\begin{array}{cc}
-%\Sigma_{A}^1 &\Sigma_{A}^2 \\
-%\Sigma_{A}^3 & \Sigma_{A}^4  \end{array}\right]
-%\left[\begin{array}{cc}
-%R_{X} &  R_{X}(\widehat{R_{X}^Tt_X}) \\
-%0 &R_{X} \end{array}\right]-
-%\left[\begin{array}{cc}
-%\Sigma_{B}^1 &\Sigma_{B}^2 \\
-%\Sigma_{B}^3 & \Sigma_{B}^4  \end{array}\right].
-%\end{split}
-%\end{equation}
-%Given that
-%\begin{equation}
-%\begin{split}
-%&\left[\begin{array}{cc}
-%R^T &  0 \\
-%(\widehat{-R^Tt})R^T & R^T \end{array}\right]
-%\left[\begin{array}{cc}
-%\Sigma^1 &\Sigma^2 \\
-%\Sigma^3 & \Sigma^4  \end{array}\right]
-%\left[\begin{array}{cc}
-%R &  R(\widehat{R^Tt}) \\
-%0 &R \end{array}\right]=\\
-%&\left[\begin{array}{cc}
-%R^T \Sigma^1 R &  R^T \Sigma^1 R (\widehat{R^Tt}) +R^T \Sigma^2 R \vspace{0.1in}\\
-%\multirow{2}{*}{$(\widehat{-R^Tt})R^T \Sigma^1 R + R^T \Sigma^3 R$} & (\widehat{-R^Tt})R^T \Sigma^1 R (\widehat{R^Tt})+ R^T \Sigma^3 R (\widehat{R^Tt}) \\
-% &+ (\widehat{-R^Tt}) R^T \Sigma^2 R + R^T \Sigma^4 R \end{array}\right]
-%\end{split}
-%\end{equation}
-%we can write the block equations as:
-%\begin{align} 
-%&\Sigma_X^1 + R_B^T \Sigma_X^1 R_B =  R^T_X \Sigma_A^1 R_X - \Sigma_B^1\\
-%\nonumber&\Sigma_X^2 + R_B^T \Sigma_X^1 R_B (\widehat{R_B^Tt_B}) + R_B^T \Sigma_X^2 R_B\\ 
-%&=  R^T_X \Sigma_A^1 R_X (\widehat{R_X^Tt_X}) +R_X^T \Sigma_A^2 R_X - \Sigma_B^2 \\
-%\nonumber &\Sigma_X^3 + (\widehat{-R_B^Tt_B}) R_B^T \Sigma_X^1 R_B + R_B^T \Sigma_X^3 R_B\\
-%&=  (\widehat{-R_X^Tt_X}) R^T_X \Sigma_A^1 R_X + R_X^T \Sigma_A^3 R_X - \Sigma_B^3 \\
-%\begin{split}& \Sigma_X^4 + (\widehat{-R_B^Tt_B}) R_B^T \Sigma_X^1 R_B (\widehat{R_B^Tt_B})  + R_B^T \Sigma_X^3 R_B (\widehat{R_B^Tt_B})\\ 
-%&+ (\widehat{-R_B^Tt_B}) R_B^T \Sigma_X^2 R_B + R_B^T \Sigma_X^4 R_B = \\
-%&(\widehat{-R_X^Tt_X}) R_X^T \Sigma_A^1 R_X (\widehat{R_X^Tt_X}) \\
-%&+ R_X^T \Sigma_A^3 R_X (\widehat{R_X^Tt_X}) + (\widehat{-R_X^Tt_X}) R_X^T \Sigma_A^2 R_X + R_X^T \Sigma_A^4 R_X - \Sigma_B^4 \end{split}
-%\end{align}
-%%--------------------------

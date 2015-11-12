@@ -1,0 +1,547 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%2345678901234567890123456789012345678901234567890123456789012345678901234567890
+%        1         2         3         4         5         6         7         8
+
+\documentclass[letterpaper, 10 pt, conference]{ieeeconf}  % Comment this line out if you need a4paper
+
+%\documentclass[a4paper, 10pt, conference]{ieeeconf}      % Use this line for a4 paper
+
+\IEEEoverridecommandlockouts                              % This command is only needed if
+                                                          % you want to use the \thanks command
+
+\overrideIEEEmargins                                      % Needed to meet printer requirements.
+
+% See the \addtolength command later in the file to balance the column lengths
+% on the last page of the document
+
+% The following packages can be found on http:\\www.ctan.org
+%\usepackage{graphics} % for pdf, bitmapped graphics files
+%\usepackage{epsfig} % for postscript graphics files
+%\usepackage{mathptmx} % assumes new font selection scheme installed
+%\usepackage{times} % assumes new font selection scheme installed
+%\usepackage{amsmath} % assumes amsmath package installed
+%\usepackage{amssymb}  % assumes amsmath package installed
+\usepackage{cite}      % Written by Donald Arseneau
+                        % V1.6 and later of IEEEtran pre-defines the format
+                        % of the cite.sty package \cite{} output to follow
+                        % that of IEEE. Loading the cite package will
+                        % result in citation numbers being automatically
+                        % sorted and properly "ranged". i.e.,
+                        % [1], [9], [2], [7], [5], [6]
+                        % (without using cite.sty)
+                        % will become:
+                        % [1], [2], [5]--[7], [9] (using cite.sty)
+                        % cite.sty's \cite will automatically add leading
+                        % space, if needed. Use cite.sty's noadjust option
+                        % (cite.sty V3.8 and later) if you want to turn this
+                        % off. cite.sty is already installed on most LaTeX
+                        % systems. The latest version can be obtained at:
+                        % http://www.ctan.org/tex-archive/macros/latex/contrib/supported/cite/
+
+\usepackage[dvips]{graphicx}  % Written by David Carlisle and Sebastian Rahtz
+                        % Required if you want graphics, photos, etc.
+                        % graphicx.sty is already installed on most LaTeX
+                        % systems. The latest version and documentation can
+                        % be obtained at:
+                        % http://www.ctan.org/tex-archive/macros/latex/required/graphics/
+                        % Another good source of documentation is "Using
+                        % Imported Graphics in LaTeX2e" by Keith Reckdahl
+                        % which can be found as esplatex.ps and epslatex.pdf
+                        % at: http://www.ctan.org/tex-archive/info/
+
+%\usepackage{amsmath}   % From the American Mathematical Society
+                        % A popular package that provides many helpful commands
+                        % for dealing with mathematics. Note that the AMSmath
+                        % package sets \interdisplaylinepenalty to 10000 thus
+                        % preventing page breaks from occurring within multiline
+                        % equations. Use:
+\usepackage{multirow}
+%\usepackage[left=0.71in,top=0.94in,right=0.71in,bottom=1.18in]{geometry}
+%\setlength{\columnsep}{0.24in}
+% correct bad hyphenation here
+%\hyphenation{op-tical net-works semi-conduc-tor IEEEtran}
+\usepackage{mathtools}   % loads Â»amsmathÂ«
+\usepackage{amssymb,amsmath}
+\usepackage{amsfonts}
+\usepackage{color}
+
+
+\title{\LARGE \bf
+%Simultaneous Coordinate Calibrations by Solving the AX=YB Problem without Correspondence*
+Simultaneous Hand-Eye and Robot-World Calibration by Solving the AX=YB Problem without Correspondence*
+}
+
+
+\author{Haiyuan Li$^{1}$, Qianli Ma$^{2}$, Tianmiao Wang$^{1}$ and Gregory S. Chirikjian$^{2}$% <-this % stops a space
+\thanks{*This work was partially supported by NSF Grant RI-Medium: 1162095. Mr. Haiyuan Li's partial work is supported by ¡°863¡± Program
+of China: 2012AA041402.}%% <-this % stops a space
+\thanks{$^{1}$Haiyuan Li and Tianmiao Wang are with the School of Mechanical Engineering and Automation, Beihang University, Beijing 100191, China
+        {\tt\small haiyuanli@hotmail.com}, {\tt\small itm@buaa.edu.cn}}%
+\thanks{$^{2}$Qianli Ma and Gregory S. Chirikjian are with the Department of Mechanical Engineering, Johns Hopkins University,
+        Baltimore, MD 21218, USA
+        {\tt\small mqianli1@jhu.edu}, {\tt\small gregc@jhu.edu}}%
+}
+
+\begin{document}
+
+
+
+\maketitle
+\thispagestyle{empty}
+\pagestyle{empty}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+
+%In image-guided systems, the relative transformations of hand-eye ($X$) and robot-world ($Y$) coordinates have to be calculated and a simultaneous solution is useful in sensor calibration problem. Due to the asynchrony of sensors' timing, the exact correspondence between $A$ and $B$ is unknown, and a common scenario is when there is a constant shift between the two data streams. A probabilistic method is presented to solve the homogeneous matrix equations without a priori knowledge of the correspondence. Using the Euclidean-Group invariants, an exact solution can be found. For noisy and shifted data streams, we numerically simulated the proposed method, and the results show the efficiency and robustness.
+Calibration is often an important and necessary step in the use of image-guided systems. In the case of the $AX=YB$ problem, the relative hand-eye ($X$) and robot-world ($Y$) transformations must be determined to provide accurate data for use in control. As an added difficulty, the exact correspondence between the streams of sensor data ($A$s and $B$s) is typically unknown due to asynchrony in sampling rates and processing time. One common scenario is a constant shift between the two data streams. Therefore, in this paper we present a probabilistic method to simultaneously solve for $X$ and $Y$ without a priori knowledge of the correspondence between the streams of $A$s and $B$s. We begin by discussing probability density functions on $SE(3)$ and then introduce Euclidean-group invariants to obtain an exact solution for $X$ and $Y$. Then, we present a method to simultaneously recover $X$ and $Y$ and the correspondence between the shifted data sets. Finally, we numerically simulated the proposed method with shifted, asynchronous data and noise added to the stream of $B$s to verify its efficiency and robustness.
+
+\end{abstract}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+% no \PARstart
+
+Image-guided systems have been widely employed in applications throughout robotics such as robot-assisted surgery, autonomously guided vehicles, etc. Sensors such as a camera, a laser scanner, or an ultrasound probe are usually mounted on the distal end of a robotic manipulator. For a typical ``hand-eye'' system as described above, the relative transformation
+between the sensor with respect to the end-effector should be accurately calibrated, and it is often characterized as the well-known $\textbf{AX=XB}$ problem. A variation of this problem is the $\textbf{AX=YB}$ problem, where both the hand-eye transformation and the pose of the robot base with respect to the world frame need to be calibrated. In a typical environment, the relationships between the sensor frame, robot frame, and world frame are variant and uncertainties exist. Therefore, simultaneous coordinate calibrations have to be determined frequently in order to enable the robot to respond to dynamic environments.
+
+In the $\textbf{AX=YB}$ problem, data streams of $A$s and $B$s can be respectively obtained via different sensors. The data streams may arrive in an asynchronous fashion due to the different working frequencies of the sensors. This asynchrony causes a shift between the two data streams which removes the correspondence between the $A$s and $B$s. In this paper, a novel method is presented to solve for $X$ and $Y$ without a priori knowledge of the correspondence between the $A$s and $B$s.
+
+\begin{figure}[t!]
+\centering
+\includegraphics[width=3.2in]{fig1.eps}
+\caption{
+(1) The hand-eye and robot-world calibration problem formulated as AX=YB. (2) The hand-eye calibration problem formulated as AX=XB. Note: matrices $A$ and $B$ above have different physical meanings in the $AX=XB$ and $AX=YB$ problems. (The Universal Robot pictured above is owned by Prof. Emad Boctor of Johns Hopkins University).
+}
+\label{fig1}
+\end{figure}
+
+The hand-eye calibration problem can be modelled as $\textbf{AX = XB}$, where $A$ and $B$ are the homogeneous transformation matrices describing the relative motions of the end-effector and the  sensor respectively. As shown in Fig.~\ref{fig1} part (2), $A = A^{i}(A^{i+1})^{-1}$ and  $B = (B^{i})^{-1}B^{i+1}$. Given multiple pairs of $(A_i,B_i)$ with correspondence (note that $(A_i,B_i)$ are the relative transformations obtained from the raw data), many deterministic methods have been proposed to solve for $X$. To the best of the authors' knowledge, Shiu \cite{Shiu1989} and Tsai \cite{Tsai1989} are the first to solve the $AX = XB$ sensor calibration problem. The other methods include but are not limited to the quaternion, dual quaternion, screw theory, Lie group theory, convex optimization and gradient descent methods \cite{Wang1992,Park1994,Horaud1995,Daniilidis1999,Fassi2005,Zhao2011,Ackerman2014a}. All of the methods above assume a priori knowledge of the exact correspondence between $A_i$ and $B_i$. For data streams $\{A_i\}$ and $\{B_j\}$ that are asynchronous, several methods have been proposed in the literature to solve for $X$ using data without a priori knowledge of the correspondence. These methods assume that there are some corresponding pairs of data in the streams of the $\{A_i\}$ and $\{B_j\}$; however,  the exact correspondence is unknown \cite{Ackerman2013a,Ackerman2013,Ackerman2014}.
+
+Simultaneous estimation of the hand-eye and robot-world transformations has been viewed as the $\textbf{AX=YB}$ problem. As shown in Fig.~\ref{fig1} part (1), $Y$ is the transformation from the robot base to the world frame, $A$ denotes the pose of the sensor in the world frame and $B$ is the transformation from the end-effector to its fixed base. The $A$ and $B$ in $\textbf{AX=YB}$ are different from those in $\textbf{AX=XB}$ where the former uses absolute transformations and the latter uses relative transformations. This problem has been solved by many different methods such as the Kronecker product, quaternion, dual quaternion, and nonlinear optimization methods \cite{Zhuang1994,dornaika1998simultaneous,Hirsh2001, ernst2012non,strobl2006optimal,Li2010,Shah2013,Heller2014}. Simulatneous calibration %s
+of $X$ and $Y$ can be problematic in that all the methods above assume exact correspondence between $\{A_i\}$ and $\{B_j\}$, which is not the case in the real world, and this is why a simultaneous solution for $X$ and $Y$ in the $\textbf{AX=YB}$ problem can be a challenging issue. Another similar problem involves the calibration of multiple robots in terms of hand-eye, tool-flange\textcolor{blue}{,} and robot-robot transformations, and it is formulated as the $\textbf{AXB=YCZ}$ problem \cite{Wang2014} which will not be discussed in detail here. In the above methods, the correspondence between $A$ and $B$ is known a priori. In this paper, we focus on one case of the $\textbf{AX=YB}$ problem where there is no a priori knowledge of the correspondence between the data streams.
+
+The rest of the paper is organized as follows. In Section
+\ref{sect2}, a novel probabilistic method is presented to solve for eight candidates of $X$ and $Y$. In Section \ref{sect3}, an algorithm involving both correlation theorem and Euclidean group invariants is proposed to recover the correspondence between $\{A_i\}$ and $\{B_j\}$, which is used to select the optimal solution among the candidates. The simulation results obtained by taking noisy data without correspondence are illustrated in Section \ref{sect4}. Finally, conclusions are drawn based on the numerical results and possible future work is pointed out.
+
+\section{Solving AX=YB using a probabilistic method on motion groups}
+\label{sect2}
+In this section, a brief introduction to the concept %s
+ of probability density functions (PDFs) on the special Euclidean group $SE(3)$ is presented and the probabilistic representation of $AX=YB$ is derived.
+
+Any rigid body transformation matrix can be viewed as a group element of $SE(3)$ :
+\begin{equation}\label{equ0}
+    H(R,t)=\left(
+             \begin{array}{cc}
+               R & t \\
+               0^{T} & 1 \\
+             \end{array}
+           \right) \in SE(3), \; \; R \in SO(3)
+\end{equation}
+where $SO(3)$ denotes the special orthogonal group, $t \in \mathbb{R}^3 $ is a translational vector and $H$ is the symbol for the group element.
+
+Given a large set of pairs $(A_{i},B_{i})\in SE(3)\times SE(3)$ where $i=1,\cdots,n$, the following equation is true if the correspondence is known as a priori:
+
+\begin{equation}\label{equ1}
+A_{i}X=YB_{i}.
+\end{equation}
+For a group element $H \in SE(3)$, a Dirac delta function $\delta(H)$ is defined to be finite only at the identity and zero elsewhere:
+
+\begin{equation}\label{equ2}
+\delta{(H)}=
+\left\{
+\begin{array}{ll}
++\infty, & H=I \\
+0, & H \neq I.
+\end{array}
+\right.
+\end{equation}
+The Dirac delta function also satisfies the identity constraint as:
+
+\begin{equation}\label{equ3}
+\int_{SE(3)}\delta{(H)}dH=1.
+\end{equation}
+
+A shifted Dirac delta function can be defined as $\delta_{A}(H)=\delta{(A^{-1}H)}$. Given $K,H \in SE(3)$ and two well-defined functions $f_{1}, f_{2} \in \left(L^1 \cap L^2 \right)(SE(3))$, their convolution on $SE(3)$ is defined as:
+
+\begin{equation}\label{equ4}
+(f_{1}\ast f_{2})(H)=\int_{SE(3)}f_{1}(K)f_{2}(K^{-1}\circ H)dK.
+\end{equation}
+where $\circ$ denotes the group product, and in this case it is simply matrix multiplication. Employing the properties of the $\delta$ function, it is straightforward to see that:
+
+\begin{equation}\label{equ5}
+(f\ast \delta)(H)=\int_{SE(3)}f(K)\delta(K^{-1}\circ H)dK=f(H).
+\end{equation}
+Therefore, for each $A_{i}$ and $B_{i}$, the following equations can be obtained:
+
+\begin{IEEEeqnarray}{l}\label{equ6}
+(\delta_{A_{i}}\ast \delta_{X})(H)=\delta(A_{i}^{-1} H X^{-1}) \IEEEyessubnumber
+\\*
+(\delta_{Y}\ast \delta_{B_{i}})(H)=\delta(Y^{-1} H B_{i}^{-1}). \IEEEyessubnumber
+\end{IEEEeqnarray}
+Using Eq.\textcolor{blue}{~}($\ref{equ1}$) and Eq.\textcolor{blue}{~}($\ref{equ2}$), the above two equations can be combined into a single equation as:
+
+\begin{equation}\label{equ7}
+(\delta_{A_{i}}\ast \delta_{X})(H)=(\delta_{Y}\ast \delta_{B_{i}})(H)
+\end{equation}
+Defing the PDF %probability density function
+of $\{A_i\}$ and $\{B_i\}$ as:
+\begin{IEEEeqnarray}{l}\label{equ8}
+f_{A}(H)=\frac{1}{n}\sum_{i=1}^{n} \delta_{A_{i}}(H) \IEEEyessubnumber
+\\*
+f_{B}(H)=\frac{1}{n}\sum_{i=1}^{n} \delta_{B_{i}}(H) \IEEEyessubnumber
+\end{IEEEeqnarray}
+then by using the distributivity of convolution, add $n$ instances of Eq.\textcolor{blue}{~}(\ref{equ7}), and substitute Eq.\textcolor{blue}{~}(\ref{equ8}) into the summation, and we will have:
+\begin{equation}\label{equ9}
+(f_{A_{i}}\ast \delta_{X})(H)=(\delta_{Y}\ast f_{B_{i}})(H)
+%(f_{A_{i}}\ast \delta_{X})(g)=(\delta_{Y}\ast f_{B_{i}})(g)
+\end{equation}
+
+% small relative motions are calculated using consecutive transformations. Take $\{A_i\}$ for example, one metric % of the distance between $A_i$ and $A_{i+1}$ can be defined as:
+
+% \begin{eqnarray}\label{equ10}
+% d^{2}(A_{i},A_{i+1})=\parallel \Delta A \parallel_{W}^{2} = trace[(\Delta A)W(\Delta % A)^{T}] = \epsilon,\nonumber \\
+% \end{eqnarray}
+% where $\Delta A = A_{i}-A_{i+1}$ and $0 < \epsilon \ll 1 $.
+
+If each of the data streams $\{A_i\}$ and $\{B_i\}$ are generated using Gaussian distribution over $SE(3)$, then they can be viewed as ``highly-focused''. The convolution of two highly-focused PDFs have some interesting properties that can be used to solve for $X$.
+For simplicity, we will drop the integral interval ``$SE(3)$'' for the remainder of the paper, as it should be self-evident given the integration measure that is used. In particular, the mean $M$ and covariance $\Sigma$ of a PDF $f(H)$ on $SE(3)$ are defined as:
+
+\begin{IEEEeqnarray}{l}\label{equ11}
+\int log(M^{-1}H))f(H)dH = \mathbb{O}  \IEEEyessubnumber
+\\*
+\Sigma = \int log^{\vee}(M^{-1}H)[log^{\vee}(M^{-1}H)]^{T}f(H)dH \IEEEyessubnumber
+\end{IEEEeqnarray}
+where the explicit expression of the matrix logarithm $log(H)$ along with its vectorized form $log^{\vee}(H)$ are given in \cite{chirikjian2011stochastic}.
+If $f_A(H)$ is given as in Eq.~\ref{equ8}, then the corresponding discrete version of the mean $M_A$ and covariance $\Sigma_A$ will be:
+
+\begin{IEEEeqnarray}{l}\label{equ12}
+\sum_{i=1}^{n}log(M_A^{-1}A_i)) = \mathbb{O} \IEEEyessubnumber
+\\*
+\Sigma = \sum_{i=1}^{n}log^{\vee}(M_A^{-1}A_i)[log^{\vee}(M_A^{-1}A_i)]^{T}. \IEEEyessubnumber
+\end{IEEEeqnarray}
+
+Given $\{A_i\}$ with the cloud of frames ${A_{i}}$ clustering around $M_{A}$, an iterative formula can be used for computing $M_{A}$ \cite{Wang2008} as:
+
+\begin{equation}\label{equ13}
+    ^{k+1}M_{A} = ^{k}M_{A} \circ exp[\frac{1}{n}\sum_{i=1}^{n}log(^{k}M_{A}^{-1}\circ A_{i})]
+\end{equation}
+
+An initial estimate of the iterative procedure can be chosen as $^{0}M_{A}=\frac{1}{n}\sum_{i=1}^{n}log(A_{i})$, then a local minimum of $M_A$ is obtained by solving a nonlinear optimization problem with the cost function of $|| \sum_{i=1}^{n}log(M_{A}^{-1}A_{i}) ||^{2}$. A similar procedure can be used to compute $M_B$. $\Sigma_A$ and $\Sigma_B$ are then straight forward to compute given known $M_A$ and $M_B$.
+
+The mean and covariance for the convolution $(f_{1} \ast f_{2})(g)$ of two highly-focused functions $f_{1}$ and $f_{2}$ are calculated as in \cite{Wang2008}:
+
+\begin{IEEEeqnarray}{l}\label{equ14}
+M_{1 \ast 2} = M_{1}M_{2} \IEEEyessubnumber
+\\*
+\Sigma_{1 \ast 2} = Ad(M_{2}^{-1})\Sigma_{1}Ad^{T}(M_{2}^{-1}) + \Sigma_{2}. \IEEEyessubnumber
+\end{IEEEeqnarray}
+where
+
+$$Ad(H)=\left(
+               \begin{array}{cc}
+                 R & O \\
+                 \hat{t}R & R \\
+               \end{array}
+             \right).$$
+
+Because $X$ and $Y$ are constant, their corresponding PDF will be $\delta_{X}(g)$ and $\delta_{Y}(g)$, of which the mean and covariance are $M_{X} = X$, $\Sigma_{X} = \mathbb{O}_{6 \times 6}$ and $M_{Y} = Y$, $\Sigma_{Y} = \mathbb{O}_{6 \times 6}$, respectively. Therefore, the following equations can be obtained using Eq.~\ref{equ14}:
+
+\begin{IEEEeqnarray}{l}
+M_{A} X = Y M_{B} \IEEEyessubnumber\label{equ15a}
+\\*
+Ad(X^{-1})\Sigma_{A}Ad^{T}(X^{-1}) = \Sigma_{B}. \IEEEyessubnumber\label{equ15b}
+\end{IEEEeqnarray}
+
+To solve the above equations, Eq.\textcolor{blue}{~}(\ref{equ15a}) is decomposed into a rotational equation and a translational equation as follows:
+
+\begin{IEEEeqnarray}{l}
+R_{M_{A}} R_{X} = R_{Y} R_{M_{B}} \IEEEyessubnumber\label{equ16a}
+\\*
+R_{M_{A}} t_{X} + t_{M_{A}}= R_{Y} t_{M_{B}} + t_{Y}. \IEEEyessubnumber\label{equ16b}
+\end{IEEEeqnarray}
+$\Sigma_{A}$ and $\Sigma_{B}$ can be decomposed into blocks as
+$\left(\begin{array}{cc}
+       \Sigma_{A}^{1} & \Sigma_{A}^{2} \\
+       \Sigma_{A}^{3} & \Sigma_{A}^{4} \\
+       \end{array}
+       \right)$
+and
+$\left(\begin{array}{cc}
+       \Sigma_{B}^{1} & \Sigma_{B}^{2} \\
+       \Sigma_{B}^{3} & \Sigma_{B}^{4} \\
+       \end{array}
+       \right)$, respectively. Knowing that
+$ X^{-1} = \left(\begin{array}{cc}
+       R_{X}^{T} & -R_{X}^{T}t_{X}  \\
+       0 & 1 \\
+       \end{array}
+       \right)$,
+then the first two blocks of Eq.\textcolor{blue}{~}(\ref{equ15b}) can be written as follows:
+
+\begin{IEEEeqnarray}{l}
+\Sigma_{M_{B}}^{1} = R_{X}^{T}\Sigma_{M_{A}}^{1} R_{X} \IEEEyessubnumber\label{equ17a}
+\\*
+\Sigma_{M_{B}}^{2} = R_{X}^{T}\Sigma_{M_{A}}^{1} R_{X} (\widehat{R_{X}^{T}t_{X}}) + R_{X}^{T}\Sigma_{M_{A}}^{2}R_{X}.
+ \IEEEyessubnumber\label{equ17b}
+\end{IEEEeqnarray}
+Because Eq.\textcolor{blue}{~}(\ref{equ17a}) is a similarity transformation between $\Sigma_{M_{B}}^{1}$ and $\Sigma_{M_{A}}^{1}$, they share the same eigenvalues and can be eigendecomposed into   $\Sigma_{M_{A}}^{1}=Q_{M_{A}}\Lambda Q_{M_{A}}^{T}$ and $\Sigma_{M_{B}}^{1}=Q_{M_{B}}\Lambda Q_{M_{B}}^{T}$ where $\Lambda$ is a diagonal matrix whose diagonal elements are the eigenvalues of $\Sigma_{M_{A}}^{1}$ (or $\Sigma_{M_{B}}^{1}$), and $Q_{M_{A}}$ (or $Q_{M_{B}}$) is a square matrix whose columns are the corresponding eigenvectors. The following equation is obtained after substituting $\Sigma_{M_{B}}^{1}$ and $\Sigma_{M_{A}}^{1}$ into Eq.\textcolor{blue}{~}(\ref{equ17a}):
+
+\begin{equation}\label{equ18}
+    \Lambda = (Q_{M_{A}}^{T}R_{X}^{T}Q_{M_{B}}) \Lambda (Q_{M_{B}}^{T}R_{X}Q_{M_{A}})= P \Lambda P^{T}
+\end{equation}
+where $P=Q_{M_{A}}^{T}R_{X}Q_{M_{B}}$. If $Q_{M_{A}}$ and $Q_{M_{B}}$ are further constrained to be rotation matrices, the rotation matrix $P$ satisfies Eq.\textcolor{blue}{~}(\ref{equ_P}).
+
+\begin{equation}\label{equ_P}
+\left\{
+\begin{array}{l}
+P^{T} = P^{-1} \\
+det(P) = \pm 1.
+\end{array}
+\right.
+\end{equation}
+Combing Eq.~(\ref{equ18}) and Eq.~(\ref{equ_P}), then a rotation matrix $P$ can be one of $\mathcal{P}$ or $\mathcal{-P}$ :
+
+\begin{equation}\label{equ19}
+\begin{split}
+{\cal P} = \left\{ \left(\begin{array}{ccc}
+1\,\, & 0 \,\, & 0 \,\, \\
+0 & 1 & 0\\
+0 & 0 & 1 \end{array}\right) , \left(\begin{array}{ccc}
+-1 & 0 & 0 \\
+0 & -1 & 0\\
+0 & 0 & 1 \end{array}\right), \right.\\
+\left. \left(\begin{array}{ccc}
+-1 & 0 & 0 \\
+0 & 1 & 0\\
+0 & 0 & -1 \end{array}\right), \left(\begin{array}{ccc}
+1 & 0 & 0 \\
+0 & -1 & 0\\
+0 & 0 & -1 \end{array}\right)\right\}.
+\end{split}
+\end{equation}
+
+Therefore, there are eight candidates for $R_{X}$ which can be calculated via $R_{X}=Q_{M_{A}}PQ_{M_{B}}^T$, and the corresponding $t_{X}$ can be obtained from Eq.\textcolor{blue}{~}(\ref{equ17b}). Given known $X$, $Y$  can be solved from $Y = M_AXM_B^{-1}$. At last, eight candidate pairs of  $\{X_{k},Y_{k}\}$ can be obtained as:
+
+\begin{equation}\label{equ20}
+\begin{array}{cc}
+X_{k}= \left( \begin{array}{cc}
+       R_{X_k} & t_{X_k} \\
+       \mathbf{0}^{T} & \mathbf{1}\\
+\end{array} \right),&
+Y_{k}= \left( \begin{array}{cc}
+       R_{Y_k} & t_{Y_k} \\
+       \mathbf{0}^{T} & \mathbf{1}\\
+\end{array} \right)
+\end{array}
+\end{equation}
+where $k = 1,2,...,8$.
+
+The problem then becomes selecting the best pair of $\{X_k, Y_k\}$ from the eight candidates.
+Based on screw theory, it is known that a homogeneous transformation $H$ can be expressed by the four screw parameters $(\theta,d,\mathbf{n},\mathbf{p})$ that define the $Pl\ddot{u}cker$ coordinates of the screw motion as:
+
+\begin{equation}\label{equ21}
+H = \left( \begin{array}{cc}
+       e^{\theta \hat{\mathbf{n}}} & (\mathbf{I}_{3} - e^{\theta \hat{\mathbf{n}}})\mathbf{p} + d\mathbf{n} \\
+       \mathbf{0}^{T} & \mathbf{1}
+\end{array} \right)
+\end{equation}
+where $\theta$ is the angle of rotation, $d$ is the translation along the rotation axis, $\mathbf{n}$ is the unit vector representing the axis of rotation and $\mathbf{p}$ is the position of the line to the origin with $\mathbf{p} \cdot \mathbf{n} = 0$.
+
+Moreover, $A X_k = Y_k B$ can be written as $AX_k=X_k(X_k^{-1}Y_kB)$. Defining $B^k = X_k^{-1}Y_kB$, we have $AX_k=X_kB^k$. There exist two Euclidean-group invariant relationships for each pair of $(A_{i},B_{i}^k)( i = 1,\cdots,n; k=1,\dots,8)$ as follows:
+
+\begin{equation}\label{equ22}
+    \theta_{A_{i}}=\theta_{B_{i}^{k}}, d_{A_{i}}=d_{B_{i}^{k}}
+\end{equation}
+
+Among the eight pairs $(X_{k},Y_{k})$, one can find an optimal solution which  minimizes the cost function defined as:
+
+\begin{equation}\label{equ23}
+    (X,Y) = \mathop{\mathbf{arg}min}_{(X_{k},Y_{k})}\frac{1}{n} \sum_{i=1}^{n} (\parallel \theta_{A_{i}}-\theta_{B_{i}^{k}} \parallel + \parallel d_{A_{i}}-d_{B_{i}^{k}} \parallel)
+\end{equation}
+Eight candidates of $(X_k, Y_k)$ are calculated using the probabilistic method on $SE(3)$, which doesn't require the correspondence between $A_{i}$ and $B_{j}$ to be known. However, the correspondences need to be recovered to pick the optimal $(X_k, Y_k)$.
+\section{Solution with unknown correspondence between $A_{i}$ and $B_{j}^{k}$}
+\label{sect3}
+
+In most cases, the two sets of homogeneous transformations  $\{A_i\}$ and $\{B_j\}$ are calculated based on the data obtained from different sensors. Due to the asynchronous timing of the sensor readings, the correspondence between $\{A_{i}\}$ and $\{B_{j}\}$ is usually unknown. This section deals with the case where there is a shift between $\{A_i\}$ and $\{B_j\}$, and the Euclidean-group invariants are used to recover the correspondence between the data streams. The advantage of the above probabilistic solution lies in that $X$ and $Y$ can be calculated even if there is no a priori knowledge of the correspondence. However, there are still eight possible candidates of $(X_{k},Y_{k})$ to choose from and by using Euclidean-group invariants, it is straightforward to determine which is the optimal pair if the correspondence between $A_{i}$ and $B_{j}^{k}$ can be known.
+
+The Discrete Fourier Transform (DFT) decomposes a time-domain signal into its constituent frequencies. The input is a finite list of equally spaced samples of a function. Given a discrete signal consisting of a sequence of $N$ complex numbers $x_{0},x_{1},\cdots,x_{N-1}$, the DFT is denoted by $X_{\kappa} = \mathcal{F}({x_{n}})$ as:
+
+\begin{equation}\label{equ24}
+    X_{\kappa} = \sum_{n=0}^{N-1}x_{n}\cdot exp(-i\frac{2\pi}{N}n\kappa).
+\end{equation}
+where $i$ here is the imaginary unit.
+
+The Inverse Discrete Fourier Transform (IDFT) is denoted as:
+
+\begin{equation}\label{equ25}
+    x_{n} = \frac{1}{N}\sum_{n=0}^{N-1}X_{\kappa}\cdot exp(i\frac{2\pi}{N}n\kappa).
+\end{equation}
+
+The discrete convolution of two sequences $f_{n}$ and $g_{n}$ is defined as:
+
+\begin{equation}\label{equ26}
+	(f \ast g)(\tau)=\sum_{j=0}^{N}f(t_{j})g(t_{j}-\tau).
+	% Since you are using i for imaginary numbers use j here instead
+    %(f \ast g)(\tau)=\sum_{i=0}^{N}f(t_{i})g(t_{i}-\tau).
+\end{equation}
+
+In the convolution theorem, the Fourier transform of a convolution is the product of the Fourier transforms, namely:
+
+\begin{equation}\label{equ27}
+    f \ast g = \mathcal{F}^{-1} [\mathcal{F}(f) \cdot \mathcal{F}(g)].
+\end{equation}
+
+The correlation theorem indicates that the correlation function, $Corr(f,g)$, will be larger for a shift vector where the two sequences $f_n$ and $g_n$ %can
+share more similar features. The correlation can be obtained based on the convolution theorem. The DFT of $Corr(f,g)$ is equal to the product of the DFT of $f_{n}$ and the complex conjugate $\mathcal{F}^{*}$ of the DFT of $g_n$:
+
+\begin{equation}\label{equ28}
+    Corr(f,g)=f \star g = \mathcal{F}^{-1}[\mathcal{F}(f) \cdot \mathcal{F}^{*}(g)].
+\end{equation}
+
+Compared to the standard time-domain convolution algorithm, the complexity of the convolution by multiplication in the frequency domain is significantly reduced with the help of the convolution theorem and the Fast Fourier Transform (FFT).
+
+Given two sequences $\{\theta_{A_{i}}\}$ and $\{\theta_{B_{j}^{k}}\}$ corresponding to  $\{A_{i}\}$ and $\{B_{j}^{k}\}$, the shift that is needed to recover the data correspondence is obtained as below.
+Firstly, $\theta_{Ai}$ and $\theta_{B_{j}^{k}}$ are normalized as:
+
+\begin{equation}\label{equ29}
+    \theta_{1,k}=\frac{(\theta_{A_{i}}-\mu_{A})}{\sigma_{A}}, \theta_{2,k}=\frac{(\theta_{B_{j}^{k}}-\mu_{B^{k}})}{\sigma_{B^{k}}}
+\end{equation}
+where $\mu_{A}(\mu_{B^{k}})$ is the mean of $\theta_{A_{i}}(\theta_{B_{i}^{k}})$ and $\sigma_{A}(\sigma_{B^{k}})$ is the standard deviation.
+
+Here, the correlation function $Corr(\theta_{1,k},\theta_{2,k})$  is the function of the time sequence index $n$ which describes the probability of these two sequences being separated by this particular index. The index corresponding to the maximum of $Corr(\theta_{1,k},\theta_{2,k})$  indicates the amount of shift $\tau_{shift}$ between $\{\theta_{A_{i}}\}$ and $\{\theta_{B_{j}^{k}}\}$.
+
+\begin{equation}\label{equ30}
+    \tau_{shift} = \mathop{\mathbf{arg}max}_{index}(Corr(\theta_{1,k},\theta_{2,k}))
+\end{equation}
+
+Therefore, the correspondence between the two sequences can be found. The data of ${\theta_{A_{i}}}$ or ${d_{A_{i}}}$ are shifted by $-\tau_{shift}$ to obtain a sequence of new pairs $({\theta_{A_{i}}(i+\tau_{shift})},{\theta_{B_{i}^{k}}})$ and $({d_{A_{i}}(i+\tau_{shift})},{d_{B_{i}^{k}}})$, where $max(0,\tau_{shift})\leq i \leq min(n,n+\tau_{shift})$. The data stream can be shifted back to regain correspondence to synchronize the data streams once the shift is computed, and the optimal solution of $X$ and $Y$ can also be recovered by minimizing the cost function in Eq.\textcolor{blue}{~}(\ref{equ23}) using the Euclidean-group invariants as shown in Section \ref{sect2}.
+
+
+\section{Simulation Studies}
+\label{sect4}
+
+%\begin{center}
+\begin{figure}[t!]
+\centering
+\includegraphics[width=3.2in]{fig2.eps}
+\caption{
+The translational and rotational errors versus the shift between data streams $\{A_i\}$ and $\{B_i\}$.
+}
+\label{fig2}
+\end{figure}
+%\end{center}
+
+\begin{figure}[t!]
+\centering
+\includegraphics[width=3.2in]{fig3.eps}
+\caption{
+Box-and-whisker plots of translational and rotational errors versus the covariance noise on data stream $\{B_i\}$.\vspace{6pt}
+}
+\label{fig3}
+\end{figure}
+
+
+For the numerical experiments in this section, the rotational and translational errors for $X$ and $Y$ are measured as  $Error(R_X) = \parallel log^{\vee} (R_{X_{Solved}}^{T}R_{X_{true}})\parallel$, $Error(t_X) = \parallel t_{X_{Solved}}-t_{X_{true}} \parallel$, $Error(R_Y) = \parallel log^{\vee} (R_{Y_{Solved}}^{T}R_{Y_{true}})\parallel$ and $Error(t_Y) = \parallel t_{Y_{Solved}}-t_{Y_{true}} \parallel$ respectively.
+
+%\begin{center}
+\begin{figure}[t!]
+\centering
+\includegraphics[width=3.2in]{fig4.eps}
+\caption{
+(a) The solved $X$ (in red) and the actual $X$ (in black) for 10 simulation trials with covariance noise of 0.05 and shift of 2. (b) The solved $Y$ (in blue) and the actual $Y$ (in black) for 10 simulation trials with covariance noise of 0.05 and shift of 2.
+}
+\label{fig4}
+\end{figure}
+%\end{center}
+
+There are multiple ways of generating the data streams $\{A_i\}$ and $\{B_{i}\}$. One way is to first generate $\{B_i\}$ and then map it to $\{A_i\}$ using $A = YBX^{-1}$. $\{B_i\}$ can be obtained by randomly sampling on the Lie algebra of $B$ from a zero mean multivariate Gaussian distribution as follows:
+
+\begin{IEEEeqnarray}{l}
+\delta_i \in \mathcal{N}({\bf 0};\Sigma) \subset \mathbb{R}^{6} \IEEEyessubnumber\label{equ28a}
+\\*
+B_i = \text{exp}(\hat{\delta_i}) \text{exp}(\mu) \IEEEyessubnumber\label{equ28b}
+\end{IEEEeqnarray}
+where the mean $\mu = {\bf 0} \in se(3)$ and the covariance matrix $\Sigma \in \mathbb{R}^{6 \times 6}$  is a diagonal matrix with same diagonal elements $\sigma$. The hat operator $\hat{\delta}$ converts a 6 by 1 vector into its corresponding Lie algebra.
+The data stream $\{A_i\}$ can be easily obtained as described above. After employing the proposed probabilistic method, 8 sets of sequences $(\theta_{A_{i}},\theta_{B_{i}^{k}})$ and $(d_{A_{i}},d_{B_{i}^{k}})$ can be obtained respectively where $ i = 1,\cdots, 100$ and $k = 1,\dots,8$.
+
+If the data stream $\{A_i\}$ is shifted by $m$ units relative to $\{B_i\}$, then the maximum of the cross correlation can be used to recover the shift. After that, we can shift the data stream $\{A_i\}$ back to its original position to recover the correct correspondence with $\{B_i\}$, which will be used to find a correct solution satisfying the Euclidean-%G
+group invariants as defined in Eq.\textcolor{blue}{~}(\ref{equ22}). Therefore, a unique pair of $(X_k, Y_k)$ ($k=1,\cdots, 8$) can be selected to minimize the cost function. In Fig.~\ref{fig2}, because the shift between $\{A_i\}$ and $\{B_i\}$ is calculated accurately, the translational and rotational errors fluctuate by only a small amount compared to the errors of the no-shift data streams.
+
+
+To test the robustness of the proposed method, noises are exerted onto $\{B_i\}$ by employing $B_i^{noise} = B_i \text{exp}(\mathbf{\widehat{x}}_{noise})$, where each element of the Lie Algebra $\mathbf{x}_{noise}$ belongs to the Gaussian distribution defined as $N \sim (\mu_{noise},\sigma_{noise})$. In Fig.~\ref{fig3}, as the covariance %of the
+ noise $\sigma_{noise}$ increments from $0.01$ to $0.08$, the errors of $R_X$, $R_Y$, $t_X$, and $t_Y$ increase as shown in the box-and-whisker plot. There are several outliers outside the whiskers, while the median is calculated as the final solved $X$ and $Y$. Fig.~\ref{fig4} shows the solved ($X$,$Y$)s in red and blue with the actual ($X$,$Y$) in black with covariance noise of  $\sigma = 0.05$ and %the
+ shift $n = 2$.
+ 
+ \addtolength{\textheight}{-1.3cm}
+
+%\begin{center}
+\begin{figure}[t!]
+\centering
+\includegraphics[width=3.2in]{fig5.eps}
+\caption{
+Orientation and translation errors of $X$ and $Y$ versus shift using Li's and Shah's methods without correspondence.
+}
+\label{fig5}
+\end{figure}
+%\end{center}
+
+%\begin{center}
+\begin{figure}[t!]
+\centering
+\includegraphics[width=3.2in]{fig6.eps}
+\caption{
+Orientation and translation errors of $X$ and $Y$ versus shift using Li's and Shah's methods with correspondence.
+}
+\label{fig6}
+\end{figure}
+%\end{center}
+
+The probabilistic method in this paper can recover the correspondence between shifted data streams, which is useful for other sensor calibration methods. In the $AX=YB$ problem, there have been many calibration methods developed for solving $X$ and $Y$ given data streams with correspondence. However, few of them considered the cases without correspondence. When data streams of ${A}$ and ${B}$ are shifted or asynchronous, most of these methods fail to give a valid solution. To further test the effectiveness of our method, we shift the data sequence of $\{A_i\}$ by $n=0,1,2,3,4,5$ with respect to the data sequence of $\{B_i\}$. We augment other $AX=YB$ solvers with our probabilistic approach. In Li's method \cite{Li2010}, $X$ and $Y$ are solved for at the same time while Shah \cite{Shah2013} uses separable solutions to solve for $X$ and $Y$. In Fig.~\ref{fig5}, the correspondence between data streams is unknown and the errors on both rotations and translations are significant. After synchronizing the data streams by using the probabilistic method, Li and Shah's methods achieve the same level of performance as in the no-shift situation as shown in Fig.~\ref{fig6}.
+
+\section{Conclusions}
+\label{sect5}
+
+In this paper, we developed a probabilistic approach to simultaneously obtain $X$ and $Y$ in the $AX=YB$ sensor calibration problem. Without a priori knowledge of the correspondence between $\{A_i\}$ and $\{B_j\}$, the proposed probabilistic method on Lie groups is used to constrain the possible solutions of $X$ and $Y$ to eight pairs of candidates. Given shifted data streams of $\{A_{i+s}\}$ and $\{B_i\}$, using the correlation theorem with Euclidean\textbf{-}group invariants, the correspondence is recovered to determine the correct solution among the eight candidates. In the numerical simulation, the method performs well with different sets of data samples. Future work will be to further develop the existing algorithm to solve for more general asynchronous cases, such as flipped data pairs or missing data in the data streams.
+
+%\section{Conclusion}
+% conference papers do not normally have an appendix
+
+\addtolength{\textheight}{0cm}   % This command serves to balance the column lengths
+                                  % on the last page of the document manually. It shortens
+                                  % the textheight of the last page by a suitable amount.
+                                  % This command does not take effect until the next page
+                                  % so it should come on the page before the last. Make
+                                  % sure that you do not shorten the textheight too much.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{ACKNOWLEDGMENT}
+{Chirikjian's contribution to this material is based upon work supported by (while serving at) the National Science Foundation.
+Any opinion, findings, and conclusions or recommendations expressed in this material are those of the author(s)
+and do not necessarily reflect the views of the National Science Foundation. We thank Mr. Joshua Davis for proofreading of this paper.
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\bibliographystyle{IEEEtran}
+\bibliography{IEEEabrv,bibIEEEfull}
+%\begin{thebibliography}{1}
+%
+%
+%\end{thebibliography}
+
+\end{document}
