@@ -7,9 +7,6 @@ counter = 0;
 
 % Require rvctool Matlab toolbox but not the "common" folder inside
 addpath('~/Dropbox/2014Summer/Robotics Research/rvctools/robot')
-addpath('~/Dropbox/2014Summer/Robotics Research/rvctools/common')
-addpath('~/Dropbox/2015Spring/AXXB Journal/Batch_AXXB/Matlab_AXXB/codegen')
-addpath('~/Dropbox/2015Spring/AXXB Journal/Batch_AXXB/Matlab_AXXB')
 addpath('~/Dropbox/2014Summer/Robotics Research/kinematics/kinematics/screws')
 addpath('~/Dropbox/2014Summer/Robotics Research/kinematics/kinematics/util')
 
@@ -62,9 +59,7 @@ for k = point
         cost1 = zeros(8,8);
         for i = 1:size(X1,3)
             for j = 1:size(Y2,3)
-                diff = (MeanA*X1(:,:,i)) - Y1(:,:,i)*MeanB
-                diff = (MeanA*X1(:,:,i))\Y2(:,:,j)*MeanB;
-                cost1(i,j) = norm( diff );
+                cost1(i,j) = norm( se3_vec( logm( MeanA*X1(:,:,i)\(Y2(:,:,j)*MeanB) ) ));
             end
         end
         
@@ -73,9 +68,7 @@ for k = point
         cost2 = zeros(8,8);
         for i = 1:size(X2,3)
             for j = 1:size(Y1,3)
-                diff = (MeanA*X2(:,:,i)) - Y2(:,:,i)*MeanB
-                diff = (MeanA*X2(:,:,i))\Y1(:,:,j)*MeanB;
-                cost2(i,j) = norm( diff );
+                cost2(i,j) = norm( se3_vec( logm (MeanA*X2(:,:,i)\Y1(:,:,j)*MeanB);
             end
         end
         
