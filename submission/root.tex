@@ -119,7 +119,7 @@ In the $\textbf{AX=YB}$ problem, data streams of $A$s and $B$s can be respective
 \label{fig1}
 \end{figure}
 
-The hand-eye calibration problem can be modelled as $\textbf{AX = XB}$, where $A$ and $B$ are the homogeneous transformation matrices describing the relative motions of the end-effector and the  sensor respectively. As shown in Fig.~\ref{fig1} part (2), $A = A^{i}(A^{i+1})^{-1}$ and  $B = (B^{i})^{-1}B^{i+1}$. Given multiple pairs of $(A_i,B_i)$ with correspondence (note that $(A_i,B_i)$ are the relative transformations obtained from the raw data), many deterministic methods have been proposed to solve for $X$. To the best of the authors' knowledge, Shiu \cite{shiu1989calibration} and Tsai \cite{tsai1989new} are the first to solve the $AX = XB$ sensor calibration problem. The other methods include but are not limited to the quaternion, dual quaternion, screw theory, Lie group theory,motor algebra, convex optimization and gradient descent methods \cite{wang1992extrinsic,park1994robot,horaud1995hand,daniilidis1999hand,bayro2000motor,fassi2005hand,zhao2011hand,ackerman2014online}. All of the methods above assume a priori knowledge of the exact correspondence between $A_i$ and $B_i$. For data streams $\{A_i\}$ and $\{B_j\}$ that are asynchronous, several methods have been proposed in the literature to solve for $X$ using data without a priori knowledge of the correspondence. These methods assume that there are some corresponding pairs of data in the streams of the $\{A_i\}$ and $\{B_j\}$; however,  the exact correspondence is unknown \cite{ackerman2013probabilistic, ackerman2014online ,ackerman2014information}.
+The hand-eye calibration problem can be modelled as $\textbf{AX = XB}$, where $A$ and $B$ are the homogeneous transformation matrices describing the relative motions of the end-effector and the  sensor respectively. As shown in Fig.~\ref{fig1} part (2), $A = A^{i}(A^{i+1})^{-1}$ and  $B = (B^{i})^{-1}B^{i+1}$. Given multiple pairs of $(A_i,B_i)$ with correspondence (note that $(A_i,B_i)$ are the relative transformations obtained from the raw data), many deterministic methods have been proposed to solve for $X$. To the best of the authors' knowledge, Shiu \cite{shiu1989calibration} and Tsai \cite{tsai1989new} are the first to solve the $AX = XB$ sensor calibration problem. The other methods include but are not limited to the quaternion, dual quaternion, screw theory, Lie group theory, motor algebra, convex optimization and gradient descent methods \cite{wang1992extrinsic,park1994robot,horaud1995hand,daniilidis1999hand,bayro2000motor,fassi2005hand,zhao2011hand,ackerman2014online}. All of the methods above assume a priori knowledge of the exact correspondence between $A_i$ and $B_i$. For data streams $\{A_i\}$ and $\{B_j\}$ that are asynchronous, several methods have been proposed in the litefit rature to solve for $X$ using data without a priori knowledge of the correspondence. These methods assume that there are some corresponding pairs of data in the streams of the $\{A_i\}$ and $\{B_j\}$; however,  the exact correspondence is unknown \cite{ackerman2013probabilistic, ackerman2014online ,ackerman2014information}.
 
 Simultaneous estimation of the hand-eye and robot-world transformations has been viewed as the $\textbf{AX=YB}$ problem. As shown in Fig.~\ref{fig1} part (1), $Y$ is the transformation from the robot base to the world frame, $A$ denotes the pose of the sensor in the world frame and $B$ is the transformation from the end-effector to its fixed base. The $A$ and $B$ in $\textbf{AX=YB}$ are different from those in $\textbf{AX=XB}$ where the former uses absolute transformations and the latter uses relative transformations. This problem has been solved by many different methods such as the Kronecker product, quaternion, dual quaternion, and nonlinear optimization methods \cite{zhuang1994simultaneous,dornaika1998simultaneous,hirsh2001iterative, ernst2012non,strobl2006optimal,li2010simultaneous,shah2013solving,heller2014hand}. Simulatneous calibration %s
 of $X$ and $Y$ can be problematic in that all the methods above assume exact correspondence between $\{A_i\}$ and $\{B_j\}$, which is not the case in the real world, and this is why a simultaneous solution for $X$ and $Y$ in the $\textbf{AX=YB}$ problem can be a challenging issue. Another similar problem involves the calibration of multiple robots in terms of hand-eye, tool-flange\textcolor{blue}{,} and robot-robot transformations, and it is formulated as the $\textbf{AXB=YCZ}$ problem \cite{wang2014towards} which will not be discussed in detail here. In the above methods, the correspondence between $A$ and $B$ is known a priori. In this paper, we focus on one case of the $\textbf{AX=YB}$ problem where there is no a priori knowledge of the correspondence between the data streams.
@@ -351,7 +351,7 @@ H = \left( \begin{array}{cc}
 \end{equation}
 where $\theta$ is the angle of rotation, $d$ is the translation along the rotation axis, $\mathbf{n}$ is the unit vector representing the axis of rotation and $\mathbf{p}$ is the position of the line to the origin with $\mathbf{p} \cdot \mathbf{n} = 0$.
 
-Moreover, $A X_k = Y_k B$ can be written as $AX_k=X_k(X_k^{-1}Y_kB)$. Defining $B^k = X_k^{-1}Y_kB$, we have $AX_k=X_kB^k$. There exist two Euclidean-group invariant relationships for each pair of $(A_{i},B_{i}^k)( i = 1,\cdots,n; k=1,\dots,8)$ as follows:
+Moreover, $A X_k = Y_k B$ can be written as $AX_k=X_k(X_k^{-1}Y_kB)$. Defining $B^k = X_k^{-1}Y_kB$, we have $AX_k=X_kB^k$. As discussed in \cite{ackerman2013sensor}, for $AX=XB$ problem, there exist two Euclidean-group invariant relationships for each pair of $(A_{i},B_{i}^k)( i = 1,\cdots,n; k=1,\dots,8)$ as follows:
 
 \begin{equation}\label{equ22}
     \theta_{A_{i}}=\theta_{B_{i}^{k}}, d_{A_{i}}=d_{B_{i}^{k}}
@@ -362,7 +362,10 @@ Among the eight pairs $(X_{k},Y_{k})$, one can find an optimal solution which  m
 \begin{equation}\label{equ23}
     (X,Y) = \mathop{\mathbf{arg}min}_{(X_{k},Y_{k})}\frac{1}{n} \sum_{i=1}^{n} (\parallel \theta_{A_{i}}-\theta_{B_{i}^{k}} \parallel + \parallel d_{A_{i}}-d_{B_{i}^{k}} \parallel)
 \end{equation}
-Eight candidates of $(X_k, Y_k)$ are calculated using the probabilistic method on $SE(3)$, which doesn't require the correspondence between $A_{i}$ and $B_{j}$ to be known. However, the correspondences need to be recovered to pick the optimal $(X_k, Y_k)$.
+Eight candidates of $(X_k, Y_k)$ are calculated using the probabilistic method on $SE(3)$, which doesn't require the correspondence between $A_{i}$ and $B_{j}$ to be known. However, the correspondences need to be recovered to pick the optimal $(X_k, Y_k)$. Note that the Euclidean-group invariant relationships in the context of $AX=YB$ problem are still unknown. Therefore, $AX=YB$ is converted into $AX=XB$ problem to recover the correspondence of data using invariants.
+
+
+
 \section{Solution with unknown correspondence between $A_{i}$ and $B_{j}^{k}$}
 \label{sect3}
 
@@ -419,7 +422,6 @@ Here, the correlation function $Corr(\theta_{1,k},\theta_{2,k})$  is the functio
 \end{equation}
 
 Therefore, the correspondence between the two sequences can be found. The data of ${\theta_{A_{i}}}$ or ${d_{A_{i}}}$ are shifted by $-\tau_{shift}$ to obtain a sequence of new pairs $({\theta_{A_{i}}(i+\tau_{shift})},{\theta_{B_{i}^{k}}})$ and $({d_{A_{i}}(i+\tau_{shift})},{d_{B_{i}^{k}}})$, where $max(0,\tau_{shift})\leq i \leq min(n,n+\tau_{shift})$. The data stream can be shifted back to regain correspondence to synchronize the data streams once the shift is computed, and the optimal solution of $X$ and $Y$ can also be recovered by minimizing the cost function in Eq.\textcolor{blue}{~}(\ref{equ23}) using the Euclidean-group invariants as shown in Section \ref{sect2}.
-
 
 \section{Simulation Studies}
 \label{sect4}
@@ -501,6 +503,12 @@ Orientation and translation errors of $X$ and $Y$ versus shift using Li's and Sh
 %\end{center}
 
 The probabilistic method in this paper can recover the correspondence between shifted data streams, which is useful for other sensor calibration methods. In the $AX=YB$ problem, there have been many calibration methods developed for solving $X$ and $Y$ given data streams with correspondence. However, few of them considered the cases without correspondence. When data streams of ${A}$ and ${B}$ are shifted or asynchronous, most of these methods fail to give a valid solution. To further test the effectiveness of our method, we shift the data sequence of $\{A_i\}$ by $n=0,1,2,3,4,5$ with respect to the data sequence of $\{B_i\}$. We augment other $AX=YB$ solvers with our probabilistic approach. In Li's method \cite{li2010simultaneous}, $X$ and $Y$ are solved for at the same time while Shah \cite{shah2013solving} uses separable solutions to solve for $X$ and $Y$. In Fig.~\ref{fig5}, the correspondence between data streams is unknown and the errors on both rotations and translations are significant. After synchronizing the data streams by using the probabilistic method, Li and Shah's methods achieve the same level of performance as in the no-shift situation as shown in Fig.~\ref{fig6}.
+
+\section{A Brief Case Study With Completely Scrambled Data}
+
+
+
+
 
 \section{Conclusions}
 \label{sect5}

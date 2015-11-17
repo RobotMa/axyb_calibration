@@ -141,4 +141,11 @@ Y.~Wang and G.~S. Chirikjian, ``Nonparametric second-order theory of error
   propagation on motion groups,'' \emph{The International journal of robotics
   research}, vol.~27, no. 11-12, pp. 1258--1273, 2008.
 
+\bibitem{ackerman2013sensor}
+M.~K. Ackerman, A.~Cheng, B.~Shiffman, E.~Boctor, and G.~Chirikjian, ``Sensor
+  calibration with unknown correspondence: Solving ax= xb using euclidean-group
+  invariants,'' in \emph{Intelligent Robots and Systems (IROS), 2013 IEEE/RSJ
+  International Conference on}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE,
+  2013, pp. 1308--1313.
+
 \end{thebibliography}
