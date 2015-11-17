@@ -53,6 +53,12 @@ E.~Bayro-Corrochano, K.~Daniilidis, and G.~Sommer, ``Motor algebra for 3d
   kinematics: The case of the hand-eye calibration,'' \emph{Journal of
   Mathematical Imaging and Vision}, vol.~13, no.~2, pp. 79--100, 2000.
 
+\bibitem{rovelo2008geometric}
+J.~R. Rovelo, S.~H. Garcia, and E.~B. Corrochano, ``Geometric hand-eye
+  calibration for an endoscopic neurosurgery system,'' in \emph{Robotics and
+  Automation, 2008. ICRA 2008. IEEE International Conference on}.\hskip 1em
+  plus 0.5em minus 0.4em\relax IEEE, 2008, pp. 1418--1423.
+
 \bibitem{fassi2005hand}
 I.~Fassi and G.~Legnani, ``Hand to sensor calibration: A geometrical
   interpretation of the matrix equation ax= xb,'' \emph{Journal of Robotic

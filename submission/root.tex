@@ -119,13 +119,14 @@ In the $\textbf{AX=YB}$ problem, data streams of $A$s and $B$s can be respective
 \label{fig1}
 \end{figure}
 
-The hand-eye calibration problem can be modelled as $\textbf{AX = XB}$, where $A$ and $B$ are the homogeneous transformation matrices describing the relative motions of the end-effector and the  sensor respectively. As shown in Fig.~\ref{fig1} part (2), $A = A^{i}(A^{i+1})^{-1}$ and  $B = (B^{i})^{-1}B^{i+1}$. Given multiple pairs of $(A_i,B_i)$ with correspondence (note that $(A_i,B_i)$ are the relative transformations obtained from the raw data), many deterministic methods have been proposed to solve for $X$. To the best of the authors' knowledge, Shiu \cite{shiu1989calibration} and Tsai \cite{tsai1989new} are the first to solve the $AX = XB$ sensor calibration problem. The other methods include but are not limited to the quaternion, dual quaternion, screw theory, Lie group theory, motor algebra, convex optimization and gradient descent methods \cite{wang1992extrinsic,park1994robot,horaud1995hand,daniilidis1999hand,bayro2000motor,fassi2005hand,zhao2011hand,ackerman2014online}. All of the methods above assume a priori knowledge of the exact correspondence between $A_i$ and $B_i$. For data streams $\{A_i\}$ and $\{B_j\}$ that are asynchronous, several methods have been proposed in the litefit rature to solve for $X$ using data without a priori knowledge of the correspondence. These methods assume that there are some corresponding pairs of data in the streams of the $\{A_i\}$ and $\{B_j\}$; however,  the exact correspondence is unknown \cite{ackerman2013probabilistic, ackerman2014online ,ackerman2014information}.
+The hand-eye calibration problem can be modelled as $\textbf{AX = XB}$, where $A$ and $B$ are the homogeneous transformation matrices describing the relative motions of the end-effector and the  sensor respectively. As shown in Fig.~\ref{fig1} part (2), $A = A^{i}(A^{i+1})^{-1}$ and  $B = (B^{i})^{-1}B^{i+1}$. Given multiple pairs of $(A_i,B_i)$ with correspondence (note that $(A_i,B_i)$ are the relative transformations obtained from the raw data), many deterministic methods have been proposed to solve for $X$. To the best of the authors' knowledge, Shiu \cite{shiu1989calibration} and Tsai \cite{tsai1989new} are the first to solve the $AX = XB$ sensor calibration problem. The other methods include but are not limited to the quaternion, dual quaternion, screw theory, Lie group theory, motor algebra, convex optimization and gradient descent methods \cite{wang1992extrinsic,park1994robot,horaud1995hand,daniilidis1999hand,bayro2000motor,rovelo2008geometric, fassi2005hand,zhao2011hand,ackerman2014online}. All of the methods above assume a priori knowledge of the exact correspondence between $A_i$ and $B_i$. For data streams $\{A_i\}$ and $\{B_j\}$ that are asynchronous, several methods have been proposed in the litefit rature to solve for $X$ using data without a priori knowledge of the correspondence. These methods assume that there are some corresponding pairs of data in the streams of the $\{A_i\}$ and $\{B_j\}$; however,  the exact correspondence is unknown \cite{ackerman2013probabilistic, ackerman2014online ,ackerman2014information}.
 
 Simultaneous estimation of the hand-eye and robot-world transformations has been viewed as the $\textbf{AX=YB}$ problem. As shown in Fig.~\ref{fig1} part (1), $Y$ is the transformation from the robot base to the world frame, $A$ denotes the pose of the sensor in the world frame and $B$ is the transformation from the end-effector to its fixed base. The $A$ and $B$ in $\textbf{AX=YB}$ are different from those in $\textbf{AX=XB}$ where the former uses absolute transformations and the latter uses relative transformations. This problem has been solved by many different methods such as the Kronecker product, quaternion, dual quaternion, and nonlinear optimization methods \cite{zhuang1994simultaneous,dornaika1998simultaneous,hirsh2001iterative, ernst2012non,strobl2006optimal,li2010simultaneous,shah2013solving,heller2014hand}. Simulatneous calibration %s
 of $X$ and $Y$ can be problematic in that all the methods above assume exact correspondence between $\{A_i\}$ and $\{B_j\}$, which is not the case in the real world, and this is why a simultaneous solution for $X$ and $Y$ in the $\textbf{AX=YB}$ problem can be a challenging issue. Another similar problem involves the calibration of multiple robots in terms of hand-eye, tool-flange\textcolor{blue}{,} and robot-robot transformations, and it is formulated as the $\textbf{AXB=YCZ}$ problem \cite{wang2014towards} which will not be discussed in detail here. In the above methods, the correspondence between $A$ and $B$ is known a priori. In this paper, we focus on one case of the $\textbf{AX=YB}$ problem where there is no a priori knowledge of the correspondence between the data streams.
 
 The rest of the paper is organized as follows. In Section
-\ref{sect2}, a novel probabilistic method is presented to solve for eight candidates of $X$ and $Y$. In Section \ref{sect3}, an algorithm involving both correlation theorem and Euclidean group invariants is proposed to recover the correspondence between $\{A_i\}$ and $\{B_j\}$, which is used to select the optimal solution among the candidates. The simulation results obtained by taking noisy data without correspondence are illustrated in Section \ref{sect4}. Finally, conclusions are drawn based on the numerical results and possible future work is pointed out.
+\ref{sect2}, a novel probabilistic method is presented to solve for eight candidates of $X$ and $Y$. In Section \ref{sect3}, an algorithm involving both correlation theorem and Euclidean group invariants is proposed to recover the correspondence between $\{A_i\}$ and $\{B_j\}$, which is used to select the optimal solution among the candidates. The simulation results obtained by taking noisy data without correspondence are illustrated in Section \ref{sect4}. In Section \ref{sect5}, we briefly discuss the case where one can obtain $\left( X, Y \right)$ without recovering the correspondence between the data sets.
+Finally, conclusions are drawn based on the numerical results and possible future work is pointed out.
 
 \section{Solving AX=YB using a probabilistic method on motion groups}
 \label{sect2}
@@ -187,7 +188,7 @@ Using Eq.\textcolor{blue}{~}($\ref{equ1}$) and Eq.\textcolor{blue}{~}($\ref{equ2
 \begin{equation}\label{equ7}
 (\delta_{A_{i}}\ast \delta_{X})(H)=(\delta_{Y}\ast \delta_{B_{i}})(H)
 \end{equation}
-Defing the PDF %probability density function
+Defining the PDF %probability density function
 of $\{A_i\}$ and $\{B_i\}$ as:
 \begin{IEEEeqnarray}{l}\label{equ8}
 f_{A}(H)=\frac{1}{n}\sum_{i=1}^{n} \delta_{A_{i}}(H) \IEEEyessubnumber
@@ -211,15 +212,30 @@ If each of the data streams $\{A_i\}$ and $\{B_i\}$ are generated using Gaussian
 For simplicity, we will drop the integral interval ``$SE(3)$'' for the remainder of the paper, as it should be self-evident given the integration measure that is used. In particular, the mean $M$ and covariance $\Sigma$ of a PDF $f(H)$ on $SE(3)$ are defined as:
 
 \begin{IEEEeqnarray}{l}\label{equ11}
-\int log(M^{-1}H))f(H)dH = \mathbb{O}  \IEEEyessubnumber
+\int log(M^{-1}H)f(H)dH = \mathbb{O}  \IEEEyessubnumber
 \\*
 \Sigma = \int log^{\vee}(M^{-1}H)[log^{\vee}(M^{-1}H)]^{T}f(H)dH \IEEEyessubnumber
 \end{IEEEeqnarray}
-where the explicit expression of the matrix logarithm $log(H)$ along with its vectorized form $log^{\vee}(H)$ are given in \cite{chirikjian2011stochastic}.
+where the explicit expression of the matrix logarithm $log(H)$ along with its vectorized form $log^{\vee}(H)$ are given in \cite{chirikjian2011stochastic} as:
+
+\begin{equation}
+log(H) = \widehat{\bf h} 
+=
+\left(
+\begin{array}{cccc}
+   0 & -h_3 &  h_2 & h_4 \\ 
+ h_3 &    0 & -h_1 & h_5 \\
+-h_2 & -h_1 &    0 & h_6 \\
+   0 &    0 &    0 &  0 
+\end{array}
+\right)
+\end{equation}
+where ${\bf h} = log^\vee(H) \in \mathbb{R}^{6 \times 1}$ and $\widehat{\bf h}$ is the corresponding Lie algebra element ($se(3)$) of $H$.
+
 If $f_A(H)$ is given as in Eq.~(\ref{equ8}), then the corresponding discrete version of the mean $M_A$ and covariance $\Sigma_A$ will be:
 
 \begin{IEEEeqnarray}{l}\label{equ12}
-\sum_{i=1}^{n}log(M_A^{-1}A_i)) = \mathbb{O} \IEEEyessubnumber
+\sum_{i=1}^{n}log(M_A^{-1}A_i) = \mathbb{O} \IEEEyessubnumber
 \\*
 \Sigma = \sum_{i=1}^{n}log^{\vee}(M_A^{-1}A_i)[log^{\vee}(M_A^{-1}A_i)]^{T}. \IEEEyessubnumber
 \end{IEEEeqnarray}
@@ -502,9 +518,22 @@ Orientation and translation errors of $X$ and $Y$ versus shift using Li's and Sh
 \end{figure}
 %\end{center}
 
-The probabilistic method in this paper can recover the correspondence between shifted data streams, which is useful for other sensor calibration methods. In the $AX=YB$ problem, there have been many calibration methods developed for solving $X$ and $Y$ given data streams with correspondence. However, few of them considered the cases without correspondence. When data streams of ${A}$ and ${B}$ are shifted or asynchronous, most of these methods fail to give a valid solution. To further test the effectiveness of our method, we shift the data sequence of $\{A_i\}$ by $n=0,1,2,3,4,5$ with respect to the data sequence of $\{B_i\}$. We augment other $AX=YB$ solvers with our probabilistic approach. In Li's method \cite{li2010simultaneous}, $X$ and $Y$ are solved for at the same time while Shah \cite{shah2013solving} uses separable solutions to solve for $X$ and $Y$. In Fig.~\ref{fig5}, the correspondence between data streams is unknown and the errors on both rotations and translations are significant. After synchronizing the data streams by using the probabilistic method, Li and Shah's methods achieve the same level of performance as in the no-shift situation as shown in Fig.~\ref{fig6}.
+The probabilistic method can recover the correspondence between shifted data streams, which is useful for other sensor calibration methods. In the $AX=YB$ problem, there have been many calibration methods developed for solving $X$ and $Y$ given data streams with correspondence. However, few of them considered the cases without correspondence. When data streams of ${A}$ and ${B}$ are shifted or asynchronous, most of these methods fail to give a valid solution. To further test the effectiveness of our method, we shift the data sequence of $\{A_i\}$ by $n=0,1,2,3,4,5$ with respect to the data sequence of $\{B_i\}$ such that $A_{k+n}$ ``matches'' $B_k$ where $k = 1, 2, \cdots, m-n$ and $i = 1,2, \cdots, m$. We augment other $AX=YB$ solvers with our probabilistic approach by recovering the correspondence between shift data sets. In Li's method \cite{li2010simultaneous}, $X$ and $Y$ are solved for at the same time, while Shah \cite{shah2013solving} solved for $X$ and $Y$ in a separate way. As shown in Fig.~\ref{fig5}, when dealing with the shifted data streams $\{A_{k+n}, B_k\}$, the errors on both rotations and translations are significant. After recovering the correspondence between data streams by using the probabilistic method, Li and Shah's methods achieve the same level of performance as shown in Fig.~\ref{fig6}.
 
 \section{A Brief Case Study With Completely Scrambled Data}
+\label{sect5}
+
+In this section, we will briefly discuss the case where $\{A_i\}$ and $\{B_j\}$ are completely scrambled. Unlike the case of shifted data, it is extremely hard to recover the correspondence between two completely scrambled data sets $\{A_i\}$ and $\{B_j\}$. The correlation theorem can't be applied because there is no shift in the scrambled data sets. Euclidean group invariants are not practical either because given $\{A_i\}$ and $\{B_j\}$ both of which have the size of $m$, there are $m! = m \times m-1 \times \cdots 1$ combinations between the data sets, and it is extremely computationally intensive to test all the combinations. Without recovering the correspondence between the data sets, it is impossible to choose the optimal solution from the eight candidates of $\{X_k, Y_k\}$.
+
+In the above approach, we used Eq.~(\ref{equ15b}) to calculate $X_k$ and Eq.~(\ref{equ15a}) to obtain the corresponding $Y_k$. However, we now show that one can calculate the eight candidates of $Y$ independently and employ Eq.~(\ref{equ15a}) as a constraint to filter out the optimal $\{X, Y\}$ pair. 
+
+Given the equation $AX=YB$, apply an inverse on both sides of the equation and we will have $B^{-1}Y^{-1} = X^{-1}A^{-1}$. Following the same derivations from Eq.~(\ref{equ5}) to Eq.~(\ref{equ15b}), and we have:
+\begin{IEEEeqnarray}{l}
+M_{B^{-1}} Y^{-1} = X^{-1} M_{A^{-1}} \IEEEyessubnumber\label{equ33a}
+\\*
+Ad(Y)\Sigma_{B^{-1}}Ad^{T}(Y) = \Sigma_{A^{-1}}. \IEEEyessubnumber\label{equ33b}
+\end{IEEEeqnarray}
+Similarly, Eq.~(\ref{equ33b}) can give eight candidates of $Y^{-1}$, or equivalently $Y$, Let $X_{k1}$ where $k1 = 1,2, \cdots, 8$ denote the $X$s obtained from Eq.(~\ref{equ15b}) and $Y_{k2}$ where $k2 = 1,2,\cdots, 8$ denote the $Y$s obtained from Eq.~(\ref{equ33b}), and we can use either Eq.~(\ref{equ15a}) or Eq.~(\ref{equ33a}) to get the optimal $\left( X_{k1}, Y_{k2} \right)$.
 
 
 
@@ -546,7 +575,8 @@ and do not necessarily reflect the views of the National Science Foundation. We 
 
 
 \bibliographystyle{IEEEtran}
-\bibliography{IEEEabrv,root}
+\bibliography{root}
+%\bibliography{IEEEabrv,root}
 %\begin{thebibliography}{1}
 %
 %

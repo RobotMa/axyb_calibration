@@ -1,52 +1,56 @@
-This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: root.aux
 The style file: IEEEtran.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-Database file #1: IEEEabrv.bib
-Database file #2: root.bib
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: root.bib
 -- IEEEtran.bst version 1.11 (2003/04/02) by Michael Shell.
 -- http://www.ctan.org/tex-archive/macros/latex/contrib/supported/IEEEtran/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
 
 Done.
-You've used 24 entries,
+You've used 25 entries,
             3975 wiz_defined-function locations,
-            1331 strings with 19426 characters,
-and the built_in function-call counts, 21411 in all, are:
-= -- 1771
-> -- 446
-< -- 235
-+ -- 263
-- -- 61
-* -- 1032
-:= -- 3096
-add.period$ -- 57
-call.type$ -- 24
-change.case$ -- 23
-chr.to.int$ -- 549
-cite$ -- 24
-duplicate$ -- 1479
-empty$ -- 1672
-format.name$ -- 80
-if$ -- 4988
+            940 strings with 11996 characters,
+and the built_in function-call counts, 22413 in all, are:
+= -- 1847
+> -- 469
+< -- 246
++ -- 277
+- -- 64
+* -- 1079
+:= -- 3226
+add.period$ -- 60
+call.type$ -- 25
+change.case$ -- 24
+chr.to.int$ -- 579
+cite$ -- 25
+duplicate$ -- 1546
+empty$ -- 1760
+format.name$ -- 84
+if$ -- 5228
 int.to.chr$ -- 0
-int.to.str$ -- 24
-missing$ -- 226
-newline$ -- 92
-num.names$ -- 24
-pop$ -- 470
+int.to.str$ -- 25
+missing$ -- 236
+newline$ -- 95
+num.names$ -- 25
+pop$ -- 496
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 1691
+skip$ -- 1768
 stack$ -- 0
-substring$ -- 1315
-swap$ -- 1312
-text.length$ -- 52
+substring$ -- 1386
+swap$ -- 1370
+text.length$ -- 53
 text.prefix$ -- 0
 top$ -- 5
 type$ -- 0
 warning$ -- 0
-while$ -- 109
-width$ -- 26
-write$ -- 262
+while$ -- 114
+width$ -- 27
+write$ -- 271
