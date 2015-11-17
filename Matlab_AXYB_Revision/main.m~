@@ -17,7 +17,7 @@ Mean=[0; 0; 0; 0; 0 ;0];
 
 Cov = 0.3*eye(6,6);
 
-point = 10:20:100;
+point = 10:10:100;
 
 num = 30;
 
@@ -76,9 +76,8 @@ for k = point
 %             end
             for j = 1:size(Y2,3)
 %                 diff = (MeanA*X1(:,:,i))\Y2(:,:,j)*MeanB;
-                diff = MeanA*X1(:,:,i) - Y2(:,:,j)*MeanB;
-%                 cost1(i,j) = abs( norm(diff(:))^2 - 4);
-                cost1(i,j) = norm(diff(:));
+                diff = MeanA*X1(:,:,i) - Y2(:,:,j)*MeanB
+                cost1(i,j) = abs( norm(diff(:))^2 - 4);
             end
         end
         
@@ -90,7 +89,8 @@ for k = point
 %                 diff = (MeanA*X2(:,:,i))\Y1(:,:,j)*MeanB;
                 diff = MeanA*X2(:,:,i) - Y1(:,:,j)*MeanB;
 %                 cost2(i,j) = abs( norm(diff(:))^2 - 4);
-                cost2(i,j) = norm(diff(:));
+                cost2(i,j) = abs( norm(diff(:))^2 - 4);
+
             end
         end
         

@@ -1,4 +1,4 @@
-function [ X,Y, MeanA, MeanB, SigA, SigB ] = batchAXYB(A, B)
+function [ X,Y, X_candidate, Y_candidate, MeanA, MeanB, SigA, SigB ] = batchAXYB(A, B)
 
 X_candidate = zeros(4,4,8);
 Y_candidate = zeros(4,4,8);
@@ -10,8 +10,13 @@ deltaTheta = zeros(size(A,3),8);
 deltaD = zeros(size(A,3),8);
 normMin = zeros(8,1);
 
-[ MeanA, SigA ] = distibutionProps(A);
-[ MeanB, SigB ] = distibutionProps(B);
+% Reshape A and B for matching the input sies of mex functions
+[a1, a2, a3] = size(A);
+A_mex = reshape(A, a1, a2*a3);
+B_mex = reshape(B, a1, a2*a3);
+
+[ MeanA, SigA ] = distibutionPropsMex_mex(A_mex);
+[ MeanB, SigB ] = distibutionPropsMex_mex(B_mex);
 
 [ VA, ~ ] = eig( SigA(1:3,1:3) );
 [ VB, ~ ] = eig( SigB(1:3,1:3) );
