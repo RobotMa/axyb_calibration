@@ -17,9 +17,12 @@ Mean=[0; 0; 0; 0; 0 ;0];
 
 Cov = 0.3*eye(6,6);
 
-point = 10:10:100;
+point = 10:20:100;
 
 num = 30;
+
+boxplot = true;
+line
 
 for k = point
     
@@ -47,7 +50,7 @@ for k = point
         
         %% ------ using probility methods ------
         [ X1, Y1, MeanA, MeanB, SigA, SigB ] = batchAXXB(A, B);
-        [ Y2_inv, X2_inv, ~, ~, ~, ~] = batchAXXB(B_inv, A_inv);
+        [ Y2_inv, X2_inv, MeanA_inv, MeanB_inv, ~, ~] = batchAXXB(B_inv, A_inv);
         [ X3, Y3, X_can, Y_can, ~, ~, ~, ~ ] = batchAXYB(A, B);
         
         for i = 1:size(X1,3)
@@ -68,35 +71,31 @@ for k = point
         %%
         cost1 = zeros(8,8);
         for i = 1:size(X1,3)
-%             I_RX = X1(1:3,1:3)*X1(1:3,1:3)';
-%             if abs(norm(I_RX(:))^2 - 3) > 0.01
-%                 display('Not a rotation matrix')
-%                 I_RX
-%                 continue;
-%             end
             for j = 1:size(Y2,3)
-%                 diff = (MeanA*X1(:,:,i))\Y2(:,:,j)*MeanB;
-                diff = MeanA*X1(:,:,i) - Y2(:,:,j)*MeanB
-                cost1(i,j) = abs( norm(diff(:))^2 - 4);
+                diff1 = MeanA*X1(:,:,i) - Y2(:,:,j)*MeanB;
+                diff2 = MeanB_inv/Y2(:,:,j) - X1(:,:,i)\MeanA_inv;
+                cost1(i,j) = norm(diff1(:)) + norm(diff2(:));
             end
         end
         
         [M1, I1] = min(cost1(:));
         
+        %         if M1 > 0.2
+        %             display(X1)
+        %             display(X3)
+        %         end
+        
         cost2 = zeros(8,8);
         for i = 1:size(X2,3)
             for j = 1:size(Y1,3)
-%                 diff = (MeanA*X2(:,:,i))\Y1(:,:,j)*MeanB;
-                diff = MeanA*X2(:,:,i) - Y1(:,:,j)*MeanB;
-%                 cost2(i,j) = abs( norm(diff(:))^2 - 4);
-                cost2(i,j) = abs( norm(diff(:))^2 - 4);
-
+                diff1 = MeanA*X2(:,:,i) - Y1(:,:,j)*MeanB;
+                diff2 = MeanB_inv/Y1(:,:,j) - X2(:,:,i)\MeanA_inv;
+                cost2(i,j) = norm(diff1(:)) + norm(diff2(:));
             end
         end
         
         [M2, I2] = min(cost2(:));
         
-        M2 = 1000;
         if M1 <  M2
             
             [I_row, I_col] = ind2sub(size(cost1), I1);
@@ -112,16 +111,27 @@ for k = point
         end
         
         %% ----- err analysis ------
-        Err(counter,1,s) = roterror(X, XActual);
-        Err(counter,2,s) = roterror(Y, YActual);
-        Err(counter,3,s) = roterror(X3, XActual);
-        Err(counter,4,s) = roterror(Y3, YActual);
-        
-        Err(counter,5,s) = tranerror(X, XActual);
-        Err(counter,6,s) = tranerror(Y, YActual);
-        Err(counter,7,s) = tranerror(X3, XActual);
-        Err(counter,8,s) = tranerror(Y3, YActual);
-        
+        if boxplot
+            Err(counter,s,1) = roterror(X, XActual);
+            Err(counter,s,2) = roterror(Y, YActual);
+            Err(counter,s,3) = roterror(X3, XActual);
+            Err(counter,s,4) = roterror(Y3, YActual);
+            
+            Err(counter,s,5) = tranerror(X, XActual);
+            Err(counter,s,6) = tranerror(Y, YActual);
+            Err(counter,s,7) = tranerror(X3, XActual);
+            Err(counter,s,8) = tranerror(Y3, YActual);
+        else
+            Err(counter,1,s) = roterror(X, XActual);
+            Err(counter,2,s) = roterror(Y, YActual);
+            Err(counter,3,s) = roterror(X3, XActual);
+            Err(counter,4,s) = roterror(Y3, YActual);
+            
+            Err(counter,5,s) = tranerror(X, XActual);
+            Err(counter,6,s) = tranerror(Y, YActual);
+            Err(counter,7,s) = tranerror(X3, XActual);
+            Err(counter,8,s) = tranerror(Y3, YActual);
+        end
         %% ------ plot X and Y ------
         try
             figure(5);
@@ -144,30 +154,51 @@ end
 figure(5)
 trplot(XActual(:,:),'color','r');
 axis auto
-% legend('solved and actual X');
+
 figure(6)
 trplot(YActual(:,:),'color','r');
 axis auto
-% legend('solved and actual Y');
 
 %%
 Err_Avg = sum(Err,3)/num;
 
 %%
-figure
-plot(point, Err_Avg(:,1:4))
-legend('rot_{Xnew}','rot_{Ynew}','rot_X','rot_Y')
-
-figure
-plot(point, Err_Avg(:,5:8))
-legend('tran_{Xnew}','tran_{Ynew}','tran_X','tran_Y')
-
-%%
-figure
-plot(point, Err_Avg(:,[2,4]))
-legend('rot_{Ynew}','rot_Y')
-
-figure
-plot(point, Err_Avg(:,[6,8]))
-legend('tran_{Ynew}','tran_Y')
-
+if boxplot
+    
+    figure
+    boxplot(Err(:,:,1)', point)
+    figure
+    boxplot(Err(:,:,3)', point)
+    figure
+    boxplot(Err(:,:,2)', point)
+    figure
+    boxplot(Err(:,:,4)', point)
+    
+    figure
+    boxplot(Err(:,:,5)', point)
+    figure
+    boxplot(Err(:,:,7)', point)
+    figure
+    boxplot(Err(:,:,6)', point)
+    figure
+    boxplot(Err(:,:,8)', point)
+    
+else
+    
+    figure
+    plot(point, Err_Avg(:,1:4))
+    legend('rot_{Xnew}','rot_{Ynew}','rot_X','rot_Y')
+    
+    figure
+    plot(point, Err_Avg(:,5:8))
+    legend('tran_{Xnew}','tran_{Ynew}','tran_X','tran_Y')
+    
+    figure
+    plot(point, Err_Avg(:,[2,4]))
+    legend('rot_{Ynew}','rot_Y')
+    
+    figure
+    plot(point, Err_Avg(:,[6,8]))
+    legend('tran_{Ynew}','tran_Y')
+    
+end
