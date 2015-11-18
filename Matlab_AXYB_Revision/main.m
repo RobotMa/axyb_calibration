@@ -19,7 +19,7 @@ Cov = 0.3*eye(6,6);
 
 point = 10:10:100;
 
-num = 30;
+num = 50;
 
 boxplot = false;
 lineplot = true;
@@ -92,6 +92,8 @@ for k = point
         
         [M2, I2] = min(cost2(:));
         
+        M2 = 100;
+        
         if M1 <  M2
             
             [I_row, I_col] = ind2sub(size(cost1), I1);
@@ -162,6 +164,7 @@ Err_Avg = sum(Err,3)/num;
 
 %%
 if boxplot
+    
     figure
     boxplot(Err(:,:,1)', point)
     figure
@@ -179,13 +182,23 @@ if boxplot
     boxplot(Err(:,:,6)', point)
     figure
     boxplot(Err(:,:,8)', point)
+    
 elseif lineplot
-    figure
-    plot(point, Err_Avg(:,1:4))
-    legend('rot_{Xnew}','rot_{Ynew}','rot_X','rot_Y')
     
     figure
-    plot(point, Err_Avg(:,5:8))
-    legend('tran_{Xnew}','tran_{Ynew}','tran_X','tran_Y')
+    plot(point, Err_Avg(:,[1,3]))
+    legend('rot_{Xnew}','rot_X')
+
+    figure
+    plot(point, Err_Avg(:,[2,4]))
+    legend('rot_{Ynew}','rot_Y')
+    
+    figure
+    plot(point, Err_Avg(:,[5,7]))
+    legend('tran_{Xnew}','tran_X')
+    
+    figure
+    plot(point, Err_Avg(:,[6,8]))
+    legend('tran_{Ynew}','tran_Y')
     
 end
