@@ -521,28 +521,42 @@ Orientation and translation errors of $X$ and $Y$ versus shift using Li's and Sh
 The probabilistic method can recover the correspondence between shifted data streams, which is useful for other sensor calibration methods. In the $AX=YB$ problem, there have been many calibration methods developed for solving $X$ and $Y$ given data streams with correspondence. However, few of them considered the cases without correspondence. When data streams of ${A}$ and ${B}$ are shifted or asynchronous, most of these methods fail to give a valid solution. To further test the effectiveness of our method, we shift the data sequence of $\{A_i\}$ by $n=0,1,2,3,4,5$ with respect to the data sequence of $\{B_i\}$ such that $A_{k+n}$ ``matches'' $B_k$ where $k = 1, 2, \cdots, m-n$ and $i = 1,2, \cdots, m$. We augment other $AX=YB$ solvers with our probabilistic approach by recovering the correspondence between shift data sets. In Li's method \cite{li2010simultaneous}, $X$ and $Y$ are solved for at the same time, while Shah \cite{shah2013solving} solved for $X$ and $Y$ in a separate way. As shown in Fig.~\ref{fig5}, when dealing with the shifted data streams $\{A_{k+n}, B_k\}$, the errors on both rotations and translations are significant. After recovering the correspondence between data streams by using the probabilistic method, Li and Shah's methods achieve the same level of performance as shown in Fig.~\ref{fig6}.
 
 \section{A Brief Case Study With Completely Scrambled Data}
-\label{sect5}
+\label{sect4}
 
 In this section, we will briefly discuss the case where $\{A_i\}$ and $\{B_j\}$ are completely scrambled. Unlike the case of shifted data, it is extremely hard to recover the correspondence between two completely scrambled data sets $\{A_i\}$ and $\{B_j\}$. The correlation theorem can't be applied because there is no shift in the scrambled data sets. Euclidean group invariants are not practical either because given $\{A_i\}$ and $\{B_j\}$ both of which have the size of $m$, there are $m! = m \times m-1 \times \cdots 1$ combinations between the data sets, and it is extremely computationally intensive to test all the combinations. Without recovering the correspondence between the data sets, it is impossible to choose the optimal solution from the eight candidates of $\{X_k, Y_k\}$.
 
 In the above approach, we used Eq.~(\ref{equ15b}) to calculate $X_k$ and Eq.~(\ref{equ15a}) to obtain the corresponding $Y_k$. However, we now show that one can calculate the eight candidates of $Y$ independently and employ Eq.~(\ref{equ15a}) as a constraint to filter out the optimal $\{X, Y\}$ pair. 
 
-Given the equation $AX=YB$, apply an inverse on both sides of the equation and we will have $B^{-1}Y^{-1} = X^{-1}A^{-1}$. Following the same derivations from Eq.~(\ref{equ5}) to Eq.~(\ref{equ15b}), and we have:
+Given the equation $AX=YB$, apply an inverse on both sides of the equation and we will have $B^{-1}Y^{-1} = X^{-1}A^{-1}$. Following the same derivations from Eq.~(\ref{equ5}) to Eq.~(\ref{equ15b}), we have:
 \begin{IEEEeqnarray}{l}
 M_{B^{-1}} Y^{-1} = X^{-1} M_{A^{-1}} \IEEEyessubnumber\label{equ33a}
 \\*
 Ad(Y)\Sigma_{B^{-1}}Ad^{T}(Y) = \Sigma_{A^{-1}}. \IEEEyessubnumber\label{equ33b}
 \end{IEEEeqnarray}
-Similarly, Eq.~(\ref{equ33b}) can give eight candidates of $Y^{-1}$, or equivalently $Y$, Let $X_{k1}$ where $k1 = 1,2, \cdots, 8$ denote the $X$s obtained from Eq.(~\ref{equ15b}) and $Y_{k2}$ where $k2 = 1,2,\cdots, 8$ denote the $Y$s obtained from Eq.~(\ref{equ33b}), and we can use either Eq.~(\ref{equ15a}) or Eq.~(\ref{equ33a}) to get the optimal $\left( X_{k1}, Y_{k2} \right)$.
+Similarly, Eq.~(\ref{equ33b}) can give eight candidates of $Y^{-1}$, or equivalently, the eight candidates of $Y$. Let $X_{k1}$ where $k1 = 1,2, \cdots, 8$ denote the $X$s obtained from Eq.(~\ref{equ15b}) and $Y_{k2}$ where $k2 = 1,2,\cdots, 8$ denote the $Y$s obtained from Eq.~(\ref{equ33b}), and we can use Eq.~(\ref{equ15a}) and Eq.~(\ref{equ33a}) to form a minimization problem as:
+\begin{equation}
+\underset{k1, k2}{min} ||M_A X_{k1} - Y_{k2} M_B ||_F + ||M_B^{-1} Y^{-1}_{k2} - X^{-1}_{k1} M_A^{-1} ||_F
+\end{equation}
+which can give the optimal $(X_{k1}, Y_{k2})$ pair. We call this approach the \textit{prob} method, and compare it with Li's method for testing its effectiveness of handling scrambled data sets. For simplicity, we use Eq.~(\ref{equ33a}) and Eq.~(\ref{equ33b}) to generate $\{B_i\}$, whereas compute $\{A_i\}$ using $A_i = X^{-1} Y B_i$ without exerting noise on $B_i$. Then $\{A_i\}$ is scrambled at each percentage from $0\%$ up to $100\%$. 50 times of simulations are performed for each percentage rate and the same error metrics are used as in Section \label{sect5}. As shown in Fig.~(\ref{fig7}) and Fig.~(\ref{fig8}), as the percentage of scrambled data goes up, the errors in rotation and translation for Li's method gradually diverge, while the errors for the $prob$ method are very stable and small. This shows the significant advantage of the probabilistic method in handling disordered data sets. However, Li's method is still more accurate when the exact correspondence is known between $\{A_i\}$ and $\{B_i\}$.
 
+\begin{figure}[!t]
+\centering
+\includegraphics[width=3.2in]{Figure/fig7.eps}
+\caption{Rotation error in X and Y v.s. scrambling rate for the $prob$ and Li's methods}
+\label{fig7}
+\end{figure}
 
-
-
+\begin{figure}[!t]
+\centering
+\includegraphics[width=3.2in]{Figure/fig8.eps}
+\caption{Translation error in X and Y v.s. scrambling rate for the $prob$ and Li's methods}
+\label{fig8}
+\end{figure}
 
 \section{Conclusions}
 \label{sect5}
 
-In this paper, we developed a probabilistic approach to simultaneously obtain $X$ and $Y$ in the $AX=YB$ sensor calibration problem. Without a priori knowledge of the correspondence between $\{A_i\}$ and $\{B_j\}$, the proposed probabilistic method on Lie groups is used to constrain the possible solutions of $X$ and $Y$ to eight pairs of candidates. Given shifted data streams of $\{A_{i+s}\}$ and $\{B_i\}$, using the correlation theorem with Euclidean\textbf{-}group invariants, the correspondence is recovered to determine the correct solution among the eight candidates. In the numerical simulation, the method performs well with different sets of data samples. Future work will be to further develop the existing algorithm to solve for more general asynchronous cases, such as flipped data pairs or missing data in the data streams.
+In this paper, we developed a probabilistic approach to simultaneously obtain $X$ and $Y$ in the $AX=YB$ sensor calibration problem. Without a priori knowledge of the correspondence between $\{A_i\}$ and $\{B_j\}$, the proposed probabilistic method on Lie groups is used to constrain the possible solutions of $X$ and $Y$ to eight pairs of candidates. Given shifted data streams of $\{A_{i+s}\}$ and $\{B_i\}$, using the correlation theorem with Euclidean\textbf{-}group invariants, the correspondence is recovered to determine the correct solution among the eight candidates. In the numerical simulation, the method performs well with different sets of data samples. Lastly, we brought up a new approach to deal with completely disordered data sets and show its effectiveness in simulation. Future work will be to further develop the existing algorithm to solve for more general asynchronous cases, such as flipped data pairs or missing data in the data streams.
 
 %\section{Conclusion}
 % conference papers do not normally have an appendix

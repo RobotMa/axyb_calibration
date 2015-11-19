@@ -10,7 +10,7 @@ function [X,Y]=li(AA,BB)
 % Mili Shah
 % July 2014
 
-[m,n]=size(AA); n = n/4;
+[~,n]=size(AA); n = n/4;
 
 A = zeros(12*n,24);
 b = zeros(12*n,1);
@@ -26,8 +26,10 @@ end
 x = A\b;
 
 X=reshape(x(1:9),3,3)';
-[u,s,v]=svd(X); X = u*v'; if det(X)<0, X = u*diag([1 1 -1])*v'; end
+[u,~,v]=svd(X); X = u*v'; if det(X)<0, X = u*diag([1 1 -1])*v'; end
 X = [X x(19:21);[0 0 0 1]];
 Y=reshape(x(10:18),3,3)';
-[u,s,v]=svd(Y); Y = u*v'; if det(Y)<0, Y = u*diag([1 1 -1])*v'; end
+[u,~,v]=svd(Y); Y = u*v'; if det(Y)<0, Y = u*diag([1 1 -1])*v'; end
 Y = [Y x(22:24);[0 0 0 1]];
+
+end
