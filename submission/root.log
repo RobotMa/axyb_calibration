@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2014.11.19)  18 NOV 2015 20:30
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2014.11.19)  21 NOV 2015 15:34
 entering extended mode
  %&-line parsing enabled.
 **root.tex
@@ -245,9 +245,6 @@ File: dvipsnam.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
 
 LaTeX Warning: Label `sect4' multiply defined.
 
-
-LaTeX Warning: Label `sect5' multiply defined.
-
 )
 \openout1 = `root.aux'.
 
@@ -309,13 +306,7 @@ File: Figure/fig7.eps Graphic file (type eps)
 
 <Figure/fig7.eps>
 File: Figure/fig8.eps Graphic file (type eps)
- <Figure/fig8.eps> [6] (./root.bbl
-Underfull \hbox (badness 1838) in paragraph at lines 68--71
-[]\OT1/ptm/m/n/8 Z. Zhao, ``Hand-eye cal-i-bra-tion us-ing con-vex op-ti-miza-t
-ion,'' in
- []
-
-[7])
+ <Figure/fig8.eps> [6] (./root.bbl [7])
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -343,4 +334,4 @@ Here is how much of TeX's memory you used:
  714 hyphenation exceptions out of 8191
  33i,22n,24p,1597b,303s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on root.dvi (8 pages, 60160 bytes).
+Output written on root.dvi (8 pages, 60000 bytes).

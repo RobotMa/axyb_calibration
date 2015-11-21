@@ -20,28 +20,27 @@
 
 \bibitem{shiu1989calibration}
 Y.~C. Shiu and S.~Ahmad, ``Calibration of wrist-mounted robotic sensors by
-  solving homogeneous transform equations of the form ax= xb,'' \emph{Robotics
-  and Automation, IEEE Transactions on}, vol.~5, no.~1, pp. 16--29, 1989.
+  solving homogeneous transform equations of the form ax= xb,'' \emph{IEEE
+  Transactions on Robotics and Automation}, vol.~5, no.~1, pp. 16--29, 1989.
 
 \bibitem{tsai1989new}
 R.~Y. Tsai and R.~K. Lenz, ``A new technique for fully autonomous and efficient
-  3d robotics hand/eye calibration,'' \emph{Robotics and Automation, IEEE
-  Transactions on}, vol.~5, no.~3, pp. 345--358, 1989.
+  3d robotics hand/eye calibration,'' \emph{IEEE Transactions on Robotics and
+  Automation}, vol.~5, no.~3, pp. 345--358, 1989.
 
 \bibitem{wang1992extrinsic}
 C.-C. Wang, ``Extrinsic calibration of a vision sensor mounted on a robot,''
-  \emph{Robotics and Automation, IEEE Transactions on}, vol.~8, no.~2, pp.
+  \emph{IEEE Transactions on Robotics and Automation}, vol.~8, no.~2, pp.
   161--175, 1992.
 
 \bibitem{park1994robot}
 F.~C. Park and B.~J. Martin, ``Robot sensor calibration: solving ax= xb on the
-  euclidean group,'' \emph{IEEE Transactions on Robotics and Automation
-  (Institute of Electrical and Electronics Engineers);(United States)},
+  euclidean group,'' \emph{IEEE Transactions on Robotics and Automation},
   vol.~10, no.~5, 1994.
 
 \bibitem{horaud1995hand}
-R.~Horaud and F.~Dornaika, ``Hand-eye calibration,'' \emph{The international
-  journal of robotics research}, vol.~14, no.~3, pp. 195--210, 1995.
+R.~Horaud and F.~Dornaika, ``Hand-eye calibration,'' \emph{The International
+  Journal of Robotics Research}, vol.~14, no.~3, pp. 195--210, 1995.
 
 \bibitem{daniilidis1999hand}
 K.~Daniilidis, ``Hand-eye calibration using dual quaternions,'' \emph{The
@@ -55,9 +54,9 @@ E.~Bayro-Corrochano, K.~Daniilidis, and G.~Sommer, ``Motor algebra for 3d
 
 \bibitem{rovelo2008geometric}
 J.~R. Rovelo, S.~H. Garcia, and E.~B. Corrochano, ``Geometric hand-eye
-  calibration for an endoscopic neurosurgery system,'' in \emph{Robotics and
-  Automation, 2008. ICRA 2008. IEEE International Conference on}.\hskip 1em
-  plus 0.5em minus 0.4em\relax IEEE, 2008, pp. 1418--1423.
+  calibration for an endoscopic neurosurgery system,'' in \emph{IEEE
+  International Conference on Robotics and Automation (ICRA)}.\hskip 1em plus
+  0.5em minus 0.4em\relax IEEE, 2008, pp. 1418--1423.
 
 \bibitem{fassi2005hand}
 I.~Fassi and G.~Legnani, ``Hand to sensor calibration: A geometrical
@@ -65,15 +64,15 @@ I.~Fassi and G.~Legnani, ``Hand to sensor calibration: A geometrical
   Systems}, vol.~22, no.~9, pp. 497--506, 2005.
 
 \bibitem{zhao2011hand}
-Z.~Zhao, ``Hand-eye calibration using convex optimization,'' in \emph{Robotics
-  and Automation (ICRA), 2011 IEEE International Conference on}.\hskip 1em plus
+Z.~Zhao, ``Hand-eye calibration using convex optimization,'' in \emph{IEEE
+  International Conference on Robotics and Automation (ICRA)}.\hskip 1em plus
   0.5em minus 0.4em\relax IEEE, 2011, pp. 2947--2952.
 
 \bibitem{ackerman2014online}
 M.~K. Ackerman, A.~Cheng, E.~Boctor, and G.~Chirikjian, ``Online ultrasound
   sensor calibration using gradient descent on the euclidean group,'' in
-  \emph{Robotics and Automation (ICRA), 2014 IEEE International Conference
-  on}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2014, pp. 4900--4905.
+  \emph{IEEE International Conference on Robotics and Automation (ICRA)}.\hskip
+  1em plus 0.5em minus 0.4em\relax IEEE, 2014, pp. 4900--4905.
 
 \bibitem{ackerman2013probabilistic}
 M.~K. Ackerman and G.~S. Chirikjian, ``A probabilistic solution to the ax= xb
@@ -84,25 +83,25 @@ M.~K. Ackerman and G.~S. Chirikjian, ``A probabilistic solution to the ax= xb
 \bibitem{ackerman2014information}
 M.~K. Ackerman, A.~Cheng, and G.~Chirikjian, ``An information-theoretic
   approach to the correspondence-free ax= xb sensor calibration problem,'' in
-  \emph{Robotics and Automation (ICRA), 2014 IEEE International Conference
-  on}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2014, pp. 4893--4899.
+  \emph{IEEE International Conference on Robotics and Automation (ICRA)}.\hskip
+  1em plus 0.5em minus 0.4em\relax IEEE, 2014, pp. 4893--4899.
 
 \bibitem{zhuang1994simultaneous}
 H.~Zhuang, Z.~S. Roth, and R.~Sudhakar, ``Simultaneous robot/world and
   tool/flange calibration by solving homogeneous transformation equations of
-  the form ax= yb,'' \emph{Robotics and Automation, IEEE Transactions on},
+  the form ax= yb,'' \emph{IEEE Transactions on Robotics and Automation},
   vol.~10, no.~4, pp. 549--554, 1994.
 
 \bibitem{dornaika1998simultaneous}
 F.~Dornaika and R.~Horaud, ``Simultaneous robot-world and hand-eye
-  calibration,'' \emph{Robotics and Automation, IEEE Transactions on}, vol.~14,
+  calibration,'' \emph{IEEE Transactions on Robotics and Automation}, vol.~14,
   no.~4, pp. 617--622, 1998.
 
 \bibitem{hirsh2001iterative}
 R.~L. Hirsh, G.~N. DeSouza, and A.~C. Kak, ``An iterative approach to the
-  hand-eye and base-world calibration problem,'' in \emph{Robotics and
-  Automation, 2001. Proceedings 2001 ICRA. IEEE International Conference on},
-  vol.~3.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2001, pp. 2171--2176.
+  hand-eye and base-world calibration problem,'' in \emph{IEEE International
+  Conference on Robotics and Automation (ICRA)}, vol.~3.\hskip 1em plus 0.5em
+  minus 0.4em\relax IEEE, 2001, pp. 2171--2176.
 
 \bibitem{ernst2012non}
 F.~Ernst, L.~Richter, L.~Matth{\"a}us, V.~Martens, R.~Bruder, A.~Schlaefer, and
@@ -112,13 +111,13 @@ F.~Ernst, L.~Richter, L.~Matth{\"a}us, V.~Martens, R.~Bruder, A.~Schlaefer, and
 
 \bibitem{strobl2006optimal}
 K.~H. Strobl and G.~Hirzinger, ``Optimal hand-eye calibration,'' in
-  \emph{Intelligent Robots and Systems, 2006 IEEE/RSJ International Conference
-  on}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2006, pp. 4647--4653.
+  \emph{IEEE/RSJ International Conference on Intelligent Robots and Systems
+  (IROS)}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2006, pp. 4647--4653.
 
 \bibitem{li2010simultaneous}
 A.~Li, L.~Wang, and D.~Wu, ``Simultaneous robot-world and hand-eye calibration
-  using dual-quaternions and kronecker product,'' \emph{Inter. J. Phys. Sci},
-  vol.~5, no.~10, pp. 1530--1536, 2010.
+  using dual-quaternions and kronecker product,'' \emph{International Journal
+  of Physical Sciences}, vol.~5, no.~10, pp. 1530--1536, 2010.
 
 \bibitem{shah2013solving}
 M.~Shah, ``Solving the robot-world/hand-eye calibration problem using the
@@ -127,15 +126,15 @@ M.~Shah, ``Solving the robot-world/hand-eye calibration problem using the
 
 \bibitem{heller2014hand}
 J.~Heller, D.~Henrion, and T.~Pajdla, ``Hand-eye and robot-world calibration by
-  global polynomial optimization,'' in \emph{Robotics and Automation (ICRA),
-  2014 IEEE International Conference on}.\hskip 1em plus 0.5em minus
-  0.4em\relax IEEE, 2014, pp. 3157--3164.
+  global polynomial optimization,'' in \emph{IEEE International Conference on
+  Robotics and Automation (ICRA)}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE,
+  2014, pp. 3157--3164.
 
 \bibitem{wang2014towards}
 J.~Wang, L.~Wu, M.~Q.-H. Meng, and H.~Ren, ``Towards simultaneous coordinate
-  calibrations for cooperative multiple robots,'' in \emph{Intelligent Robots
-  and Systems (IROS 2014), 2014 IEEE/RSJ International Conference on}.\hskip
-  1em plus 0.5em minus 0.4em\relax IEEE, 2014, pp. 410--415.
+  calibrations for cooperative multiple robots,'' in \emph{IEEE/RSJ
+  International Conference on Intelligent Robots and Systems (IROS)}.\hskip 1em
+  plus 0.5em minus 0.4em\relax IEEE, 2014, pp. 410--415.
 
 \bibitem{chirikjian2011stochastic}
 G.~S. Chirikjian, \emph{Stochastic Models, Information Theory, and Lie Groups,
@@ -144,14 +143,14 @@ G.~S. Chirikjian, \emph{Stochastic Models, Information Theory, and Lie Groups,
 
 \bibitem{wang2008nonparametric}
 Y.~Wang and G.~S. Chirikjian, ``Nonparametric second-order theory of error
-  propagation on motion groups,'' \emph{The International journal of robotics
-  research}, vol.~27, no. 11-12, pp. 1258--1273, 2008.
+  propagation on motion groups,'' \emph{The International Journal of Robotics
+  Research}, vol.~27, no. 11-12, pp. 1258--1273, 2008.
 
 \bibitem{ackerman2013sensor}
 M.~K. Ackerman, A.~Cheng, B.~Shiffman, E.~Boctor, and G.~Chirikjian, ``Sensor
   calibration with unknown correspondence: Solving ax= xb using euclidean-group
-  invariants,'' in \emph{Intelligent Robots and Systems (IROS), 2013 IEEE/RSJ
-  International Conference on}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE,
+  invariants,'' in \emph{IEEE/RSJ International Conference on Intelligent
+  Robots and Systems (IROS)}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE,
   2013, pp. 1308--1313.
 
 \end{thebibliography}
