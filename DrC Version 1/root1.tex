@@ -229,7 +229,7 @@ f_{B}(H)=\frac{1}{n}\sum_{i=1}^{n} \delta_{B_{i}}(H), \IEEEyessubnumber
 \end{IEEEeqnarray}
 then by using the bi-linearity of convolution, add $n$ instances of Eq.\textcolor{blue}{~}(\ref{equ7}), and substitute Eq.\textcolor{blue}{~}(\ref{equ8}) into the summation, and we will have:
 \begin{equation}\label{equ9}
-(f_{A_{i}}\ast \delta_{X})(H)=(\delta_{Y}\ast f_{B_{i}})(H).
+(f_{A}\ast \delta_{X})(H)=(\delta_{Y}\ast f_{B})(H).
 \end{equation}
 
 % small relative motions are calculated using consecutive transformations. Take $\{A_i\}$ for example, one metric % of the distance between $A_i$ and $A_{i+1}$ can be defined as:
@@ -329,13 +329,30 @@ Ad(X^{-1})\Sigma_{A}Ad^{T}(X^{-1}) = \Sigma_{B}. \IEEEyessubnumber\label{equ15b}
 \end{IEEEeqnarray}
 This is a nonparametric result, meaning that the underlying probability density functions $f_A(H)$
 and $f_B(H)$ need not be Gaussian or belong to any other family of parametric distributions.
-Moreover, the constraint of being highly-focused is not very restrictive because the original
-data sets $\{A_i\}$ and $\{B_i\}$ can always be transformed into $\{(A_i)^p\}$ and $\{(B_i)^p\}$
-for some fractional power $0 < p < 1$ since
-$$ A_i = X B_i X^{-1} \,\, \Longleftrightarrow \,\, (A_i)^p = X (B_i)^p X^{-1}. $$
-{\color{blue} Question: this is for AX=XB, but for AX =YB, $A_i = Y B_i X^{-1}$ and the above equation doesn't apply.}
+Moreover, it can be shown as below that in the context of $AX=YB$, Eq.~(\ref{equ15a}) and Eq.~(\ref{equ15b}) don't require $f_A$ and $f_B$ to be highly concentrated. 
 
-The smaller the value of $p$ is, the more concentrated the transformed data will be.
+Starting with Eq.(\ref{equ9}), performing a convolution on both of the left sides of the equation with
+$\delta_{Y^{-1}}(H)$, and using the associativity of convolution, we will have:
+\begin{equation} 
+(\delta_{Y^{-1}} * f_A * \delta_X)(H) = f_B(H).
+\label{equ18new}
+\end{equation}
+Use the definition of mean as in Eq.~(\ref{equ11}) along with Eq.~(\ref{equ18new}), we have 
+$$ \int_{SE(3)} \log({M}_{B}^{-1} H) f_B(H) dH = $$
+$$ \int_{SE(3)} \log({M}_{B}^{-1} H) (\delta_{X^{-1}} * f_A * \delta_{X})(H) dH = $$
+\begin{equation}
+\int_{SE(3)} \log({M}_{B}^{-1} H) f_A({Y} H {X}^{-1}) dH = \mathbb{O}.
+\label{equ19new}
+\end{equation}
+Change the variable as $K = {Y} H {X}^{-1}$ and use the invariance of integration \cite{chirikjian2011stochastic}, then Eq.~(\ref{equ19new}) becomes:
+\begin{equation}
+\int_{SE(3)} \log({M}_{B}^{-1} Y^{-1} K X) f_A(K) dK = \mathbb{O}. 
+\label{equ20new}
+\end{equation}
+which falls into the form of the mean definition of $\{A_i\}$.
+If we further multiply $X$ and $X^{-1}$ on the left and right of both sides of Eq.~(\ref{equ20new}), then $X[\log({M}_{B}^{-1} Y^{-1} K X)]X^{-1} = \log(M_{A}^{-1}K)$.
+Knowing that $X[\log({M}_{B}^{-1} Y^{-1} K X)]X^{-1} = \log(X {M}_{B}^{-1} Y^{-1} K)$, and we have 
+$X {M}_{B}^{-1} Y^{-1} = M_{A}^{-1}$ which is equivalent to Eq.~(\ref{equ15a}),
 
 The problem of solving the above equations, Eq.\textcolor{blue}{~}(\ref{equ15a}) is decomposed into a rotational equation and a translational equation as follows:
 
