@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.10.16)  22 NOV 2015 17:15
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.10.16)  22 NOV 2015 17:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -420,6 +420,7 @@ File: fig2-eps-converted-to.pdf Graphic file (type pdf)
 <use fig2-eps-converted-to.pdf>
 Package pdftex.def Info: fig2-eps-converted-to.pdf used on input line 530.
 (pdftex.def)             Requested size: 220.4237pt x 108.761pt.
+ [5]
 Package epstopdf Info: Source file: <fig3.eps>
 (epstopdf)                    date: 2015-11-17 22:41:10
 (epstopdf)                    size: 115423 bytes
@@ -431,13 +432,12 @@ fig3.eps>
 (epstopdf)             \includegraphics on input line 540.
 Package epstopdf Info: Output file is already uptodate.
 
-<fig3-eps-converted-to.pdf, id=114, 1051.93pt x 478.78876pt>
+<fig3-eps-converted-to.pdf, id=117, 1051.93pt x 478.78876pt>
 File: fig3-eps-converted-to.pdf Graphic file (type pdf)
 
 <use fig3-eps-converted-to.pdf>
 Package pdftex.def Info: fig3-eps-converted-to.pdf used on input line 540.
 (pdftex.def)             Requested size: 231.26378pt x 105.26079pt.
- [5]
 Package epstopdf Info: Source file: <fig4.eps>
 (epstopdf)                    date: 2015-11-17 22:41:10
 (epstopdf)                    size: 197415 bytes
@@ -499,7 +499,7 @@ Package epstopdf Info: Source file: <Figure/fig7.eps>
 (epstopdf)                    size: 10024 bytes
 (epstopdf)             Command: <repstopdf --outfile=Figure/fig7-eps-converted-
 to.pdf Figure/fig7.eps>
-(epstopdf)             \includegraphics on input line 632.
+(epstopdf)             \includegraphics on input line 630.
 Package epstopdf Info: Output file is already uptodate.
 
 <Figure/fig7-eps-converted-to.pdf, id=171, 488.82625pt x 319.1925pt>
@@ -507,7 +507,7 @@ File: Figure/fig7-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Figure/fig7-eps-converted-to.pdf>
 Package pdftex.def Info: Figure/fig7-eps-converted-to.pdf used on input line 63
-2.
+0.
 (pdftex.def)             Requested size: 231.26378pt x 151.0092pt.
 Package epstopdf Info: Source file: <Figure/fig8.eps>
 (epstopdf)                    date: 2015-11-22 13:04:35
@@ -517,7 +517,7 @@ Package epstopdf Info: Source file: <Figure/fig8.eps>
 (epstopdf)                    size: 10240 bytes
 (epstopdf)             Command: <repstopdf --outfile=Figure/fig8-eps-converted-
 to.pdf Figure/fig8.eps>
-(epstopdf)             \includegraphics on input line 639.
+(epstopdf)             \includegraphics on input line 637.
 Package epstopdf Info: Output file is already uptodate.
 
 <Figure/fig8-eps-converted-to.pdf, id=172, 490.83376pt x 319.1925pt>
@@ -525,14 +525,14 @@ File: Figure/fig8-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Figure/fig8-eps-converted-to.pdf>
 Package pdftex.def Info: Figure/fig8-eps-converted-to.pdf used on input line 63
-9.
+7.
 (pdftex.def)             Requested size: 231.26378pt x 150.39064pt.
  [7 <./fig6-eps-converted-to.pdf> <./Figure/fig7-eps-converted-to.pdf>] (./root
 1.bbl
 Missing character: There is no â in font ptmr7t!
 Missing character: There is no € in font ptmr7t!
 Missing character: There is no “ in font ptmr7t!
- [8 <./Figure/fig8-eps-converted-to.pdf>])
+)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -544,9 +544,7 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the US letter (8.5in X 11in) paper size.
 
-[9
-
-] (./root1.aux)
+[8 <./Figure/fig8-eps-converted-to.pdf>] (./root1.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -582,10 +580,10 @@ cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols
 ive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/ur
 w/times/utmri8a.pfb>
-Output written on root1.pdf (9 pages, 764094 bytes).
+Output written on root1.pdf (8 pages, 763977 bytes).
 PDF statistics:
- 292 PDF objects out of 1000 (max. 8388607)
- 168 compressed objects within 2 object streams
+ 289 PDF objects out of 1000 (max. 8388607)
+ 166 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

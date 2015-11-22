@@ -352,7 +352,7 @@ Change the variable as $K = {Y} H {X}^{-1}$ and use the invariance of integratio
 which falls into the form of the mean definition of $\{A_i\}$.
 If we further multiply $X$ and $X^{-1}$ on the left and right of both sides of Eq.~(\ref{equ20new}), then $X[\log({M}_{B}^{-1} Y^{-1} K X)]X^{-1} = \log(M_{A}^{-1}K)$.
 Knowing that $X[\log({M}_{B}^{-1} Y^{-1} K X)]X^{-1} = \log(X {M}_{B}^{-1} Y^{-1} K)$, and we have 
-$X {M}_{B}^{-1} Y^{-1} = M_{A}^{-1}$ which is equivalent to Eq.~(\ref{equ15a}),
+$X {M}_{B}^{-1} Y^{-1} = M_{A}^{-1}$ which is equivalent to Eq.~(\ref{equ15a}). Eq.(\ref{equ15b}) follows from \cite{wang2008nonparametric} because the F(A,B) term has products of covariances of the functions being convolved, and delta functions have zero covariance so the F term is zero.
 
 The problem of solving the above equations, Eq.\textcolor{blue}{~}(\ref{equ15a}) is decomposed into a rotational equation and a translational equation as follows:
 
@@ -613,9 +613,7 @@ The probabilistic method can recover the correspondence between shifted data str
 
 In this section, we will briefly discuss the case where $\{A_i\}$ and $\{B_j\}$ are completely scrambled. Unlike the case of shifted data, it is extremely hard to recover the correspondence between two completely scrambled data sets $\{A_i\}$ and $\{B_j\}$. The correlation theorem can't be applied because there is no shift in the scrambled data sets. Euclidean group invariants are not practical either because given $\{A_i\}$ and $\{B_j\}$ both of which have the size of $m$, there are $m! = m \times m-1 \times \cdots 1$ combinations between the data sets, and it is extremely computationally intensive to test all the combinations. Without recovering the correspondence between the data sets, it is impossible to choose the optimal solution from the eight candidates of $\{X_k, Y_k\}$.
 
-In the above approach, we used Eq.~(\ref{equ15b}) to calculate $X_k$ and Eq.~(\ref{equ15a}) to obtain the corresponding $Y_k$. However, we now show that one can calculate the eight candidates of $Y$ independently and employ Eq.~(\ref{equ15a}) as a constraint to filter out the optimal $\{X, Y\}$ pair.
-
-Given the equation $AX=YB$, apply an inverse on both sides of the equation and we will have $B^{-1}Y^{-1} = X^{-1}A^{-1}$. Following the same derivations from Eq.~(\ref{equ5}) to Eq.~(\ref{equ15b}), we have:
+In the above approach, we used Eq.~(\ref{equ15b}) to calculate $X_k$ and Eq.~(\ref{equ15a}) to obtain the corresponding $Y_k$. However, we now show that one can calculate the eight candidates of $Y$ independently and employ Eq.~(\ref{equ15a}) as a constraint to filter out the optimal $\{X, Y\}$ pair. Given the equation $AX=YB$, apply an inverse on both sides of the equation and we will have $B^{-1}Y^{-1} = X^{-1}A^{-1}$. Following the same derivations from Eq.~(\ref{equ5}) to Eq.~(\ref{equ15b}), we have:
 \begin{IEEEeqnarray}{l}
 M_{B^{-1}} Y^{-1} = X^{-1} M_{A^{-1}} \IEEEyessubnumber\label{equ33a}
 \\*
