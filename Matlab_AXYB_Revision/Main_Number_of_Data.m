@@ -9,10 +9,12 @@ counter = 0;
 addpath('~/Dropbox/2014Summer/Robotics Research/rvctools/robot')
 addpath('~/Dropbox/2014Summer/Robotics Research/rvctools/common')
 addpath('~/Dropbox/2015Spring/AXXB Journal/Batch_AXXB/Matlab_AXXB/codegen')
-addpath('~/Dropbox/2015Spring/AXXB Journal/Batch_AXXB/Matlab_AXXB')
+addpath('~/Dropbox/2015Spring/AXXB Journal/Batch_AXXB/Matlab_AXXB/Batch Method(ED - GSI)')
 addpath('~/Dropbox/2014Summer/Robotics Research/kinematics/kinematics/screws')
 addpath('~/Dropbox/2014Summer/Robotics Research/kinematics/kinematics/util')
 
+
+%%
 Mean=[0; 0; 0; 0; 0 ;0];
 
 Cov = 0.3*eye(6,6);
