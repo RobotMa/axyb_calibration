@@ -1,5 +1,5 @@
 function [ X,Y, X_candidate, Y_candidate, MeanA, MeanB, SigA, SigB ] = batchAXYB(A, B)
-
+% This solves for the case where A and B have correspondence
 X_candidate = zeros(4,4,8);
 Y_candidate = zeros(4,4,8);
 thetaA = zeros(size(A,3),1);

@@ -1,4 +1,4 @@
-function [X,Y]=shah(AA,BB)
+function [X,Y] = shah(AA,BB)
 % Solves the problem AX=YB
 % using the formulation of
 %

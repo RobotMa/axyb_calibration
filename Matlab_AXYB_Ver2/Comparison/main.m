@@ -19,14 +19,14 @@ for k = point(1):point(2):point(3)
 %      continue;
 %  end
 %% --Trajectory Generation-------------------------
- [A,B,XActual,YActual] =  ABGenerate(k, sig,0);
+ [A,B,XActual,YActual] =  ABGenerate(k, 0, gmean, sig*eye(6));
 % [A,B,XActual,YActual] =  ABGen(k,0);
 
 %% add noise
 gmean = [0;0;0;0;0;0];	%Gaussian Noise Mean
 nstd = 0.01;  %Gaussian Noise standard deviation Range
 
-B = sensorNoise(B, gmean, nstd, 1);
+% B = sensorNoise(B, gmean, nstd, 1);
 
 %% --using probility methods------------------------
 % [XX(:,:,k),YY(:,:,k),err(k,:)]= haiyuan(A,B,X,Y,k,0.1);
@@ -54,22 +54,22 @@ for ne = 1:1:4
     Errc(counter,4,ne) = tranerror(Yc(:,:,ne),YActual);
 end
 %% plot 
-for j = 1:1:k
-    figure(3);
-    trplot(A(:,:,j),'color','r');
-    axis auto
-    hold on
-    figure(4);
-    trplot(B(:,:,j),'color','b');
-    axis auto
-    hold on
-end
-MeanA(4,1:3) = [0 0 0];
-MeanB(4,1:3) = [0 0 0];
-figure(3);
-trplot(MeanA,'color','b');
-figure(4);
-trplot(MeanB,'color','r');
+% for j = 1:1:k
+%     figure(3);
+%     trplot(A(:,:,j),'color','r');
+%     axis auto
+%     hold on
+%     figure(4);
+%     trplot(B(:,:,j),'color','b');
+%     axis auto
+%     hold on
+% end
+% MeanA(4,1:3) = [0 0 0];
+% MeanB(4,1:3) = [0 0 0];
+% figure(3);
+% trplot(MeanA,'color','b');
+% figure(4);
+% trplot(MeanB,'color','r');
 % figure(3);
 % legend('Generated A');
 % figure(4);
