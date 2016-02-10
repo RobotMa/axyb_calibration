@@ -26,7 +26,7 @@ for k = point(1):point(2):point(3)
 gmean = [0;0;0;0;0;0];	%Gaussian Noise Mean
 nstd = 0.01;  %Gaussian Noise standard deviation Range
 
-% B = sensorNoise(B, gmean, nstd, 1);
+B = sensorNoise(B, gmean, nstd, 1);
 
 %% --using probility methods------------------------
 % [XX(:,:,k),YY(:,:,k),err(k,:)]= haiyuan(A,B,X,Y,k,0.1);
