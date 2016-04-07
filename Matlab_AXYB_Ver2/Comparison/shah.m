@@ -10,7 +10,7 @@ function [X,Y] = shah(AA,BB)
 % Mili Shah
 % July 2014
 
-[m,n]=size(AA); n = n/4;
+[~,n]=size(AA); n = n/4;
 A = zeros(9*n,18);
 T = zeros(9,9);
 b = zeros(9*n,1);
@@ -20,15 +20,15 @@ for i = 1:n
     A(9*i-8:9*i,:) = [kron(Rb,Ra) -eye(9)];
     T = T + kron(Rb,Ra);
 end
-[u,s,v]=svd(T);
+[u,~,v]=svd(T);
 x = v(:,1);
 y = u(:,1);
 X = reshape(x,3,3);
 X = sign(det(X))/abs(det(X))^(1/3)*X;
-[u,s,v]=svd(X); X = u*v';
+[u,~,v]=svd(X); X = u*v';
 Y = reshape(y,3,3);
 Y = sign(det(Y))/abs(det(Y))^(1/3)*Y;
-[u,s,v]=svd(Y); Y = u*v';
+[u,~,v]=svd(Y); Y = u*v';
 A = zeros(3*n,6);
 b = zeros(3*n,1);
 for i = 1:n
@@ -39,5 +39,7 @@ t = A\b;
 
 X = [X t(1:3);[0 0 0 1]];
 Y = [Y t(4:6);[0 0 0 1]];
+
+end
 
 

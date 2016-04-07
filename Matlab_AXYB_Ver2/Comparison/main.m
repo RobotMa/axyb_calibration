@@ -5,9 +5,9 @@ clc
 % load invariantrandom.mat
 % global xxx yyy bbb
 
-gmean = [0;0;0;0;0;0];	%Gaussian Noise Mean
+gmean = [0; 0; 0; 0; 0; 0];	%Gaussian Noise Mean
 
-nstd = [0.2];% 0.1 0.5]%[0.01 0.02 0.04 0.06 0.08 0.1 0.2 0.4 0.6 0.8 1];  %Gaussian Noise standard deviation Range
+nstd = [0.2]; % 0.1 0.5]%[0.01 0.02 0.04 0.06 0.08 0.1 0.2 0.4 0.6 0.8 1];  %Gaussian Noise standard deviation Range
 
 counter = 0;
 sig = 0.8;    
