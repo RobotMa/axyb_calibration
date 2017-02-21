@@ -1,43 +1,46 @@
-clear all
+clear
 close all
 clc
 
-%% Edited by Qianli
+%% Add file dependencies
 counter = 0;
-
-% Require rvctool Matlab toolbox but not the "common" folder inside
-addpath('~/Dropbox/2014Summer/Robotics Research/rvctools/robot')
-addpath('~/Dropbox/2014Summer/Robotics Research/rvctools/common')
+addpath ../../rvctools/robot
+addpath ../../rvctools/common
 addpath(genpath('~/Dropbox/2015Spring/AXXB Journal/Batch_AXXB/Matlab_AXXB'))
-addpath('~/Dropbox/2014Summer/Robotics Research/kinematics/kinematics/screws')
-addpath('~/Dropbox/2014Summer/Robotics Research/kinematics/kinematics/util')
+addpath ../../kinematics/kinematics/util
+addpath ../../kinematics/kinematics/screws
 
 
-%%
-Mean=[0; 0; 0; 0; 0 ;0];
+%% Initialize Parameters
+gmean = [0; 0; 0; 0; 0 ;0];
 
-Cov = 0.3*eye(6,6);
+nstd = 0.05;                % Gaussian Noise standard deviation Range
+
+coeff = 03;
+
+cov = coeff*eye(6,6);
 
 point = 10:30:100;
 
 num = 50;
 
 boxplot = false;
+
 lineplot = true;
 
+%% 
 for k = point
     
     counter = counter + 1;
     for s = 1:num
         %% ------ Trajectory Generation --------
-        [A, B, XActual, YActual] =  ABGenerate(k, 0, Mean, Cov);
+        [A, B, XActual, YActual] =  ABGenerate(k, 0, gmean, cov);
         
         % Resize A to fit mex functions
         [a1,a2,a3] = size(A);
         
         %% ------- add noise -------
         gmean = [0; 0; 0; 0; 0; 0];	% Gaussian Noise Mean
-        nstd = 0.05;                % Gaussian Noise standard deviation Range
         
         B = sensorNoise(B, gmean, nstd, 1);
         
