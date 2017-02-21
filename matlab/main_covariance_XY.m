@@ -19,7 +19,7 @@ counter = 0;
 
 gmean = [0; 0; 0; 0; 0 ;0];
 
-coeff1 = 0.1; % Scaling factor for the covariances
+coeff1 = 0.02; % Scaling factor for the covariances
 
 cov = eye(6,6); % coeff1*cov
 
@@ -27,18 +27,18 @@ coeff2 = 0.0; % Scaling factor for the covariances
 
 cov_noise = eye(6,6); % coeff2*cov
 
-num = 20; % number of simulations
+num = 10; % number of simulations
 
 Num = 50; % number of data % 100
 
-n_sets = 1:1:10; % number of sets
+n_sets = 3:3:12; % number of sets
 
 optPlot = 'lineplot'; % Plot the averaged error : 'lineplot' & ''boxplot'
 
-opt_XY = 1; % generate random X, Y and Z
+opt_XY = 3; % generate X and Y
 [XActual, YActual] = InitializeXY(opt_XY);
 
-optNoise = true;
+optNoise = false;
 
 % Error container initialization
 Err1  = zeros(length(n_sets), 4, num);
@@ -57,12 +57,12 @@ for k = n_sets
         
         optPDF = 2;
         [A2, B2] = ...
-            generateMultiSetsOfABC(k, Num, optPDF, gmean, coeff1*cov, XActual, YActual);
+            generateMultiSetsOfAB(k, Num, optPDF, gmean, coeff1*cov, XActual, YActual);
         
         %% Add noise to data
         if optNoise
             B1 = addSensorNoiseToSet(B1, gmean, coeff1*coeff2, 2);
-            B1 = addSensorNoiseToSet(B1, gmean, coeff1*coeff2, 2);
+            B2 = addSensorNoiseToSet(B2, gmean, coeff1*coeff2, 2);
         end
         
         %% Solve for X, Y and Z using probabilistic approaches
@@ -89,24 +89,19 @@ for k = n_sets
 %         Err21(counter,:,s) = Err21(counter,:,s)/k;
         
         %% Solve for X, Y, Z using hybrid approach
-        [ X_1, Y_1 ] = probWangAXYB( A1, B1 );
+        [ X1, Y1, Sig_X1, Sig_Y1] = probAXYB( A1, B1 )
                                         
-        [ X_2, Y_2 ] = probWangAXYB( A2, B2 );
+        [ X2, Y2, Sig_X2, Sig_Y2 ] = probAXYB( A2, B2 );
 
         % ------- Mixed Prob-Wang method ------ %
-        Err1(counter,:,s) = getErrorAXBYCZ(X_1, Y_1, XActual, YActual);
+        Err1(counter,:,s) = getErrorAXYB(X1, Y1, XActual, YActual);
         
         % ------- Mixed Prob-Wang method ------ %
-        Err2(counter,:,s) = getErrorAXBYCZ(X_2, Y_2, XActual, YActual);
+        Err2(counter,:,s) = getErrorAXYB(X2, Y2, XActual, YActual);
     end
     
 end
 
 %% Plot the averaged error w.r.t. covariances
-plotProbResults(Err11, Err21, n_sets, optPlot)
-plotProbResults(Err12, Err22, n_sets, optPlot)
-
-optYaxis = '';
-plotProbResultsAll(Err11, Err21, ErrW1, n_sets, optPlot, optYaxis)
-plotProbResultsAll(Err12, Err22, ErrW2, n_sets, optPlot, optYaxis)
+plotProbResultsXY(Err1, Err2, n_sets, optPlot)
 

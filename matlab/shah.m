@@ -10,7 +10,7 @@ function [X,Y] = shah(AA,BB)
 % Mili Shah
 % July 2014
 
-[~,n]=size(AA); n = n/4;
+[~, n]=size(AA); n = n/4;
 A = zeros(9*n,18);
 T = zeros(9,9);
 b = zeros(9*n,1);
