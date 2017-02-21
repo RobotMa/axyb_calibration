@@ -1,4 +1,4 @@
-clear all
+clear
 close all
 clc
 
@@ -6,13 +6,14 @@ clc
 counter = 0;
 
 % Require rvctool Matlab toolbox but not the "common" folder inside
-addpath('~/Dropbox/2014Summer/Robotics Research/rvctools/robot')
-addpath('~/Dropbox/2014Summer/Robotics Research/rvctools/common')
+addpath ../../rvctools/robot
+addpath ../../rvctools/common
 addpath('~/Dropbox/2015Spring/AXXB Journal/Batch_AXXB/Matlab_AXXB/codegen')
 addpath('~/Dropbox/2015Spring/AXXB Journal/Batch_AXXB/Matlab_AXXB')
-addpath('~/Dropbox/2014Summer/Robotics Research/kinematics/kinematics/screws')
-addpath('~/Dropbox/2014Summer/Robotics Research/kinematics/kinematics/util')
+addpath ../../kinematics/kinematics/util
+addpath ../../kinematics/kinematics/screws
 
+%%
 Mean=[0; 0; 0; 0; 0 ;0];
 
 Cov = 0.3*eye(6,6);
@@ -26,6 +27,7 @@ Num  = 50; % number of data
 boxplot = false;
 lineplot = true;
 
+%%
 for k = point
     
     counter = counter + 1;
@@ -116,20 +118,6 @@ for k = point
             Err(counter,6,s) = tranerror(Y, YActual);
             Err(counter,7,s) = tranerror(X3, XActual);
             Err(counter,8,s) = tranerror(Y3, YActual);
-        end
-        %% ------ plot X and Y ------
-        try
-            figure(5);
-            trplot(X(:,:),'color','b');
-            axis auto
-            hold on
-            
-            figure(6);
-            trplot(Y(:,:),'color','b');
-            axis auto
-            hold on
-        catch
-            display(X)
         end
     end
     

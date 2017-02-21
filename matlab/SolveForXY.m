@@ -1,11 +1,6 @@
 function [outputX,outputY,outputError] =  SolveForXY(length, precision)
 %% 
-% load Asup2;
-% A = Asup2;
-% B = Bsup2;
-% clear;
-% close
-% clc
+
 %% Times of simulation steps
 len = length;
 e = precision;
