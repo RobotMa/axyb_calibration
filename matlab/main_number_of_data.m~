@@ -2,73 +2,69 @@ clear
 close all
 clc
 
-%% Edited by Qianli
-counter = 0;
-
-% Require rvctool Matlab toolbox but not the "common" folder inside
+%% Add file dependencies
 addpath ../../rvctools/robot
 addpath ../../rvctools/common
-addpath('~/Dropbox/2015Spring/AXXB Journal/Batch_AXXB/Matlab_AXXB/codegen')
-addpath('~/Dropbox/2015Spring/AXXB Journal/Batch_AXXB/Matlab_AXXB')
+addpath ../../axxb_calibration/matlab/new_mean/codegen/mex/distibutionPropsMex
+addpath ../../axxb_calibration/matlab/Batch_Method_ED_KL_BS
 addpath ../../kinematics/kinematics/util
 addpath ../../kinematics/kinematics/screws
+addpath ../../kinematics/kinematics/lie_group
 
-%%
-Mean=[0; 0; 0; 0; 0 ;0];
+%% Initialize Parameters
+gmean = [0; 0; 0; 0; 0 ;0];
 
-Cov = 0.3*eye(6,6);
+nstd = 0.05; % Gaussian Noise standard deviation Range
 
-point = 0:10:100;
+coeff = 0.1;
 
-num = 100; % number of simulations
+cov = coeff*eye(6,6);
 
-Num  = 50; % number of data
+point = 10:30:100;
+
+num = 10;
 
 boxplot = false;
+
 lineplot = true;
 
-%%
+counter = 0;
+
+%% 
 for k = point
     
     counter = counter + 1;
-    
     for s = 1:num
         %% ------ Trajectory Generation --------
-        [A, B, XActual, YActual] =  ABGenerate(Num, 0, Mean, Cov);
+        [A, B, XActual, YActual] =  ABGenerate(k, 0, gmean, cov);
         
-        % Scramble data streams up to a certain percentage 
-        PA = (1:size(A,3));
-        PB = (1:size(B,3));
-        
-        for i = 1:length(PA)
-            
-            if rand <= 0.01*k
-                index = randi(Num,1);
-                PA([i index]) = PA([index i]);
-            end
-            
-        end
-        A_perm = A(:,:,PA);
-        B_perm = B(:,:,PB);
+        % Resize A to fit mex functions
+        [a1,a2,a3] = size(A);
         
         %% ------- add noise -------
-%         gmean = [0; 0; 0; 0; 0; 0];	% Gaussian Noise Mean
-%         nstd = 0.05;                % Gaussian Noise standard deviation Range
+        gmean = [0; 0; 0; 0; 0; 0];	% Gaussian Noise Mean
         
-%         B = sensorNoise(B, gmean, nstd, 1);
+        B = sensorNoise(B, gmean, nstd, 1);
         
         %% ------ Generate A^-1 and B^-1 -------
-        A_inv = zeros(4, 4, Num);
-        B_inv = zeros(4, 4, Num);
-        for i = 1:Num
-            A_inv(:,:,i) = inv(A_perm(:,:,i));
-            B_inv(:,:,i) = inv(B_perm(:,:,i));
+        A_inv = zeros(4,4,k);
+        B_inv = zeros(4,4,k);
+        for i = 1:k
+            A_inv(:,:,i) = inv(A(:,:,i));
+            B_inv(:,:,i) = inv(B(:,:,i));
         end
         
         %% ------ using probility methods ------
-        [ X1, Y1, MeanA, MeanB, SigA, SigB ] = batchAXXB(A_perm, B_perm);
+        [ X1, Y1, MeanA, MeanB, SigA, SigB ] = batchSolve(A, B);
         [ Y2_inv, X2_inv, MeanA_inv, MeanB_inv, ~, ~] = batchAXXB(B_inv, A_inv);
-        [X3, Y3] = shah(A_perm, B_perm);
+        [ X3, Y3, X_can, Y_can, ~, ~, ~, ~ ] = batchAXYBold(A, B);
+        
+        for i = 1:size(X1,3)
+            Xdiff = X1(:,:,i) - X_can(:,:,i);
+            if norm(Xdiff(:)) > 0.001
+                display('X1 and X3 are not consistent')
+            end
+        end
         
         m = size(X1,3);
         X2 = zeros(4,4,m);
@@ -78,23 +74,32 @@ for k = point
             Y2(:,:,i) = inv(Y2_inv(:,:,i));
         end
         
-       %% Find out the optimal (X1, Y2) that minimizes cost1
+        %%
         cost1 = zeros(8,8);
         for i = 1:size(X1,3)
             for j = 1:size(Y2,3)
                 diff1 = MeanA*X1(:,:,i) - Y2(:,:,j)*MeanB;
                 diff2 = MeanB_inv/Y2(:,:,j) - X1(:,:,i)\MeanA_inv;
-                cost1(i,j) = norm(diff1(:)) * norm(diff2(:));
+                cost1(i,j) = norm(diff1(:)) + norm(diff2(:));
             end
         end
         
         [M1, I1] = min(cost1(:));
+
+        cost2 = zeros(8,8);
+        for i = 1:size(X2,3)
+            for j = 1:size(Y1,3)
+                diff1 = MeanA*X2(:,:,i) - Y1(:,:,j)*MeanB;
+                diff2 = MeanB_inv/Y1(:,:,j) - X2(:,:,i)\MeanA_inv;
+                cost2(i,j) = norm(diff1(:)) + norm(diff2(:));
+            end
+        end
              
         [I_row, I_col] = ind2sub(size(cost1), I1);
         X = X1(:, :, I_row);
         Y = Y2(:, :, I_col);
         
-       %% ----- err analysis ------
+        %% ----- err analysis ------
         if boxplot        
             Err(counter,s,1) = roterror(X, XActual);
             Err(counter,s,2) = roterror(Y, YActual);
@@ -120,15 +125,6 @@ for k = point
     end
     
 end
-
-%%
-figure(5)
-trplot(XActual(:,:),'color','r');
-axis auto
-
-figure(6)
-trplot(YActual(:,:),'color','r');
-axis auto
 
 %%
 Err_Avg = sum(Err,3)/num;
@@ -158,25 +154,20 @@ elseif lineplot
     
     figure
     subplot(2,1,1)
-    plot(point, Err_Avg(:,[1,3]),'o')
-    len1 = legend('$E_{R_{X prob}}$','$E_{R_{X Li}}$');
-    set(len1,'FontSize',14,'Interpreter','latex');
-    
-    
-    subplot(2,1,2)
-    plot(point, Err_Avg(:,[2,4]),'o')
-    len2 = legend('$E_{R_{Y prob}}$','$E_{R_{Y Li}}$');
-    set(len2,'FontSize',14,'Interpreter','latex');
+    plot(point, Err_Avg(:,[1,3]))
+    legend('rot_{Xnew}','rot_X')
 
+    subplot(2,1,2)
+    plot(point, Err_Avg(:,[2,4]))
+    legend('rot_{Ynew}','rot_Y')
+    
     figure
     subplot(2,1,1)
-    plot(point, Err_Avg(:,[5,7]),'o')
-    len3 = legend('$E_{t_{X prob}}$','$E_{t_{X Li}}$');
-    set(len3,'FontSize',12,'Interpreter','latex');
+    plot(point, Err_Avg(:,[5,7]))
+    legend('tran_{Xnew}','tran_X')
    
     subplot(2,1,2)
-    plot(point, Err_Avg(:,[6,8]),'o')
-    len4 = legend('$E_{t_{Y prob}}$','$E_{t_{Y Li}}$');
-    set(len4,'FontSize',12,'Interpreter','latex');
+    plot(point, Err_Avg(:,[6,8]))
+    legend('tran_{Ynew}','tran_Y')
     
 end

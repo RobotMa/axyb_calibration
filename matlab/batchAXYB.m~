@@ -22,11 +22,7 @@ else
     case2 = 0;
 end
 
-[ X1, Y1, MeanA, MeanB, SigA, SigB ] = batchSolveXY(A, B, case1, nstd_A, nstd_B);
-
-% SigAinv = SE3_Ad(MeanA)*SigA*SE3_Ad(MeanA);
-% SigBinv = SE3_Ad(MeanB)*SigB*SE3_Ad(MeanB);
-
+[ X1, Y1, MeanA, MeanB, SigA, S ] = batchSolveXY(A, B, case1, nstd_A, nstd_B);
 [ Y2_inv, X2_inv, MeanA_inv, MeanB_inv, ~, ~] = batchSolveXY(B_inv, A_inv, case2, nstd_B, nstd_A);
 
 m = size(X1,3);

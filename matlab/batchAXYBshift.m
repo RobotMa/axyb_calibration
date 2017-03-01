@@ -83,7 +83,7 @@ subplot(8,1,k);
 
 plot(lag,acor,'k','LineWidth',1);
 hold on
-shift = lag(I)
+shift = lag(I);
 
 if shift < 0
     shiftThetaB((-shift + 1):length,k) = thetaB(1:(length + shift),k);
@@ -93,8 +93,8 @@ else
     shiftDB((1):(length - shift),k) = dB((shift + 1):(length),k);
 end
 % pause();
-deltaTheta (:,k) = thetaA(25:75) - shiftThetaB(25:75,k)
-deltaD (:,k) = dA(25:75) - shiftDB(25:75,k)
+deltaTheta (:,k) = thetaA(25:75) - shiftThetaB(25:75,k);
+deltaD (:,k) = dA(25:75) - shiftDB(25:75,k);
 
 normMin(k) = norm(deltaTheta (:,k)) + norm(deltaD(:,k));
 
