@@ -1,4 +1,4 @@
-function [A,B,X,Y] =  ABGenerate(length, opt, M, Sig)
+function [A,B,X,Y] =  ABGenerate(length,opt,M,Sig)
 %% 
 % load Asup2;
 % A = Asup2;
